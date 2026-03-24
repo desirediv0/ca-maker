@@ -114,7 +114,7 @@ export default function MOQSettingsPage() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                     {/* Enable/Disable Toggle */}
-                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div className="flex items-center justify-between p-4 border rounded">
                         <div className="space-y-0.5">
                             <Label htmlFor="moq-enabled" className="text-base font-medium">
                                 {t('moq_settings.enable')}
@@ -152,7 +152,7 @@ export default function MOQSettingsPage() {
                     )}
 
                     {/* Info Box */}
-                    <div className="flex gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="flex gap-3 p-4 bg-blue-50 border border-blue-200 rounded">
                         <Info className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <div className="space-y-1">
                             <p className="text-sm font-medium text-blue-900">
@@ -167,7 +167,7 @@ export default function MOQSettingsPage() {
                     </div>
 
                     {/* Status Indicator */}
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-muted">
+                    <div className="flex items-center gap-2 p-3 rounded bg-muted">
                         {isActive ? (
                             <>
                                 <CheckCircle2 className="h-5 w-5 text-green-600" />

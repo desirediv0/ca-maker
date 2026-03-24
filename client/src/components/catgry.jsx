@@ -35,8 +35,8 @@ export default function CategoriesCarousel() {
     const container = document.getElementById("categories-carousel-container");
     if (container) {
       const scrollAmount = 200;
-      const newPosition = direction === "left" 
-        ? container.scrollLeft - scrollAmount 
+      const newPosition = direction === "left"
+        ? container.scrollLeft - scrollAmount
         : container.scrollLeft + scrollAmount;
       container.scrollTo({ left: newPosition, behavior: "smooth" });
       setScrollPosition(newPosition);
@@ -48,7 +48,7 @@ export default function CategoriesCarousel() {
       <div className="w-full py-6 max-w-7xl mx-auto">
         <div className="flex gap-4 overflow-hidden">
           {[...Array(8)].map((_, i) => (
-            <div key={i} className="flex-shrink-0 w-24 h-28 bg-gray-100 rounded-xl animate-pulse"></div>
+            <div key={i} className="flex-shrink-0 w-24 h-28 bg-gray-100 rounded animate-pulse"></div>
           ))}
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function CategoriesCarousel() {
             href={`/category/${category.slug}`}
             className="flex-shrink-0 flex flex-col items-center group/item"
           >
-            <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group-hover/item:border-primary group-hover/item:shadow-lg transition-all duration-300">
+            <div className="relative w-20 h-20 lg:w-24 lg:h-24 rounded overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group-hover/item:border-primary group-hover/item:shadow-lg transition-all duration-300">
               {category.image ? (
                 <Image
                   src={getImageUrl(category.image)}
@@ -92,7 +92,7 @@ export default function CategoriesCarousel() {
                   <Zap className="w-8 h-8 text-primary/40" />
                 </div>
               )}
-              
+
               {/* Product count badge */}
               {category._count?.products > 0 && (
                 <div className="absolute -top-1 -right-1 w-5 h-5 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center shadow-sm">

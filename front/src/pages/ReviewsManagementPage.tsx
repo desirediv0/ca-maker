@@ -375,7 +375,7 @@ export default function ReviewsManagementPage() {
       {/* Stats Cards */}
       {stats && (
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#3B82F6]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#3B82F6]">
             <CardHeader className="pb-2">
               <CardTitle className="text-xs font-medium text-[#9CA3AF]">
                 {t("reviews.stats.total")}
@@ -387,7 +387,7 @@ export default function ReviewsManagementPage() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#4CAF50]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#4CAF50]">
             <CardHeader className="pb-2">
               <CardTitle className="text-xs font-medium text-[#9CA3AF]">
                 {t("reviews.stats.average")}
@@ -402,7 +402,7 @@ export default function ReviewsManagementPage() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#F59E0B]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#F59E0B]">
             <CardHeader className="pb-2">
               <CardTitle className="text-xs font-medium text-[#9CA3AF]">
                 {t("reviews.stats.pending")}
@@ -414,7 +414,7 @@ export default function ReviewsManagementPage() {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#2E7D32]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#2E7D32]">
             <CardHeader className="pb-2">
               <CardTitle className="text-xs font-medium text-[#9CA3AF]">
                 {t("reviews.stats.recent")}
@@ -430,7 +430,7 @@ export default function ReviewsManagementPage() {
       )}
 
       {/* Filters */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
             <Filter className="h-5 w-5 mr-2 text-[#4B5563]" />
@@ -549,7 +549,7 @@ export default function ReviewsManagementPage() {
       </Card>
 
       {/* Reviews Table */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-[#1F2937]">
             {t("reviews.table.title")}
@@ -589,7 +589,7 @@ export default function ReviewsManagementPage() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-4 flex-1 min-w-0">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#FEF3C7] flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded bg-[#FEF3C7] flex-shrink-0">
                         <Star className="h-6 w-6 text-[#F59E0B]" fill="#F59E0B" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -734,7 +734,7 @@ export default function ReviewsManagementPage() {
               </div>
 
               {selectedReview.adminReply && (
-                <div className="bg-muted p-3 rounded-md mt-4">
+                <div className="bg-muted p-3 rounded mt-4">
                   <h4 className="text-sm font-medium mb-1">{t("reviews.dialog.admin_reply")}</h4>
                   <p className="text-sm">{selectedReview.adminReply}</p>
                   <p className="text-xs text-muted-foreground mt-2">
@@ -830,7 +830,7 @@ export default function ReviewsManagementPage() {
             </DialogHeader>
 
             <div className="space-y-4 py-4">
-              <div className="bg-muted p-3 rounded-md">
+              <div className="bg-muted p-3 rounded">
                 <div className="flex items-center mb-2">
                   {renderStars(selectedReview.rating)}
                   <span className="ml-2 font-medium">
@@ -892,7 +892,7 @@ export default function ReviewsManagementPage() {
                 </span>
                 ?
               </p>
-              <div className="bg-muted p-3 rounded-md mt-3">
+              <div className="bg-muted p-3 rounded mt-3">
                 <div className="flex items-center">
                   {renderStars(selectedReview.rating)}
                   <span className="ml-2 text-sm">{selectedReview.title}</span>

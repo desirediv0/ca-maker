@@ -256,7 +256,7 @@ export default function PaymentGatewaySettingsPage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                    <div className="flex items-center justify-between p-4 border rounded-lg">
+                    <div className="flex items-center justify-between p-4 border rounded">
                         <div className="space-y-0.5">
                             <Label htmlFor="razorpay-enabled" className="text-base font-medium">
                                 {t('payment_gateway_settings.razorpay.enable')}
@@ -422,7 +422,7 @@ export default function PaymentGatewaySettingsPage() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                        <div className="flex items-center justify-between p-4 border rounded-lg">
+                        <div className="flex items-center justify-between p-4 border rounded">
                             <div className="space-y-0.5">
                                 <Label htmlFor="phonepe-enabled" className="text-base font-medium">
                                     Enable PhonePe

@@ -50,7 +50,7 @@ export const WhyChooseSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {reasons.map((reason, index) => (
             <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-primary/10 rounded flex items-center justify-center mx-auto mb-4">
                 <reason.icon className="h-8 w-8 text-primary" />
               </div>
               <h3 className="font-semibold text-foreground mb-1">{reason.title}</h3>
@@ -60,13 +60,13 @@ export const WhyChooseSection = () => {
         </div>
 
         {/* Customer Reviews */}
-        <div className="bg-muted rounded-2xl p-8 md:p-10">
+        <div className="bg-muted rounded p-8 md:p-10">
           <h3 className="font-display text-2xl font-bold text-foreground text-center mb-8">
             What Our Customers Say
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-card p-6 rounded-xl card-shadow">
+              <div key={index} className="bg-card p-6 rounded card-shadow">
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
@@ -89,7 +89,7 @@ export const WhyChooseSection = () => {
 
         {/* CTA */}
         <div className="text-center mt-10">
-          <Link href="/products">
+          <Link href="/courses">
             <Button variant="hero" size="lg">
               Shop Now & Save
             </Button>

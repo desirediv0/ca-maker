@@ -1330,7 +1330,7 @@ export function ProductForm({
             ? "Product created successfully"
             : "Product updated successfully"
         );
-        navigate("/products");
+        navigate("/courses");
       } else {
         toast.error(response.data.message || "Failed to save product");
       }
@@ -1544,7 +1544,7 @@ export function ProductForm({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/products">
+            <Link to="/courses">
               <ChevronLeft className="h-4 w-4" />
               Back
             </Link>
@@ -1560,7 +1560,7 @@ export function ProductForm({
       <Card className="overflow-hidden">
         <form onSubmit={handleSubmit} className="space-y-8 p-6">
           {/* Basic Information */}
-          <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+          <div className="space-y-4 rounded border p-4 bg-gray-50">
             <h2 className="text-xl font-semibold border-b pb-2">
               {t("products.form.sections.basic_info")}
             </h2>
@@ -1594,7 +1594,7 @@ export function ProductForm({
               {product.categoryIds.length > 1 && (
                 <div className="space-y-2">
                   <Label>{t("products.form.categories.primary_category")} *</Label>
-                  <div className="space-y-2 rounded-md border p-3">
+                  <div className="space-y-2 rounded border p-3">
                     {selectedCategories.map((category) => (
                       <div
                         key={category.id}
@@ -1634,7 +1634,7 @@ export function ProductForm({
                   <p className="text-xs text-muted-foreground mb-2">
                     {t("products.form.categories.select_sub_categories_hint")}
                   </p>
-                  <div className="space-y-3 rounded-md border p-4 bg-muted/30">
+                  <div className="space-y-3 rounded border p-4 bg-muted/30">
                     {product.categoryIds.map((categoryId) => {
                       const category = categories.find(
                         (c) => c.id === categoryId
@@ -1645,7 +1645,7 @@ export function ProductForm({
                       return (
                         <div
                           key={categoryId}
-                          className="space-y-2 p-3 bg-background rounded-md border"
+                          className="space-y-2 p-3 bg-background rounded border"
                         >
                           <p className="text-sm font-semibold text-primary">
                             {category?.name || "Category"} {t("products.form.categories.sub_categories_label")}:
@@ -1654,7 +1654,7 @@ export function ProductForm({
                             {subCats.map((subCat: any) => (
                               <label
                                 key={subCat.id}
-                                className="flex items-center space-x-2 cursor-pointer p-2 rounded-md hover:bg-muted transition-colors border border-transparent hover:border-primary/20"
+                                className="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-muted transition-colors border border-transparent hover:border-primary/20"
                               >
                                 <Checkbox
                                   checked={selectedSubCategories.includes(
@@ -1702,7 +1702,7 @@ export function ProductForm({
                       </div>
                     )}
                     {selectedSubCategories.length > 0 && (
-                      <div className="mt-4 p-3 bg-primary/10 rounded-md border border-primary/20">
+                      <div className="mt-4 p-3 bg-primary/10 rounded border border-primary/20">
                         <p className="text-sm font-medium mb-2">
                           {t("products.form.categories.selected_sub_categories")} (
                           {selectedSubCategories.length}):
@@ -1741,7 +1741,7 @@ export function ProductForm({
 
 
               {/* Course Details Section */}
-              <div className="space-y-4 rounded-lg border p-4 bg-gray-50 md:col-span-2">
+              <div className="space-y-4 rounded border p-4 bg-gray-50 md:col-span-2">
                 <h2 className="text-xl font-semibold border-b pb-2">Course Details</h2>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
@@ -1751,7 +1751,7 @@ export function ProductForm({
                       name="courseType"
                       value={(product as any).courseType}
                       onChange={handleChange}
-                      className="w-full p-2 border border-gray-300 rounded-md bg-white"
+                      className="w-full p-2 border border-gray-300 rounded bg-white"
                     >
                       <option value="lecture">Lecture (Single)</option>
                       <option value="book">Book Sales</option>
@@ -1776,12 +1776,12 @@ export function ProductForm({
 
                 {/* Digital File Upload */}
                 {(product as any).digitalEnabled && (
-                  <div className="mt-4 p-4 border border-dashed rounded-lg bg-gray-50">
+                  <div className="mt-4 p-4 border border-dashed rounded bg-gray-50">
                     <Label className="mb-2 block">Upload Digital File (PDF)</Label>
 
                     {!digitalFile && !digitalFileUrl ? (
                       <div
-                        className="flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gray-100 transition-colors rounded-md border-2 border-dashed border-gray-300"
+                        className="flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gray-100 transition-colors rounded border-2 border-dashed border-gray-300"
                         onClick={() => document.getElementById('digital-file-upload')?.click()}
                       >
                         <input
@@ -1802,7 +1802,7 @@ export function ProductForm({
                         </div>
                       </div>
                     ) : (
-                      <div className="flex items-center justify-between p-3 bg-white border rounded-md shadow-sm">
+                      <div className="flex items-center justify-between p-3 bg-white border rounded shadow-sm">
                         <div className="flex items-center gap-3">
                           <div className="p-2 bg-red-100 rounded text-red-600">
                             <FileText className="h-6 w-6" />
@@ -1871,11 +1871,11 @@ export function ProductForm({
                   </div>
 
                   {provideSampleBook && (
-                    <div className="p-4 border border-dashed rounded-lg bg-gray-50">
+                    <div className="p-4 border border-dashed rounded bg-gray-50">
                       <Label className="mb-2 block text-sm font-medium">Upload Sample Book PDF</Label>
                       {!sampleBookFile && !sampleBookUrl ? (
                         <div
-                          className="flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gray-100 transition-colors rounded-md border-2 border-dashed border-gray-300"
+                          className="flex flex-col items-center justify-center p-6 cursor-pointer hover:bg-gray-100 transition-colors rounded border-2 border-dashed border-gray-300"
                           onClick={() => document.getElementById("sample-book-upload")?.click()}
                         >
                           <input
@@ -1892,7 +1892,7 @@ export function ProductForm({
                           <span className="text-xs text-gray-500">Max size 50MB</span>
                         </div>
                       ) : (
-                        <div className="flex items-center justify-between p-3 bg-white border rounded-md shadow-sm">
+                        <div className="flex items-center justify-between p-3 bg-white border rounded shadow-sm">
                           <div className="flex items-center gap-3">
                             <div className="p-2 bg-orange-100 rounded text-orange-600">
                               <FileText className="h-5 w-5" />
@@ -1924,7 +1924,7 @@ export function ProductForm({
               </div>
 
               {/* ── Additional Information Repeater ── */}
-              <div className="space-y-4 rounded-lg border p-4 bg-gray-50 md:col-span-2">
+              <div className="space-y-4 rounded border p-4 bg-gray-50 md:col-span-2">
                 <div className="flex items-center justify-between border-b pb-2">
                   <h2 className="text-xl font-semibold">Additional Information</h2>
                   <Button
@@ -1972,7 +1972,7 @@ export function ProductForm({
 
               <div className="space-y-2 md:col-span-2">
                 <Label htmlFor="description">{t("products.form.labels.description")}</Label>
-                <div className="border rounded-md overflow-hidden">
+                <div className="border rounded overflow-hidden">
                   <JoditEditor
                     ref={editorRef}
                     value={editorContent}
@@ -2038,7 +2038,7 @@ export function ProductForm({
                   onChange={(e) =>
                     setProduct((prev) => ({ ...prev, brandId: e.target.value }))
                   }
-                  className="rounded-md border bg-background px-3 py-2 text-sm w-full"
+                  className="rounded border bg-background px-3 py-2 text-sm w-full"
                 >
                   <option value="">{t("products.form.placeholders.select_brand")}</option>
                   {brandsList.map((b) => (
@@ -2062,7 +2062,7 @@ export function ProductForm({
               </div>
 
               {/* Product Settings */}
-              <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+              <div className="space-y-4 rounded border p-4 bg-gray-50">
                 <h3 className="text-lg font-semibold">{t("products.form.settings.product_settings")}</h3>
 
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -2251,7 +2251,7 @@ export function ProductForm({
 
           {/* Shipping Dimensions - Hidden for Courses */}
           {/*
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="bg-white p-6 rounded shadow-sm border border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
             Shipping Dimensions
           </h2>
@@ -2267,7 +2267,7 @@ export function ProductForm({
                 onChange={handleChange}
                 placeholder="0.00"
                 step="0.01"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-primary focus:border-primary"
               />
             </div>
             <div>
@@ -2281,7 +2281,7 @@ export function ProductForm({
                 onChange={handleChange}
                 placeholder="0.00"
                 step="0.01"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-primary focus:border-primary"
               />
             </div>
             <div>
@@ -2295,7 +2295,7 @@ export function ProductForm({
                 onChange={handleChange}
                 placeholder="0.00"
                 step="0.01"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-primary focus:border-primary"
               />
             </div>
             <div>
@@ -2309,7 +2309,7 @@ export function ProductForm({
                 onChange={handleChange}
                 placeholder="0.00"
                 step="0.01"
-                className="w-full p-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                className="w-full p-2 border border-gray-300 rounded focus:ring-primary focus:border-primary"
               />
             </div>
           </div>
@@ -2317,7 +2317,7 @@ export function ProductForm({
         */}
           {/* Product Images - Dropzone - Only show when variants are NOT enabled */}
           {!hasVariants && (
-            <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+            <div className="space-y-4 rounded border p-4 bg-gray-50">
               <h2 className="text-xl font-semibold border-b pb-2">
                 Product Images
               </h2>
@@ -2330,7 +2330,7 @@ export function ProductForm({
                 </div>
                 <div
                   {...getRootProps()}
-                  className={`border-2 border-dashed rounded-md p-8 cursor-pointer transition-colors text-center bg-white ${isDragActive
+                  className={`border-2 border-dashed rounded p-8 cursor-pointer transition-colors text-center bg-white ${isDragActive
                     ? "border-blue-400 bg-blue-50"
                     : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
                     }`}
@@ -2368,7 +2368,7 @@ export function ProductForm({
                         e.target.value = "";
                       }
                     }}
-                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                    className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                   />
                   <p className="text-xs text-gray-500 mt-1">
                     {t("products.form.media.alternative_input_hint")}
@@ -2392,7 +2392,7 @@ export function ProductForm({
                     {imagePreviews.map((preview, index) => (
                       <div key={index} className="relative group">
                         <div
-                          className={`relative h-32 rounded-md overflow-hidden border-2 ${preview.isPrimary ? "border-primary" : "border-transparent"}`}
+                          className={`relative h-32 rounded overflow-hidden border-2 ${preview.isPrimary ? "border-primary" : "border-transparent"}`}
                         >
                           <img
                             src={preview.url}
@@ -2436,7 +2436,7 @@ export function ProductForm({
           )}
 
           {/* SEO Section */}
-          <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+          <div className="space-y-4 rounded border p-4 bg-gray-50">
             <h2 className="text-xl font-semibold border-b pb-2">
               {t("products.form.sections.seo_information")}
             </h2>
@@ -2496,7 +2496,7 @@ export function ProductForm({
 
           {/* Variants Configuration */}
           {hasVariants && (
-            <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+            <div className="space-y-4 rounded border p-4 bg-gray-50">
               <div className="flex items-center justify-between border-b pb-2">
                 <h2 className="text-xl font-semibold">
                   {t("products.form.sections.variants_configuration")}
@@ -2506,7 +2506,7 @@ export function ProductForm({
                 </Badge>
               </div>
 
-              <div className="bg-green-50 border border-green-200 rounded-md p-3">
+              <div className="bg-green-50 border border-green-200 rounded p-3">
                 <p className="text-sm text-green-700">
                   <strong>✓ {t("products.form.variants.variant_mode")}:</strong> {t("products.form.variants.variant_mode_hint")}
                 </p>
@@ -2515,7 +2515,7 @@ export function ProductForm({
               <div className="space-y-4">
                 <div className="space-y-4">
                   {attributesList.length === 0 ? (
-                    <div className="rounded-md border p-4 bg-yellow-50">
+                    <div className="rounded border p-4 bg-yellow-50">
                       <p className="text-sm text-yellow-700">
                         {t("products.form.variants.no_attributes_available")}{" "}
                         <Link
@@ -2533,7 +2533,7 @@ export function ProductForm({
                         <Label>
                           {attribute.name} ({attribute.inputType})
                         </Label>
-                        <div className="space-y-2 rounded-md border p-3 max-h-40 overflow-y-auto bg-white">
+                        <div className="space-y-2 rounded border p-3 max-h-40 overflow-y-auto bg-white">
                           {attributeValuesMap[attribute.id]?.length > 0 ? (
                             attributeValuesMap[attribute.id].map(
                               (value: any) => (
@@ -2620,7 +2620,7 @@ export function ProductForm({
                       ))}
                     </div>
                   ) : (
-                    <div className="text-center p-4 border rounded-md bg-white">
+                    <div className="text-center p-4 border rounded bg-white">
                       <p className="text-sm text-gray-500">
                         {t("products.form.variants.no_variants_yet")}
                       </p>
@@ -2632,12 +2632,12 @@ export function ProductForm({
           )}
 
           {/* MOQ Settings Section */}
-          <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+          <div className="space-y-4 rounded border p-4 bg-gray-50">
             <h2 className="text-xl font-semibold border-b pb-2">
               {t("products.form.sections.moq_settings")}
             </h2>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 border rounded-lg bg-white">
+              <div className="flex items-center justify-between p-4 border rounded bg-white">
                 <div className="space-y-0.5">
                   <Label htmlFor="product-moq-enabled" className="text-base font-medium">
                     {t("products.form.moq.enable_moq_label")}
@@ -2680,7 +2680,7 @@ export function ProductForm({
                 </div>
               )}
 
-              <div className="flex gap-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex gap-2 p-3 bg-blue-50 border border-blue-200 rounded">
                 <Info className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div className="space-y-1">
                   <p className="text-sm font-medium text-blue-900">
@@ -2696,7 +2696,7 @@ export function ProductForm({
 
           {/* Shipping Dimensions Section - Only show when Shiprocket is enabled and no variants */}
           {shiprocketEnabled && !hasVariants && (
-            <div className="space-y-4 rounded-lg border p-4 bg-gray-50">
+            <div className="space-y-4 rounded border p-4 bg-gray-50">
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold">
                   {t("products.form.shipping.title")}
@@ -2769,7 +2769,7 @@ export function ProductForm({
             <Button
               type="button"
               variant="outline"
-              onClick={() => navigate("/products")}
+              onClick={() => navigate("/courses")}
             >
               {t("common.cancel")}
             </Button>
@@ -3000,7 +3000,7 @@ const CategorySelector = ({
   };
 
   return (
-    <div className="space-y-2 border rounded-md p-3 max-h-60 overflow-y-auto bg-white">
+    <div className="space-y-2 border rounded p-3 max-h-60 overflow-y-auto bg-white">
       <div className="font-medium text-sm mb-1">
         Select categories (multiple allowed):
       </div>
@@ -3014,7 +3014,7 @@ const CategorySelector = ({
 export default function ProductsPage() {
   const { id } = useParams();
   const location = useLocation();
-  const isNewProduct = location.pathname.includes("/new");
+  const isNewProduct = location.pathname.includes("/add");
   const isEditProduct = !!id;
 
   // Show appropriate content based on route
@@ -3403,10 +3403,10 @@ function ProductsList() {
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-semibold text-[#1F2937] tracking-tight">
+            <h1 className="text-3xl font-bold text-[#0F172A] tracking-tight">
               {t("products.title")}
             </h1>
-            <p className="text-[#9CA3AF] text-sm mt-1.5">
+            <p className="text-[#64748B] text-sm mt-1.5">
               {t("products.form.sections.basic_desc")}
             </p>
           </div>
@@ -3416,7 +3416,7 @@ function ProductsList() {
               <Input
                 type="search"
                 placeholder={t("products.list.search_placeholder")}
-                className="pl-9 rounded-full border-[#E5E7EB] bg-[#FFFFFF] focus:border-primary"
+                className="pl-9 rounded-full border-[#E2E8F0] bg-white focus:border-[#F97316] focus:ring-2 focus:ring-[#FFF7ED]"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleSearch(e)}
@@ -3425,18 +3425,18 @@ function ProductsList() {
             <Button
               asChild
             >
-              <Link to="/products/new">
+              <Link to="/courses/add">
                 <Plus className="mr-2 h-4 w-4" />
                 {t("products.add_new")}
               </Link>
             </Button>
           </div>
         </div>
-        <div className="h-px bg-[#E5E7EB]" />
+        <div className="h-px bg-[#E2E8F0]" />
       </div>
 
       {/* Premium Filters Bar */}
-      <div className="flex flex-wrap items-center gap-3 bg-[#FFFFFF] border border-[#E5E7EB] rounded-full px-4 py-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+      <div className="flex flex-wrap items-center gap-3 bg-white border border-[#E2E8F0] rounded px-4 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.08)]">
         <select
           className="flex-1 min-w-[150px] rounded-full border border-[#E5E7EB] bg-[#FFFFFF] px-4 py-2 text-sm text-[#4B5563] focus:outline-none focus:border-primary"
           value={selectedCategory}
@@ -3483,7 +3483,7 @@ function ProductsList() {
       )}
 
       {productsList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Package className="h-8 w-8 text-[#9CA3AF]" />
@@ -3497,7 +3497,7 @@ function ProductsList() {
             <Button
               asChild
             >
-              <Link to="/products/new">
+              <Link to="/courses/add">
                 <Plus className="mr-2 h-4 w-4" />
                 {t("products.add_new")}
               </Link>
@@ -3505,7 +3505,7 @@ function ProductsList() {
           </div>
         </Card>
       ) : (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl overflow-hidden">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded overflow-hidden">
           <div className="divide-y divide-[#E5E7EB]">
             <SafeRender>
               {productsList.map((product) => {
@@ -3551,10 +3551,10 @@ function ProductsList() {
                         <img
                           src={productImage.url}
                           alt={product.name}
-                          className="h-14 w-14 rounded-lg object-cover border border-[#E5E7EB]"
+                          className="h-14 w-14 rounded object-cover border border-[#E5E7EB]"
                         />
                       ) : (
-                        <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB]">
+                        <div className="flex h-14 w-14 items-center justify-center rounded bg-[#F3F4F6] border border-[#E5E7EB]">
                           <Package className="h-6 w-6 text-[#9CA3AF]" />
                         </div>
                       )}
@@ -3663,7 +3663,7 @@ function ProductsList() {
                             className="text-[#1F2937] hover:bg-[#F3F7F6]"
                             asChild
                           >
-                            <Link to={`/products/${product.id}`}>
+                            <Link to={`/courses/${product.id}`}>
                               <Edit className="h-4 w-4 mr-2" />
                               Edit
                             </Link>

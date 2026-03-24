@@ -69,7 +69,7 @@ export const ProductsSection = () => {
             Comprehensive Range of P.A Equipment
           </h2>
           <p className="text-muted-foreground">
-            From powerful DJ speakers to precision driver units, explore our complete range of 
+            From powerful DJ speakers to precision driver units, explore our complete range of
             professional audio equipment designed for every application.
           </p>
         </div>
@@ -79,10 +79,10 @@ export const ProductsSection = () => {
           {productCategories.map((product, index) => (
             <Link
               key={index}
-              href={`/products?category=${product.slug}`}
-              className="bg-card rounded-xl p-6 card-shadow card-hover group block"
+              href={`/courses?category=${product.slug}`}
+              className="bg-card rounded p-6 card-shadow card-hover group block"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+              <div className="w-14 h-14 rounded bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
                 <product.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
               <h3 className="font-display font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-colors">
@@ -101,9 +101,9 @@ export const ProductsSection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-10">
-          <Link 
-            href="/products"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          <Link
+            href="/courses"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-medium hover:bg-primary/90 transition-colors"
           >
             View All Products
             <ArrowRight className="h-5 w-5" />

@@ -176,12 +176,12 @@ export default function OrdersPage() {
             </p>
           </div>
           <div className="flex items-center gap-3 text-sm">
-            <div className="flex items-center gap-2 bg-[#F3F4F6] px-3 py-2 rounded-lg">
+            <div className="flex items-center gap-2 bg-[#F3F4F6] px-3 py-2 rounded">
               <ShoppingCart className="h-4 w-4 text-[#4B5563]" />
               <span className="font-semibold text-[#1F2937]">{ordersList.length}</span>
               <span className="text-[#9CA3AF]">{t('orders.summary.total')}</span>
             </div>
-            <div className="flex items-center gap-2 bg-[#ECFDF5] px-3 py-2 rounded-lg">
+            <div className="flex items-center gap-2 bg-[#ECFDF5] px-3 py-2 rounded">
               <CheckCircle className="h-4 w-4 text-[#22C55E]" />
               <span className="font-semibold text-[#22C55E]">{deliveredCount}</span>
               <span className="text-[#22C55E]">{t('orders.summary.delivered')}</span>
@@ -192,7 +192,7 @@ export default function OrdersPage() {
       </div>
 
       {/* Filters Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <form onSubmit={handleSearch} className="relative flex-1">
@@ -211,7 +211,7 @@ export default function OrdersPage() {
                 setSelectedStatus(e.target.value);
                 setCurrentPage(1);
               }}
-              className="px-4 py-2 rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
+              className="px-4 py-2 rounded border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
             >
               <option value="">{t('orders.filters.all_status')}</option>
               <option value="PENDING">{t('orders.status.pending')}</option>
@@ -269,7 +269,7 @@ export default function OrdersPage() {
 
       {/* Orders List */}
       {ordersList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <ShoppingCart className="h-8 w-8 text-[#9CA3AF]" />
@@ -304,7 +304,7 @@ export default function OrdersPage() {
           {ordersList.map((order: any) => (
             <Card
               key={order.id}
-              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
             >
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
@@ -312,7 +312,7 @@ export default function OrdersPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E8F5E9]">
+                        <div className="flex h-10 w-10 items-center justify-center rounded bg-[#E8F5E9]">
                           <ShoppingCart className="h-5 w-5 text-[#2E7D32]" />
                         </div>
                         <div>

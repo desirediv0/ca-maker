@@ -36,24 +36,24 @@ import { useAddVariantToCart } from "@/lib/cart-utils";
 import { ProductCard } from "@/components/products/ProductCard";
 
 export default function ProductContent({ slug }) {
-  const [product,               setProduct]               = useState(null);
-  const [relatedProducts,       setRelatedProducts]       = useState([]);
-  const [loading,               setLoading]               = useState(true);
-  const [error,                 setError]                 = useState(null);
-  const [mainImage,             setMainImage]             = useState(null);
-  const [selectedAttributes,    setSelectedAttributes]    = useState({});
-  const [selectedVariant,       setSelectedVariant]       = useState(null);
-  const [quantity,              setQuantity]              = useState(1);
-  const [effectivePriceInfo,    setEffectivePriceInfo]    = useState(null);
-  const [activeTab,             setActiveTab]             = useState("description");
-  const { isAuthenticated }   = useAuth();
-  const router                = useRouter();
-  const [isAddingToWishlist,    setIsAddingToWishlist]    = useState(false);
-  const [isInWishlist,          setIsInWishlist]          = useState(false);
-  const [isAddingToCart,        setIsAddingToCart]        = useState(false);
-  const [cartSuccess,           setCartSuccess]           = useState(false);
+  const [product, setProduct] = useState(null);
+  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [mainImage, setMainImage] = useState(null);
+  const [selectedAttributes, setSelectedAttributes] = useState({});
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [effectivePriceInfo, setEffectivePriceInfo] = useState(null);
+  const [activeTab, setActiveTab] = useState("description");
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
+  const [isAddingToWishlist, setIsAddingToWishlist] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [cartSuccess, setCartSuccess] = useState(false);
   const [availableCombinations, setAvailableCombinations] = useState([]);
-  const [initialLoading,        setInitialLoading]        = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
   const [priceVisibilitySettings, setPriceVisibilitySettings] = useState(null);
 
   const { addVariantToCart } = useAddVariantToCart();
@@ -66,7 +66,7 @@ export default function ProductContent({ slug }) {
         ? parseFloat(variant.salePrice)
         : variant.salePrice
       : null;
-    const basePrice   = variant.price
+    const basePrice = variant.price
       ? typeof variant.price === "string"
         ? parseFloat(variant.price)
         : variant.price
@@ -90,7 +90,7 @@ export default function ProductContent({ slug }) {
       setLoading(true);
       setInitialLoading(true);
       try {
-        const response    = await fetchApi(`/public/products/${slug}`);
+        const response = await fetchApi(`/public/products/${slug}`);
         const productData = response.data.product;
         setProduct(productData);
         setRelatedProducts(response.data.relatedProducts || []);
@@ -98,8 +98,8 @@ export default function ProductContent({ slug }) {
         // Sort variants by price so the default/card image is the cheapest variant
         const sortedVariants = productData.variants?.length > 0
           ? [...productData.variants].sort(
-              (a, b) => parseFloat(a.salePrice || a.price || 0) - parseFloat(b.salePrice || b.price || 0)
-            )
+            (a, b) => parseFloat(a.salePrice || a.price || 0) - parseFloat(b.salePrice || b.price || 0)
+          )
           : [];
 
         // Set initial main image: product-level first, then cheapest variant image
@@ -131,14 +131,14 @@ export default function ProductContent({ slug }) {
             setSelectedAttributes(defaultSelections);
 
             const matchingVariant = combinations.find((combo) => {
-              const comboIds    = combo.attributeValueIds.sort().join(",");
+              const comboIds = combo.attributeValueIds.sort().join(",");
               const selectedIds = Object.values(defaultSelections).sort().join(",");
               return comboIds === selectedIds;
             });
 
             if (matchingVariant) {
               setSelectedVariant(matchingVariant.variant);
-              const moq       = matchingVariant.variant.moq || 1;
+              const moq = matchingVariant.variant.moq || 1;
               setQuantity(moq);
               setEffectivePriceInfo(getEffectivePrice(matchingVariant.variant, moq));
             } else {
@@ -221,7 +221,7 @@ export default function ProductContent({ slug }) {
     if (matchingVariant) {
       setSelectedVariant(matchingVariant.variant);
       setMainImage(null); // reset so renderImages picks variant's first image
-      const moq    = matchingVariant.variant.moq || 1;
+      const moq = matchingVariant.variant.moq || 1;
       const newQty = quantity < moq ? moq : quantity;
       if (quantity < moq) setQuantity(newQty);
       setEffectivePriceInfo(getEffectivePrice(matchingVariant.variant, newQty));
@@ -251,7 +251,7 @@ export default function ProductContent({ slug }) {
   const isValueUnavailable = (attributeId, valueId) => {
     // Build hypothetical selection with this value chosen
     const hypothetical = { ...selectedAttributes, [attributeId]: valueId };
-    const selectedIds  = Object.values(hypothetical);
+    const selectedIds = Object.values(hypothetical);
     // Find combos that contain ALL currently selected values
     const matching = availableCombinations.filter((combo) => {
       const ids = combo.attributeValueIds;
@@ -265,7 +265,7 @@ export default function ProductContent({ slug }) {
   const isValueOutOfStock = (attributeId, valueId) => {
     if (isValueUnavailable(attributeId, valueId)) return true;
     const hypothetical = { ...selectedAttributes, [attributeId]: valueId };
-    const selectedIds  = Object.values(hypothetical);
+    const selectedIds = Object.values(hypothetical);
     const matching = availableCombinations.filter((combo) =>
       selectedIds.every((id) => combo.attributeValueIds.includes(id))
     );
@@ -279,7 +279,7 @@ export default function ProductContent({ slug }) {
     const checkWishlistStatus = async () => {
       if (!isAuthenticated || !product) return;
       try {
-        const response     = await fetchApi("/users/wishlist", { credentials: "include" });
+        const response = await fetchApi("/users/wishlist", { credentials: "include" });
         const wishlistItems = response.data.wishlistItems || [];
         setIsInWishlist(wishlistItems.some((item) => item.productId === product.id));
       } catch (error) {
@@ -291,8 +291,8 @@ export default function ProductContent({ slug }) {
 
   /* ─── Quantity change (unchanged) ───────────────────────── */
   const handleQuantityChange = (change) => {
-    const newQuantity    = quantity + change;
-    const effectiveMOQ   = selectedVariant?.moq || 1;
+    const newQuantity = quantity + change;
+    const effectiveMOQ = selectedVariant?.moq || 1;
     if (newQuantity < effectiveMOQ) return;
     const availableStock = selectedVariant?.stock || selectedVariant?.quantity || 0;
     if (availableStock > 0 && newQuantity > availableStock) return;
@@ -335,27 +335,12 @@ export default function ProductContent({ slug }) {
     }
   };
 
-  /* ─── Buy now (unchanged) ────────────────────────────────── */
-  const handleBuyNow = async () => {
-    const variantToUse =
-      selectedVariant ||
-      (product?.variants?.length > 0 ? product.variants[0] : null);
-    if (!variantToUse) return;
-    setIsAddingToCart(true);
-    try {
-      const result = await addVariantToCart(variantToUse, quantity, product.name);
-      if (result.success) router.push("/checkout");
-    } catch (err) {
-      console.error("Error adding to cart:", err);
-    } finally {
-      setIsAddingToCart(false);
-    }
-  };
+
 
   /* ─── Wishlist toggle (unchanged) ───────────────────────── */
   const handleAddToWishlist = async () => {
     if (!isAuthenticated) {
-      router.push(`/auth?redirect=/products/${slug}`);
+      router.push(`/auth?redirect=/courses/${slug}`);
       return;
     }
     setIsAddingToWishlist(true);
@@ -408,7 +393,7 @@ export default function ProductContent({ slug }) {
     }
 
     const noImage = (
-      <div className="relative aspect-square w-full bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 flex items-center justify-center">
+      <div className="relative aspect-square w-full bg-gray-50 rounded overflow-hidden border border-gray-100 flex items-center justify-center">
         <div className="text-gray-300 text-center p-8">
           <div className="w-16 h-16 mx-auto mb-3 opacity-30">
             <Image src="/images/product-placeholder.jpg" alt="" width={64} height={64} className="object-contain" />
@@ -422,7 +407,7 @@ export default function ProductContent({ slug }) {
 
     // Determine active main image
     const fallbackMain = imagesToShow.find((img) => img.isPrimary) || imagesToShow[0];
-    const activeMain   =
+    const activeMain =
       mainImage && imagesToShow.some((img) => img.url === mainImage.url)
         ? mainImage
         : fallbackMain;
@@ -430,7 +415,7 @@ export default function ProductContent({ slug }) {
     if (imagesToShow.length === 1) {
       return (
         <div className="sticky top-8">
-          <div className="relative aspect-square w-full bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+          <div className="relative aspect-square w-full bg-gray-50 rounded overflow-hidden border border-gray-100 shadow-sm">
             <Image
               src={getImageUrl(activeMain.url)}
               alt={product?.name || "Product"}
@@ -446,7 +431,7 @@ export default function ProductContent({ slug }) {
     return (
       <div className="sticky top-8 space-y-3">
         {/* Main image */}
-        <div className="relative aspect-square w-full bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+        <div className="relative aspect-square w-full bg-gray-50 rounded overflow-hidden border border-gray-100 shadow-sm">
           <Image
             src={getImageUrl(activeMain?.url)}
             alt={product?.name || "Product"}
@@ -461,12 +446,11 @@ export default function ProductContent({ slug }) {
             <button
               key={index}
               onClick={() => setMainImage(image)}
-              className={`relative flex-shrink-0 w-16 h-16 bg-gray-50 rounded-xl overflow-hidden
-                          border-2 transition-all ${
-                            activeMain?.url === image.url
-                              ? "border-orange-500 shadow-sm shadow-orange-200"
-                              : "border-gray-200 hover:border-orange-300"
-                          }`}
+              className={`relative flex-shrink-0 w-16 h-16 bg-gray-50 rounded overflow-hidden
+                          border-2 transition-all ${activeMain?.url === image.url
+                  ? "border-orange-500 shadow-sm shadow-orange-200"
+                  : "border-gray-200 hover:border-orange-300"
+                }`}
             >
               <Image
                 src={getImageUrl(image.url)}
@@ -490,7 +474,7 @@ export default function ProductContent({ slug }) {
   /* ─── Price display (unchanged logic, improved styling) ─── */
   const getPriceDisplay = () => {
     if (initialLoading) {
-      return <div className="h-10 w-40 bg-gray-100 animate-pulse rounded-xl" />;
+      return <div className="h-10 w-40 bg-gray-100 animate-pulse rounded" />;
     }
 
     if (priceVisibilitySettings === null) {
@@ -503,14 +487,14 @@ export default function ProductContent({ slug }) {
     }
 
     if (selectedVariant) {
-      const priceInfo     = effectivePriceInfo || getEffectivePrice(selectedVariant, quantity);
+      const priceInfo = effectivePriceInfo || getEffectivePrice(selectedVariant, quantity);
       if (!priceInfo) {
         return <span className="text-2xl font-bold text-gray-400">Price not available</span>;
       }
 
       const effectivePrice = priceInfo.price;
-      const originalPrice  = priceInfo.originalPrice;
-      const isSlabPrice    = priceInfo.source === "SLAB";
+      const originalPrice = priceInfo.originalPrice;
+      const isSlabPrice = priceInfo.source === "SLAB";
       const discount =
         originalPrice > effectivePrice ? calculateDiscount(originalPrice, effectivePrice) : 0;
 
@@ -553,7 +537,7 @@ export default function ProductContent({ slug }) {
     }
 
     if (product) {
-      const basePrice    = product.basePrice    || 0;
+      const basePrice = product.basePrice || 0;
       const regularPrice = product.regularPrice || 0;
 
       if (priceVisibilitySettings?.hidePricesForGuests && !isAuthenticated) {
@@ -618,11 +602,11 @@ export default function ProductContent({ slug }) {
   if (error) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="bg-red-50 p-8 rounded-2xl border border-red-100 flex flex-col items-center text-center">
+        <div className="bg-red-50 p-8 rounded border border-red-100 flex flex-col items-center text-center">
           <AlertCircle className="text-red-500 h-12 w-12 mb-4" />
           <h2 className="text-xl font-bold text-red-700 mb-2">Error Loading Product</h2>
           <p className="text-red-600 mb-6 text-sm">{error}</p>
-          <Link href="/products">
+          <Link href="/courses">
             <Button className="gap-2">
               <ChevronRight className="h-4 w-4" /> Browse Other Products
             </Button>
@@ -636,15 +620,15 @@ export default function ProductContent({ slug }) {
   if (!product) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <div className="bg-orange-50 p-8 rounded-2xl border border-orange-100 flex flex-col items-center text-center">
+        <div className="bg-orange-50 p-8 rounded border border-orange-100 flex flex-col items-center text-center">
           <AlertCircle className="text-orange-500 h-12 w-12 mb-4" />
           <h2 className="text-xl font-bold text-orange-700 mb-2">Product Not Found</h2>
           <p className="text-orange-600 mb-6 text-sm">
             The product you are looking for does not exist or has been removed.
           </p>
-          <Link href="/products">
+          <Link href="/courses">
             <Button className="gap-2">
-              <ChevronRight className="h-4 w-4" /> Browse Products
+              <ChevronRight className="h-4 w-4" /> Browse Courses
             </Button>
           </Link>
         </div>
@@ -687,9 +671,9 @@ export default function ProductContent({ slug }) {
 
         {/* ── Breadcrumbs ── */}
         <nav className="flex items-center flex-wrap gap-1 text-xs text-gray-400 mb-8">
-          <Link href="/"        className="hover:text-orange-600 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-orange-600 transition-colors">Home</Link>
           <ChevronRight className="h-3 w-3" />
-          <Link href="/products" className="hover:text-orange-600 transition-colors">Products</Link>
+          <Link href="/courses" className="hover:text-orange-600 transition-colors">Courses</Link>
           {(product?.category || product?.categories?.[0]?.category) && (
             <>
               <ChevronRight className="h-3 w-3" />
@@ -713,9 +697,9 @@ export default function ProductContent({ slug }) {
           {/* LEFT — Images */}
           <div className="w-full">
             {loading ? (
-              <div className="aspect-square w-full bg-orange-50 rounded-2xl animate-pulse" />
+              <div className="aspect-square w-full bg-orange-50 rounded animate-pulse" />
             ) : error ? (
-              <div className="aspect-square w-full bg-red-50 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square w-full bg-red-50 rounded flex items-center justify-center">
                 <div className="text-center p-6">
                   <AlertCircle className="h-12 w-12 text-red-400 mx-auto mb-3" />
                   <p className="text-red-500 text-sm">{error}</p>
@@ -745,11 +729,11 @@ export default function ProductContent({ slug }) {
             {/* Rating — only render when real data exists */}
             {product.avgRating > 0 && (
               <div className="flex items-center gap-2">
-                <div className="flex text-yellow-400">
+                <div className="flex text-orange-500">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className="h-4 w-4 md:h-5 md:w-5"
+                      className={`h-4 w-4 md:h-5 md:w-5 ${i < Math.round(product.avgRating) ? "fill-orange-500 text-orange-500" : "text-gray-300"}`}
                       fill={i < Math.round(product.avgRating) ? "currentColor" : "none"}
                     />
                   ))}
@@ -763,7 +747,7 @@ export default function ProductContent({ slug }) {
 
             {/* Flash Sale banner */}
             {product.flashSale?.isActive && (
-              <div className="p-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-2xl shadow-lg shadow-orange-200">
+              <div className="p-4 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded shadow-lg shadow-orange-200">
                 <div className="flex items-center justify-between flex-wrap gap-2">
                   <div className="flex items-center gap-2">
                     <span className="text-2xl">⚡</span>
@@ -780,7 +764,7 @@ export default function ProductContent({ slug }) {
             )}
 
             {/* Price block */}
-            <div className="p-5 bg-orange-50/60 rounded-2xl border border-orange-100">
+            <div className="p-5 bg-white rounded border border-orange-100">
               {product.flashSale?.isActive ? (
                 <div className="space-y-2">
                   <div className="flex items-baseline gap-3 flex-wrap">
@@ -803,7 +787,7 @@ export default function ProductContent({ slug }) {
 
             {/* Short description */}
             {product.shortDescription && (
-              <div className="p-4 border border-gray-100 rounded-xl bg-white">
+              <div className="p-4 border border-gray-100 rounded bg-white">
                 <p className="text-gray-600 text-sm leading-relaxed">
                   {product.shortDescription}
                 </p>
@@ -816,49 +800,49 @@ export default function ProductContent({ slug }) {
             ── */}
             {(product.facultyName || product.duration || product.batchStartDate ||
               product.courseType || product.digitalEnabled) && (
-              <div className="rounded-xl border border-orange-100 bg-orange-50/40 overflow-hidden">
-                <div className="px-4 py-2.5 bg-orange-100/50 border-b border-orange-100">
-                  <p className="text-[11px] font-bold text-orange-700 uppercase tracking-widest">Course Details</p>
-                </div>
-                <div className="p-4 flex flex-wrap gap-4 text-sm">
-                  {product.facultyName && (
-                    <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">✓</span>
-                      <div>
-                        <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Faculty</p>
-                        <p className="font-semibold text-gray-900 text-sm">{product.facultyName}</p>
+                <div className="rounded border border-orange-100 bg-orange-50/40 overflow-hidden">
+                  <div className="px-4 py-2.5 bg-orange-100/50 border-b border-orange-100">
+                    <p className="text-[11px] font-bold text-orange-700 uppercase tracking-widest">Course Details</p>
+                  </div>
+                  <div className="p-4 flex flex-wrap gap-4 text-sm">
+                    {product.facultyName && (
+                      <div className="flex items-center gap-2">
+                        <span className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">✓</span>
+                        <div>
+                          <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Faculty</p>
+                          <p className="font-semibold text-gray-900 text-sm">{product.facultyName}</p>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {product.courseType && (
-                    <div>
-                      <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Type</p>
-                      <p className="font-semibold text-gray-900 text-sm capitalize">{product.courseType}</p>
-                    </div>
-                  )}
-                  {product.duration && (
-                    <div>
-                      <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Duration</p>
-                      <p className="font-semibold text-gray-900 text-sm">{product.duration}</p>
-                    </div>
-                  )}
-                  {product.batchStartDate && (
-                    <div>
-                      <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Batch Start</p>
-                      <p className="font-semibold text-gray-900 text-sm">
-                        {new Date(product.batchStartDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
-                      </p>
-                    </div>
-                  )}
-                  {product.digitalEnabled && (
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-green-600 text-sm">⚡</span>
-                      <p className="font-semibold text-green-700 text-sm">Instant Digital Access</p>
-                    </div>
-                  )}
+                    )}
+                    {product.courseType && (
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Type</p>
+                        <p className="font-semibold text-gray-900 text-sm capitalize">{product.courseType}</p>
+                      </div>
+                    )}
+                    {product.duration && (
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Duration</p>
+                        <p className="font-semibold text-gray-900 text-sm">{product.duration}</p>
+                      </div>
+                    )}
+                    {product.batchStartDate && (
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase font-semibold tracking-wide">Batch Start</p>
+                        <p className="font-semibold text-gray-900 text-sm">
+                          {new Date(product.batchStartDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                        </p>
+                      </div>
+                    )}
+                    {product.digitalEnabled && (
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-green-600 text-sm">⚡</span>
+                        <p className="font-semibold text-green-700 text-sm">Instant Digital Access</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
             {/* Attribute selection — only when product truly has variants */}
             {effectiveHasVariants && product.attributeOptions?.length > 0 && (
@@ -866,7 +850,7 @@ export default function ProductContent({ slug }) {
                 {product.attributeOptions.map((attribute) => {
                   const availableValues = getAvailableValuesForAttribute(attribute.id);
                   const selectedValueId = selectedAttributes[attribute.id];
-                  const selectedLabel   = availableValues.find((v) => v.id === selectedValueId)?.value;
+                  const selectedLabel = availableValues.find((v) => v.id === selectedValueId)?.value;
                   return (
                     <div key={attribute.id}>
                       <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2.5 flex items-center gap-2">
@@ -880,16 +864,16 @@ export default function ProductContent({ slug }) {
                       <div className="flex flex-wrap gap-2">
                         {availableValues.length > 0 ? (
                           availableValues.map((value) => {
-                            const isSelected  = selectedValueId === value.id;
+                            const isSelected = selectedValueId === value.id;
                             const unavailable = isValueUnavailable(attribute.id, value.id);
-                            const oos         = !unavailable && isValueOutOfStock(attribute.id, value.id);
+                            const oos = !unavailable && isValueOutOfStock(attribute.id, value.id);
                             return (
                               <button
                                 key={value.id}
                                 title={unavailable ? "Not available with current selection — click to switch" : oos ? "Out of stock" : undefined}
                                 onClick={() => handleAttributeChange(attribute.id, value.id)}
                                 className={`
-                                  relative px-5 py-2.5 rounded-lg border text-sm font-semibold
+                                  relative px-5 py-2.5 rounded border text-sm font-semibold
                                   transition-all duration-150 select-none
                                   ${isSelected
                                     ? "border-orange-500 bg-orange-500 text-white shadow shadow-orange-200"
@@ -937,12 +921,12 @@ export default function ProductContent({ slug }) {
                   <div className="flex flex-col gap-2">
                     {product.variants.map((variant) => {
                       const isSelected = selectedVariant?.id === variant.id;
-                      const vPrice     = parseFloat(variant.salePrice || variant.price || 0);
-                      const vOriginal  = parseFloat(variant.price || 0);
-                      const vStock     = variant.stock ?? variant.quantity ?? 0;
-                      const vOOS       = vStock < 1;
-                      const label      = getVariantLabel(variant);
-                      const discount   = vOriginal > vPrice
+                      const vPrice = parseFloat(variant.salePrice || variant.price || 0);
+                      const vOriginal = parseFloat(variant.price || 0);
+                      const vStock = variant.stock ?? variant.quantity ?? 0;
+                      const vOOS = vStock < 1;
+                      const label = getVariantLabel(variant);
+                      const discount = vOriginal > vPrice
                         ? Math.round(((vOriginal - vPrice) / vOriginal) * 100)
                         : 0;
 
@@ -957,7 +941,7 @@ export default function ProductContent({ slug }) {
                             setQuantity(moq);
                             setEffectivePriceInfo(getEffectivePrice(variant, moq));
                           }}
-                          className={`text-left w-full p-4 rounded-xl border-2 transition-all
+                          className={`text-left w-full p-4 rounded border-2 transition-all
                             ${isSelected
                               ? "border-orange-500 bg-orange-50/60 shadow-sm shadow-orange-100"
                               : "border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50/30"
@@ -1014,7 +998,7 @@ export default function ProductContent({ slug }) {
 
             {/* Cart success message */}
             {cartSuccess && (
-              <div className="p-3 bg-emerald-50 text-emerald-700 text-sm rounded-xl flex items-center gap-2 border border-emerald-200">
+              <div className="p-3 bg-emerald-50 text-emerald-700 text-sm rounded flex items-center gap-2 border border-emerald-200">
                 <CheckCircle className="h-4 w-4 flex-shrink-0" />
                 Item successfully added to your cart!
               </div>
@@ -1022,7 +1006,7 @@ export default function ProductContent({ slug }) {
 
             {/* MOQ notice — variant products only */}
             {effectiveHasVariants && selectedVariant?.moq && selectedVariant.moq > 1 && (
-              <div className="p-3 bg-orange-50 border border-orange-200 rounded-xl flex items-start gap-2">
+              <div className="p-3 bg-orange-50 border border-orange-200 rounded flex items-start gap-2">
                 <AlertCircle className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-orange-800">
@@ -1041,7 +1025,7 @@ export default function ProductContent({ slug }) {
                 {/* Qty stepper */}
                 <div className="flex items-center gap-3">
                   <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Qty</p>
-                  <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-white">
+                  <div className="flex items-center border border-gray-200 rounded overflow-hidden bg-white">
                     <button
                       className="w-9 h-9 flex items-center justify-center hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
                       onClick={() => handleQuantityChange(-1)}
@@ -1088,19 +1072,34 @@ export default function ProductContent({ slug }) {
               </div>
             )}
 
-            {/* ── CTA: Add to Cart + Wishlist ── */}
-            <div className="flex gap-3 pt-1">
+            {/* ── CTA:  Add to Wishlist ── */}
+            <div className="space-y-3 pt-1">
+
               <Button
-                className="flex-1 h-12 text-sm font-bold rounded-xl gap-2
-                           bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white border-0
-                           shadow-md shadow-orange-500/25 hover:shadow-orange-500/40 transition-all"
+                variant="outline"
+                className="w-full h-11 rounded border-2 border-gray-200 hover:border-orange-400
+                           hover:bg-orange-50 text-gray-700 hover:text-orange-600 font-semibold
+                           flex items-center justify-center gap-2"
+                onClick={handleAddToWishlist}
+                disabled={isAddingToWishlist}
+              >
+                {isInWishlist ? <RiHeartFill className="h-5 w-5" /> : <RiHeartLine className="h-5 w-5" />}
+                Add to Wishlist
+              </Button>
+            </div>
+            <div className="flex gap-3 pt-2">
+              <Button
+                className="flex-1 h-11 text-sm font-semibold rounded gap-2
+                           border-2 border-orange-500 text-orange-600 hover:bg-orange-50
+                           bg-transparent transition-all"
+                variant="outline"
                 size="lg"
                 onClick={handleAddToCart}
                 disabled={isAddingToCart || isOutOfStock}
               >
                 {isAddingToCart ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <div className="w-4 h-4 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
                     Adding…
                   </>
                 ) : isOutOfStock ? (
@@ -1112,35 +1111,24 @@ export default function ProductContent({ slug }) {
                   </>
                 )}
               </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className={`h-12 w-12 rounded-xl flex-shrink-0 border-2 transition-colors ${
-                  isInWishlist
-                    ? "border-red-400 bg-red-50 text-red-500"
-                    : "border-gray-200 hover:border-orange-400 hover:bg-orange-50 hover:text-orange-500"
-                }`}
-                onClick={handleAddToWishlist}
-                disabled={isAddingToWishlist}
-              >
-                {isInWishlist ? <RiHeartFill className="h-5 w-5" /> : <RiHeartLine className="h-5 w-5" />}
-              </Button>
             </div>
 
             {/* ── Trust indicators ── */}
-            <div className="grid grid-cols-3 gap-3 pt-2">
+            <div className="space-y-2 pt-2">
               {[
-                { icon: Shield,   label: "Secure Payment" },
-                { icon: Award,    label: "Authentic Content" },
-                { icon: RefreshCw,label: "Support Available" },
+                { icon: CheckCircle, label: "Lifetime access" },
+                { icon: Award, label: "Certificate" },
+                { icon: RefreshCw, label: "Mobile friendly" },
               ].map((item) => (
-                <div key={item.label} className="flex flex-col items-center gap-1.5 p-3 bg-gray-50 rounded-xl">
-                  <item.icon className="h-4 w-4 text-orange-500" />
-                  <span className="text-[10px] text-gray-600 font-medium text-center leading-tight">
-                    {item.label}
-                  </span>
+                <div key={item.label} className="flex items-center gap-2 text-sm text-gray-700">
+                  <item.icon className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                  <span>{item.label}</span>
                 </div>
               ))}
+              <div className="flex items-center gap-2 pt-2 mt-2 border-t border-gray-100">
+                <Shield className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                <span className="text-sm font-semibold text-orange-700">30-Day Money Back</span>
+              </div>
             </div>
 
             {/* ── Product metadata ── */}
@@ -1175,7 +1163,7 @@ export default function ProductContent({ slug }) {
 
             {/* ── Sample Book Download ── */}
             {product.sampleBookUrl && (
-              <div className="mt-4 p-4 bg-orange-50 rounded-2xl border border-orange-100 flex items-center justify-between gap-3">
+              <div className="mt-4 p-4 bg-orange-50 rounded border border-orange-100 flex items-center justify-between gap-3">
                 <div>
                   <p className="font-semibold text-gray-800 text-sm">Sample Book Available</p>
                   <p className="text-xs text-gray-500 mt-0.5">Preview a sample before purchasing</p>
@@ -1184,7 +1172,7 @@ export default function ProductContent({ slug }) {
                   href={`https://desirediv-storage.blr1.digitaloceanspaces.com/${product.sampleBookUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded-xl transition-colors"
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold rounded transition-colors"
                 >
                   ↓ Download Sample
                 </a>
@@ -1196,7 +1184,7 @@ export default function ProductContent({ slug }) {
         {/* ── Sticky mobile CTA ── */}
         <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t border-gray-100 px-4 py-3 flex gap-3 shadow-xl">
           <Button
-            className="flex-1 h-12 text-sm font-bold rounded-xl gap-2
+            className="flex-1 h-12 text-sm font-bold rounded gap-2
                        bg-orange-500 hover:bg-orange-600 text-white border-0
                        shadow-md shadow-orange-500/25"
             onClick={handleAddToCart}
@@ -1219,11 +1207,10 @@ export default function ProductContent({ slug }) {
           <Button
             variant="outline"
             size="icon"
-            className={`h-12 w-12 rounded-xl flex-shrink-0 border-2 transition-colors ${
-              isInWishlist
-                ? "border-red-400 bg-red-50 text-red-500"
-                : "border-gray-200 hover:border-orange-400 hover:bg-orange-50 hover:text-orange-500"
-            }`}
+            className={`h-12 w-12 rounded flex-shrink-0 border-2 transition-colors ${isInWishlist
+              ? "border-red-400 bg-red-50 text-red-500"
+              : "border-gray-200 hover:border-orange-400 hover:bg-orange-50 hover:text-orange-500"
+              }`}
             onClick={handleAddToWishlist}
             disabled={isAddingToWishlist}
           >
@@ -1237,7 +1224,7 @@ export default function ProductContent({ slug }) {
             <div className="flex overflow-x-auto gap-1">
               {[
                 { key: "description", label: "Description" },
-                { key: "reviews",     label: `Reviews (${product.reviewCount || 0})` },
+                { key: "reviews", label: `Reviews (${product.reviewCount || 0})` },
                 ...(product.sampleNotes
                   ? [{ key: "sample_notes", label: "Sample Notes" }]
                   : []),
@@ -1245,8 +1232,8 @@ export default function ProductContent({ slug }) {
                   try {
                     const ai = product.additionalInfo
                       ? (typeof product.additionalInfo === "string"
-                          ? JSON.parse(product.additionalInfo)
-                          : product.additionalInfo)
+                        ? JSON.parse(product.additionalInfo)
+                        : product.additionalInfo)
                       : [];
                     return Array.isArray(ai) && ai.length > 0
                       ? [{ key: "additional_info", label: "More Info" }]
@@ -1256,11 +1243,10 @@ export default function ProductContent({ slug }) {
               ].map(({ key, label }) => (
                 <button
                   key={key}
-                  className={`px-5 py-3 text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${
-                    activeTab === key
-                      ? "border-b-2 border-orange-500 text-orange-600"
-                      : "text-gray-400 hover:text-gray-700"
-                  }`}
+                  className={`px-5 py-3 text-sm font-semibold uppercase tracking-wide whitespace-nowrap transition-colors ${activeTab === key
+                    ? "border-b-2 border-orange-500 text-orange-600"
+                    : "text-gray-400 hover:text-gray-700"
+                    }`}
                   onClick={() => setActiveTab(key)}
                 >
                   {label}
@@ -1277,7 +1263,7 @@ export default function ProductContent({ slug }) {
                   dangerouslySetInnerHTML={{ __html: sanitizeHtml(product.description) }}
                 />
                 {product.directions && (
-                  <div className="mt-8 p-6 bg-orange-50 rounded-2xl border border-orange-100">
+                  <div className="mt-8 p-6 bg-orange-50 rounded border border-orange-100">
                     <h3 className="text-lg font-bold mb-3 text-orange-700">Directions for Use</h3>
                     <p className="text-gray-700 leading-relaxed">{product.directions}</p>
                   </div>
@@ -1289,7 +1275,7 @@ export default function ProductContent({ slug }) {
 
             {activeTab === "sample_notes" && (
               <div className="prose max-w-none">
-                <div className="p-5 bg-orange-50 rounded-2xl border border-orange-100">
+                <div className="p-5 bg-orange-50 rounded border border-orange-100">
                   <h3 className="text-lg font-bold mb-3 text-orange-700">Sample Notes</h3>
                   <div
                     className="text-gray-700 leading-relaxed [&_p:empty]:hidden [&_p]:mb-2"
@@ -1319,7 +1305,7 @@ export default function ProductContent({ slug }) {
                 if (!Array.isArray(items)) items = [];
               } catch { items = []; }
               return (
-                <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+                <div className="overflow-hidden rounded border border-gray-200 shadow-sm">
                   <table className="w-full text-sm">
                     <tbody>
                       {items.map((item, idx) => (

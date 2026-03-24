@@ -223,7 +223,7 @@ function CouponsList() {
 
       {/* Coupons List */}
       {couponsList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Ticket className="h-8 w-8 text-[#9CA3AF]" />
@@ -247,13 +247,13 @@ function CouponsList() {
           {couponsList.map((coupon) => (
             <Card
               key={coupon.id}
-              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
             >
               <CardContent className="p-5">
                 <div className="flex items-start justify-between gap-4 mb-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E8F5E9]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded bg-[#E8F5E9]">
                         <Ticket className="h-5 w-5 text-[#2E7D32]" />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -1055,7 +1055,7 @@ function CouponForm({
       </div>
 
       {error && (
-        <Card className="bg-[#FEF2F2] border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FEF2F2] border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardContent className="p-4 flex items-start gap-3">
             <AlertTriangle className="h-5 w-5 text-[#EF4444] flex-shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -1072,7 +1072,7 @@ function CouponForm({
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t('coupons.form.basic_info')}
@@ -1131,7 +1131,7 @@ function CouponForm({
         </Card>
 
         {/* Discount Settings Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t('coupons.form.discount_settings')}
@@ -1152,7 +1152,7 @@ function CouponForm({
                   name="discountType"
                   value={formData.discountType}
                   onChange={handleInputChange}
-                  className="flex h-10 w-full rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] px-3 py-2 text-sm text-[#4B5563] focus:border-primary focus:outline-none"
+                  className="flex h-10 w-full rounded border border-[#E5E7EB] bg-[#F3F7F6] px-3 py-2 text-sm text-[#4B5563] focus:border-primary focus:outline-none"
                   required
                 >
                   <option value="PERCENTAGE">{t('coupons.form.type_percentage')}</option>
@@ -1238,7 +1238,7 @@ function CouponForm({
         </Card>
 
         {/* Target Selection Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t('coupons.form.target_selection')}
@@ -1290,7 +1290,7 @@ function CouponForm({
         </Card>
 
         {/* Validity Period Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t('coupons.form.validity_period')}
@@ -1354,7 +1354,7 @@ function CouponForm({
         </Card>
 
         {/* Partner Assignments Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <div className="flex items-center justify-between">
               <div>
@@ -1380,7 +1380,7 @@ function CouponForm({
           <CardContent className="px-6 pb-6 space-y-5">
 
             {selectedPartners.length === 0 ? (
-              <div className="text-center p-6 border-2 border-dashed border-[#E5E7EB] rounded-lg bg-[#F3F7F6]">
+              <div className="text-center p-6 border-2 border-dashed border-[#E5E7EB] rounded bg-[#F3F7F6]">
                 <p className="text-sm text-[#9CA3AF]">
                   {t('coupons.form.no_partners_assigned')}
                 </p>
@@ -1390,13 +1390,13 @@ function CouponForm({
                 {selectedPartners.map((partner, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-3 p-4 border border-[#E5E7EB] rounded-lg bg-[#F3F7F6]"
+                    className="flex items-center gap-3 p-4 border border-[#E5E7EB] rounded bg-[#F3F7F6]"
                   >
                     <div className="flex-1 space-y-2">
                       <select
                         value={partner.partnerId}
                         onChange={(e) => updatePartner(index, "partnerId", e.target.value)}
-                        className={`flex h-10 w-full rounded-lg border px-3 py-2 text-sm ${error &&
+                        className={`flex h-10 w-full rounded border px-3 py-2 text-sm ${error &&
                           error.includes("already assigned") &&
                           selectedPartners.some(
                             (p, i) => i !== index && p.partnerId === partner.partnerId
@@ -1461,7 +1461,7 @@ function CouponForm({
               {t('coupons.form.assign_partner_desc')}
             </p>
 
-            <div className="bg-[#EFF6FF] border border-[#DBEAFE] rounded-xl p-4">
+            <div className="bg-[#EFF6FF] border border-[#DBEAFE] rounded p-4">
               <div className="flex items-start gap-3">
                 <AlertTriangle className="h-5 w-5 text-[#3B82F6] flex-shrink-0 mt-0.5" />
                 <div className="flex-1">

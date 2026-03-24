@@ -274,7 +274,7 @@ export default function FeaturedProductsPage() {
 
   if (error) {
     return (
-      <div className="rounded-md p-8 border border-red-200 bg-red-50 text-center text-red-500">
+      <div className="rounded p-8 border border-red-200 bg-red-50 text-center text-red-500">
         {error}
       </div>
     );
@@ -292,7 +292,7 @@ export default function FeaturedProductsPage() {
             Trending, and New Arrivals
           </p>
         </div>
-        <Link to="/products/new">
+        <Link to="/courses/add">
           <Button className="mt-4 md:mt-0">
             <Plus className="mr-2 h-4 w-4" />
             Add New Product
@@ -369,10 +369,10 @@ export default function FeaturedProductsPage() {
                                   <img
                                     src={getProductImage(product)}
                                     alt={product.name}
-                                    className="h-10 w-10 rounded-md object-cover"
+                                    className="h-10 w-10 rounded object-cover"
                                   />
                                 ) : (
-                                  <div className="h-10 w-10 rounded-md bg-gray-100 flex items-center justify-center">
+                                  <div className="h-10 w-10 rounded bg-gray-100 flex items-center justify-center">
                                     <span className="text-xs text-gray-500">
                                       No img
                                     </span>
@@ -421,7 +421,7 @@ export default function FeaturedProductsPage() {
                               />
                             </TableCell>
                             <TableCell className="text-right">
-                              <Link to={`/products/${product.id}`}>
+                              <Link to={`/courses/${product.id}`}>
                                 <Button variant="ghost" size="sm">
                                   <ArrowUpRight className="h-4 w-4" />
                                 </Button>
@@ -469,10 +469,10 @@ export default function FeaturedProductsPage() {
                                   <img
                                     src={getProductImage(product)}
                                     alt={product.name}
-                                    className="h-10 w-10 rounded-md object-cover"
+                                    className="h-10 w-10 rounded object-cover"
                                   />
                                 ) : (
-                                  <div className="h-10 w-10 rounded-md bg-gray-100 flex items-center justify-center">
+                                  <div className="h-10 w-10 rounded bg-gray-100 flex items-center justify-center">
                                     <span className="text-xs text-gray-500">
                                       No img
                                     </span>
@@ -521,7 +521,7 @@ export default function FeaturedProductsPage() {
                               />
                             </TableCell>
                             <TableCell className="text-right">
-                              <Link to={`/products/${product.id}`}>
+                              <Link to={`/courses/${product.id}`}>
                                 <Button variant="ghost" size="sm">
                                   <ArrowUpRight className="h-4 w-4" />
                                 </Button>

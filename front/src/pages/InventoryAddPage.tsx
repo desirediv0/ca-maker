@@ -145,7 +145,7 @@ export default function InventoryAddPage() {
       </div>
 
       {error && (
-        <div className="bg-destructive/10 text-destructive p-4 rounded-md flex items-center gap-2">
+        <div className="bg-destructive/10 text-destructive p-4 rounded flex items-center gap-2">
           <AlertTriangle className="h-5 w-5" />
           <p>{error}</p>
         </div>

@@ -57,105 +57,62 @@ export function SocialMediaSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-10 bg-white relative overflow-hidden">
-      {/* Decorative gradient */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 50% 50%, rgba(251,146,60,0.05) 0%, rgba(250,204,21,0.03) 40%, transparent 70%)",
-        }}
-      />
-
+    <section ref={ref} className="py-12 md:py-16 bg-[#0F172A] relative overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
+          className={`text-center mb-14 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 border border-orange-200
-                          text-orange-600 text-xs font-bold uppercase tracking-widest rounded-full mb-5">
-            <RiGroupLine className="h-4 w-4" />
-            Join Our Community
-          </div>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
             Follow CA Maker
           </h2>
-          <div className="divider-orange mx-auto mb-5" />
-          <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+          <p className="text-orange-400 max-w-xl mx-auto text-base md:text-lg leading-relaxed mb-8">
             Stay updated with free content, exam tips, and student success stories across all our platforms.
           </p>
+          <a
+            href={socialLinks[0]?.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold
+                       px-6 py-3 rounded transition-colors duration-300"
+          >
+            <RiGroupLine className="h-5 w-5" />
+            Join our CA community
+          </a>
         </div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Social cards with orange icon circles */}
+        <div className="grid md:grid-cols-3 gap-8">
           {socialLinks.map((s, i) => (
             <a
               key={s.name}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative bg-white rounded-2xl p-7 border border-gray-100
-                         transition-all duration-300
-                         hover:-translate-y-2 hover:shadow-xl ${s.glow}
-                         ring-1 ring-transparent ${s.ring}
+              className={`group flex flex-col items-center text-center p-6 rounded
+                         bg-white/5 border border-white/10 hover:border-orange-500/30
+                         transition-all duration-300 hover:-translate-y-1
                          ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{
-                transitionDelay: `${i * 100}ms`,
-                boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
-              }}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
-              {/* Icon */}
-              <div
-                className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient}
-                            flex items-center justify-center mb-5 shadow-md
-                            group-hover:scale-110 transition-transform duration-300`}
-              >
-                <s.Icon className="w-7 h-7 text-white" />
+              {/* Orange circle icon */}
+              <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center mb-4
+                              group-hover:bg-orange-400 transition-colors">
+                <s.Icon className="w-8 h-8 text-white" />
               </div>
 
-              {/* Count badge */}
-              <div className="absolute top-6 right-6">
-                <div className="bg-gray-50 border border-gray-100 rounded-xl px-3 py-1.5 text-center">
-                  <p className="font-black text-gray-900 text-sm leading-none">{s.count}</p>
-                  <p className="text-gray-400 text-[10px] font-medium mt-0.5">{s.countLabel}</p>
-                </div>
-              </div>
+              <h3 className="text-lg font-bold text-white mb-1">{s.name}</h3>
+              <p className="text-orange-400 font-semibold text-sm mb-3">{s.handle}</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">{s.desc}</p>
 
-              <h3 className="text-lg font-bold text-gray-900 mb-1">{s.name}</h3>
-              <p className="text-orange-500 text-sm font-semibold mb-3">{s.handle}</p>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">{s.desc}</p>
-
-              <div className="flex items-center gap-2 text-gray-700 group-hover:text-orange-600
+              <div className="flex items-center gap-2 text-orange-400 group-hover:text-orange-300
                               font-semibold text-sm transition-colors">
-                Follow Us
+                Follow
                 <RiArrowRightLine className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </a>
-          ))}
-        </div>
-
-        {/* Stats bar */}
-        <div
-          className={`mt-14 flex flex-col sm:flex-row items-center justify-center gap-8
-                       transition-all duration-700 delay-300 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-          }`}
-        >
-          {[
-            { label: "YouTube Subscribers", value: "50K+" },
-            { label: "Instagram Followers", value: "30K+" },
-            { label: "Community Members",   value: "1,000+" },
-          ].map(({ label, value }, i) => (
-            <div key={label} className="text-center px-6 py-4">
-              <p
-                className="text-2xl font-black text-gradient mb-1"
-              >
-                {value}
-              </p>
-              <p className="text-gray-500 text-sm">{label}</p>
-            </div>
           ))}
         </div>
       </div>

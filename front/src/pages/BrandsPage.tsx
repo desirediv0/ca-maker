@@ -257,7 +257,7 @@ export default function BrandsPage() {
                     </label>
                     <div
                       {...getRootProps()}
-                      className={`border-2 border-dashed border-[#E5E7EB] rounded-xl p-8 text-center cursor-pointer transition-colors ${isDragActive
+                      className={`border-2 border-dashed border-[#E5E7EB] rounded p-8 text-center cursor-pointer transition-colors ${isDragActive
                         ? "bg-[#E8F5E9] border-[#4CAF50]"
                         : "bg-[#F3F7F6] hover:bg-[#F3F4F6]"
                         }`}
@@ -268,7 +268,7 @@ export default function BrandsPage() {
                           <img
                             src={imagePreview}
                             alt={t("brands.dropzone.preview_alt")}
-                            className="mx-auto h-24 w-24 object-contain rounded-lg border border-[#E5E7EB]"
+                            className="mx-auto h-24 w-24 object-contain rounded border border-[#E5E7EB]"
                           />
                           <p className="text-sm text-[#9CA3AF]">
                             {t("brands.dropzone.click_change")}
@@ -351,13 +351,13 @@ export default function BrandsPage() {
 
       {/* Premium Brands List */}
       {isLoading ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="flex items-center justify-center py-16">
             <Loader2 className="h-8 w-8 animate-spin text-[#4CAF50]" />
           </div>
         </Card>
       ) : filteredBrands.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Tag className="h-8 w-8 text-[#9CA3AF]" />
@@ -382,7 +382,7 @@ export default function BrandsPage() {
           </div>
         </Card>
       ) : (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl overflow-hidden">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded overflow-hidden">
           <div className="divide-y divide-[#E5E7EB]">
             {filteredBrands.map((brand) => (
               <div
@@ -394,7 +394,7 @@ export default function BrandsPage() {
                   <img
                     src={getImageUrl(brand.image)}
                     alt={brand.name}
-                    className="h-16 w-16 object-contain rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] p-2"
+                    className="h-16 w-16 object-contain rounded border border-[#E5E7EB] bg-[#F3F7F6] p-2"
                   />
                 </div>
 
@@ -641,7 +641,7 @@ function ProductsAssignModal({
             <Loader2 className="animate-spin h-8 w-8 text-[#4CAF50]" />
           </div>
         ) : (
-          <div className="max-h-80 overflow-y-auto border border-[#E5E7EB] rounded-xl">
+          <div className="max-h-80 overflow-y-auto border border-[#E5E7EB] rounded">
             <div className="divide-y divide-[#E5E7EB]">
               {allProducts.map((product) => (
                 <div
@@ -657,7 +657,7 @@ function ProductsAssignModal({
                   <img
                     src={getProductImage(product)}
                     alt={product.name}
-                    className="h-10 w-10 object-contain rounded-lg border border-[#E5E7EB] bg-[#F3F7F6]"
+                    className="h-10 w-10 object-contain rounded border border-[#E5E7EB] bg-[#F3F7F6]"
                   />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-sm text-[#1F2937] truncate">

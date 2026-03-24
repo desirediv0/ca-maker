@@ -21,73 +21,83 @@ const getImageUrl = (image) => {
   return `https://desirediv-storage.blr1.digitaloceanspaces.com/${image}`;
 };
 
+/* Icon/emoji per category name */
+const getCategoryIcon = (name) => {
+  const n = (name || "").toLowerCase();
+  if (n.includes("foundation")) return "📚";
+  if (n.includes("inter")) return "🎯";
+  if (n.includes("final")) return "🏆";
+  if (n.includes("audit")) return "📋";
+  if (n.includes("tax")) return "💰";
+  if (n.includes("law")) return "⚖️";
+  if (n.includes("account")) return "🧮";
+  return null;
+};
+
+const getCategoryBarClass = (index) => {
+  const shades = ["bg-orange-400", "bg-orange-500", "bg-orange-600"];
+  return shades[index % 3];
+};
+
 /* ─── Category Card ──────────────────────────────────────── */
 const CategoryCard = ({ category, index }) => {
   const imgUrl = getImageUrl(category.image);
   const count = category._count?.products || 0;
+  const emoji = getCategoryIcon(category.name);
+  const barClass = getCategoryBarClass(index);
 
   return (
     <Link href={`/category/${category.slug}`} className="group block h-full">
       <div
-        className="relative bg-white border border-gray-100 rounded-xl overflow-hidden h-full
-                   transition-all duration-300 flex flex-col"
-        style={{
-          boxShadow: "0 1px 6px rgba(0,0,0,0.06)",
-          transitionDelay: `${index * 30}ms`,
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow =
-            "0 8px 30px rgba(249,115,22,0.12), 0 2px 8px rgba(0,0,0,0.06)";
-          e.currentTarget.style.transform = "translateY(-3px)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = "0 1px 6px rgba(0,0,0,0.06)";
-          e.currentTarget.style.transform = "translateY(0)";
-        }}
+        className="relative bg-white rounded-2xl border border-gray-100 shadow-sm
+                   hover:shadow-xl hover:border-orange-200 hover:-translate-y-1
+                   transition-all duration-300 flex flex-col overflow-hidden h-full"
       >
-        {/* Image / Icon area */}
-        <div className="relative h-48 w-full bg-orange-50/60 flex-shrink-0 overflow-hidden">
-          {imgUrl ? (
-            <Image
-              src={imgUrl}
-              alt={category.name}
-              fill
-              className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 50vw, 33vw"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center">
-                <GraduationCap className="w-10 h-10 text-orange-500" />
+        {/* Top colored bar */}
+        <div className={`h-2 rounded-t-2xl ${barClass}`} />
+
+        {/* Card body */}
+        <div className="p-6 flex flex-col flex-grow">
+          {/* Icon circle */}
+          <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-4">
+            {imgUrl ? (
+              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                <Image
+                  src={imgUrl}
+                  alt={category.name}
+                  fill
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                  sizes="56px"
+                />
               </div>
-            </div>
-          )}
-
-          {/* Count pill */}
-          <div className="absolute top-3 right-3 bg-white border border-orange-100 text-orange-600
-                          text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-            {count} {count === 1 ? "course" : "courses"}
+            ) : emoji ? (
+              <span className="text-2xl">{emoji}</span>
+            ) : (
+              <GraduationCap className="w-7 h-7 text-orange-500" />
+            )}
           </div>
-        </div>
 
-        {/* Orange bottom border that grows on hover */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500 scale-x-0 origin-left
-                     group-hover:scale-x-100 transition-transform duration-300"
-        />
-
-        {/* Content */}
-        <div className="p-5 flex flex-col flex-grow">
-          <h3 className="text-base font-bold text-gray-900 mb-1.5 group-hover:text-orange-500
-                         transition-colors duration-200 line-clamp-1">
+          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-500 transition-colors duration-200">
             {category.name}
           </h3>
-          <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2 flex-grow">
-            {category.description || "Explore CA courses and study material in this category."}
-          </p>
-          <span className="inline-flex items-center gap-1.5 text-orange-500 font-semibold text-sm
-                           group-hover:gap-2.5 transition-all duration-200">
-            View Courses <ArrowRight className="w-3.5 h-3.5" />
+
+          <span className="inline-flex w-fit bg-orange-50 text-orange-600 rounded-full px-3 py-1 text-xs font-medium mb-3">
+            {count} {count === 1 ? "Course" : "Courses"}
+          </span>
+
+          {category.description && (
+            <p className="text-sm text-gray-500 mt-2 line-clamp-2 flex-grow">
+              {category.description}
+            </p>
+          )}
+          {!category.description && (
+            <p className="text-sm text-gray-500 mt-2 line-clamp-2 flex-grow">
+              Explore CA courses and study material in this category.
+            </p>
+          )}
+
+          <span className="inline-flex items-center gap-1.5 text-orange-500 font-medium text-sm mt-4 group-hover:gap-3 transition-all duration-200">
+            Explore <ArrowRight className="w-4 h-4" />
           </span>
         </div>
       </div>
@@ -97,13 +107,15 @@ const CategoryCard = ({ category, index }) => {
 
 /* ─── Skeleton ───────────────────────────────────────────── */
 const CategoryCardSkeleton = () => (
-  <div className="bg-white rounded-xl border border-gray-100 overflow-hidden animate-pulse">
-    <div className="h-48 bg-orange-50" />
-    <div className="p-5">
-      <div className="h-4 bg-gray-200 rounded-md w-3/4 mb-2" />
-      <div className="h-3 bg-gray-100 rounded-md w-full mb-1" />
-      <div className="h-3 bg-gray-100 rounded-md w-5/6 mb-4" />
-      <div className="h-3.5 bg-orange-100 rounded-md w-1/3" />
+  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden animate-pulse">
+    <div className="h-2 bg-orange-200 rounded-t-2xl" />
+    <div className="p-6">
+      <div className="w-14 h-14 bg-orange-100 rounded-2xl mb-4" />
+      <div className="h-5 bg-gray-200 rounded w-3/4 mb-2" />
+      <div className="h-6 bg-orange-100 rounded-full w-20 mb-3" />
+      <div className="h-3 bg-gray-100 rounded w-full mb-1" />
+      <div className="h-3 bg-gray-100 rounded w-5/6 mb-4" />
+      <div className="h-4 bg-orange-100 rounded w-24" />
     </div>
   </div>
 );
@@ -166,34 +178,34 @@ export default function CategoriesPage() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* ── Hero ── */}
-      <section className="py-10 bg-[#F9FAFB] border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      {/* ── Hero Banner ── */}
+      <section className="relative bg-gradient-to-r from-orange-500 to-orange-600 py-14 md:py-20 overflow-hidden">
+        {/* Diagonal lines pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 20px,
+              rgba(255,255,255,0.3) 20px,
+              rgba(255,255,255,0.3) 40px
+            )`,
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold text-white mb-3">
+            Explore All Categories
+          </h1>
+          <p className="text-lg text-white/90 max-w-2xl mb-8">
+            Find the right CA course for your preparation level
+          </p>
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-5">
-            <Link href="/" className="hover:text-orange-500 transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-sm text-white/70">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-gray-700 font-medium">Categories</span>
-          </div>
-
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 border border-orange-200
-                            rounded-full text-orange-600 text-xs font-bold uppercase tracking-widest mb-6">
-              <GraduationCap className="w-3.5 h-3.5" />
-              CA Study Material
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-5 leading-tight tracking-tight">
-              Explore CA{" "}
-              <span className="text-orange-500">Categories</span>
-            </h1>
-
-            <p className="text-lg text-gray-500 leading-relaxed max-w-xl">
-              Browse curated categories of CA courses and study material crafted
-              with Big&nbsp;4 practical experience.
-            </p>
-          </div>
+            <span className="text-white font-medium">Categories</span>
+          </nav>
         </div>
       </section>
 
@@ -211,49 +223,30 @@ export default function CategoriesPage() {
       )}
 
       {/* ── Main Grid ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+      <section className="py-16 px-4 sm:px-6 max-w-7xl mx-auto">
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => <CategoryCardSkeleton key={i} />)}
           </div>
         ) : categories.length === 0 ? (
-          <div className="text-center py-24 bg-[#F9FAFB] rounded-xl border border-gray-100">
-            <div className="w-16 h-16 mx-auto mb-5 bg-orange-100 rounded-xl flex items-center justify-center">
-              <Users className="w-8 h-8 text-orange-400" />
-            </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-2">No Categories Found</h2>
-            <p className="text-gray-500 mb-8 max-w-sm mx-auto text-sm">
-              Categories are being added soon. Browse all courses in the meantime.
-            </p>
-            <Link href="/courses">
-              <button className="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl
-                                 font-semibold transition-colors text-sm">
+          <div className="text-center py-24">
+            <div className="text-6xl mb-4 opacity-40">📂</div>
+            <h2 className="text-xl text-gray-400 font-semibold">No categories found</h2>
+            <p className="text-sm text-gray-400 mt-2">Check back soon</p>
+            <Link href="/courses" className="inline-block mt-6">
+              <button className="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold transition-colors text-sm">
                 Browse All Courses
               </button>
             </Link>
           </div>
         ) : (
           <>
-            {/* Section label */}
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <p className="text-xs font-bold text-orange-500 uppercase tracking-widest mb-1">
-                  All Categories
-                </p>
-                <h2 className="text-2xl font-bold text-gray-900">
-                  {categories.length} Categories Available
-                </h2>
-              </div>
-              <Link
-                href="/courses"
-                className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold
-                           text-orange-500 hover:text-orange-600 transition-colors"
-              >
-                All Courses <ArrowRight className="w-4 h-4" />
-              </Link>
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-gray-900">All Categories</h2>
+              <div className="w-12 h-1 bg-orange-500 mt-2 mb-8 rounded" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category, index) => (
                 <CategoryCard key={category.id} category={category} index={index} />
               ))}
@@ -262,7 +255,7 @@ export default function CategoriesPage() {
             <StatsBanner categories={categories} />
           </>
         )}
-      </div>
+      </section>
 
       {/* ── Bottom CTA ── */}
       <section className="py-10 bg-gray-900">

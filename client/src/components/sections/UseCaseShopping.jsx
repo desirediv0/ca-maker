@@ -52,19 +52,19 @@ export const UseCaseShopping = () => {
             <Link
               key={index}
               href={useCase.link}
-              className="group bg-white rounded-2xl p-8 transition-all hover:shadow-xl"
+              className="group bg-white rounded p-8 transition-all hover:shadow-xl"
             >
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${useCase.color} flex items-center justify-center mb-6`}>
+              <div className={`w-14 h-14 rounded bg-gradient-to-br ${useCase.color} flex items-center justify-center mb-6`}>
                 <useCase.icon className="h-7 w-7 text-foreground" />
               </div>
-              
+
               <h3 className="font-display text-xl font-bold text-foreground mb-2">
                 {useCase.title}
               </h3>
               <p className="text-muted-foreground mb-4">
                 {useCase.description}
               </p>
-              
+
               <span className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:gap-3 transition-all">
                 Shop Now
                 <ArrowRight className="h-4 w-4" />

@@ -89,12 +89,12 @@ export default function OrderDetailPage() {
 
     const getStatusColor = (status) => {
         const statusColors = {
-            PENDING:    "bg-yellow-100 text-yellow-800 border-yellow-200",
+            PENDING: "bg-yellow-100 text-yellow-800 border-yellow-200",
             PROCESSING: "bg-orange-100 text-orange-800 border-orange-200",
-            SHIPPED:    "bg-sky-100    text-sky-800    border-sky-200",
-            DELIVERED:  "bg-green-100  text-green-800  border-green-200",
-            CANCELLED:  "bg-red-100    text-red-800    border-red-200",
-            REFUNDED:   "bg-purple-100 text-purple-800 border-purple-200",
+            SHIPPED: "bg-sky-100    text-sky-800    border-sky-200",
+            DELIVERED: "bg-green-100  text-green-800  border-green-200",
+            CANCELLED: "bg-red-100    text-red-800    border-red-200",
+            REFUNDED: "bg-purple-100 text-purple-800 border-purple-200",
         };
         return statusColors[status] || "bg-gray-100 text-gray-800 border-gray-200";
     };
@@ -104,7 +104,7 @@ export default function OrderDetailPage() {
     const isCancelled = order?.status === "CANCELLED" || order?.status === "REFUNDED";
 
     const StepperBar = () => (
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6"
+        <div className="bg-white rounded border border-gray-100 p-6 mb-6"
             style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
             <h2 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-5">Order Progress</h2>
             {isCancelled ? (
@@ -117,20 +117,19 @@ export default function OrderDetailPage() {
             ) : (
                 <div className="flex items-center">
                     {STEPS.map((step, idx) => {
-                        const done    = currentStep > idx;
-                        const active  = currentStep === idx;
-                        const labels  = ["Ordered", "Processing", "Shipped", "Delivered"];
+                        const done = currentStep > idx;
+                        const active = currentStep === idx;
+                        const labels = ["Ordered", "Processing", "Shipped", "Delivered"];
                         return (
                             <div key={step} className="flex-1 flex flex-col items-center">
                                 <div className="flex items-center w-full">
                                     {idx > 0 && (
                                         <div className={`flex-1 h-1 rounded-full ${done || active ? "bg-orange-500" : "bg-gray-200"}`} />
                                     )}
-                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-all ${
-                                        done    ? "bg-orange-500 border-orange-500 text-white" :
-                                        active  ? "bg-white border-orange-500 text-orange-500" :
-                                                  "bg-white border-gray-300 text-gray-400"
-                                    }`}>
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 border-2 transition-all ${done ? "bg-orange-500 border-orange-500 text-white" :
+                                        active ? "bg-white border-orange-500 text-orange-500" :
+                                            "bg-white border-gray-300 text-gray-400"
+                                        }`}>
                                         {done ? (
                                             <DynamicIcon name="Check" className="h-4 w-4" />
                                         ) : (
@@ -141,9 +140,8 @@ export default function OrderDetailPage() {
                                         <div className={`flex-1 h-1 rounded-full ${done ? "bg-orange-500" : "bg-gray-200"}`} />
                                     )}
                                 </div>
-                                <p className={`text-[10px] font-semibold mt-2 text-center ${
-                                    done || active ? "text-orange-600" : "text-gray-400"
-                                }`}>
+                                <p className={`text-[10px] font-semibold mt-2 text-center ${done || active ? "text-orange-600" : "text-gray-400"
+                                    }`}>
                                     {labels[idx]}
                                 </p>
                             </div>
@@ -175,7 +173,7 @@ export default function OrderDetailPage() {
 
     if (error) {
         return (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-8 rounded-lg text-center">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-8 rounded text-center">
                 <DynamicIcon name="AlertCircle" className="h-12 w-12 mx-auto mb-4 text-red-400" />
                 <h2 className="text-xl font-semibold mb-2">Error Loading Order</h2>
                 <p className="mb-4">{error}</p>
@@ -188,7 +186,7 @@ export default function OrderDetailPage() {
 
     if (!order) {
         return (
-            <div className="bg-gray-50 border border-gray-200 px-6 py-8 rounded-lg text-center">
+            <div className="bg-gray-50 border border-gray-200 px-6 py-8 rounded text-center">
                 <DynamicIcon name="Package" className="h-12 w-12 mx-auto mb-4 text-gray-400" />
                 <h2 className="text-xl font-semibold mb-2">Order Not Found</h2>
                 <p className="text-gray-600 mb-4">The order you&apos;re looking for doesn&apos;t exist or has been removed.</p>
@@ -233,7 +231,7 @@ export default function OrderDetailPage() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Order Items */}
                 <div className="lg:col-span-2 space-y-6">
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-white rounded shadow-sm border border-gray-100 overflow-hidden">
                         <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
                             <h2 className="font-semibold text-lg">Order Items ({order.items?.length || 0})</h2>
                         </div>
@@ -242,7 +240,7 @@ export default function OrderDetailPage() {
                                 const productImage = item.variant?.images?.[0] || item.product?.images?.[0];
                                 return (
                                     <div key={item.id} className="p-6 flex gap-4">
-                                        <div className="relative w-20 h-20 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
+                                        <div className="relative w-20 h-20 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
                                             <Image
                                                 src={getImageUrl(productImage)}
                                                 alt={item.productName || item.product?.name || "Product"}
@@ -252,7 +250,7 @@ export default function OrderDetailPage() {
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <Link
-                                                href={`/products/${item.product?.slug || "#"}`}
+                                                href={`/courses/${item.product?.slug || "#"}`}
                                                 className="font-medium text-gray-900 hover:text-orange-600 transition-colors line-clamp-2"
                                             >
                                                 {item.productName || item.product?.name}
@@ -294,7 +292,7 @@ export default function OrderDetailPage() {
 
                     {/* Tracking Info */}
                     {order.tracking && (
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="bg-white rounded shadow-sm border border-gray-100 overflow-hidden">
                             <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
                                 <h2 className="font-semibold text-lg">Tracking Information</h2>
                             </div>
@@ -336,7 +334,7 @@ export default function OrderDetailPage() {
                 {/* Order Summary Sidebar */}
                 <div className="space-y-6">
                     {/* Price Summary */}
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-white rounded shadow-sm border border-gray-100 overflow-hidden">
                         <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
                             <h2 className="font-semibold text-lg">Order Summary</h2>
                         </div>
@@ -373,7 +371,7 @@ export default function OrderDetailPage() {
                     </div>
 
                     {/* Payment Info */}
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className="bg-white rounded shadow-sm border border-gray-100 overflow-hidden">
                         <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
                             <h2 className="font-semibold text-lg">Payment Details</h2>
                         </div>
@@ -399,7 +397,7 @@ export default function OrderDetailPage() {
 
                     {/* Shipping Address */}
                     {order.shippingAddress && (
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div className="bg-white rounded shadow-sm border border-gray-100 overflow-hidden">
                             <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
                                 <h2 className="font-semibold text-lg">Shipping Address</h2>
                             </div>
@@ -427,7 +425,7 @@ export default function OrderDetailPage() {
                                 <DynamicIcon name="ArrowLeft" className="mr-2 h-4 w-4" /> Back to Orders
                             </Button>
                         </Link>
-                        <Link href="/products">
+                        <Link href="/courses">
                             <Button className="w-full">
                                 <DynamicIcon name="ShoppingBag" className="mr-2 h-4 w-4" /> Continue Shopping
                             </Button>

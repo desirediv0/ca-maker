@@ -172,7 +172,7 @@ export default function PaymentSettingsPage() {
         <div className="h-px bg-[#E5E7EB]" />
       </div>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader className="px-6 pt-6 pb-4">
           <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
             <CreditCard className="h-5 w-5 mr-2 text-[#4CAF50]" />
@@ -185,9 +185,9 @@ export default function PaymentSettingsPage() {
         <CardContent className="px-6 pb-6 space-y-6">
           <div className="space-y-4">
             {/* Cash on Delivery Option */}
-            <div className="flex items-start justify-between p-5 border border-[#E5E7EB] rounded-xl hover:border-[#4CAF50] transition-colors">
+            <div className="flex items-start justify-between p-5 border border-[#E5E7EB] rounded hover:border-[#4CAF50] transition-colors">
               <div className="flex items-start gap-4 flex-1">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#ECFDF5] border border-[#D1FAE5] flex-shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded bg-[#ECFDF5] border border-[#D1FAE5] flex-shrink-0">
                   <Wallet className="h-6 w-6 text-[#22C55E]" />
                 </div>
                 <div className="flex-1">
@@ -217,7 +217,7 @@ export default function PaymentSettingsPage() {
 
             {/* COD Charge Input - Only show when COD is enabled */}
             {cashEnabled && (
-              <div className="ml-16 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl">
+              <div className="ml-16 p-4 bg-[#F9FAFB] border border-[#E5E7EB] rounded">
                 <div className="flex items-center gap-4">
                   <div className="flex-1">
                     <Label htmlFor="codCharge" className="text-sm font-medium text-[#1F2937] mb-1 block">
@@ -243,9 +243,9 @@ export default function PaymentSettingsPage() {
             )}
 
             {/* Razorpay Option */}
-            <div className="flex items-start justify-between p-5 border border-[#E5E7EB] rounded-xl hover:border-[#4CAF50] transition-colors">
+            <div className="flex items-start justify-between p-5 border border-[#E5E7EB] rounded hover:border-[#4CAF50] transition-colors">
               <div className="flex items-start gap-4 flex-1">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#EFF6FF] border border-[#DBEAFE] flex-shrink-0">
+                <div className="flex h-12 w-12 items-center justify-center rounded bg-[#EFF6FF] border border-[#DBEAFE] flex-shrink-0">
                   <CreditCard className="h-6 w-6 text-[#3B82F6]" />
                 </div>
                 <div className="flex-1">
@@ -287,7 +287,7 @@ export default function PaymentSettingsPage() {
           </div>
 
           {/* Info Alert */}
-          <div className="flex items-start gap-3 p-4 bg-[#EFF6FF] border border-[#DBEAFE] rounded-xl">
+          <div className="flex items-start gap-3 p-4 bg-[#EFF6FF] border border-[#DBEAFE] rounded">
             <AlertCircle className="h-5 w-5 text-[#3B82F6] mt-0.5 flex-shrink-0" />
             <div className="flex-1">
               <p className="text-sm text-[#1E40AF] font-medium mb-1">

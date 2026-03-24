@@ -64,7 +64,7 @@ function AuthForm() {
                 {/* Logo */}
                 <div className="relative z-10">
                     <div className="flex items-center gap-3 mb-14">
-                        <div className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center">
+                        <div className="w-10 h-10 bg-orange-500 rounded flex items-center justify-center">
                             <span className="text-white font-black text-lg">CA</span>
                         </div>
                         <span className="text-white font-bold text-xl tracking-tight">CA Maker</span>
@@ -80,8 +80,8 @@ function AuthForm() {
 
                     <div className="space-y-4">
                         {features.map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-4 hover:bg-white/8 transition-colors">
-                                <div className="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <div key={idx} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded p-4 hover:bg-white/8 transition-colors">
+                                <div className="w-10 h-10 bg-orange-500/20 rounded flex items-center justify-center flex-shrink-0">
                                     <feature.icon className="w-5 h-5 text-orange-400" />
                                 </div>
                                 <div>
@@ -103,11 +103,11 @@ function AuthForm() {
             </div>
 
             {/* ── Right Panel: Auth Forms ── */}
-            <div className="w-full lg:w-[55%] flex items-center justify-center p-6 md:p-10 bg-orange-50">
+            <div className="w-full lg:w-[55%] flex items-center justify-center p-6 md:p-10 bg-[#FFF7ED]">
                 <div className="w-full max-w-md">
                     {/* Mobile Logo */}
                     <div className="lg:hidden text-center mb-8">
-                        <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-3">
+                        <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center mx-auto mb-3">
                             <span className="text-white font-black text-lg">CA</span>
                         </div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-1">CA Maker</h2>
@@ -115,7 +115,7 @@ function AuthForm() {
                     </div>
 
                     {/* Card */}
-                    <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+                    <div className="bg-white rounded shadow-lg border border-gray-100 overflow-hidden">
                         {/* Tabs */}
                         <div className="flex border-b border-gray-100">
                             {["login", "register"].map((tab) => (
@@ -142,8 +142,8 @@ function AuthForm() {
                     {/* Mobile Feature Pills */}
                     <div className="lg:hidden mt-6 grid grid-cols-2 gap-3">
                         {features.map((feature, idx) => (
-                            <div key={idx} className="bg-white rounded-2xl p-3 border border-gray-100 text-center shadow-sm">
-                                <div className="w-9 h-9 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                            <div key={idx} className="bg-white rounded p-3 border border-gray-100 text-center shadow-sm">
+                                <div className="w-9 h-9 bg-orange-100 rounded flex items-center justify-center mx-auto mb-2">
                                     <feature.icon className="w-4 h-4 text-orange-500" />
                                 </div>
                                 <p className="text-xs font-semibold text-gray-800">{feature.title}</p>
@@ -206,7 +206,7 @@ function LoginForm() {
         }
     };
 
-    const inputCls = "w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-orange-300 focus:border-orange-500 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400 text-sm";
+    const inputCls = "w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded bg-gray-50 focus:bg-white focus:ring-2 focus:ring-orange-300 focus:border-orange-500 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400 text-sm";
 
     return (
         <form onSubmit={handleSubmit} className="space-y-5">
@@ -239,7 +239,7 @@ function LoginForm() {
             </div>
 
             <button type="submit" disabled={isSubmitting}
-                className="w-full h-12 rounded-xl text-sm font-bold bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white flex items-center justify-center gap-2 transition-colors">
+                className="w-full h-12 rounded text-sm font-bold bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white flex items-center justify-center gap-2 transition-colors">
                 {isSubmitting ? <><Loader2 className="h-4 w-4 animate-spin" />Signing in…</> : <>Sign In <ArrowRight className="h-4 w-4" /></>}
             </button>
 
@@ -330,7 +330,7 @@ function RegisterForm() {
         }
     };
 
-    const inputCls = "w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:ring-2 focus:ring-orange-300 focus:border-orange-500 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400 text-sm";
+    const inputCls = "w-full pl-12 pr-4 py-3.5 border border-gray-200 rounded bg-gray-50 focus:bg-white focus:ring-2 focus:ring-orange-300 focus:border-orange-500 focus:outline-none transition-all text-gray-900 placeholder:text-gray-400 text-sm";
 
     return (
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -373,7 +373,7 @@ function RegisterForm() {
             </div>
 
             <button type="submit" disabled={isSubmitting}
-                className="w-full h-12 rounded-xl text-sm font-bold bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white flex items-center justify-center gap-2 transition-colors mt-2">
+                className="w-full h-12 rounded text-sm font-bold bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white flex items-center justify-center gap-2 transition-colors mt-2">
                 {isSubmitting ? <><Loader2 className="h-4 w-4 animate-spin" />Creating Account…</> : <>Create Account <ArrowRight className="h-4 w-4" /></>}
             </button>
 

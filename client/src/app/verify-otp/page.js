@@ -65,10 +65,11 @@ function VerifyOtpContent() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen flex items-center justify-center bg-[#FFF7ED] py-12 px-4 sm:px-6 lg:px-8">
             <Toaster position="top-center" />
-            <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded-2xl border border-gray-100 shadow-xl">
+            <div className="max-w-md w-full space-y-6 bg-white p-8 sm:p-10 rounded border border-gray-100 shadow-lg">
                 <div className="text-center">
+                    <span className="text-orange-500 font-bold text-lg block mb-4">CA Maker</span>
                     <h1 className="text-2xl font-bold text-gray-900">Verify Email</h1>
                     <p className="mt-2 text-gray-600">
                         Enter the 6-digit OTP sent to your email
@@ -113,7 +114,7 @@ function VerifyOtpContent() {
                         />
                     </div>
 
-                    <Button type="submit" className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded-xl transition-all" disabled={isSubmitting}>
+                    <Button type="submit" className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded transition-all" disabled={isSubmitting}>
                         {isSubmitting ? "Verifying..." : "Verify"}
                     </Button>
                 </form>

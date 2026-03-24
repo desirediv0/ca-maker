@@ -41,14 +41,14 @@ const calculateDiscountPercentage = (regularPrice, salePrice) => {
 };
 
 export const ProductCard = ({ product, viewMode = "grid" }) => {
-  const { isAuthenticated }  = useAuth();
-  const { addToCart }        = useCart();
-  const router               = useRouter();
-  const [isHovered,           setIsHovered]           = useState(false);
-  const [isAddingToCart,      setIsAddingToCart]      = useState(false);
-  const [wishlistItems,       setWishlistItems]       = useState({});
-  const [isAddingToWishlist,  setIsAddingToWishlist]  = useState({});
-  const [currentImageIndex,   setCurrentImageIndex]   = useState(0);
+  const { isAuthenticated } = useAuth();
+  const { addToCart } = useCart();
+  const router = useRouter();
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [wishlistItems, setWishlistItems] = useState({});
+  const [isAddingToWishlist, setIsAddingToWishlist] = useState({});
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [priceVisibilitySettings, setPriceVisibilitySettings] = useState(null);
 
   /* ── 1. Fetch wishlist status (unchanged) ── */
@@ -89,7 +89,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
     e.preventDefault();
     e.stopPropagation();
     if (!isAuthenticated) {
-      router.push(`/auth?redirect=/products/${product.slug}`);
+      router.push(`/auth?redirect=/courses/${product?.slug || product?.product?.slug || ""}`);
       return;
     }
     setIsAddingToWishlist((prev) => ({ ...prev, [product.id]: true }));
@@ -163,13 +163,13 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
     return isNaN(parsed) ? null : parsed;
   };
 
-  const basePriceField    = parsePrice(product.basePrice);
+  const basePriceField = parsePrice(product.basePrice);
   const regularPriceField = parsePrice(product.regularPrice);
-  const priceField        = parsePrice(product.price);
-  const salePriceField    = parsePrice(product.salePrice);
+  const priceField = parsePrice(product.price);
+  const salePriceField = parsePrice(product.salePrice);
 
-  const hasFlashSale            = product.flashSale?.isActive === true;
-  const flashSalePrice          = hasFlashSale ? parsePrice(product.flashSale.flashSalePrice) : null;
+  const hasFlashSale = product.flashSale?.isActive === true;
+  const flashSalePrice = hasFlashSale ? parsePrice(product.flashSale.flashSalePrice) : null;
   const flashSaleDiscountPercent = hasFlashSale ? product.flashSale.discountPercentage : 0;
 
   let hasSale = false;
@@ -184,7 +184,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
   }
 
   let originalPrice = null;
-  let currentPrice  = 0;
+  let currentPrice = 0;
 
   if (basePriceField !== null && regularPriceField !== null) {
     if (hasSale && basePriceField < regularPriceField) { currentPrice = basePriceField; originalPrice = regularPriceField; }
@@ -209,11 +209,11 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
 
   if (currentPrice === null || currentPrice === undefined || isNaN(currentPrice)) currentPrice = 0;
 
-  let displayPrice     = currentPrice;
+  let displayPrice = currentPrice;
   let showFlashSaleBadge = false;
   if (hasFlashSale && flashSalePrice !== null) {
     if (!originalPrice) originalPrice = currentPrice;
-    displayPrice       = flashSalePrice;
+    displayPrice = flashSalePrice;
     showFlashSaleBadge = true;
   }
 
@@ -235,7 +235,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       const variantId = product.variants?.[0]?.id;
       if (!variantId) {
         toast.error("Select options on product page");
-        router.push(`/products/${product.slug}`);
+        router.push(`/courses/${product?.slug || product?.product?.slug || ""}`);
         return;
       }
       await addToCart(variantId, 1);
@@ -279,7 +279,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
           )}
         </>
       ) : !showPrice ? (
-        <Link href="/auth?redirect=products" className="text-xs text-orange-600 hover:underline font-semibold">
+        <Link href="/auth?redirect=/courses" className="text-xs text-orange-600 hover:underline font-semibold">
           Login to view price
         </Link>
       ) : null}
@@ -291,7 +291,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       size="sm"
       onClick={handleAddToCart}
       disabled={!showPrice || isAddingToCart}
-      className={`h-8 text-xs rounded-md font-semibold bg-orange-500 hover:bg-orange-600
+      className={`h-8 text-xs rounded font-semibold bg-orange-500 hover:bg-orange-600
                   text-white border-0 flex-shrink-0 ${full ? "w-full justify-center" : "px-3"}`}
     >
       {isAddingToCart ? (
@@ -321,7 +321,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       >
         {/* Image */}
         <Link
-          href={`/products/${product.slug}`}
+          href={`/courses/${product?.slug || product?.product?.slug || "#"}`}
           className="relative w-40 sm:w-52 md:w-60 flex-shrink-0 overflow-hidden bg-orange-50"
         >
           <Image
@@ -341,7 +341,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
         {/* Content */}
         <div className="flex flex-col flex-1 p-4 md:p-5 min-w-0">
           <div className="flex items-start justify-between gap-2 mb-2">
-            <Link href={`/products/${product.slug}`}>
+            <Link href={`/courses/${product?.slug || product?.product?.slug || "#"}`}>
               <h3 className="font-semibold text-gray-900 text-sm md:text-base leading-snug
                              line-clamp-2 hover:text-orange-600 transition-colors">
                 {product.name}
@@ -390,7 +390,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
     >
       {/* ── Product image ── */}
       <Link
-        href={`/products/${product.slug}`}
+        href={`/courses/${product?.slug || product?.product?.slug || "#"}`}
         className="block relative aspect-square overflow-hidden bg-orange-50/60 flex-shrink-0"
       >
         <div className="absolute top-3 right-3 z-20">
@@ -416,9 +416,8 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
             {getAllProductImages.map((_, idx) => (
               <div
                 key={idx}
-                className={`rounded-full transition-all duration-300 ${
-                  idx === currentImageIndex ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"
-                }`}
+                className={`rounded-full transition-all duration-300 ${idx === currentImageIndex ? "w-4 h-1.5 bg-white" : "w-1.5 h-1.5 bg-white/50"
+                  }`}
               />
             ))}
           </div>
@@ -427,7 +426,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
 
       {/* ── Product info ── */}
       <div className="p-4 flex flex-col flex-grow">
-        <Link href={`/products/${product.slug}`}>
+        <Link href={`/courses/${product?.slug || product?.product?.slug || "#"}`}>
           <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2
                          hover:text-orange-600 transition-colors duration-200 mb-2">
             {product.name}

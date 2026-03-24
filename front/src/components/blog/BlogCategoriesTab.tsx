@@ -232,7 +232,7 @@ const BlogCategoriesTab = () => {
             </Button>
           </div>
         ) : (
-          <div className="rounded-md border">
+          <div className="rounded border">
             <Table>
               <TableHeader>
                 <TableRow>

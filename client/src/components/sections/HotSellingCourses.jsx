@@ -34,12 +34,12 @@ export default function HotSellingCourses() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="h-5 w-28 bg-orange-100 rounded-full mb-3 animate-pulse" />
-              <div className="h-9 w-56 bg-gray-100 rounded-xl animate-pulse" />
+              <div className="h-9 w-56 bg-gray-100 rounded animate-pulse" />
               <div className="h-1 w-10 bg-orange-100 rounded mt-3 animate-pulse" />
             </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {[1, 2, 3, 4].map((i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[1, 2, 3].map((i) => (
               <div
                 key={i}
                 className="animate-pulse bg-white rounded-[10px] border border-gray-100 overflow-hidden"
@@ -47,9 +47,9 @@ export default function HotSellingCourses() {
               >
                 <div className="h-48 bg-gray-100" />
                 <div className="p-4 space-y-3">
-                  <div className="h-4 bg-gray-100 rounded-lg" />
-                  <div className="h-4 bg-gray-100 rounded-lg w-3/4" />
-                  <div className="h-8 bg-orange-50 rounded-lg w-1/2 mt-4" />
+                  <div className="h-4 bg-gray-100 rounded" />
+                  <div className="h-4 bg-gray-100 rounded w-3/4" />
+                  <div className="h-8 bg-orange-50 rounded w-1/2 mt-4" />
                 </div>
               </div>
             ))}
@@ -85,8 +85,8 @@ export default function HotSellingCourses() {
           </Link>
         </div>
 
-        {/* ── Responsive grid ── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} badge="hot" />
           ))}

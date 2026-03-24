@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import api from "@/api/api";
 import {
   Card,
@@ -146,10 +147,10 @@ export default function AnalyticsDashboard() {
                 {[...Array(5)].map((_, i) => (
                   <div
                     key={i}
-                    className="flex justify-between items-center p-4 bg-[#F3F7F6] rounded-xl border border-[#E5E7EB]"
+                    className="flex justify-between items-center p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]"
                   >
                     <div className="flex items-center gap-4">
-                      <Skeleton className="h-14 w-14 rounded-lg" />
+                      <Skeleton className="h-14 w-14 rounded" />
                       <div className="space-y-2">
                         <Skeleton className="h-5 w-48" />
                         <Skeleton className="h-4 w-32" />
@@ -169,17 +170,17 @@ export default function AnalyticsDashboard() {
                     {mostViewedProducts.map((item: any) => (
                       <div
                         key={item.productId}
-                        className="flex justify-between items-center p-4 rounded-xl border border-[#E5E7EB] bg-[#FFFFFF] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all"
+                        className="flex justify-between items-center p-4 rounded border border-[#E5E7EB] bg-[#FFFFFF] hover:shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all"
                       >
                         <div className="flex items-center gap-4 flex-1 min-w-0">
                           {item.product.image ? (
                             <img
                               src={item.product.image}
                               alt={item.product.name}
-                              className="h-14 w-14 rounded-lg object-cover border border-[#E5E7EB] flex-shrink-0"
+                              className="h-14 w-14 rounded object-cover border border-[#E5E7EB] flex-shrink-0"
                             />
                           ) : (
-                            <div className="h-14 w-14 rounded-lg bg-[#F3F4F6] flex items-center justify-center flex-shrink-0 border border-[#E5E7EB]">
+                            <div className="h-14 w-14 rounded bg-[#F3F4F6] flex items-center justify-center flex-shrink-0 border border-[#E5E7EB]">
                               <Package className="h-6 w-6 text-[#9CA3AF]" />
                             </div>
                           )}
@@ -256,7 +257,7 @@ export default function AnalyticsDashboard() {
                       className="border-[#4CAF50] text-[#2E7D32] hover:bg-[#E8F5E9]"
                       asChild
                     >
-                      <a href="/products">{t("analytics.products.view_products")}</a>
+                      <Link to="/courses">{t("analytics.products.view_products")}</Link>
                     </Button>
                   </div>
                 )}
@@ -284,7 +285,7 @@ export default function AnalyticsDashboard() {
                 {[...Array(2)].map((_, i) => (
                   <div
                     key={i}
-                    className="border border-[#E5E7EB] rounded-xl overflow-hidden bg-[#FFFFFF]"
+                    className="border border-[#E5E7EB] rounded overflow-hidden bg-[#FFFFFF]"
                   >
                     <div className="bg-[#F3F7F6] p-4 flex justify-between items-center border-b border-[#E5E7EB]">
                       <div className="space-y-1">
@@ -294,7 +295,7 @@ export default function AnalyticsDashboard() {
                       <Skeleton className="h-6 w-24" />
                     </div>
                     <div className="p-4">
-                      <Skeleton className="h-32 w-full rounded-lg" />
+                      <Skeleton className="h-32 w-full rounded" />
                     </div>
                   </div>
                 ))}
@@ -304,7 +305,7 @@ export default function AnalyticsDashboard() {
                 {usersWithCarts.map((user: any) => (
                   <div
                     key={user.id}
-                    className="border border-[#E5E7EB] rounded-xl overflow-hidden bg-[#FFFFFF] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+                    className="border border-[#E5E7EB] rounded overflow-hidden bg-[#FFFFFF] shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
                   >
                     <div className="bg-[#F3F7F6] p-4 flex justify-between items-center border-b border-[#E5E7EB]">
                       <div>
@@ -336,10 +337,10 @@ export default function AnalyticsDashboard() {
                                 <img
                                   src={item.product.image}
                                   alt={item.product.name}
-                                  className="h-16 w-16 rounded-lg object-cover border border-[#E5E7EB] flex-shrink-0"
+                                  className="h-16 w-16 rounded object-cover border border-[#E5E7EB] flex-shrink-0"
                                 />
                               ) : (
-                                <div className="h-16 w-16 rounded-lg bg-[#F3F4F6] flex items-center justify-center flex-shrink-0 border border-[#E5E7EB]">
+                                <div className="h-16 w-16 rounded bg-[#F3F4F6] flex items-center justify-center flex-shrink-0 border border-[#E5E7EB]">
                                   <Package className="h-8 w-8 text-[#9CA3AF]" />
                                 </div>
                               )}
@@ -395,7 +396,7 @@ export default function AnalyticsDashboard() {
                                       </span>
                                     </div>
                                     {item.product.variant.discount > 0 && (
-                                      <span className="text-xs bg-[#FEF2F2] text-[#EF4444] px-2 py-0.5 rounded-md font-medium mt-1">
+                                      <span className="text-xs bg-[#FEF2F2] text-[#EF4444] px-2 py-0.5 rounded font-medium mt-1">
                                         -{item.product.variant.discount}% OFF
                                       </span>
                                     )}

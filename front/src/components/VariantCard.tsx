@@ -827,7 +827,7 @@ export default function VariantCard({
         </div>
         <div className="flex items-center gap-2">
           <span
-            className="cursor-pointer bg-gray-100 p-2 rounded-md hover:bg-gray-200"
+            className="cursor-pointer bg-gray-100 p-2 rounded hover:bg-gray-200"
             onClick={() => setIsExpanded(!isExpanded)}
           >
             {isExpanded ? (
@@ -853,7 +853,7 @@ export default function VariantCard({
           {currentImages.slice(0, 4).map((image, imageIndex) => (
             <div
               key={image.id || image.tempId || imageIndex}
-              className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${image.isPrimary
+              className={`relative flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 ${image.isPrimary
                 ? "border-green-500 ring-1 ring-green-200"
                 : "border-gray-200"
                 }`}
@@ -897,7 +897,7 @@ export default function VariantCard({
             </div>
           ))}
           {currentImages.length > 4 && (
-            <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center text-xs text-gray-500">
+            <div className="flex-shrink-0 w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">
               +{currentImages.length - 4}
             </div>
           )}
@@ -972,7 +972,7 @@ export default function VariantCard({
 
             {/* MOQ Settings */}
             <div className="space-y-2 border-t pt-3 mt-3">
-              <div className="flex items-center justify-between p-2 border rounded-lg bg-gray-50">
+              <div className="flex items-center justify-between p-2 border rounded bg-gray-50">
                 <div className="space-y-0.5 flex-1">
                   <Label className="text-xs font-medium">
                     {t("variant_card.moq.enable")}
@@ -1047,7 +1047,7 @@ export default function VariantCard({
                   {variantSlabs.map((slab, slabIndex) => (
                     <div
                       key={slab.id || slabIndex}
-                      className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border text-sm"
+                      className="flex items-center justify-between p-2 bg-gray-50 rounded border text-sm"
                     >
                       <div className="flex items-center gap-4">
                         <span className="text-gray-600">
@@ -1090,7 +1090,7 @@ export default function VariantCard({
 
               {/* Add/Edit Slab Form */}
               {showSlabForm && (
-                <div className="p-3 border rounded-lg bg-blue-50/50 space-y-3">
+                <div className="p-3 border rounded bg-blue-50/50 space-y-3">
                   <div className="grid grid-cols-3 gap-2">
                     <div className="space-y-1">
                       <Label className="text-xs">{t("variant_card.pricing_slabs.min_qty")}</Label>
@@ -1245,7 +1245,7 @@ export default function VariantCard({
             {remainingSlots > 0 && (
               <div
                 {...getRootProps()}
-                className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors ${isDragActive
+                className={`border-2 border-dashed rounded p-4 text-center cursor-pointer transition-colors ${isDragActive
                   ? isDragReject
                     ? "border-red-400 bg-red-50"
                     : "border-blue-400 bg-blue-50"
@@ -1293,7 +1293,7 @@ export default function VariantCard({
                     onDragOver={(e) => handleDragOver(e, imageIndex)}
                     onDragLeave={handleDragLeave}
                     onDrop={(e) => handleDrop(e, imageIndex)}
-                    className={`relative rounded-lg overflow-hidden border-2 transition-all cursor-move ${image.isPrimary
+                    className={`relative rounded overflow-hidden border-2 transition-all cursor-move ${image.isPrimary
                       ? "border-green-500 ring-2 ring-green-200 shadow-lg"
                       : "border-gray-200"
                       } ${draggedImageIndex === imageIndex
@@ -1389,7 +1389,7 @@ export default function VariantCard({
 
             {/* No Images State */}
             {!hasImages && (
-              <div className="text-center py-6 text-gray-500 border border-gray-200 rounded-lg bg-gray-50">
+              <div className="text-center py-6 text-gray-500 border border-gray-200 rounded bg-gray-50">
                 <ImageIcon className="h-12 w-12 mx-auto mb-3 text-gray-400" />
                 <p className="font-medium">No images uploaded yet</p>
                 <p className="text-sm mt-1">

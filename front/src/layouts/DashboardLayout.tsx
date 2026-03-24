@@ -5,7 +5,6 @@ import { useAuth } from "@/context/AuthContext";
 import { Resource, Action } from "@/types/admin";
 import {
   LayoutDashboard,
-  Package,
   ShoppingCart,
   Users,
   Tags,
@@ -26,6 +25,11 @@ import {
   Eye,
   Truck,
   Quote,
+  BookOpen,
+  Headphones,
+  Bell,
+  Calendar,
+  ArrowUpRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SafeRender } from "@/components/SafeRender";
@@ -58,16 +62,16 @@ const NavItem = ({
       to={href}
       onClick={onClick}
       className={cn(
-        "relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-all",
+        "relative flex items-center gap-3 rounded px-3 py-2.5 text-sm transition-all duration-200",
         isActive
-          ? "bg-[#E8F5E9] text-[#2E7D32] font-semibold"
-          : "text-white hover:bg-[#0d4d52] font-medium"
+          ? "bg-[#F97316] text-white font-semibold"
+          : "text-[#94A3B8] hover:bg-[#1E293B] hover:text-white font-medium"
       )}
     >
-      {isActive && (
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-0.5 bg-[#2E7D32] rounded-r-full" />
-      )}
-      <span className="flex shrink-0 items-center justify-center text-[1.125rem]">
+      <span className={cn(
+        "flex shrink-0 items-center justify-center text-[1.125rem]",
+        isActive ? "text-white" : "text-[#64748B]"
+      )}>
         {icon}
       </span>
       <span className="text-sm font-medium">{title}</span>
@@ -115,14 +119,17 @@ const CollapsibleNavItem = ({
       <button
         onClick={handleToggle}
         className={cn(
-          "relative flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm transition-all w-full text-left",
+          "relative flex items-center justify-between gap-3 rounded px-3 py-2.5 text-sm transition-all duration-200 w-full text-left",
           hasActiveChild
-            ? "bg-[#E8F5E9] text-[#2E7D32] font-semibold"
-            : "text-white hover:bg-[#0d4d52] font-medium"
+            ? "bg-[#F97316] text-white font-semibold"
+            : "text-[#94A3B8] hover:bg-[#1E293B] hover:text-white font-medium"
         )}
       >
         <div className="flex items-center gap-3 flex-1">
-          <span className="flex shrink-0 items-center justify-center text-[1.125rem]">
+          <span className={cn(
+            "flex shrink-0 items-center justify-center text-[1.125rem]",
+            hasActiveChild ? "text-white" : "text-[#64748B]"
+          )}>
             {icon}
           </span>
           <span className="text-sm font-medium">{title}</span>
@@ -131,7 +138,7 @@ const CollapsibleNavItem = ({
           className={cn(
             "h-4 w-4 transition-transform duration-300 ease-in-out flex-shrink-0",
             isOpen ? "rotate-180" : "rotate-0",
-            hasActiveChild ? "text-[#2E7D32]" : "text-white"
+            hasActiveChild ? "text-white" : "text-[#94A3B8]"
           )}
         />
       </button>
@@ -154,18 +161,18 @@ const CollapsibleNavItem = ({
                 to={child.href}
                 onClick={onClick}
                 className={cn(
-                  "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all",
+                  "relative flex items-center gap-3 rounded px-3 py-2 text-sm transition-all duration-200 pl-5",
                   isActive
-                    ? "bg-[#E8F5E9] text-[#2E7D32] font-medium"
-                    : "text-[#cbd5e1] hover:bg-[#0d4d52] hover:text-white font-normal"
+                    ? "text-[#F97316] font-medium bg-[#F97316]/10"
+                    : "text-[#94A3B8] hover:bg-[#1E293B] hover:text-white font-normal"
                 )}
               >
                 {isActive && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-0.5 bg-[#2E7D32] rounded-r-full" />
+                  <div className="absolute left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-[#F97316]" />
                 )}
                 <span className={cn(
                   "flex shrink-0 items-center justify-center text-[0.875rem]",
-                  isActive ? "text-[#2E7D32]" : "text-[#94a3b8]"
+                  isActive ? "text-[#F97316]" : "text-[#64748B]"
                 )}>
                   {child.icon || (
                     <Circle className="h-2 w-2 fill-current" />
@@ -219,7 +226,7 @@ export default function DashboardLayout() {
   // Auto-open section if current path matches (accordion - only one open at a time)
   useEffect(() => {
     const path = location.pathname;
-    if (path.startsWith("/products") || path.startsWith("/brands") || path.startsWith("/categories") || path.startsWith("/attributes")) {
+    if (path.startsWith("/courses") || path.startsWith("/brands") || path.startsWith("/categories") || path.startsWith("/attributes")) {
       setOpenSections({
         products: true,
         orders: false,
@@ -306,10 +313,10 @@ export default function DashboardLayout() {
 
   if (isLoading) {
     return (
-      <div className="flex h-screen w-full items-center justify-center">
+      <div className="flex h-screen w-full items-center justify-center bg-[#F8FAFC]">
         <div className="flex flex-col items-center">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-          <p className="mt-4 text-lg text-muted-foreground">{t("admin.loading")}</p>
+          <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#F97316] border-t-transparent"></div>
+          <p className="mt-4 text-lg text-[#64748B]">{t("admin.loading")}</p>
         </div>
       </div>
     );
@@ -326,19 +333,25 @@ export default function DashboardLayout() {
   return (
     <div className="flex h-screen w-full overflow-hidden bg-background">
       {/* Sidebar - Desktop */}
-      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-[240px] flex-col bg-[#0A3B3F]    z-30 flex-shrink-0">
-        <div className="flex h-16 items-center   px-4">
+      <aside className="hidden lg:flex fixed left-0 top-0 h-full w-[240px] flex-col bg-[#0F172A] border-r border-[#1E293B] z-30 flex-shrink-0">
+        <div className="flex h-16 items-center px-4 border-b border-[#1E293B]">
           <Link
             to="/dashboard"
-            className="flex items-center gap-2.5 font-semibold text-[#dde7f4] text-base"
+            className="flex items-center gap-2.5 font-semibold text-white text-base"
           >
-            <Package className="h-5 w-5 text-[#4CAF50]" />
-            <span>{t("admin.admin_dashboard")}</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded bg-[#F97316]">
+              <span className="text-white font-bold text-sm">CA</span>
+            </span>
+            <span>CA Maker</span>
           </Link>
         </div>
-        <nav className="flex-1 p-3 overflow-y-auto scrollbar-hide">
+        <nav className="flex-1 py-6 px-3 overflow-y-auto scrollbar-hide">
           <SafeRender>
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-1">
+              {/* MAIN Section */}
+              <p className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-[#64748B]">
+                MAIN
+              </p>
               {/* Dashboard - Single Item */}
               <NavItem
                 href="/dashboard"
@@ -351,16 +364,16 @@ export default function DashboardLayout() {
                 )}
               />
 
-              {/* Products - Collapsible */}
+              {/* Courses - Collapsible */}
               <CollapsibleNavItem
-                title={t("nav.products")}
-                icon={<Package className="h-[1.125rem] w-[1.125rem]" />}
+                title={t("nav.courses")}
+                icon={<BookOpen className="h-[1.125rem] w-[1.125rem]" />}
                 isOpen={openSections.products}
                 onToggle={() => toggleSection("products")}
                 children={[
                   {
-                    href: "/products",
-                    title: t("nav.all_products"),
+                    href: "/courses",
+                    title: t("nav.all_courses"),
                     hasPermission: hasPermissionFor(
                       admin,
                       Resource.PRODUCTS,
@@ -368,8 +381,8 @@ export default function DashboardLayout() {
                     ),
                   },
                   {
-                    href: "/products/new",
-                    title: t("nav.add_product"),
+                    href: "/courses/add",
+                    title: t("nav.add_course"),
                     hasPermission: hasPermissionFor(
                       admin,
                       Resource.PRODUCTS,
@@ -448,7 +461,10 @@ export default function DashboardLayout() {
                 ]}
               />
 
-
+              {/* MANAGEMENT Section */}
+              <p className="px-3 mt-4 mb-2 text-xs font-semibold uppercase tracking-wider text-[#64748B]">
+                MANAGEMENT
+              </p>
               {/* Users - Collapsible */}
               <CollapsibleNavItem
                 title={t("nav.users")}
@@ -489,7 +505,7 @@ export default function DashboardLayout() {
               {/* Support - Collapsible */}
               <CollapsibleNavItem
                 title={t("nav.support")}
-                icon={<HelpCircle className="h-[1.125rem] w-[1.125rem]" />}
+                icon={<Headphones className="h-[1.125rem] w-[1.125rem]" />}
                 isOpen={openSections.support}
                 onToggle={() => toggleSection("support")}
                 children={[
@@ -629,18 +645,18 @@ export default function DashboardLayout() {
             </div>
           </SafeRender>
         </nav>
-        <div className="  p-4 bg-[#0A3B3F]">
+        <div className="p-4 border-t border-[#1E293B] bg-[#0F172A]">
           <div className="mb-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#eff5ff] text-[#202021] font-medium text-sm">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F97316] text-white font-medium text-sm">
               {admin?.firstName?.charAt(0) || admin?.email?.charAt(0) || "U"}
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-sm font-medium text-[#eff5ff] truncate">
+              <span className="text-sm font-medium text-white truncate">
                 {admin?.firstName
                   ? `${admin.firstName} ${admin.lastName}`
                   : admin?.email}
               </span>
-              <span className="text-xs text-[#eff5ff] capitalize">
+              <span className="text-xs text-[#94A3B8] capitalize">
                 {admin?.role === "SUPER_ADMIN"
                   ? t("admin.role.super_admin")
                   : admin?.role === "ADMIN"
@@ -651,7 +667,7 @@ export default function DashboardLayout() {
           </div>
           <Button
             variant="outline"
-            className="w-full justify-start  hover:bg-[#F3F4F6] hover:text-[#1F2937] text-sm h-9"
+            className="w-full justify-start bg-[#334155] hover:bg-red-600/20 hover:text-red-400 border-[#1E293B] text-[#94A3B8] text-sm h-9 transition-all duration-200"
             onClick={logout}
           >
             <LogOut className="mr-2 h-4 w-4" />
@@ -663,7 +679,7 @@ export default function DashboardLayout() {
       {/* Mobile menu overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#1F2937]/60 backdrop-blur-sm lg:hidden transition-opacity"
+          className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm lg:hidden transition-opacity"
           onClick={toggleMobileMenu}
         />
       )}
@@ -671,31 +687,34 @@ export default function DashboardLayout() {
       {/* Mobile sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-[240px] transform bg-[#0A3B3F] transition-transform duration-300 ease-in-out lg:hidden flex flex-col h-full shadow-xl",
+          "fixed inset-y-0 left-0 z-50 w-[240px] transform bg-[#0F172A] border-r border-[#1E293B] transition-transform duration-300 ease-in-out lg:hidden flex flex-col h-full shadow-xl",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="flex h-16 items-center justify-between   px-4">
+        <div className="flex h-16 items-center justify-between px-4 border-b border-[#1E293B]">
           <Link
             to="/dashboard"
-            className="flex items-center gap-2.5 font-semibold text-[#dde7f4] text-base"
+            className="flex items-center gap-2.5 font-semibold text-white text-base"
             onClick={toggleMobileMenu}
           >
-            <Package className="h-5 w-5 text-[#4CAF50]" />
-            <span>{t("admin.admin_dashboard")}</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded bg-[#F97316]">
+              <span className="text-white font-bold text-sm">CA</span>
+            </span>
+            <span>CA Maker</span>
           </Link>
           <Button
             variant="ghost"
             size="icon"
-            className="hover:bg-[#F3F4F6] hover:text-[#202021] text-[#eff5ff]"
+            className="hover:bg-[#1E293B] text-[#94A3B8]"
             onClick={toggleMobileMenu}
           >
-            <X className="h-5 w-5 " />
+            <X className="h-5 w-5" />
           </Button>
         </div>
-        <nav className="flex-1 p-3 pb-20 overflow-y-auto scrollbar-hide">
+        <nav className="flex-1 py-6 px-3 pb-20 overflow-y-auto scrollbar-hide">
           <SafeRender>
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-1">
+              <p className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-[#64748B]">MAIN</p>
               {/* Dashboard - Single Item */}
               <NavItem
                 href="/dashboard"
@@ -709,17 +728,17 @@ export default function DashboardLayout() {
                 )}
               />
 
-              {/* Products - Collapsible */}
+              {/* Courses - Collapsible */}
               <CollapsibleNavItem
-                title={t("nav.products")}
-                icon={<Package className="h-[1.125rem] w-[1.125rem]" />}
+                title={t("nav.courses")}
+                icon={<BookOpen className="h-[1.125rem] w-[1.125rem]" />}
                 isOpen={openSections.products}
                 onToggle={() => toggleSection("products")}
                 onClick={toggleMobileMenu}
                 children={[
                   {
-                    href: "/products",
-                    title: t("nav.all_products"),
+                    href: "/courses",
+                    title: t("nav.all_courses"),
                     hasPermission: hasPermissionFor(
                       admin,
                       Resource.PRODUCTS,
@@ -727,8 +746,8 @@ export default function DashboardLayout() {
                     ),
                   },
                   {
-                    href: "/products/new",
-                    title: t("nav.add_product"),
+                    href: "/courses/add",
+                    title: t("nav.add_course"),
                     hasPermission: hasPermissionFor(
                       admin,
                       Resource.PRODUCTS,
@@ -808,8 +827,7 @@ export default function DashboardLayout() {
                 ]}
               />
 
-
-
+              <p className="px-3 mt-4 mb-2 text-xs font-semibold uppercase tracking-wider text-[#64748B]">MANAGEMENT</p>
               {/* Users - Collapsible */}
               <CollapsibleNavItem
                 title={t("nav.users")}
@@ -851,7 +869,7 @@ export default function DashboardLayout() {
               {/* Support - Collapsible */}
               <CollapsibleNavItem
                 title={t("nav.support")}
-                icon={<HelpCircle className="h-[1.125rem] w-[1.125rem]" />}
+                icon={<Headphones className="h-[1.125rem] w-[1.125rem]" />}
                 isOpen={openSections.support}
                 onToggle={() => toggleSection("support")}
                 onClick={toggleMobileMenu}
@@ -993,18 +1011,18 @@ export default function DashboardLayout() {
             </div>
           </SafeRender>
         </nav>
-        <div className="  p-4 bg-[#0A3B3F]">
+        <div className="p-4 border-t border-[#1E293B] bg-[#0F172A]">
           <div className="mb-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#eff5ff] text-[#202021] font-medium text-sm">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F97316] text-white font-medium text-sm">
               {admin?.firstName?.charAt(0) || admin?.email?.charAt(0) || "U"}
             </div>
             <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-sm font-medium text-[#eff5ff] truncate">
+              <span className="text-sm font-medium text-white truncate">
                 {admin?.firstName
                   ? `${admin.firstName} ${admin.lastName}`
                   : admin?.email}
               </span>
-              <span className="text-xs text-[#eff5ff] capitalize">
+              <span className="text-xs text-[#94A3B8] capitalize">
                 {admin?.role === "SUPER_ADMIN"
                   ? t("admin.role.super_admin")
                   : admin?.role === "ADMIN"
@@ -1015,7 +1033,7 @@ export default function DashboardLayout() {
           </div>
           <Button
             variant="outline"
-            className="w-full justify-start  hover:bg-[#F3F4F6] hover:text-[#1F2937] text-sm h-9"
+            className="w-full justify-start bg-[#334155] hover:bg-red-600/20 hover:text-red-400 border-[#1E293B] text-[#94A3B8] text-sm h-9 transition-all duration-200"
             onClick={() => {
               toggleMobileMenu();
               logout();
@@ -1029,37 +1047,65 @@ export default function DashboardLayout() {
 
       {/* Main content */}
       <div className="flex w-full flex-col flex-1 min-h-0 lg:ml-[240px]">
-        {/* Topbar */}
-        <header className="flex lg:hidden h-16 items-center justify-between  px-4 lg:px-6 bg-[#0A3B3F] sticky top-0 z-20">
-          <div className="flex items-center lg:hidden">
+        {/* Topbar - White, shadow-sm */}
+        <header className="flex h-16 items-center justify-between px-4 lg:px-6 bg-white border-b border-[#E2E8F0] shadow-sm sticky top-0 z-20">
+          <div className="flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
-              className="mr-2 hover:bg-[#eff5ff] hover:text-[#202021] text-[#eff5ff]"
+              className="lg:hidden hover:bg-slate-100 text-slate-600"
               onClick={toggleMobileMenu}
             >
-              <Menu className="h-5 w-5 " />
+              <Menu className="h-5 w-5" />
             </Button>
-            <span className="text-sm font-semibold text-[#eff5ff]">{t("admin.admin_dashboard")}</span>
+            <div>
+              <h1 className="text-lg font-bold text-[#0F172A]">
+                {location.pathname === "/dashboard" ? t("nav.dashboard") :
+                  location.pathname.startsWith("/courses") ? t("nav.courses") :
+                    location.pathname.startsWith("/orders") ? t("nav.orders") :
+                      location.pathname.startsWith("/users") ? t("nav.users") :
+                        location.pathname.startsWith("/contact-management") ? t("nav.contact") :
+                          location.pathname.startsWith("/reviews-management") ? t("nav.reviews") :
+                            location.pathname.startsWith("/faq-management") ? t("nav.faq") :
+                              location.pathname.startsWith("/testimonials") ? t("nav.testimonials") :
+                                location.pathname.startsWith("/settings") ? t("nav.settings") :
+                                  t("admin.admin_dashboard")}
+              </h1>
+              <p className="text-xs text-[#64748B] hidden sm:block">
+                {location.pathname === "/dashboard" ? "Overview" : "CA Maker Admin"}
+              </p>
+            </div>
           </div>
 
-          {/* Inventory Alerts - Desktop */}
-          <div className="hidden md:block flex-1 max-w-md">
-            <SafeRender>
-              <InventoryAlertNotification />
-            </SafeRender>
-          </div>
-
-          {/* User Menu */}
           <div className="flex items-center gap-3">
-            <span className="hidden text-sm text-[#eff5ff] lg:inline-block">
-              {admin?.firstName
-                ? `${admin.firstName} ${admin.lastName}`
-                : admin?.email}
-            </span>
-            <Button variant="ghost" size="icon" onClick={logout} className="hover:bg-[#202021] hover:text-[#eff5ff] text-[#eff5ff]">
-              <LogOut className="h-5 w-5 text-[#eff5ff]" />
+            {/* Date pill */}
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded bg-slate-100 text-slate-600 text-sm">
+              <Calendar className="h-4 w-4" />
+              <span>{new Date().toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</span>
+            </div>
+            {/* Notification bell */}
+            <Button variant="ghost" size="icon" className="relative hover:bg-slate-100 text-slate-600">
+              <Bell className="h-5 w-5" />
+              <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-[#F97316]" />
             </Button>
+            {/* Primary CTA - context based */}
+            {location.pathname === "/dashboard" && (
+              <Button
+                asChild
+                className="hidden sm:flex bg-[#F97316] hover:bg-[#EA580C] text-white rounded px-4 py-2"
+              >
+                <Link to="/orders">
+                  {t("nav.all_orders")}
+                  <ArrowUpRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+            {/* Inventory Alerts */}
+            <div className="hidden md:block">
+              <SafeRender>
+                <InventoryAlertNotification />
+              </SafeRender>
+            </div>
           </div>
         </header>
 
@@ -1071,7 +1117,7 @@ export default function DashboardLayout() {
         </div>
 
         {/* Main content area */}
-        <main className="flex-1 overflow-y-auto bg-[#F3F7F6] p-4 lg:p-8">
+        <main className="flex-1 overflow-y-auto bg-[#F8FAFC] p-4 lg:p-8">
           <Outlet />
         </main>
       </div>

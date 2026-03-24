@@ -48,7 +48,7 @@ export default function InventoryAlertNotification() {
                   label: "View",
                   onClick: () =>
                     outOfStockItem &&
-                    (window.location.href = `/products/${outOfStockItem.productId}`),
+                    (window.location.href = `/courses/${outOfStockItem.productId}`),
                 },
               }
             );
@@ -84,9 +84,8 @@ export default function InventoryAlertNotification() {
 
   return (
     <div
-      className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md ${
-        hasOutOfStock ? "bg-red-50 text-red-600" : "bg-amber-50 text-amber-600"
-      }`}
+      className={`flex items-center gap-2 px-3 py-2 text-sm rounded ${hasOutOfStock ? "bg-red-50 text-red-600" : "bg-amber-50 text-amber-600"
+        }`}
     >
       <AlertCircle
         className={`h-4 w-4 ${hasOutOfStock ? "text-red-500" : "text-amber-500"}`}
@@ -102,7 +101,7 @@ export default function InventoryAlertNotification() {
         className={`h-6 px-2 ${hasOutOfStock ? "hover:bg-red-100" : "hover:bg-amber-100"}`}
         asChild
       >
-        <Link to={`/products/${firstAlert.productId}`}>View</Link>
+        <Link to={`/courses/${firstAlert.productId}`}>View</Link>
       </Button>
       <Button
         variant="ghost"

@@ -292,7 +292,7 @@ export default function NonApprovedPartnersTab() {
                         </Alert>
                     )}
 
-                    <div className="bg-accent p-4 rounded-lg">
+                    <div className="bg-accent p-4 rounded">
                         <p className="font-semibold text-sm mb-2">{t("partners_tab.non_approved.demo_pass")}:</p>
                         <p className="font-mono text-lg bg-background px-3 py-2 rounded border">
                             camaker

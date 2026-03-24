@@ -89,7 +89,7 @@ export default function PriceVisibilitySettingsPage() {
             </div>
 
             {/* Settings Card */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardHeader className="px-6 pt-6 pb-4">
                     <CardTitle className="text-xl font-semibold text-[#1F2937] flex items-center gap-2">
                         <Eye className="h-6 w-6 text-[#4CAF50]" />
@@ -98,7 +98,7 @@ export default function PriceVisibilitySettingsPage() {
                 </CardHeader>
                 <CardContent className="px-6 pb-6 space-y-6">
                     {/* Hide Prices for Guests Toggle */}
-                    <div className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-lg bg-[#F9FAFB]">
+                    <div className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded bg-[#F9FAFB]">
                         <div className="space-y-1">
                             <div className="flex items-center gap-2">
                                 <Label className="text-sm font-medium text-[#1F2937]">
@@ -122,7 +122,7 @@ export default function PriceVisibilitySettingsPage() {
                     </div>
 
                     {/* Information Box */}
-                    <div className="p-4 border border-[#DBEAFE] rounded-lg bg-[#EFF6FF]">
+                    <div className="p-4 border border-[#DBEAFE] rounded bg-[#EFF6FF]">
                         <div className="flex items-start gap-3">
                             <Info className="h-5 w-5 text-[#2563EB] mt-0.5 flex-shrink-0" />
                             <div className="space-y-2">
@@ -140,7 +140,7 @@ export default function PriceVisibilitySettingsPage() {
                     </div>
 
                     {/* Current Status */}
-                    <div className="flex items-center gap-2 p-3 border border-[#E5E7EB] rounded-lg">
+                    <div className="flex items-center gap-2 p-3 border border-[#E5E7EB] rounded">
                         <CheckCircle2 className="h-4 w-4 text-[#4CAF50]" />
                         <span className="text-sm text-[#374151]">
                             {t('price_visibility.current_status')} {hidePricesForGuests ? t('price_visibility.status_hidden') : t('price_visibility.status_visible')}

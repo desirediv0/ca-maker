@@ -407,7 +407,7 @@ export default function ProductSectionsPage() {
       </div>
 
       {sections.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Layers className="h-8 w-8 text-[#9CA3AF]" />
@@ -466,7 +466,7 @@ export default function ProductSectionsPage() {
 
           {/* Section Content */}
           {currentSection && (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -584,10 +584,10 @@ export default function ProductSectionsPage() {
                                 <img
                                   src={productImage}
                                   alt={item.product.name}
-                                  className="h-14 w-14 rounded-lg object-cover border border-[#E5E7EB]"
+                                  className="h-14 w-14 rounded object-cover border border-[#E5E7EB]"
                                 />
                               ) : (
-                                <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB]">
+                                <div className="flex h-14 w-14 items-center justify-center rounded bg-[#F3F4F6] border border-[#E5E7EB]">
                                   <Package className="h-6 w-6 text-[#9CA3AF]" />
                                 </div>
                               )}
@@ -1019,7 +1019,7 @@ export default function ProductSectionsPage() {
                 className="pl-9 border-[#E5E7EB] focus:border-primary"
               />
             </div>
-            <div className="max-h-96 overflow-y-auto border border-[#E5E7EB] rounded-xl">
+            <div className="max-h-96 overflow-y-auto border border-[#E5E7EB] rounded">
               {filteredAvailableProducts.length > 0 ? (
                 <div className="divide-y divide-[#E5E7EB]">
                   {filteredAvailableProducts.map((product) => {
@@ -1035,10 +1035,10 @@ export default function ProductSectionsPage() {
                             <img
                               src={productImage}
                               alt={product.name}
-                              className="h-12 w-12 rounded-lg object-cover border border-[#E5E7EB]"
+                              className="h-12 w-12 rounded object-cover border border-[#E5E7EB]"
                             />
                           ) : (
-                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB]">
+                            <div className="flex h-12 w-12 items-center justify-center rounded bg-[#F3F4F6] border border-[#E5E7EB]">
                               <Package className="h-5 w-5 text-[#9CA3AF]" />
                             </div>
                           )}

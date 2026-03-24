@@ -6,8 +6,8 @@ import { fetchApi } from "@/lib/utils";
 
 export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState([]);
-  const [current, setCurrent]           = useState(0);
-  const [loading, setLoading]           = useState(true);
+  const [current, setCurrent] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -31,54 +31,58 @@ export default function TestimonialsSection() {
   const t = testimonials[current];
 
   return (
-    <section className="py-16 md:py-20 bg-white border-y border-gray-100">
+    <section className="py-12 md:py-16 bg-[#FFF7ED]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 bg-orange-100 border border-orange-200
-                           text-orange-600 text-xs font-bold uppercase tracking-widest rounded-full mb-4">
-            Student Success Stories
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What Our Students Say
           </h2>
+          <div className="divider-orange mx-auto mb-4" />
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="bg-[#F9FAFB] rounded-xl border border-gray-100 p-8 md:p-10">
+          <div className="bg-white rounded shadow-sm p-8 md:p-10 border border-gray-100">
+            {/* Quote icon */}
+            <div className="flex justify-start mb-4">
+              <svg className="w-10 h-10 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v7h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v7h-9.983z" />
+              </svg>
+            </div>
+
             {/* Stars */}
             {t.rating > 0 && (
               <div className="flex gap-1 mb-5">
                 {[...Array(Math.min(t.rating, 5))].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-orange-400 fill-orange-400" />
+                  <Star key={i} className="w-5 h-5 text-orange-500 fill-orange-500" />
                 ))}
               </div>
             )}
 
             {/* Text */}
             {t.text && (
-              <p className="text-gray-700 leading-relaxed text-base italic mb-6">
+              <p className="text-gray-700 leading-relaxed text-base md:text-lg italic mb-6">
                 &ldquo;{t.text}&rdquo;
               </p>
             )}
 
             {/* Result badge */}
             {t.result && (
-              <div className="inline-flex items-center gap-1.5 bg-orange-100 border border-orange-200
-                              text-orange-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+              <div className="inline-flex items-center gap-1.5 bg-orange-100 text-orange-700
+                              font-semibold text-sm px-4 py-2 rounded-full mb-6">
                 ✓ {t.result}
               </div>
             )}
 
             {/* Author */}
             <div className="flex items-center gap-3 pt-5 border-t border-gray-200">
-              <div className="w-11 h-11 bg-orange-500 rounded-full flex items-center justify-center
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center
                               text-white font-bold text-base flex-shrink-0">
                 {t.name?.charAt(0) || "S"}
               </div>
               <div>
-                {t.name && <p className="font-bold text-gray-900 text-sm">{t.name}</p>}
+                {t.name && <p className="font-bold text-gray-900">{t.name}</p>}
                 {(t.role || t.exam) && (
-                  <p className="text-xs text-gray-400">
+                  <p className="text-sm text-gray-500">
                     {[t.role, t.exam].filter(Boolean).join(" · ")}
                   </p>
                 )}
@@ -101,9 +105,8 @@ export default function TestimonialsSection() {
                   <button
                     key={i}
                     onClick={() => setCurrent(i)}
-                    className={`h-1.5 rounded-full transition-all ${
-                      i === current ? "w-6 bg-orange-500" : "w-1.5 bg-gray-300"
-                    }`}
+                    className={`h-1.5 rounded-full transition-all ${i === current ? "w-6 bg-orange-500" : "w-1.5 bg-gray-300"
+                      }`}
                   />
                 ))}
               </div>

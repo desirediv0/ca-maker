@@ -84,7 +84,7 @@ export default function AccountPage() {
                     <h1 className="text-3xl font-bold mb-8">My Profile</h1>
 
                     {/* Profile information */}
-                    <div className="bg-white rounded-xl border border-gray-100 shadow-sm mb-8">
+                    <div className="bg-white rounded border border-gray-100 shadow-sm mb-8">
                         <div className="p-4 lg:p-6">
                             <div className="flex justify-between gap-2 items-center mb-6">
                                 <h2 className="text-xl font-semibold">Profile Information</h2>
@@ -118,7 +118,7 @@ export default function AccountPage() {
                     </div>
 
                     {/* Recent addresses */}
-                    <div className="bg-white rounded-xl border border-gray-100 shadow-sm mb-8">
+                    <div className="bg-white rounded border border-gray-100 shadow-sm mb-8">
                         <div className="p-4 lg:p-6">
                             <div className="flex justify-between gap-2 items-center mb-4">
                                 <h2 className="text-lg lg:text-xl font-semibold">Saved Addresses</h2>
@@ -128,9 +128,9 @@ export default function AccountPage() {
                             {addresses.length > 0 ? (
                                 <div className="grid gap-4">
                                     {addresses.slice(0, 2).map((address) => (
-                                        <div key={address.id} className="border rounded-md p-3 flex justify-between items-start">
+                                        <div key={address.id} className="border rounded p-3 flex justify-between items-start">
                                             <div>
-                                                {address.isDefault && <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-md mb-2">Default</span>}
+                                                {address.isDefault && <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-0.5 rounded mb-2">Default</span>}
                                                 <p className="font-medium">{address.name || user?.name}</p>
                                                 <p className="text-sm text-gray-600">{address.street}, {address.city}, {address.state} {address.postalCode}</p>
                                                 <p className="text-sm text-gray-600">{address.country}</p>
@@ -140,7 +140,7 @@ export default function AccountPage() {
                                     {addresses.length > 2 && <p className="text-sm text-gray-600">+ {addresses.length - 2} more addresses</p>}
                                 </div>
                             ) : (
-                                <div className="text-center py-6 border rounded-md">
+                                <div className="text-center py-6 border rounded">
                                     <DynamicIcon name="MapPin" className="h-8 w-8 mx-auto text-gray-400 mb-2" />
                                     <p className="text-gray-600">No addresses added yet</p>
                                     <Link href="/account/addresses" className="mt-2 inline-block"><Button variant="outline" size="sm" className="mt-2">Add Address</Button></Link>
@@ -150,7 +150,7 @@ export default function AccountPage() {
                     </div>
 
                     {/* Referral Program */}
-                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl border border-green-100 shadow-sm mb-8">
+                    <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded border border-green-100 shadow-sm mb-8">
                         <div className="p-4 lg:p-6">
                             <div className="flex items-center gap-2 mb-4"><DynamicIcon name="Users" className="h-6 w-6 text-green-600" /><h2 className="text-xl font-semibold">Referral Program</h2></div>
                             <p className="text-gray-600 mb-6">Share your referral code with friends and earn rewards when they make their first order!</p>
@@ -159,7 +159,7 @@ export default function AccountPage() {
                                 <div className="flex items-center justify-center py-8"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>
                             ) : (
                                 <>
-                                    <div className="bg-white rounded-lg p-4 mb-6 border-2 border-green-200">
+                                    <div className="bg-white rounded p-4 mb-6 border-2 border-green-200">
                                         <label className="block text-sm font-medium text-gray-700 mb-2">Your Referral Code</label>
                                         <div className="flex items-center gap-2">
                                             <Input value={referralCode} readOnly className="font-mono text-lg font-bold bg-gray-50" />
@@ -171,10 +171,10 @@ export default function AccountPage() {
 
                                     {referralStats && (
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                            <div className="bg-white rounded-lg p-4 text-center border"><p className="text-2xl font-bold text-green-600">{referralStats.totalReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Total Referrals</p></div>
-                                            <div className="bg-white rounded-lg p-4 text-center border"><p className="text-2xl font-bold text-blue-600">{referralStats.completedReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Completed</p></div>
-                                            <div className="bg-white rounded-lg p-4 text-center border"><p className="text-2xl font-bold text-yellow-600">{referralStats.pendingReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Pending</p></div>
-                                            <div className="bg-white rounded-lg p-4 text-center border"><p className="text-2xl font-bold text-green-600">₹{parseFloat(referralStats.totalEarnings || 0).toFixed(2)}</p><p className="text-sm text-gray-600 mt-1">Total Earnings</p></div>
+                                            <div className="bg-white rounded p-4 text-center border"><p className="text-2xl font-bold text-green-600">{referralStats.totalReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Total Referrals</p></div>
+                                            <div className="bg-white rounded p-4 text-center border"><p className="text-2xl font-bold text-blue-600">{referralStats.completedReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Completed</p></div>
+                                            <div className="bg-white rounded p-4 text-center border"><p className="text-2xl font-bold text-yellow-600">{referralStats.pendingReferrals || 0}</p><p className="text-sm text-gray-600 mt-1">Pending</p></div>
+                                            <div className="bg-white rounded p-4 text-center border"><p className="text-2xl font-bold text-green-600">₹{parseFloat(referralStats.totalEarnings || 0).toFixed(2)}</p><p className="text-sm text-gray-600 mt-1">Total Earnings</p></div>
                                         </div>
                                     )}
                                 </>
@@ -183,7 +183,7 @@ export default function AccountPage() {
                     </div>
 
                     {/* Security section */}
-                    <div className="bg-white rounded-xl border border-gray-100 shadow-sm">
+                    <div className="bg-white rounded border border-gray-100 shadow-sm">
                         <div className="p-6">
                             <h2 className="text-xl font-semibold mb-4">Security</h2>
                             <Link href="/account/change-password"><Button variant="outline" className="w-full sm:w-auto"><DynamicIcon name="Lock" className="mr-2 h-4 w-4" />Change Password</Button></Link>

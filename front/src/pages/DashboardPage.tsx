@@ -25,7 +25,6 @@ import {
   XCircle,
   ArrowUpRight,
   BarChart3,
-  Calendar,
   Star,
   Image as ImageIcon,
   Zap,
@@ -286,149 +285,98 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      {/* Premium Page Header */}
-      <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-semibold text-[#1F2937] tracking-tight">
-              {t("dashboard.title")}
-            </h1>
-            <p className="text-[#9CA3AF] text-sm mt-1.5">
-              {t("dashboard.subtitle")}
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 text-sm text-[#4B5563]">
-              <Calendar className="h-4 w-4 text-[#4CAF50]" />
-              <span>
-                {new Date().toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
-            <Button
-              variant="outline"
-              className="border-[#4CAF50] text-[#2E7D32] hover:bg-[#E8F5E9]"
-              asChild
-            >
-              <Link to="/orders">
-                {t("dashboard.view_orders")}
-                <ArrowUpRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-        <div className="h-px bg-[#E5E7EB]" />
-      </div>
-
       {/* Quick Actions */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
-        <CardHeader className="px-6 pt-5 pb-4">
-          <CardTitle className="text-lg font-semibold text-[#1F2937]">
+      <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded">
+        <CardHeader className="px-6 pt-6 pb-4">
+          <CardTitle className="text-lg font-bold text-[#0F172A]">
             {t("dashboard.quick_actions.title")}
           </CardTitle>
-          <p className="text-sm text-[#9CA3AF] mt-1">
+          <p className="text-sm text-[#64748B] mt-1">
             {t("dashboard.quick_actions.description")}
           </p>
         </CardHeader>
         <CardContent className="px-6 pb-6">
-          <div className="grid gap-4 md:grid-cols-4">
-            <Button
-              variant="outline"
-              className="h-auto p-4 border-[#E5E7EB] hover:bg-[#F3F7F6] text-left"
-              asChild
+          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+            <Link
+              to="/product-sections"
+              className="group flex items-center gap-4 p-4 rounded border border-[#E2E8F0] bg-white hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Link to="/product-sections" className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#E8F5E9]">
-                  <Star className="h-5 w-5 text-[#2E7D32]" />
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1F2937]">{t("dashboard.quick_actions.product_sections")}</div>
-                  <div className="text-sm text-[#9CA3AF]">{t("dashboard.quick_actions.product_sections_desc")}</div>
-                </div>
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto p-4 border-[#E5E7EB] hover:bg-[#F3F7F6] text-left"
-              asChild
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFF7ED]">
+                <Star className="h-6 w-6 text-[#F97316]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-[#1E293B] group-hover:text-[#F97316] transition-colors">{t("dashboard.quick_actions.product_sections")}</div>
+                <div className="text-sm text-[#64748B]">{t("dashboard.quick_actions.product_sections_desc")}</div>
+              </div>
+              <span className="text-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              to="/banners"
+              className="group flex items-center gap-4 p-4 rounded border border-[#E2E8F0] bg-white hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Link to="/banners" className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#E8F5E9]">
-                  <ImageIcon className="h-5 w-5 text-[#2E7D32]" />
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1F2937]">{t("dashboard.quick_actions.banners")}</div>
-                  <div className="text-sm text-[#9CA3AF]">{t("dashboard.quick_actions.banners_desc")}</div>
-                </div>
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto p-4 border-[#E5E7EB] hover:bg-[#F3F7F6] text-left"
-              asChild
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFF7ED]">
+                <ImageIcon className="h-6 w-6 text-[#F97316]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-[#1E293B] group-hover:text-[#F97316] transition-colors">{t("dashboard.quick_actions.banners")}</div>
+                <div className="text-sm text-[#64748B]">{t("dashboard.quick_actions.banners_desc")}</div>
+              </div>
+              <span className="text-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              to="/flash-sales"
+              className="group flex items-center gap-4 p-4 rounded border border-[#E2E8F0] bg-white hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Link to="/flash-sales" className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#E8F5E9]">
-                  <Zap className="h-5 w-5 text-[#2E7D32]" />
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1F2937]">{t("dashboard.quick_actions.flash_sales")}</div>
-                  <div className="text-sm text-[#9CA3AF]">{t("dashboard.quick_actions.flash_sales_desc")}</div>
-                </div>
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="h-auto p-4 border-[#E5E7EB] hover:bg-[#F3F7F6] text-left"
-              asChild
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFF7ED]">
+                <Zap className="h-6 w-6 text-[#F97316]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-[#1E293B] group-hover:text-[#F97316] transition-colors">{t("dashboard.quick_actions.flash_sales")}</div>
+                <div className="text-sm text-[#64748B]">{t("dashboard.quick_actions.flash_sales_desc")}</div>
+              </div>
+              <span className="text-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
+            <Link
+              to="/dashboard/analytics"
+              className="group flex items-center gap-4 p-4 rounded border border-[#E2E8F0] bg-white hover:border-orange-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
-              <Link to="/dashboard/analytics" className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#E8F5E9]">
-                  <BarChart3 className="h-5 w-5 text-[#2E7D32]" />
-                </div>
-                <div>
-                  <div className="font-semibold text-[#1F2937]">{t("dashboard.quick_actions.analytics")}</div>
-                  <div className="text-sm text-[#9CA3AF]">{t("dashboard.quick_actions.analytics_desc")}</div>
-                </div>
-              </Link>
-            </Button>
-
+              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#FFF7ED]">
+                <BarChart3 className="h-6 w-6 text-[#F97316]" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-semibold text-[#1E293B] group-hover:text-[#F97316] transition-colors">{t("dashboard.quick_actions.analytics")}</div>
+                <div className="text-sm text-[#64748B]">{t("dashboard.quick_actions.analytics_desc")}</div>
+              </div>
+              <span className="text-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+            </Link>
           </div>
         </CardContent>
       </Card>
 
       {/* Inventory Alerts Banner */}
       {inventoryAlerts && inventoryAlerts.count > 0 && (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div
                   className={`flex items-center justify-center w-10 h-10 rounded-full ${inventoryAlerts.outOfStockCount > 0
-                    ? "bg-[#FEF2F2]"
-                    : "bg-[#FFFBEB]"
+                    ? "bg-red-50"
+                    : "bg-amber-50"
                     }`}
                 >
                   <AlertCircle
                     className={`h-5 w-5 ${inventoryAlerts.outOfStockCount > 0
-                      ? "text-[#EF4444]"
-                      : "text-[#F59E0B]"
+                      ? "text-red-600"
+                      : "text-amber-600"
                       }`}
                   />
                 </div>
                 <div>
-                  <h3
-                    className={`font-semibold text-sm ${inventoryAlerts.outOfStockCount > 0
-                      ? "text-[#1F2937]"
-                      : "text-[#1F2937]"
-                      }`}
-                  >
+                  <h3 className="font-semibold text-sm text-[#0F172A]">
                     {t("dashboard.inventory_alert.title")}
                   </h3>
-                  <p className="text-sm text-[#9CA3AF] mt-0.5">
+                  <p className="text-sm text-[#64748B] mt-0.5">
                     {inventoryAlerts.outOfStockCount > 0
                       ? `${t("dashboard.inventory_alert.out_of_stock", { count: inventoryAlerts.outOfStockCount })}, ${t("dashboard.inventory_alert.low_stock", { count: inventoryAlerts.lowStockCount })}`
                       : t("dashboard.inventory_alert.low_stock", { count: inventoryAlerts.lowStockCount })}
@@ -439,9 +387,9 @@ export default function DashboardPage() {
                 variant="outline"
                 size="sm"
                 asChild
-                className="border-[#E5E7EB] hover:bg-[#F3F7F6] text-sm"
+                className="border-[#E2E8F0] hover:bg-[#FFF7ED] hover:border-[#F97316] text-[#F97316] text-sm"
               >
-                <Link to="/products">
+                <Link to="/courses">
                   {t("dashboard.inventory_alert.view_inventory")}
                   <ExternalLink className="ml-1 h-3 w-3" />
                 </Link>
@@ -451,19 +399,20 @@ export default function DashboardPage() {
         </Card>
       )}
 
-      {/* Premium Stats Cards Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {/* Total Revenue */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+      {/* Stats Cards Grid */}
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Total Revenue - Orange accent */}
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded relative overflow-hidden border-l-4 border-l-[#F97316]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-6 pt-6">
-            <CardTitle className="text-sm font-medium text-[#4B5563]">
+            <CardTitle className="text-sm font-medium text-[#64748B]">
               {t("dashboard.stats.total_revenue")}
             </CardTitle>
-            <IndianRupee className="h-5 w-5 text-[#4CAF50]" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFF7ED]">
+              <IndianRupee className="h-5 w-5 text-[#F97316]" />
+            </div>
           </CardHeader>
           <CardContent className="px-6 pb-6">
-            <div className="text-3xl font-bold text-[#1F2937]">
+            <div className="text-3xl font-bold text-[#0F172A]">
               ₹
               {orderStats?.totalSales
                 ? parseFloat(orderStats.totalSales.toString()).toLocaleString(
@@ -474,101 +423,104 @@ export default function DashboardPage() {
             <div className="flex items-center text-xs mt-3">
               {(orderStats?.revenueGrowth ?? 0) > 0 ? (
                 <>
-                  <TrendingUp className="mr-1 h-3 w-3 text-[#22C55E]" />
-                  <span className="text-[#22C55E] font-medium">
+                  <TrendingUp className="mr-1 h-3 w-3 text-[#16A34A]" />
+                  <span className="text-[#16A34A] font-medium">
                     {t("dashboard.stats.increase", { percent: orderStats?.revenueGrowth || 0 })}
                   </span>
                 </>
               ) : (orderStats?.revenueGrowth ?? 0) < 0 ? (
                 <>
-                  <TrendingDown className="mr-1 h-3 w-3 text-[#EF4444]" />
-                  <span className="text-[#EF4444] font-medium">
+                  <TrendingDown className="mr-1 h-3 w-3 text-[#DC2626]" />
+                  <span className="text-[#DC2626] font-medium">
                     {t("dashboard.stats.decrease", { percent: Math.abs(orderStats?.revenueGrowth || 0) })}
                   </span>
                 </>
               ) : null}
               {orderStats?.revenueGrowth !== undefined && (
-                <span className="ml-1.5 text-[#9CA3AF]">{t("dashboard.stats.vs_last_month")}</span>
+                <span className="ml-1.5 text-[#94A3B8]">{t("dashboard.stats.vs_last_month")}</span>
               )}
             </div>
           </CardContent>
         </Card>
 
-        {/* Total Orders */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#22C55E]" />
+        {/* Total Orders - Blue accent */}
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded relative overflow-hidden border-l-4 border-l-[#2563EB]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-6 pt-6">
-            <CardTitle className="text-sm font-medium text-[#4B5563]">
+            <CardTitle className="text-sm font-medium text-[#64748B]">
               {t("dashboard.stats.total_orders")}
             </CardTitle>
-            <ShoppingCart className="h-5 w-5 text-[#22C55E]" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-50">
+              <ShoppingCart className="h-5 w-5 text-[#2563EB]" />
+            </div>
           </CardHeader>
           <CardContent className="px-6 pb-6">
-            <div className="text-3xl font-bold text-[#1F2937]">
+            <div className="text-3xl font-bold text-[#0F172A]">
               {orderStats?.totalOrders || 0}
             </div>
             <div className="flex items-center text-xs mt-3">
               {(orderStats?.orderGrowth ?? 0) > 0 ? (
                 <>
-                  <TrendingUp className="mr-1 h-3 w-3 text-[#22C55E]" />
-                  <span className="text-[#22C55E] font-medium">
+                  <TrendingUp className="mr-1 h-3 w-3 text-[#16A34A]" />
+                  <span className="text-[#16A34A] font-medium">
                     {t("dashboard.stats.increase", { percent: orderStats?.orderGrowth || 0 })}
                   </span>
                 </>
               ) : (orderStats?.orderGrowth ?? 0) < 0 ? (
                 <>
-                  <TrendingDown className="mr-1 h-3 w-3 text-[#EF4444]" />
-                  <span className="text-[#EF4444] font-medium">
+                  <TrendingDown className="mr-1 h-3 w-3 text-[#DC2626]" />
+                  <span className="text-[#DC2626] font-medium">
                     {t("dashboard.stats.decrease", { percent: Math.abs(orderStats?.orderGrowth || 0) })}
                   </span>
                 </>
               ) : null}
               {orderStats?.orderGrowth !== undefined && (
-                <span className="ml-1.5 text-[#9CA3AF]">{t("dashboard.stats.vs_last_month")}</span>
+                <span className="ml-1.5 text-[#94A3B8]">{t("dashboard.stats.vs_last_month")}</span>
               )}
             </div>
           </CardContent>
         </Card>
 
-        {/* Total Users */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#2E7D32]" />
+        {/* Total Users - Green accent */}
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded relative overflow-hidden border-l-4 border-l-[#16A34A]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-6 pt-6">
-            <CardTitle className="text-sm font-medium text-[#4B5563]">
+            <CardTitle className="text-sm font-medium text-[#64748B]">
               {t("dashboard.stats.total_users")}
             </CardTitle>
-            <UsersIcon className="h-5 w-5 text-[#2E7D32]" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-50">
+              <UsersIcon className="h-5 w-5 text-[#16A34A]" />
+            </div>
           </CardHeader>
           <CardContent className="px-6 pb-6">
-            <div className="text-3xl font-bold text-[#1F2937]">
+            <div className="text-3xl font-bold text-[#0F172A]">
               {userStats?.total || 0}
             </div>
             <div className="flex items-center text-xs mt-3">
               {userStats?.newThisMonth ? (
                 <>
-                  <ArrowUpRight className="mr-1 h-3 w-3 text-[#22C55E]" />
-                  <span className="text-[#22C55E] font-medium">
+                  <ArrowUpRight className="mr-1 h-3 w-3 text-[#16A34A]" />
+                  <span className="text-[#16A34A] font-medium">
                     {t("dashboard.stats.new_this_month", { count: userStats.newThisMonth })}
                   </span>
                 </>
               ) : (
-                <span className="text-[#9CA3AF]">{t("dashboard.stats.no_new_users")}</span>
+                <span className="text-[#94A3B8]">{t("dashboard.stats.no_new_users")}</span>
               )}
             </div>
           </CardContent>
         </Card>
 
-        {/* Return Requests */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl relative overflow-hidden">
-          <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#F59E0B]" />
+        {/* Return Requests - Amber accent */}
+        <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded relative overflow-hidden border-l-4 border-l-[#D97706]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-6 pt-6">
-            <CardTitle className="text-sm font-medium text-[#4B5563]">
+            <CardTitle className="text-sm font-medium text-[#64748B]">
               {t("dashboard.stats.return_requests")}
             </CardTitle>
-            <RotateCcw className="h-5 w-5 text-[#F59E0B]" />
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-50">
+              <RotateCcw className="h-5 w-5 text-[#D97706]" />
+            </div>
           </CardHeader>
           <CardContent className="px-6 pb-6">
-            <div className="text-3xl font-bold text-[#1F2937]">
+            <div className="text-3xl font-bold text-[#0F172A]">
               {returnStats?.total || 0}
             </div>
             <div className="flex items-center text-xs mt-3">
@@ -592,7 +544,7 @@ export default function DashboardPage() {
         {/* Left Column - Top Products / Sales Activity */}
         <div className="space-y-6">
           {orderStats?.topProducts && orderStats.topProducts.length > 0 ? (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="text-lg font-semibold text-[#1F2937]">
                   {t("dashboard.top_selling.title")}
@@ -609,7 +561,7 @@ export default function DashboardPage() {
                       className="flex items-center gap-4 pb-4 border-b border-[#E5E7EB] last:border-0 last:pb-0"
                     >
                       <div
-                        className="h-14 w-14 rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
+                        className="h-14 w-14 rounded bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
                         style={{
                           backgroundImage:
                             product.images && product.images[0]
@@ -651,7 +603,7 @@ export default function DashboardPage() {
                         className="text-xs h-8 border-[#E5E7EB] hover:bg-[#F3F7F6]"
                         asChild
                       >
-                        <Link to={`/products/${product.id}`}>{t("dashboard.top_selling.view")}</Link>
+                        <Link to={`/courses/${product.id}`}>{t("dashboard.top_selling.view")}</Link>
                       </Button>
                     </div>
                   ))}
@@ -659,24 +611,23 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-white border border-[#E2E8F0] shadow-[0_1px_3px_rgba(0,0,0,0.08)] rounded">
               <CardContent className="p-12">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
-                    <BarChart3 className="h-8 w-8 text-[#9CA3AF]" />
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-200 mb-4">
+                    <BarChart3 className="h-8 w-8 text-slate-400" />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#1F2937] mb-1.5">
+                  <h3 className="text-lg font-semibold text-[#0F172A] mb-1.5">
                     {t("dashboard.top_selling.no_data")}
                   </h3>
-                  <p className="text-sm text-[#9CA3AF] mb-6 max-w-sm mx-auto">
+                  <p className="text-sm text-[#64748B] mb-6 max-w-sm mx-auto">
                     {t("dashboard.top_selling.no_data_desc")}
                   </p>
                   <Button
-                    variant="outline"
-                    className="border-[#4CAF50] text-[#2E7D32] hover:bg-[#E8F5E9]"
+                    className="bg-[#F97316] hover:bg-[#EA580C] text-white"
                     asChild
                   >
-                    <Link to="/products">{t("dashboard.top_selling.view_products")}</Link>
+                    <Link to="/courses">{t("dashboard.top_selling.view_products")}</Link>
                   </Button>
                 </div>
               </CardContent>
@@ -685,7 +636,7 @@ export default function DashboardPage() {
 
           {/* Low Stock Items */}
           {inventoryAlerts && inventoryAlerts.count > 0 && (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center gap-2">
                   <Package2 className="h-5 w-5 text-[#4CAF50]" />
@@ -700,7 +651,7 @@ export default function DashboardPage() {
                       className="flex items-center gap-3 pb-3 border-b border-[#E5E7EB] last:border-0 last:pb-0"
                     >
                       <div
-                        className="h-12 w-12 rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
+                        className="h-12 w-12 rounded bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
                         style={{
                           backgroundImage: alert.image
                             ? `url(${getImageUrl(alert.image)})`
@@ -744,7 +695,7 @@ export default function DashboardPage() {
                       className="text-sm text-[#4B5563] hover:text-[#1F2937]"
                       asChild
                     >
-                      <Link to="/products">
+                      <Link to="/courses">
                         {t("dashboard.low_stock.view_all", { count: inventoryAlerts.count })}
                       </Link>
                     </Button>
@@ -758,7 +709,7 @@ export default function DashboardPage() {
         {/* Right Column - Recent Returns / Orders */}
         <div className="space-y-6">
           {recentReturns.length > 0 ? (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <div className="flex items-center justify-between">
                   <div>
@@ -833,10 +784,10 @@ export default function DashboardPage() {
                     return (
                       <div
                         key={returnReq.id}
-                        className="flex items-center gap-4 p-3 border border-[#E5E7EB] rounded-lg hover:bg-[#F3F7F6] transition-colors"
+                        className="flex items-center gap-4 p-3 border border-[#E5E7EB] rounded hover:bg-[#F3F7F6] transition-colors"
                       >
                         <div
-                          className="h-12 w-12 rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
+                          className="h-12 w-12 rounded bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0"
                           style={{
                             backgroundImage: returnReq.orderItem?.product
                               ?.images?.[0]
@@ -896,7 +847,7 @@ export default function DashboardPage() {
               </CardContent>
             </Card>
           ) : (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardContent className="p-12">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
@@ -923,7 +874,7 @@ export default function DashboardPage() {
           {/* Order Status Distribution - Hidden on mobile */}
           {orderStats?.statusCounts &&
             Object.keys(orderStats.statusCounts).length > 0 && (
-              <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hidden lg:block">
+              <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hidden lg:block">
                 <CardHeader className="px-6 pt-6 pb-4">
                   <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center gap-2">
                     <PieChartIcon className="h-5 w-5 text-[#4CAF50]" />

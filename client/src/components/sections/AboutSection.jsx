@@ -76,9 +76,9 @@ export const AboutSection = () => {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-2xl text-center card-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="bg-white p-6 rounded text-center card-shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 bg-primary/10 rounded flex items-center justify-center mx-auto mb-4">
                   <feature.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
@@ -89,7 +89,7 @@ export const AboutSection = () => {
         </div>
 
         {/* Our Goal */}
-        <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 mb-12 border border-primary/10">
+        <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded p-8 md:p-12 mb-12 border border-primary/10">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               Our Goal
@@ -112,7 +112,7 @@ export const AboutSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12">
+        <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded p-8 md:p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">

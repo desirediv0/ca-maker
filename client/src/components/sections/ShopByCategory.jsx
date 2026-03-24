@@ -44,7 +44,7 @@ const categories = [
     name: "Trolley Speakers",
     slug: "trolley-speakers",
     description: "Portable solutions",
-    image:  "/hero-slide-1.png",
+    image: "/hero-slide-1.png",
     products: "18+ Products"
   }
 ];
@@ -63,8 +63,8 @@ export const ShopByCategory = () => {
               Find Your Sound
             </h2>
           </div>
-          <Link 
-            href="/products" 
+          <Link
+            href="/courses"
             className="inline-flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors group"
           >
             View All Products
@@ -77,10 +77,9 @@ export const ShopByCategory = () => {
           {categories.map((category, index) => (
             <Link
               key={category.slug}
-              href={`/products?category=${category.slug}`}
-              className={`group relative overflow-hidden rounded-2xl bg-muted ${
-                index === 0 ? 'col-span-2 lg:col-span-1 aspect-[2/1] lg:aspect-square' : 'aspect-square'
-              }`}
+              href={`/courses?category=${category.slug}`}
+              className={`group relative overflow-hidden rounded bg-muted ${index === 0 ? 'col-span-2 lg:col-span-1 aspect-[2/1] lg:aspect-square' : 'aspect-square'
+                }`}
             >
               {/* Background Image */}
               <Image
@@ -90,10 +89,10 @@ export const ShopByCategory = () => {
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-              
+
               {/* Content */}
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
                 <p className="text-white/70 text-sm font-medium mb-1">
@@ -105,7 +104,7 @@ export const ShopByCategory = () => {
                 <p className="text-white/80 text-sm hidden md:block">
                   {category.description}
                 </p>
-                
+
                 {/* Arrow */}
                 <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <ArrowRight className="h-5 w-5 text-white" />

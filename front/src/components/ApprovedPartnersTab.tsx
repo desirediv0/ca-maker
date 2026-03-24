@@ -114,7 +114,7 @@ export default function ApprovedPartnersTab() {
     return (
         <>
             {/* Demo Password Info */}
-            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded">
                 <h3 className="font-semibold text-blue-800 mb-2">{t("partners_tab.approved.demo_title")}</h3>
                 <div className="flex items-center gap-4">
                     <div className="font-mono text-lg bg-white px-3 py-2 rounded border border-blue-300">

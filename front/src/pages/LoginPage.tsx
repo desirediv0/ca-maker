@@ -85,7 +85,7 @@ export default function LoginPage() {
 
           {/* Error Display */}
           {(error || formError) && (
-            <div className="rounded-lg bg-red-500/10 border border-red-500/30 backdrop-blur-sm p-4">
+            <div className="rounded bg-red-500/10 border border-red-500/30 backdrop-blur-sm p-4">
               <p className="text-sm text-red-400 font-medium text-center">
                 {formError || error}
               </p>
@@ -113,12 +113,11 @@ export default function LoginPage() {
                   onBlur={() => setFocusedField(null)}
                   disabled={isSubmitting}
                   required
-                  className={`w-full h-12 px-4 bg-gray-900/50 backdrop-blur-sm border rounded-lg text-white placeholder-gray-500 
+                  className={`w-full h-12 px-4 bg-gray-900/50 backdrop-blur-sm border rounded text-white placeholder-gray-500 
                     transition-all duration-200
-                    ${
-                      focusedField === "email"
-                        ? "border-green-500 shadow-[0_0_0_3px_rgba(34,197,94,0.1)]"
-                        : "border-gray-700 hover:border-gray-600"
+                    ${focusedField === "email"
+                      ? "border-green-500 shadow-[0_0_0_3px_rgba(34,197,94,0.1)]"
+                      : "border-gray-700 hover:border-gray-600"
                     }
                     focus:outline-none focus:ring-0
                     disabled:opacity-50 disabled:cursor-not-allowed`}
@@ -145,12 +144,11 @@ export default function LoginPage() {
                   onBlur={() => setFocusedField(null)}
                   disabled={isSubmitting}
                   required
-                  className={`w-full h-12 px-4 pr-20 bg-gray-900/50 backdrop-blur-sm border rounded-lg text-white placeholder-gray-500 
+                  className={`w-full h-12 px-4 pr-20 bg-gray-900/50 backdrop-blur-sm border rounded text-white placeholder-gray-500 
                     transition-all duration-200
-                    ${
-                      focusedField === "password"
-                        ? "border-green-500 shadow-[0_0_0_3px_rgba(34,197,94,0.1)]"
-                        : "border-gray-700 hover:border-gray-600"
+                    ${focusedField === "password"
+                      ? "border-green-500 shadow-[0_0_0_3px_rgba(34,197,94,0.1)]"
+                      : "border-gray-700 hover:border-gray-600"
                     }
                     focus:outline-none focus:ring-0
                     disabled:opacity-50 disabled:cursor-not-allowed`}
@@ -177,7 +175,7 @@ export default function LoginPage() {
               type="submit"
               className="w-full h-12 text-base font-medium bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 
                 border border-gray-700 hover:border-gray-600 
-                text-white rounded-lg
+                text-white rounded
                 shadow-lg shadow-black/20
                 transition-all duration-200
                 disabled:opacity-50 disabled:cursor-not-allowed

@@ -575,7 +575,7 @@ export default function CheckoutPage() {
     if (orderCreated) {
         return (
             <div className="container mx-auto px-4 py-12">
-                <div className="max-w-lg mx-auto bg-white p-8 rounded-lg border shadow-lg relative overflow-hidden">
+                <div className="max-w-lg mx-auto bg-white p-8 rounded border shadow-lg relative overflow-hidden">
                     {/* Background pattern for festive feel */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent z-0"></div>
 
@@ -614,7 +614,7 @@ export default function CheckoutPage() {
                                 </div>
                             )}
 
-                            <div className="my-6 flex items-center justify-center bg-green-50 p-4 rounded-lg">
+                            <div className="my-6 flex items-center justify-center bg-green-50 p-4 rounded">
                                 <CheckCircle className="h-8 w-8 text-green-500 mr-2" />
                                 <p className="text-xl text-green-600 font-medium">
                                     Payment Successful
@@ -626,7 +626,7 @@ export default function CheckoutPage() {
                                 placed and you&apos;ll receive an email confirmation shortly.
                             </p>
 
-                            <div className="mb-6 bg-orange-50 p-4 rounded-xl border border-orange-100">
+                            <div className="mb-6 bg-orange-50 p-4 rounded border border-orange-100">
                                 <div className="flex items-center justify-center space-x-2 mb-3">
                                     <Loader2 className="h-4 w-4 text-orange-500 animate-spin" />
                                     <p className="text-orange-700 text-sm font-medium">
@@ -679,7 +679,7 @@ export default function CheckoutPage() {
                 {/* Loading Overlay for Payment Processing */}
                 {processing && (
                     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
-                        <div className="bg-white rounded-2xl p-8 max-w-md mx-4 text-center shadow-2xl">
+                        <div className="bg-white rounded p-8 max-w-md mx-4 text-center shadow-2xl">
                             <div className="mb-6">
                                 <div className="h-20 w-20 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <Loader2 className="h-10 w-10 text-orange-500 animate-spin" />
@@ -702,7 +702,7 @@ export default function CheckoutPage() {
                 )}
 
                 {error && (
-                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md flex items-start">
+                    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded flex items-start">
                         <AlertCircle className="text-red-500 mt-0.5 mr-3 flex-shrink-0" />
                         <div>
                             <p className="text-red-700 font-semibold">Payment Failed</p>
@@ -716,7 +716,7 @@ export default function CheckoutPage() {
                     <div className="lg:col-span-2 space-y-6">
                         {/* Digital delivery notice */}
                         {isAllDigital && (
-                            <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+                            <div className="bg-green-50 border border-green-200 rounded p-4 flex items-start gap-3">
                                 <span className="text-2xl flex-shrink-0">⚡</span>
                                 <div>
                                     <p className="font-semibold text-green-800 text-sm">Digital Delivery</p>
@@ -729,7 +729,7 @@ export default function CheckoutPage() {
                         )}
 
                         {/* Shipping Addresses — hidden for all-digital carts */}
-                        {!isAllDigital && <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        {!isAllDigital && <div className="bg-white rounded shadow-sm border border-gray-100 p-6">
                             <div className="flex items-center justify-between mb-4">
                                 <h2 className="text-base font-bold text-gray-900 flex items-center">
                                     <MapPin className="h-5 w-5 mr-2 text-orange-500" />
@@ -755,7 +755,7 @@ export default function CheckoutPage() {
                             )}
 
                             {addresses.length === 0 && !showAddressForm ? (
-                                <div className="bg-yellow-50 p-4 rounded-md border border-yellow-200">
+                                <div className="bg-yellow-50 p-4 rounded border border-yellow-200">
                                     <span className="text-yellow-700">
                                         You don&apos;t have any saved addresses.{" "}
                                         <button
@@ -775,7 +775,7 @@ export default function CheckoutPage() {
                                     {addresses.map((address) => (
                                         <div
                                             key={address.id}
-                                            className={`border-2 rounded-xl p-4 cursor-pointer transition-all ${selectedAddressId === address.id
+                                            className={`border-2 rounded p-4 cursor-pointer transition-all ${selectedAddressId === address.id
                                                 ? "border-orange-500 bg-orange-50/60"
                                                 : "border-gray-200 hover:border-orange-300"
                                                 }`}
@@ -814,14 +814,14 @@ export default function CheckoutPage() {
                         </div>}
 
                         {/* Payment Method */}
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                        <div className="bg-white rounded shadow-sm border border-gray-100 p-6">
                             <h2 className="text-base font-bold text-gray-900 flex items-center mb-4">
                                 <CreditCard className="h-5 w-5 mr-2 text-orange-500" />
                                 Payment Method
                             </h2>
 
                             {!paymentSettings.cashEnabled && !paymentSettings.razorpayEnabled ? (
-                                <div className="border rounded-md p-4 bg-yellow-50 border-yellow-200">
+                                <div className="border rounded p-4 bg-yellow-50 border-yellow-200">
                                     <p className="text-sm text-yellow-800">
                                         No payment methods are currently available. Please contact support or try again later.
                                     </p>
@@ -831,7 +831,7 @@ export default function CheckoutPage() {
                                     {/* Cash on Delivery — not available for digital-only orders */}
                                     {paymentSettings.cashEnabled && !isAllDigital && (
                                         <div
-                                            className={`border-2 rounded-xl p-4 transition-all cursor-pointer ${paymentMethod === "CASH"
+                                            className={`border-2 rounded p-4 transition-all cursor-pointer ${paymentMethod === "CASH"
                                                 ? "border-orange-500 bg-orange-50"
                                                 : "border-gray-200 hover:border-orange-300"
                                                 }`}
@@ -868,7 +868,7 @@ export default function CheckoutPage() {
                                     {/* Razorpay Option */}
                                     {paymentSettings.razorpayEnabled && (
                                         <div
-                                            className={`border-2 rounded-xl p-4 transition-all cursor-pointer ${paymentMethod === "RAZORPAY"
+                                            className={`border-2 rounded p-4 transition-all cursor-pointer ${paymentMethod === "RAZORPAY"
                                                 ? "border-orange-500 bg-orange-50"
                                                 : "border-gray-200 hover:border-orange-300"
                                                 }`}
@@ -904,7 +904,7 @@ export default function CheckoutPage() {
 
                     {/* ── Order Summary Panel ── */}
                     <div className="lg:col-span-1">
-                        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden sticky top-20">
+                        <div className="bg-white rounded border border-gray-100 shadow-sm overflow-hidden sticky top-20">
                             {/* Panel header */}
                             <div className="px-6 py-4 bg-orange-50/60 border-b border-gray-100">
                                 <h2 className="text-base font-bold text-gray-900">Order Summary</h2>
@@ -926,7 +926,12 @@ export default function CheckoutPage() {
                                             )}
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-semibold text-gray-900 truncate">{item.product.name}</p>
+                                            <Link
+                                                href={item.product?.slug ? `/courses/${item.product.slug}` : "/courses"}
+                                                className="text-sm font-semibold text-gray-900 truncate block hover:text-orange-600 transition-colors"
+                                            >
+                                                {item.product.name}
+                                            </Link>
                                             {item.variant?.attributes?.length > 0 && (
                                                 <p className="text-xs text-gray-500 truncate">
                                                     {item.variant.attributes.map((a) => `${a.attribute}: ${a.value}`).join(" · ")}
@@ -951,7 +956,7 @@ export default function CheckoutPage() {
                                 </div>
 
                                 {coupon && (
-                                    <div className="flex justify-between items-center bg-green-50 px-3 py-2 rounded-lg">
+                                    <div className="flex justify-between items-center bg-green-50 px-3 py-2 rounded">
                                         <span className="text-green-700 font-semibold flex items-center gap-1.5">
                                             🏷 {coupon.code}
                                         </span>
@@ -976,7 +981,7 @@ export default function CheckoutPage() {
                                 )}
 
                                 {totals.shipping > 0 && cart.freeShippingThreshold > 0 && (
-                                    <div className="text-xs text-amber-700 bg-amber-50 border border-amber-100 p-2.5 rounded-lg text-center font-medium">
+                                    <div className="text-xs text-amber-700 bg-amber-50 border border-amber-100 p-2.5 rounded text-center font-medium">
                                         Add <strong>{formatCurrency(cart.freeShippingThreshold - totals.subtotal)}</strong> more for <span className="text-green-600 font-bold">FREE delivery</span>
                                     </div>
                                 )}
@@ -995,7 +1000,7 @@ export default function CheckoutPage() {
 
                                 <Button
                                     className="w-full h-14 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white
-                                           text-base font-bold rounded-xl border-0 shadow-lg shadow-orange-500/25
+                                           text-base font-bold rounded border-0 shadow-lg shadow-orange-500/25
                                            hover:shadow-orange-500/40 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                                     size="lg"
                                     onClick={handleCheckout}
@@ -1014,7 +1019,7 @@ export default function CheckoutPage() {
                                         <span className="flex items-center justify-center gap-2">
                                             <IndianRupee className="h-5 w-5" />
                                             Place Order
-                                            <span className="bg-orange-600 px-2.5 py-0.5 rounded-lg text-sm font-black">
+                                            <span className="bg-orange-600 px-2.5 py-0.5 rounded text-sm font-black">
                                                 {formatCurrency(
                                                     totals.total + (paymentMethod === "CASH" ? (paymentSettings.codCharge || 0) : 0)
                                                 )}

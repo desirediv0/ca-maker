@@ -17,8 +17,11 @@
     "nav": {
         "dashboard": "डैशबोर्ड",
         "products": "उत्पाद",
+        "courses": "कोर्स",
         "all_products": "सभी उत्पाद",
+        "all_courses": "सभी कोर्स",
         "add_product": "उत्पाद जोड़ें",
+        "add_course": "कोर्स जोड़ें",
         "brands": "ब्रांड्स",
         "categories": "श्रेणियाँ",
         "attributes": "गुण (Attributes)",
@@ -1714,8 +1717,8 @@
         }
     },
     "products": {
-        "title": "उत्पाद",
-        "add_new": "उत्पाद जोड़ें",
+        "title": "कोर्स",
+        "add_new": "कोर्स जोड़ें",
         "edit_product": "उत्पाद संपादित करें",
         "list": {
             "search_placeholder": "उत्पाद खोजें...",

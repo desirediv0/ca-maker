@@ -2,18 +2,18 @@ import { Shield, Lock, BookOpen, GraduationCap, Target, Trophy } from "lucide-re
 
 const stats = [
   { value: "1,000+", label: "Students Enrolled" },
-  { value: "95%",    label: "Success Rate" },
-  { value: "6+",     label: "Years Experience" },
-  { value: "50+",    label: "Courses Offered" },
+  { value: "95%", label: "Success Rate" },
+  { value: "6+", label: "Years Experience" },
+  { value: "50+", label: "Courses Offered" },
 ];
 
 const trustBadges = [
-  { icon: Shield,        text: "100% Authentic Content" },
-  { icon: Lock,          text: "Secure Payment" },
-  { icon: BookOpen,      text: "Quality Study Material" },
+  { icon: Shield, text: "100% Authentic Content" },
+  { icon: Lock, text: "Secure Payment" },
+  { icon: BookOpen, text: "Quality Study Material" },
   { icon: GraduationCap, text: "Expert Faculty" },
-  { icon: Target,        text: "Exam-Oriented Approach" },
-  { icon: Trophy,        text: "Proven Track Record" },
+  { icon: Target, text: "Exam-Oriented Approach" },
+  { icon: Trophy, text: "Proven Track Record" },
 ];
 
 export const TrustSection = () => {
@@ -48,11 +48,11 @@ export const TrustSection = () => {
             {trustBadges.map((badge, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 px-5 py-4 rounded-2xl
+                className="flex items-center gap-3 px-5 py-4 rounded
                            bg-white/5 border border-white/10
                            hover:bg-white/10 hover:border-orange-500/40 transition-all duration-300"
               >
-                <div className="w-9 h-9 bg-orange-500/15 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 bg-orange-500/15 rounded flex items-center justify-center flex-shrink-0">
                   <badge.icon className="h-4.5 w-4.5 text-orange-400" style={{ width: 18, height: 18 }} />
                 </div>
                 <p className="text-white/90 text-sm font-medium">{badge.text}</p>
@@ -68,7 +68,7 @@ export const TrustSection = () => {
           </p>
           <div className="flex justify-center items-center gap-4 flex-wrap">
             {["💳 Credit / Debit Cards", "📱 UPI", "🏦 Net Banking", "💰 Wallets"].map((method) => (
-              <div key={method} className="bg-white/8 border border-white/10 px-4 py-2 rounded-xl">
+              <div key={method} className="bg-white/8 border border-white/10 px-4 py-2 rounded">
                 <span className="text-white/70 text-sm font-medium">{method}</span>
               </div>
             ))}

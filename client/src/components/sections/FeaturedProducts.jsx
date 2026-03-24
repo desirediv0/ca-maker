@@ -16,7 +16,7 @@ import {
 
 // Skeleton loader
 const ProductSkeleton = () => (
-  <div className="bg-white rounded-xl overflow-hidden animate-pulse border border-gray-100">
+  <div className="bg-white rounded overflow-hidden animate-pulse border border-gray-100">
     <div className="h-48 w-full bg-gradient-to-br from-gray-100 to-gray-200"></div>
     <div className="p-4">
       <div className="h-3 w-16 bg-gray-200 rounded-full mx-auto mb-2"></div>
@@ -39,12 +39,12 @@ export const FeaturedProducts = () => {
         setLoading(true);
         // Try featured type first
         let response = await fetchApi("/public/products/type/featured?limit=12");
-        
+
         if (!response?.data?.products?.length) {
           // Fallback to featured products
           response = await fetchApi("/public/products?featured=true&limit=12");
         }
-        
+
         setProducts(response?.data?.products || []);
       } catch (err) {
         console.error("Error fetching featured products:", err);
@@ -129,7 +129,7 @@ export const FeaturedProducts = () => {
 
         {/* View All Button */}
         <div className="text-center mt-6">
-          <Link href="/products?featured=true">
+          <Link href="/courses?featured=true">
             <Button
               variant="outline"
               size="lg"

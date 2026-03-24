@@ -72,9 +72,9 @@ export default function IndustriesPage() {
                             <Link
                                 key={index}
                                 href={industry.link}
-                                className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                                className="group bg-white border border-gray-100 rounded p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                             >
-                                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                                <div className="w-16 h-16 bg-primary/10 rounded flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
                                     <industry.icon className="h-8 w-8 text-primary group-hover:text-white transition-colors" />
                                 </div>
                                 <h3 className="font-display font-bold text-xl text-foreground mb-3">
@@ -117,7 +117,7 @@ export default function IndustriesPage() {
                                     Get Expert Advice
                                 </Button>
                             </Link>
-                            <Link href="/products">
+                            <Link href="/courses">
                                 <Button variant="outline" size="lg" className="rounded-full px-8">
                                     Browse All Products
                                 </Button>

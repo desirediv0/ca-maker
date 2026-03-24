@@ -94,7 +94,7 @@ export default function ProductDetailPage() {
           setIsForceDeleteDialogOpen(false);
         } else {
           toast.success("Product deleted successfully");
-          navigate("/products");
+          navigate("/courses");
         }
       } else {
         toast.error(response.data.message || "Failed to delete product");
@@ -185,7 +185,7 @@ export default function ProductDetailPage() {
 
   // Handle edit navigation
   const handleEditProduct = () => {
-    navigate(`/products/edit/${id}`);
+    navigate(`/courses/${id}/edit`);
   };
 
   // Add a helper function to determine if it's a simple product (before the component)
@@ -240,7 +240,7 @@ export default function ProductDetailPage() {
           {t("products.details.not_found_desc") || "The product you're looking for doesn't exist or has been removed."}
         </p>
         <Button variant="outline" className="mt-4" asChild>
-          <Link to="/products">
+          <Link to="/courses">
             <ChevronLeft className="mr-2 h-4 w-4" />
             {t("products.details.actions.back")}
           </Link>
@@ -288,7 +288,7 @@ export default function ProductDetailPage() {
       <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
         <div className="flex items-center space-x-2">
           <Button variant="outline" size="icon" asChild>
-            <Link to="/products">
+            <Link to="/courses">
               <ChevronLeft className="h-4 w-4" />
             </Link>
           </Button>
@@ -412,7 +412,7 @@ export default function ProductDetailPage() {
                     <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
                       {Object.entries(product.nutritionInfo).map(
                         ([key, value]: [string, any]) => (
-                          <div key={key} className="rounded-md border p-2">
+                          <div key={key} className="rounded border p-2">
                             <h4 className="text-xs font-medium text-muted-foreground">
                               {key}
                             </h4>
@@ -525,7 +525,7 @@ export default function ProductDetailPage() {
                       {/* Add variant image display if flavor has an image */}
                       {variant.flavor?.image && (
                         <div className="px-6 py-2">
-                          <div className="h-20 w-20 rounded-md overflow-hidden bg-muted">
+                          <div className="h-20 w-20 rounded overflow-hidden bg-muted">
                             <img
                               src={variant.flavor.image}
                               alt={variant.flavor.name}

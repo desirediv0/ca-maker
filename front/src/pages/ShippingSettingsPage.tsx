@@ -93,7 +93,7 @@ export default function ShippingSettingsPage() {
             </div>
 
             {/* Shipping Charges Card */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardHeader className="px-6 pt-6 pb-4">
                     <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                         <Truck className="h-5 w-5 mr-2 text-[#4CAF50]" />

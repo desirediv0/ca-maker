@@ -390,7 +390,7 @@ const BlogPostForm = ({ postId, isEditing = false }: BlogPostFormProps) => {
               )}
             />
 
-            <div className="border p-4 rounded-lg space-y-4 mt-6">
+            <div className="border p-4 rounded space-y-4 mt-6">
               <h3 className="font-medium text-lg">SEO Settings</h3>
 
               <FormField
@@ -464,7 +464,7 @@ const BlogPostForm = ({ postId, isEditing = false }: BlogPostFormProps) => {
                   control={form.control as any}
                   name="isPublished"
                   render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded border p-3 shadow-sm">
                       <div className="space-y-0.5">
                         <FormLabel>Publish</FormLabel>
                         <FormDescription>
@@ -485,7 +485,7 @@ const BlogPostForm = ({ postId, isEditing = false }: BlogPostFormProps) => {
                   <FormLabel className="mb-2 inline-block">
                     Categories
                   </FormLabel>
-                  <div className="mt-2 space-y-2 border rounded-lg p-3">
+                  <div className="mt-2 space-y-2 border rounded p-3">
                     {categories.length === 0 ? (
                       <div className="p-4 text-center">
                         <p className="text-sm text-muted-foreground">
@@ -570,7 +570,7 @@ const BlogPostForm = ({ postId, isEditing = false }: BlogPostFormProps) => {
                         <img
                           src={imagePreview}
                           alt="Cover preview"
-                          className="rounded-md w-full h-full object-cover"
+                          className="rounded w-full h-full object-cover"
                         />
                         <Button
                           type="button"
@@ -584,7 +584,7 @@ const BlogPostForm = ({ postId, isEditing = false }: BlogPostFormProps) => {
                       </div>
                     ) : (
                       <div
-                        className="border-2 border-dashed border-gray-300 rounded-md p-4 text-center cursor-pointer hover:bg-gray-50 transition-colors"
+                        className="border-2 border-dashed border-gray-300 rounded p-4 text-center cursor-pointer hover:bg-gray-50 transition-colors"
                         onClick={() =>
                           document.getElementById("cover-image")?.click()
                         }

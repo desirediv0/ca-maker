@@ -242,7 +242,7 @@ const ContactManagementPage = () => {
       </div>
 
       {/* Filters Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -274,7 +274,7 @@ const ContactManagementPage = () => {
         </CardContent>
       </Card>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-0">
           {isLoading ? (
             <div className="flex justify-center py-20">
@@ -499,7 +499,7 @@ const ContactManagementPage = () => {
 
               <div>
                 <p className="text-xs text-[#9CA3AF] mb-2">{t("contact_management.view_dialog.message")}</p>
-                <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB] whitespace-pre-wrap text-sm text-[#4B5563]">
+                <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB] whitespace-pre-wrap text-sm text-[#4B5563]">
                   {selectedSubmission.message}
                 </div>
               </div>
@@ -507,7 +507,7 @@ const ContactManagementPage = () => {
               {selectedSubmission.notes && (
                 <div>
                   <p className="text-xs text-[#9CA3AF] mb-2">{t("contact_management.view_dialog.admin_notes")}</p>
-                  <div className="p-4 bg-[#FFFBEB] rounded-lg border border-[#FEF3C7] whitespace-pre-wrap text-sm text-[#4B5563]">
+                  <div className="p-4 bg-[#FFFBEB] rounded border border-[#FEF3C7] whitespace-pre-wrap text-sm text-[#4B5563]">
                     {selectedSubmission.notes}
                   </div>
                 </div>

@@ -37,7 +37,7 @@ export class SafeRender extends Component<SafeRenderProps, SafeRenderState> {
       }
 
       return (
-        <div className="flex flex-col items-center justify-center p-4 text-center rounded-md bg-destructive/10 text-destructive">
+        <div className="flex flex-col items-center justify-center p-4 text-center rounded bg-destructive/10 text-destructive">
           <AlertTriangle className="h-6 w-6 mb-2" />
           <div className="text-sm font-medium">
             Something went wrong rendering this component

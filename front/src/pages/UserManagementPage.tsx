@@ -541,7 +541,7 @@ export default function UserManagementPage() {
       </div>
 
       {/* Filters Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <form onSubmit={handleSearch} className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -585,7 +585,7 @@ export default function UserManagementPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-0">
           {loading && !users.length ? (
             <div className="flex flex-col items-center justify-center py-20">

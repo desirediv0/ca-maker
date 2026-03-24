@@ -484,7 +484,7 @@ function AttributeForm({
               </p>
               {selectedIndustry &&
                 INDUSTRY_PRESETS[selectedIndustry as keyof typeof INDUSTRY_PRESETS] && (
-                  <div className="mt-2 rounded-md bg-muted p-3">
+                  <div className="mt-2 rounded bg-muted p-3">
                     <p className="text-sm font-medium mb-2">
                       Available attributes for{" "}
                       {INDUSTRY_PRESETS[selectedIndustry as keyof typeof INDUSTRY_PRESETS]
@@ -650,7 +650,7 @@ function AttributeForm({
                 <h3 className="font-semibold mb-2 text-base">
                   Common Examples:
                 </h3>
-                <div className="bg-muted p-3 rounded-md text-sm space-y-2">
+                <div className="bg-muted p-3 rounded text-sm space-y-2">
                   <div>
                     <strong>Example 1 - Clothing Store:</strong>
                     <ul className="list-disc list-inside ml-4 mt-1">

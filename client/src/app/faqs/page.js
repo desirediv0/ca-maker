@@ -109,7 +109,7 @@ export default function FAQsPage() {
                     <Skeleton className="h-12 w-full mb-8" />
                     <div className="space-y-4">
                         {[...Array(5)].map((_, i) => (
-                            <div key={i} className="border rounded-md p-2">
+                            <div key={i} className="border rounded p-2">
                                 <Skeleton className="h-8 w-full mb-2" />
                                 <Skeleton className="h-20 w-full" />
                             </div>
@@ -139,7 +139,7 @@ export default function FAQsPage() {
                             placeholder="Search FAQs..."
                             value={searchQuery}
                             onChange={handleSearchChange}
-                            className="w-full pl-10 pr-4 py-2 rounded-md border-gray-300 focus:border-primary focus:ring-primary"
+                            className="w-full pl-10 pr-4 py-2 rounded border-gray-200 focus:border-orange-500 focus:ring-orange-500"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     </div>
@@ -152,8 +152,8 @@ export default function FAQsPage() {
                                     key={category}
                                     onClick={() => handleCategoryChange(category)}
                                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category
-                                        ? "bg-primary text-white"
-                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                        ? "bg-orange-500 text-white"
+                                        : "bg-orange-100 text-gray-700 hover:bg-orange-200"
                                         }`}
                                 >
                                     {category === "all" ? "All Questions" : category}
@@ -169,9 +169,9 @@ export default function FAQsPage() {
                                 <AccordionItem
                                     key={faq.id}
                                     value={faq.id.toString()}
-                                    className="border rounded-md px-2"
+                                    className="border border-gray-200 rounded px-4 data-[state=open]:border-l-4 data-[state=open]:border-l-orange-500"
                                 >
-                                    <AccordionTrigger className="text-lg font-medium py-4 px-2 hover:no-underline">
+                                    <AccordionTrigger className="text-lg font-medium py-4 px-2 hover:no-underline hover:text-orange-600 text-left">
                                         {faq.question}
                                     </AccordionTrigger>
                                     <AccordionContent className="px-2 pb-4 pt-1 text-gray-600">
@@ -192,7 +192,7 @@ export default function FAQsPage() {
                                         setSearchQuery("");
                                         setActiveCategory("all");
                                     }}
-                                    className="text-primary hover:underline"
+                                    className="text-orange-600 hover:underline font-medium"
                                 >
                                     view all FAQs
                                 </button>
@@ -201,8 +201,8 @@ export default function FAQsPage() {
                     )}
 
                     {/* Contact section */}
-                    <div className="mt-16 bg-gray-50 p-8 rounded-lg text-center">
-                        <h2 className="text-xl font-bold mb-3">Still have questions?</h2>
+                    <div className="mt-16 bg-[#FFF7ED] p-8 rounded text-center">
+                        <h2 className="text-xl font-bold text-gray-900 mb-3">Still have questions?</h2>
                         <p className="text-gray-600 mb-6">
                             Can&apos;t find the answer you&apos;re looking for? Please contact
                             our support team.
@@ -210,13 +210,13 @@ export default function FAQsPage() {
                         <div className="flex justify-center gap-4">
                             <a
                                 href="/contact"
-                                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+                                className="inline-flex items-center justify-center px-6 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors font-semibold"
                             >
                                 Contact Us
                             </a>
                             <a
                                 href="mailto:support@CA-Maker.com"
-                                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 rounded-md hover:bg-gray-100 transition-colors"
+                                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 rounded hover:border-orange-300 hover:bg-orange-50 transition-colors font-medium"
                             >
                                 Email Support
                             </a>

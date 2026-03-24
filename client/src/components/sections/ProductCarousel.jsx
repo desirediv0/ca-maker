@@ -64,16 +64,16 @@ export const ProductCarousel = ({ products, title, subtitle, viewAllLink = "/pro
                     <CarouselContent className="-ml-4">
                         {products.map((product) => (
                             <CarouselItem key={product.id} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
-                                <div className="group relative bg-card rounded-2xl overflow-hidden card-shadow hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30">
+                                <div className="group relative bg-card rounded overflow-hidden card-shadow hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30">
                                     {/* Image */}
-                                    <Link href={`/products/${product.slug}`}>
+                                    <Link href={`/courses/${product.slug}`}>
                                         <div className="aspect-square bg-gradient-to-br from-muted to-muted/50 relative overflow-hidden">
                                             <div className="absolute inset-0 flex items-center justify-center">
                                                 <div className="w-24 h-24 bg-muted-foreground/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                                                     <ShoppingCart className="h-10 w-10 text-muted-foreground/30" />
                                                 </div>
                                             </div>
-                                            
+
                                             {/* Category Badge */}
                                             <div className="absolute top-3 left-3">
                                                 <span className="px-2.5 py-1 bg-foreground/90 text-background text-xs font-medium rounded-full backdrop-blur-sm">
@@ -86,11 +86,10 @@ export const ProductCarousel = ({ products, title, subtitle, viewAllLink = "/pro
                                                 <div className="absolute bottom-4 left-4 right-4">
                                                     <button
                                                         onClick={(e) => handleAddToCart(e, product)}
-                                                        className={`w-full py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
-                                                            addedItems[product.id] || isInCart(product.id)
-                                                                ? "bg-green-500 text-white"
-                                                                : "bg-primary text-primary-foreground hover:bg-primary/90"
-                                                        }`}
+                                                        className={`w-full py-2.5 rounded font-semibold text-sm flex items-center justify-center gap-2 transition-all ${addedItems[product.id] || isInCart(product.id)
+                                                            ? "bg-green-500 text-white"
+                                                            : "bg-primary text-primary-foreground hover:bg-primary/90"
+                                                            }`}
                                                     >
                                                         {addedItems[product.id] ? (
                                                             <>
@@ -116,7 +115,7 @@ export const ProductCarousel = ({ products, title, subtitle, viewAllLink = "/pro
 
                                     {/* Info */}
                                     <div className="p-4">
-                                        <Link href={`/products/${product.slug}`}>
+                                        <Link href={`/courses/${product.slug}`}>
                                             <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                                                 {product.name}
                                             </h3>
@@ -124,7 +123,7 @@ export const ProductCarousel = ({ products, title, subtitle, viewAllLink = "/pro
                                         <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
                                             {product.power && `${product.power}`} {product.size && `• ${product.size}`}
                                         </p>
-                                        
+
                                         <div className="flex items-center justify-between mt-3">
                                             <span className="text-lg font-bold text-primary">
                                                 {formatPrice(product.price)}

@@ -29,13 +29,13 @@ export default function FeaturedCourses() {
 
   if (loading) {
     return (
-      <section className="py-20 bg-orange-50/60">
+      <section className="py-20 bg-[#FFF7ED]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="text-center mb-14">
             <div className="h-5 w-36 bg-orange-100 rounded-full mx-auto mb-4 animate-pulse" />
-            <div className="h-10 w-72 bg-gray-100 rounded-xl mx-auto animate-pulse" />
+            <div className="h-10 w-72 bg-gray-100 rounded mx-auto animate-pulse" />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
@@ -46,7 +46,7 @@ export default function FeaturedCourses() {
                 <div className="p-5 space-y-3">
                   <div className="h-5 bg-gray-100 rounded" />
                   <div className="h-4 bg-gray-100 rounded w-2/3" />
-                  <div className="h-10 bg-orange-100 rounded-xl mt-4" />
+                  <div className="h-10 bg-orange-100 rounded mt-4" />
                 </div>
               </div>
             ))}
@@ -59,7 +59,7 @@ export default function FeaturedCourses() {
   if (courses.length === 0) return null;
 
   return (
-    <section className="py-8 bg-orange-50/60">
+    <section className="py-12 md:py-16 bg-[#FFF7ED]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* ── Header ── */}
@@ -74,8 +74,8 @@ export default function FeaturedCourses() {
           </p>
         </div>
 
-        {/* ── Responsive grid ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} badge="featured" />
           ))}
@@ -86,7 +86,7 @@ export default function FeaturedCourses() {
             <Button
               variant="outline"
               size="lg"
-              className="border-orange-300 text-orange-600 hover:bg-orange-50 px-8 h-12 rounded-xl font-semibold"
+              className="border-orange-300 text-orange-600 hover:bg-orange-50 px-8 h-12 rounded font-semibold"
             >
               View All Courses <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

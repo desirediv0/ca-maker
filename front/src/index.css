@@ -51,61 +51,62 @@
 :root {
   --radius: 0.625rem;
 
-  /* Background colors */
-  --background: #f3f7f6;
-  --card: #f3f7f6;
+  /* NEW: Slate + Orange color system */
+  /* Content Background */
+  --background: #F8FAFC;
+  --card: #FFFFFF;
 
   /* Text colors */
-  --foreground: #1f2937;
-  --card-foreground: #1f2937;
-  --popover-foreground: #1f2937;
-  --secondary-foreground: #1f2937;
-  --muted-foreground: #4b5563;
-  --accent-foreground: #1f2937;
+  --foreground: #0F172A;
+  --card-foreground: #334155;
+  --popover-foreground: #0F172A;
+  --secondary-foreground: #334155;
+  --muted-foreground: #64748B;
+  --accent-foreground: #0F172A;
 
-  /* Primary colors - Matching sidebar dark green theme */
-  --primary: #0a3b3f;
-  --primary-foreground: #ffffff;
-  --primary-dark: #05282b;
-  --primary-light: #2e7d32;
+  /* Primary - Orange */
+  --primary: #F97316;
+  --primary-foreground: #FFFFFF;
+  --primary-dark: #EA580C;
+  --primary-light: #FFF7ED;
 
   /* Secondary and muted */
-  --secondary: oklch(0.97 0 0);
-  --muted: oklch(0.97 0 0);
-  --accent: oklch(0.97 0 0);
+  --secondary: #F1F5F9;
+  --muted: #F1F5F9;
+  --accent: #F1F5F9;
 
   /* Status colors */
-  --destructive: #ef4444;
-  --success: #22c55e;
-  --warning: #f59e0b;
+  --destructive: #DC2626;
+  --success: #16A34A;
+  --warning: #D97706;
 
   /* Border and input */
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #0a3b3f;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #F97316;
 
   /* Popover */
-  --popover: #f3f7f6;
+  --popover: #FFFFFF;
 
-  /* Chart colors */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* Chart colors - orange primary */
+  --chart-1: #F97316;
+  --chart-2: #2563EB;
+  --chart-3: #16A34A;
+  --chart-4: #D97706;
+  --chart-5: #64748B;
 
-  /* Sidebar colors */
-  --sidebar: #f3f7f6;
-  --sidebar-foreground: #374151;
-  --sidebar-primary: #4caf50;
-  --sidebar-primary-foreground: #f3f7f6;
-  --sidebar-accent: #f3f4f6;
-  --sidebar-accent-foreground: #1f2937;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #4caf50;
-  --sidebar-hover: #f3f4f6;
-  --sidebar-active-bg: #e8f5e9;
-  --sidebar-active-text: #2e7d32;
+  /* Sidebar - Slate-900 */
+  --sidebar: #0F172A;
+  --sidebar-foreground: #94A3B8;
+  --sidebar-primary: #F97316;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E293B;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #1E293B;
+  --sidebar-ring: #F97316;
+  --sidebar-hover: #1E293B;
+  --sidebar-active-bg: #F97316;
+  --sidebar-active-text: #FFFFFF;
 }
 
 .dark {

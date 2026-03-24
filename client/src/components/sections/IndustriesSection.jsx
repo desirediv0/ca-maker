@@ -59,12 +59,12 @@ export const IndustriesSection = () => {
         {/* Industries Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {industries.map((industry, index) => (
-            <Link 
-              key={index} 
-              href="/products"
-              className="bg-card p-6 rounded-xl card-shadow card-hover group"
+            <Link
+              key={index}
+              href="/courses"
+              className="bg-card p-6 rounded card-shadow card-hover group"
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+              <div className="w-12 h-12 bg-primary/10 rounded flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
                 <industry.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
               </div>
               <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">

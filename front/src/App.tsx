@@ -151,7 +151,7 @@ const App = () => {
             />
 
             <Route
-              path="products"
+              path="courses"
               element={
                 <ProtectedRoute resource={Resource.PRODUCTS} action={Action.READ}>
                   <ProductsPage />
@@ -160,7 +160,7 @@ const App = () => {
             />
 
             <Route
-              path="products/new"
+              path="courses/add"
               element={
                 <ProtectedRoute
                   resource={Resource.PRODUCTS}
@@ -172,7 +172,7 @@ const App = () => {
             />
 
             <Route
-              path="products/edit/:id"
+              path="courses/:id/edit"
               element={
                 <ProtectedRoute
                   resource={Resource.PRODUCTS}
@@ -184,7 +184,7 @@ const App = () => {
             />
 
             <Route
-              path="products/:id"
+              path="courses/:id"
               element={
                 <ProtectedRoute resource={Resource.PRODUCTS} action={Action.READ}>
                   <ProductDetailPage />

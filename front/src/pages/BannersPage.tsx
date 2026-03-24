@@ -288,7 +288,7 @@ function BannerForm({
 
       <form id="banner-form" onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t("banners.basic_info.title")}
@@ -354,7 +354,7 @@ function BannerForm({
         </Card>
 
         {/* Settings Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t("banners.settings.title")}
@@ -444,7 +444,7 @@ function BannerForm({
         </Card>
 
         {/* Desktop Image Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <div className="flex items-center gap-2">
               <Monitor className="h-5 w-5 text-[#4CAF50]" />
@@ -460,7 +460,7 @@ function BannerForm({
             <div
               {...getDesktopRootProps()}
               className={cn(
-                "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all",
+                "border-2 border-dashed rounded p-8 text-center cursor-pointer transition-all",
                 isDesktopDragActive
                   ? "border-[#4CAF50] bg-[#E8F5E9]/30"
                   : "border-[#E5E7EB] hover:border-[#4CAF50] hover:bg-[#F3F7F6]"
@@ -472,7 +472,7 @@ function BannerForm({
                   <img
                     src={desktopPreview}
                     alt={t("banners.desktop_image.preview_alt")}
-                    className="max-h-80 mx-auto rounded-lg border border-[#E5E7EB] shadow-sm"
+                    className="max-h-80 mx-auto rounded border border-[#E5E7EB] shadow-sm"
                   />
                   <p className="text-sm text-[#9CA3AF]">
                     {t("banners.desktop_image.replace_hint")}
@@ -498,7 +498,7 @@ function BannerForm({
         </Card>
 
         {/* Mobile Image Card */}
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <div className="flex items-center gap-2">
               <Smartphone className="h-5 w-5 text-[#4CAF50]" />
@@ -514,7 +514,7 @@ function BannerForm({
             <div
               {...getMobileRootProps()}
               className={cn(
-                "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all",
+                "border-2 border-dashed rounded p-8 text-center cursor-pointer transition-all",
                 isMobileDragActive
                   ? "border-[#4CAF50] bg-[#E8F5E9]/30"
                   : "border-[#E5E7EB] hover:border-[#4CAF50] hover:bg-[#F3F7F6]"
@@ -526,7 +526,7 @@ function BannerForm({
                   <img
                     src={mobilePreview}
                     alt={t("banners.mobile_image.preview_alt")}
-                    className="max-h-80 mx-auto rounded-lg border border-[#E5E7EB] shadow-sm"
+                    className="max-h-80 mx-auto rounded border border-[#E5E7EB] shadow-sm"
                   />
                   <p className="text-sm text-[#9CA3AF]">
                     {t("banners.mobile_image.replace_hint")}
@@ -553,7 +553,7 @@ function BannerForm({
 
         {/* Danger Zone for Edit Mode */}
         {mode === "edit" && (
-          <Card className="bg-[#FFFFFF] border-2 border-[#EF4444]/20 shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-2 border-[#EF4444]/20 shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#EF4444]">
                 {t("banners.danger_zone.title")}
@@ -723,7 +723,7 @@ function BannersList() {
       </div>
 
       {/* Filters Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -738,7 +738,7 @@ function BannersList() {
             <select
               value={isPublishedFilter}
               onChange={(e) => setIsPublishedFilter(e.target.value)}
-              className="px-4 py-2 rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
+              className="px-4 py-2 rounded border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
             >
               <option value="">{t("banners.list.filter_all")}</option>
               <option value="true">{t("banners.list.filter_published")}</option>
@@ -761,14 +761,14 @@ function BannersList() {
       </Card>
 
       {error && (
-        <div className="bg-[#FEF2F2] border border-[#FEE2E2] text-[#DC2626] px-4 py-3 rounded-xl">
+        <div className="bg-[#FEF2F2] border border-[#FEE2E2] text-[#DC2626] px-4 py-3 rounded">
           {error}
         </div>
       )}
 
       {/* Banners List */}
       {bannersList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <ImageIcon className="h-8 w-8 text-[#9CA3AF]" />
@@ -795,7 +795,7 @@ function BannersList() {
           {bannersList.map((banner) => (
             <Card
               key={banner.id}
-              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
             >
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
@@ -808,7 +808,7 @@ function BannersList() {
                       <img
                         src={banner.desktopImage}
                         alt={banner.title || "Desktop"}
-                        className="h-24 w-40 object-cover rounded-lg border border-[#E5E7EB]"
+                        className="h-24 w-40 object-cover rounded border border-[#E5E7EB]"
                       />
                     </div>
                     <div className="relative group">
@@ -818,7 +818,7 @@ function BannersList() {
                       <img
                         src={banner.mobileImage}
                         alt={banner.title || "Mobile"}
-                        className="h-24 w-16 object-cover rounded-lg border border-[#E5E7EB]"
+                        className="h-24 w-16 object-cover rounded border border-[#E5E7EB]"
                       />
                     </div>
                   </div>

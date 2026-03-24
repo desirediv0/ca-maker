@@ -96,8 +96,8 @@ export default function WhyUsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {reasons.map((reason, index) => (
-                            <div key={index} className="bg-gray-50/50 border border-gray-100 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                            <div key={index} className="bg-gray-50/50 border border-gray-100 rounded p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                                <div className="w-14 h-14 bg-orange-100 rounded flex items-center justify-center mb-6">
                                     <reason.icon className="h-7 w-7 text-primary" />
                                 </div>
                                 <h3 className="font-display font-bold text-xl text-foreground mb-3">
@@ -126,7 +126,7 @@ export default function WhyUsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {reviews.map((review, index) => (
-                            <div key={index} className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+                            <div key={index} className="bg-white rounded border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
                                 <div className="flex items-center gap-1 mb-4">
                                     {[...Array(review.rating)].map((_, i) => (
                                         <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
@@ -159,7 +159,7 @@ export default function WhyUsPage() {
                     <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
                         Join thousands of satisfied customers. Shop now with free shipping on orders above ₹25,000.
                     </p>
-                    <Link href="/products">
+                    <Link href="/courses">
                         <Button size="lg" className="bg-white text-foreground hover:bg-white/90 rounded-full px-10 h-14">
                             Shop Now
                         </Button>

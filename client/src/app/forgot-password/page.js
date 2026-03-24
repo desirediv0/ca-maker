@@ -32,9 +32,12 @@ export default function ForgotPasswordPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6">
-            <div className="max-w-md w-full bg-white rounded-2xl border border-gray-100 shadow-xl p-8 sm:p-10">
-                <h1 className="text-2xl font-semibold mb-6">Forgot Password</h1>
+        <div className="min-h-screen flex items-center justify-center bg-[#FFF7ED] py-12 px-4 sm:px-6">
+            <div className="max-w-md w-full bg-white rounded border border-gray-100 shadow-lg p-8 sm:p-10">
+                <div className="text-center mb-6">
+                    <span className="text-orange-500 font-bold text-lg">CA Maker</span>
+                </div>
+                <h1 className="text-2xl font-bold text-gray-900 mb-6">Forgot Password</h1>
                 <p className="text-sm text-muted-foreground mb-6">
                     Enter your email address and we&apos;ll send you a link to reset your
                     password.
@@ -56,13 +59,13 @@ export default function ForgotPasswordPage() {
                     <Button
                         type="submit"
                         disabled={submitting || loading}
-                        className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded-xl transition-all"
+                        className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded transition-all"
                     >
                         {submitting || loading ? "Sending..." : "Send reset link"}
                     </Button>
                 </form>
                 <div className="mt-4 text-sm">
-                    <Link href="/auth" className="text-primary hover:underline">
+                    <Link href="/auth" className="text-orange-600 hover:underline font-medium">
                         Back to login
                     </Link>
                 </div>

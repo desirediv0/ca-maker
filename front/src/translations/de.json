@@ -2,8 +2,11 @@
     "nav": {
         "dashboard": "Dashboard",
         "products": "Produkte",
+        "courses": "Kurse",
         "all_products": "Alle Produkte",
+        "all_courses": "Alle Kurse",
         "add_product": "Produkt hinzufügen",
+        "add_course": "Kurs hinzufügen",
         "brands": "Marken",
         "categories": "Kategorien",
         "attributes": "Attribute",
@@ -1692,8 +1695,8 @@
         }
     },
     "products": {
-        "title": "Produkte",
-        "add_new": "Produkt hinzufügen",
+        "title": "Kurse",
+        "add_new": "Kurs hinzufügen",
         "edit_product": "Produkt bearbeiten",
         "list": {
             "search_placeholder": "Produkte suchen...",

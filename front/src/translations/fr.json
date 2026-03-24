@@ -17,8 +17,11 @@
     "nav": {
         "dashboard": "Tableau de bord",
         "products": "Produits",
+        "courses": "Cours",
         "all_products": "Tous les produits",
+        "all_courses": "Tous les cours",
         "add_product": "Ajouter un produit",
+        "add_course": "Ajouter un cours",
         "brands": "Marques",
         "categories": "Catégories",
         "attributes": "Attributs",
@@ -1813,8 +1816,8 @@
         }
     },
     "products": {
-        "title": "Produits",
-        "add_new": "Ajouter Produit",
+        "title": "Cours",
+        "add_new": "Ajouter Cours",
         "edit_product": "Modifier Produit",
         "list": {
             "search_placeholder": "Rechercher des produits...",

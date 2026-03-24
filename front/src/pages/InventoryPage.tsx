@@ -23,7 +23,7 @@ export default function InventoryPage() {
         </div>
       </div>
 
-      <div className="rounded-lg border bg-card p-8 text-center">
+      <div className="rounded border bg-card p-8 text-center">
         <h2 className="text-lg font-medium">Inventory Management</h2>
         <p className="mt-2 text-muted-foreground">
           This page is under development. You will be able to manage product

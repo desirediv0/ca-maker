@@ -238,7 +238,7 @@ export default function AdminPermissionsPage() {
 
             <TabsContent value="resources" className="space-y-4">
               {Object.values(Resource).map((resource) => (
-                <div key={resource} className="border rounded-md p-4">
+                <div key={resource} className="border rounded p-4">
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center space-x-2">
                       <Checkbox

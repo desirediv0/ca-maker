@@ -96,7 +96,7 @@ const CartItem = React.memo(
         return (
             <div className="p-4 md:p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-gray-50/50 transition-colors duration-200">
                 <div className="md:col-span-6 flex items-center">
-                    <div className="relative h-24 w-24 md:h-28 md:w-28 bg-gray-100 rounded-lg overflow-hidden mr-4 flex-shrink-0 shadow-sm border border-gray-200 group">
+                    <div className="relative h-24 w-24 md:h-28 md:w-28 bg-gray-100 rounded overflow-hidden mr-4 flex-shrink-0 shadow-sm border border-gray-200 group">
                         <Image
                             src={productImage}
                             alt={productName}
@@ -107,7 +107,7 @@ const CartItem = React.memo(
                     </div>
                     <div className="flex-1 min-w-0">
                         <Link
-                            href={`/products/${productSlug}`}
+                            href={`/courses/${productSlug}`}
                             className="font-semibold text-gray-900 hover:text-primary transition-colors line-clamp-2"
                         >
                             {productName}
@@ -177,10 +177,10 @@ const CartItem = React.memo(
 
                 <div className="md:col-span-2 flex items-center justify-between md:justify-center">
                     <span className="md:hidden font-medium text-gray-600">Quantity:</span>
-                    <div className="flex items-center border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                    <div className="flex items-center border-2 border-gray-200 rounded overflow-hidden shadow-sm">
                         <button
                             onClick={() => onUpdateQuantity(item.id, item.quantity, -1)}
-                            className="px-3 py-2 hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                            className="px-3 py-2 hover:bg-orange-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             disabled={isLoading || item.quantity <= (item.moq || 1)}
                         >
                             <Minus className="h-4 w-4" />
@@ -194,7 +194,7 @@ const CartItem = React.memo(
                         </span>
                         <button
                             onClick={() => onUpdateQuantity(item.id, item.quantity, 1)}
-                            className="px-3 py-2 hover:bg-primary hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                            className="px-3 py-2 hover:bg-orange-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             disabled={isLoading}
                         >
                             <Plus className="h-4 w-4" />
@@ -213,7 +213,7 @@ const CartItem = React.memo(
                     </div>
                     <button
                         onClick={() => onRemove(item.id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded-lg ml-4 disabled:opacity-50 transition-all duration-200"
+                        className="text-red-500 hover:text-red-700 hover:bg-red-50 p-2 rounded ml-4 disabled:opacity-50 transition-all duration-200"
                         aria-label="Remove item"
                         disabled={isLoading}
                     >
@@ -377,14 +377,14 @@ export default function CartPage() {
     if ((!cart.items || cart.items.length === 0) && !error) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-                <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-10 md:p-16 text-center max-w-lg w-full">
+                <div className="bg-white rounded border border-gray-100 shadow-sm p-10 md:p-16 text-center max-w-lg w-full">
                     <div className="w-24 h-24 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
                         <ShoppingBag className="h-12 w-12 text-orange-400" />
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-2">Your cart is empty</h2>
                     <p className="text-gray-500 mb-8">Browse our courses and add them to your cart.</p>
                     <Link href="/courses">
-                        <Button className="bg-orange-500 hover:bg-orange-600 text-white px-10 h-12 text-base font-semibold rounded-xl shadow-sm shadow-orange-200">
+                        <Button className="bg-orange-500 hover:bg-orange-600 text-white px-10 h-12 text-base font-semibold rounded shadow-sm shadow-orange-200">
                             Browse Courses
                         </Button>
                     </Link>
@@ -394,7 +394,7 @@ export default function CartPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50/80">
+        <div className="min-h-screen bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
 
                 {/* ── Page header ── */}
@@ -410,19 +410,19 @@ export default function CartPage() {
 
                 {/* ── Guest notice ── */}
                 {!isAuthenticated && cart.items?.length > 0 && (
-                    <div className="mb-6 bg-orange-50 border border-orange-200 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="mb-6 bg-orange-50 border border-orange-200 rounded p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
                             <p className="font-semibold text-orange-900">Login to complete your purchase</p>
                             <p className="text-sm text-orange-700 mt-0.5">Your cart is saved as guest. Login to checkout.</p>
                         </div>
                         <div className="flex gap-3 flex-shrink-0">
                             <Link href="/auth?redirect=cart">
-                                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 h-10 rounded-lg border-0 text-sm">
+                                <Button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 h-10 rounded border-0 text-sm">
                                     Log In
                                 </Button>
                             </Link>
                             <Link href="/auth?redirect=cart">
-                                <Button variant="outline" className="border-orange-300 text-orange-600 hover:bg-orange-50 font-semibold px-5 h-10 rounded-lg text-sm">
+                                <Button variant="outline" className="border-orange-300 text-orange-600 hover:bg-orange-50 font-semibold px-5 h-10 rounded text-sm">
                                     Sign Up
                                 </Button>
                             </Link>
@@ -432,7 +432,7 @@ export default function CartPage() {
 
                 {/* ── Merge progress ── */}
                 {mergeProgress && (
-                    <div className="mb-6 bg-orange-50 border-l-4 border-orange-500 p-4 rounded-lg flex items-center gap-3">
+                    <div className="mb-6 bg-orange-50 border-l-4 border-orange-500 p-4 rounded flex items-center gap-3">
                         <Loader2 className="text-orange-500 h-5 w-5 flex-shrink-0 animate-spin" />
                         <p className="text-orange-700 font-medium text-sm">{mergeProgress}</p>
                     </div>
@@ -443,7 +443,7 @@ export default function CartPage() {
                     {/* ══ LEFT: Cart Items ══ */}
                     <div className="lg:col-span-2 space-y-3">
                         {/* Column headers (desktop) */}
-                        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 bg-white rounded-xl border border-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                        <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 bg-white rounded border border-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider">
                             <div className="col-span-6">Product</div>
                             <div className="col-span-2 text-center">Price</div>
                             <div className="col-span-2 text-center">Qty</div>
@@ -451,7 +451,7 @@ export default function CartPage() {
                         </div>
 
                         {/* Cart items */}
-                        <div className="bg-white rounded-xl border border-gray-100 divide-y divide-gray-50 overflow-hidden shadow-sm">
+                        <div className="bg-white rounded border border-gray-100 divide-y divide-gray-50 overflow-hidden shadow-sm">
                             {cart.items.map((item) => (
                                 <CartItem
                                     key={item.id}
@@ -464,16 +464,16 @@ export default function CartPage() {
                         </div>
 
                         {/* Cart actions */}
-                        <div className="flex flex-col sm:flex-row justify-between gap-3 bg-white rounded-xl border border-gray-100 px-5 py-4 shadow-sm">
+                        <div className="flex flex-col sm:flex-row justify-between gap-3 bg-white rounded border border-gray-100 px-5 py-4 shadow-sm">
                             <Link href="/courses">
-                                <Button variant="outline" className="border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600 h-10 px-5 rounded-lg text-sm font-semibold">
+                                <Button variant="outline" className="border-gray-200 text-gray-600 hover:border-orange-300 hover:text-orange-600 h-10 px-5 rounded text-sm font-semibold">
                                     ← Continue Shopping
                                 </Button>
                             </Link>
                             <Button
                                 variant="outline"
                                 onClick={handleClearCart}
-                                className="border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 h-10 px-5 rounded-lg text-sm font-semibold"
+                                className="border-red-200 text-red-500 hover:bg-red-50 hover:border-red-300 h-10 px-5 rounded text-sm font-semibold"
                                 disabled={loading}
                             >
                                 {loading ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Trash2 className="h-4 w-4 mr-2" />}
@@ -484,7 +484,7 @@ export default function CartPage() {
 
                     {/* ══ RIGHT: Order Summary ══ */}
                     <div className="lg:col-span-1">
-                        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden sticky top-24">
+                        <div className="bg-white rounded border border-gray-100 shadow-sm overflow-hidden sticky top-24">
 
                             {/* Summary header */}
                             <div className="px-6 py-4 border-b border-gray-100 bg-orange-50/50">
@@ -495,12 +495,12 @@ export default function CartPage() {
 
                                 {/* ── Coupon section ── */}
                                 {(!hidePricesForGuests || isAuthenticated) && (
-                                    <div className="rounded-xl border-2 border-dashed border-orange-200 bg-orange-50/30 p-4">
+                                    <div className="rounded border-2 border-dashed border-orange-200 bg-orange-50/30 p-4">
                                         <p className="text-xs font-bold text-orange-700 uppercase tracking-widest mb-3 flex items-center gap-1.5">
                                             🏷 Coupon Code
                                         </p>
                                         {coupon ? (
-                                            <div className="flex items-start justify-between gap-2 bg-green-50 border border-green-200 p-3 rounded-lg">
+                                            <div className="flex items-start justify-between gap-2 bg-green-50 border border-green-200 p-3 rounded">
                                                 <div>
                                                     <div className="flex items-center gap-2 mb-1">
                                                         <span className="font-bold text-green-800 text-sm">{coupon.code}</span>
@@ -519,7 +519,7 @@ export default function CartPage() {
                                                 </div>
                                                 <button
                                                     onClick={handleRemoveCoupon}
-                                                    className="text-xs text-red-500 hover:text-red-700 font-semibold flex-shrink-0 hover:bg-red-50 px-2 py-1 rounded-md transition-colors"
+                                                    className="text-xs text-red-500 hover:text-red-700 font-semibold flex-shrink-0 hover:bg-red-50 px-2 py-1 rounded transition-colors"
                                                     disabled={couponLoading}
                                                 >
                                                     Remove
@@ -533,19 +533,19 @@ export default function CartPage() {
                                                         placeholder="ENTER CODE"
                                                         value={couponCode}
                                                         onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                                                        className={`flex-1 h-10 text-sm font-mono font-bold tracking-widest border-2 rounded-lg bg-white placeholder:font-normal placeholder:tracking-normal ${couponError ? "border-red-300" : "border-orange-200 focus-visible:ring-orange-400"
+                                                        className={`flex-1 h-10 text-sm font-mono font-bold tracking-widest border-2 rounded bg-white placeholder:font-normal placeholder:tracking-normal ${couponError ? "border-red-300" : "border-orange-200 focus-visible:ring-orange-400"
                                                             }`}
                                                     />
                                                     <Button
                                                         type="submit"
                                                         disabled={couponLoading}
-                                                        className="bg-orange-500 hover:bg-orange-600 text-white border-0 h-10 px-4 rounded-lg font-bold text-sm"
+                                                        className="bg-orange-500 hover:bg-orange-600 text-white border-0 h-10 px-4 rounded font-bold text-sm"
                                                     >
                                                         {couponLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Apply"}
                                                     </Button>
                                                 </form>
                                                 {couponError && (
-                                                    <div className="mt-2 flex items-start gap-1.5 text-red-600 bg-red-50 p-2 rounded-lg border border-red-100">
+                                                    <div className="mt-2 flex items-start gap-1.5 text-red-600 bg-red-50 p-2 rounded border border-red-100">
                                                         <AlertCircle className="h-3.5 w-3.5 mt-0.5 flex-shrink-0" />
                                                         <p className="text-xs">{couponError}</p>
                                                     </div>
@@ -567,7 +567,7 @@ export default function CartPage() {
                                     </div>
 
                                     {coupon && (
-                                        <div className="flex justify-between items-center bg-green-50 px-3 py-2 rounded-lg">
+                                        <div className="flex justify-between items-center bg-green-50 px-3 py-2 rounded">
                                             <span className="text-green-700 font-semibold flex items-center gap-1">
                                                 🏷 Coupon ({coupon.code})
                                             </span>
@@ -585,7 +585,7 @@ export default function CartPage() {
                                     </div>
 
                                     {totals.shipping > 0 && cart.freeShippingThreshold > 0 && (
-                                        <div className="text-xs text-amber-700 bg-amber-50 border border-amber-100 p-2.5 rounded-lg text-center font-medium">
+                                        <div className="text-xs text-amber-700 bg-amber-50 border border-amber-100 p-2.5 rounded text-center font-medium">
                                             Add <strong>{formatCurrency(cart.freeShippingThreshold - totals.subtotal)}</strong> more for <span className="text-green-600 font-bold">FREE delivery</span>
                                         </div>
                                     )}
@@ -604,7 +604,7 @@ export default function CartPage() {
                                 {/* ── Checkout button ── */}
                                 <Button
                                     className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white
-                                               text-base font-bold rounded-lg border-0 shadow-lg shadow-orange-500/25
+                                               text-base font-bold rounded border-0 shadow-lg shadow-orange-500/25
                                                hover:shadow-orange-500/40 transition-all duration-300"
                                     onClick={handleCheckout}
                                 >
@@ -614,7 +614,7 @@ export default function CartPage() {
                                         <span className="flex items-center justify-center gap-2">
                                             <ShoppingBag className="h-5 w-5" />
                                             Checkout
-                                            <span className="bg-orange-600 px-2.5 py-0.5 rounded-lg text-sm font-black">
+                                            <span className="bg-orange-600 px-2.5 py-0.5 rounded text-sm font-black">
                                                 {formatCurrency(totals.total)}
                                             </span>
                                         </span>

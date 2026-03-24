@@ -179,7 +179,7 @@ export default function ReferralsPage() {
       {/* Statistics Cards */}
       {!isStatsLoading && stats && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#3B82F6]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#3B82F6]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -195,7 +195,7 @@ export default function ReferralsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#22C55E]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#22C55E]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -211,7 +211,7 @@ export default function ReferralsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#F59E0B]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#F59E0B]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -227,7 +227,7 @@ export default function ReferralsPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl border-l-2 border-l-[#4CAF50]">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded border-l-2 border-l-[#4CAF50]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -248,7 +248,7 @@ export default function ReferralsPage() {
 
       {/* Top Referrers */}
       {!isStatsLoading && stats && stats.topReferrers.length > 0 && (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-[#1F2937]">
               {t('referrals_page.top_referrers.title')}
@@ -259,7 +259,7 @@ export default function ReferralsPage() {
               {stats.topReferrers.slice(0, 5).map((ref, index) => (
                 <div
                   key={ref.user?.id || index}
-                  className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded-lg hover:bg-[#F3F7F6] transition-colors"
+                  className="flex items-center justify-between p-4 border border-[#E5E7EB] rounded hover:bg-[#F3F7F6] transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#E8F5E9] text-[#2E7D32] font-bold">
@@ -291,7 +291,7 @@ export default function ReferralsPage() {
       )}
 
       {/* Filters and Search */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-[#1F2937]">
             {t('referrals_page.list.title')}
@@ -309,7 +309,7 @@ export default function ReferralsPage() {
               />
             </div>
             <select
-              className="px-4 py-2 border border-[#E5E7EB] rounded-lg focus:border-primary focus:outline-none"
+              className="px-4 py-2 border border-[#E5E7EB] rounded focus:border-primary focus:outline-none"
               value={statusFilter}
               onChange={(e) => {
                 setStatusFilter(e.target.value);
@@ -355,7 +355,7 @@ export default function ReferralsPage() {
                 {referrals.map((referral) => (
                   <Card
                     key={referral.id}
-                    className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+                    className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between">
@@ -373,7 +373,7 @@ export default function ReferralsPage() {
                               <p className="text-sm font-medium text-muted-foreground mb-2">
                                 {t('referrals_page.card.referrer_label')}
                               </p>
-                              <div className="p-3 bg-blue-50 rounded-lg">
+                              <div className="p-3 bg-blue-50 rounded">
                                 <p className="font-medium">{referral.referrer.name || "N/A"}</p>
                                 <p className="text-sm text-muted-foreground">
                                   {referral.referrer.email}
@@ -388,7 +388,7 @@ export default function ReferralsPage() {
                               <p className="text-sm font-medium text-muted-foreground mb-2">
                                 {t('referrals_page.card.referred_label')}
                               </p>
-                              <div className="p-3 bg-green-50 rounded-lg">
+                              <div className="p-3 bg-green-50 rounded">
                                 <p className="font-medium">{referral.referred.name || "N/A"}</p>
                                 <p className="text-sm text-muted-foreground">
                                   {referral.referred.email}
@@ -398,7 +398,7 @@ export default function ReferralsPage() {
                           </div>
 
                           {referral.order && (
-                            <div className="p-3 bg-gray-50 rounded-lg">
+                            <div className="p-3 bg-gray-50 rounded">
                               <p className="text-sm font-medium text-muted-foreground mb-1">
                                 {t('referrals_page.card.order_details')}
                               </p>

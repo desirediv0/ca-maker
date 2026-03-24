@@ -17,8 +17,11 @@
     "nav": {
         "dashboard": "لوحة القيادة",
         "products": "المنتجات",
+        "courses": "الدورات",
         "all_products": "جميع المنتجات",
+        "all_courses": "جميع الدورات",
         "add_product": "إضافة منتج",
+        "add_course": "إضافة دورة",
         "brands": "العلامات التجارية",
         "categories": "الفئات",
         "attributes": "السمات",
@@ -1714,8 +1717,8 @@
         }
     },
     "products": {
-        "title": "المنتجات",
-        "add_new": "إضافة منتج",
+        "title": "الدورات",
+        "add_new": "إضافة دورة",
         "edit_product": "تعديل المنتج",
         "list": {
             "search_placeholder": "البحث عن المنتجات...",

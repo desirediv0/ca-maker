@@ -49,13 +49,13 @@ export const WhyBuySection = () => {
         {/* ── Feature grid ── */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-          <div
-            key={index}
-            className="group text-center card-premium p-7 border border-gray-100"
-          >
+            <div
+              key={index}
+              className="group text-center card-premium p-7 border border-gray-100"
+            >
               {/* Icon */}
               <div
-                className="w-16 h-16 rounded-2xl bg-orange-50 border border-orange-100
+                className="w-16 h-16 rounded bg-orange-50 border border-orange-100
                            flex items-center justify-center mx-auto mb-6
                            group-hover:bg-orange-500 transition-colors duration-300"
               >

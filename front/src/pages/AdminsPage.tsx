@@ -234,7 +234,7 @@ export default function AdminsPage() {
       )}
 
       {!isSuperAdmin && (
-        <div className="rounded-lg border bg-amber-50 p-4 mt-4">
+        <div className="rounded border bg-amber-50 p-4 mt-4">
           <p className="text-amber-800">
             Only Super Admins can manage other admin users. Contact your
             administrator for assistance.

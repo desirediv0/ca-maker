@@ -76,14 +76,14 @@ export default function AddressForm({ onSuccess, onCancel, existingAddress = nul
     );
 
     return (
-        <div className={isInline ? "p-4 border rounded-lg mb-4" : ""}>
+        <div className={isInline ? "p-4 border rounded mb-4" : ""}>
             {isInline && (
                 <div className="flex justify-between items-center mb-4">
                     <h3 className="font-semibold">Add New Address</h3>
                     <button onClick={onCancel} className="text-gray-500 hover:text-gray-700"><XCircle className="h-5 w-5" /></button>
                 </div>
             )}
-            {errors.general && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-md">{errors.general}</div>}
+            {errors.general && <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded">{errors.general}</div>}
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {renderField("name", "Full Name", "Enter your full name", { className: "sm:col-span-2 lg:col-span-3" })}

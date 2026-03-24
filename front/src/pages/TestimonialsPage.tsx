@@ -226,7 +226,7 @@ export default function TestimonialsPage() {
           {loading ? (
             <div className="p-6 space-y-4">
               {[1, 2, 3].map((i) => (
-                <Skeleton key={i} className="h-20 w-full rounded-xl" />
+                <Skeleton key={i} className="h-20 w-full rounded" />
               ))}
             </div>
           ) : filtered.length === 0 ? (
@@ -282,8 +282,8 @@ export default function TestimonialsPage() {
                     <Badge
                       variant="outline"
                       className={`text-xs cursor-pointer select-none ${t.isPublished
-                          ? "border-emerald-300 text-emerald-700 bg-emerald-50"
-                          : "border-gray-200 text-gray-400"
+                        ? "border-emerald-300 text-emerald-700 bg-emerald-50"
+                        : "border-gray-200 text-gray-400"
                         }`}
                       onClick={() => togglePublish(t)}
                     >
@@ -401,8 +401,8 @@ export default function TestimonialsPage() {
                   >
                     <Star
                       className={`h-6 w-6 transition-colors ${i <= form.rating
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-gray-200 hover:text-yellow-300"
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "text-gray-200 hover:text-yellow-300"
                         }`}
                     />
                   </button>
@@ -411,7 +411,7 @@ export default function TestimonialsPage() {
             </div>
 
             {/* Published toggle */}
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
               <div>
                 <p className="text-sm font-medium text-gray-900">Publish on website</p>
                 <p className="text-xs text-gray-500">Show this testimonial on the homepage</p>

@@ -60,7 +60,7 @@ export default function ReturnsPage() {
                     {error && <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">{error}</div>}
 
                     <div className="mb-6 flex gap-4">
-                        <select className="px-4 py-2 border rounded-md" value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); router.push(`/account/returns?page=1`); }}>
+                        <select className="px-4 py-2 border rounded" value={statusFilter} onChange={(e) => { setStatusFilter(e.target.value); router.push(`/account/returns?page=1`); }}>
                             <option value="">All Status</option>
                             <option value="PENDING">Pending</option>
                             <option value="APPROVED">Approved</option>
@@ -71,9 +71,9 @@ export default function ReturnsPage() {
                     </div>
 
                     {loadingReturns ? (
-                        <div className="bg-white rounded-lg shadow p-8 flex justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>
+                        <div className="bg-white rounded shadow p-8 flex justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div></div>
                     ) : returnRequests.length === 0 ? (
-                        <div className="bg-white rounded-lg shadow p-8 text-center">
+                        <div className="bg-white rounded shadow p-8 text-center">
                             <DynamicIcon name="RotateCcw" className="h-16 w-16 mx-auto text-gray-400 mb-4" />
                             <h2 className="text-xl font-semibold mb-2">No Return Requests</h2>
                             <p className="text-gray-600 mb-6">You haven&apos;t submitted any return requests yet.</p>
@@ -82,12 +82,12 @@ export default function ReturnsPage() {
                     ) : (
                         <div className="space-y-4">
                             {returnRequests.map((returnReq) => (
-                                <div key={returnReq.id} className="bg-white rounded-lg shadow p-6">
+                                <div key={returnReq.id} className="bg-white rounded shadow p-6">
                                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-4 mb-3">
                                                 <div><p className="text-sm text-gray-600">Order Number</p><p className="font-semibold">#{returnReq.order.orderNumber}</p></div>
-                                                <span className={`px-3 py-1 inline-flex text-sm font-semibold rounded-md ${getStatusColor(returnReq.status)}`}>{returnReq.status}</span>
+                                                <span className={`px-3 py-1 inline-flex text-sm font-semibold rounded ${getStatusColor(returnReq.status)}`}>{returnReq.status}</span>
                                             </div>
                                             <div className="mb-3"><p className="text-sm text-gray-600">Product</p><p className="font-medium">{returnReq.orderItem.product.name}</p><p className="text-sm text-gray-600">Quantity: {returnReq.orderItem.quantity} × {formatCurrency(returnReq.orderItem.price)}</p></div>
                                             <div className="mb-3"><p className="text-sm text-gray-600">Return Reason</p><p className="font-medium">{returnReq.reason}</p>{returnReq.customReason && <p className="text-sm text-gray-600 mt-1">{returnReq.customReason}</p>}</div>

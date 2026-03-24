@@ -336,11 +336,11 @@ export default function ShiprocketSettingsPage() {
             </div>
 
             {/* Enable/Disable Toggle */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#EFF6FF] border border-[#DBEAFE]">
+                            <div className="flex h-12 w-12 items-center justify-center rounded bg-[#EFF6FF] border border-[#DBEAFE]">
                                 <Truck className="h-6 w-6 text-[#3B82F6]" />
                             </div>
                             <div>
@@ -367,7 +367,7 @@ export default function ShiprocketSettingsPage() {
             </Card>
 
             {/* API Credentials */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardHeader className="px-6 pt-6 pb-4">
                     <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                         <Package className="h-5 w-5 mr-2 text-[#4CAF50]" />
@@ -410,7 +410,7 @@ export default function ShiprocketSettingsPage() {
                         </div>
                     </div>
 
-                    <div className="flex items-start gap-3 p-4 bg-[#FEF3C7] border border-[#FCD34D] rounded-xl">
+                    <div className="flex items-start gap-3 p-4 bg-[#FEF3C7] border border-[#FCD34D] rounded">
                         <AlertCircle className="h-5 w-5 text-[#D97706] mt-0.5 flex-shrink-0" />
                         <div className="text-sm text-[#92400E]">
                             <p className="font-medium mb-1">{t("shiprocket_settings.how_to_get_credentials.title")}</p>
@@ -445,7 +445,7 @@ export default function ShiprocketSettingsPage() {
             </Card>
 
             {/* Default Shipping Dimensions */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardHeader className="px-6 pt-6 pb-4">
                     <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                         <Package className="h-5 w-5 mr-2 text-[#4CAF50]" />
@@ -527,7 +527,7 @@ export default function ShiprocketSettingsPage() {
 
 
             {/* Pickup Addresses */}
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <CardHeader className="px-6 pt-6 pb-4">
                     <div className="flex items-center justify-between">
                         <div>
@@ -677,10 +677,10 @@ export default function ShiprocketSettingsPage() {
                             {pickupAddresses.map((address) => (
                                 <div
                                     key={address.id}
-                                    className="flex items-start justify-between p-4 border border-[#E5E7EB] rounded-xl hover:border-[#4CAF50] transition-colors"
+                                    className="flex items-start justify-between p-4 border border-[#E5E7EB] rounded hover:border-[#4CAF50] transition-colors"
                                 >
                                     <div className="flex items-start gap-3">
-                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#F3F4F6] flex-shrink-0">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded bg-[#F3F4F6] flex-shrink-0">
                                             <MapPin className="h-5 w-5 text-[#6B7280]" />
                                         </div>
                                         <div>

@@ -14,23 +14,23 @@ import { fetchApi } from "@/lib/utils";
 /* ─── Fallback slides shown if API returns nothing ─────────────── */
 const fallbackSlides = [
   {
-    label:        "CA Inter & Final — Expert Coaching",
-    headline:     "Build Your CA Rank",
-    highlight:    "With Confidence",
-    description:  "Learn from CA Mohit Kukreja's 6 years of Big 4 audit experience — making Audit simple, relatable, and scoring.",
+    label: "CA Inter & Final — Expert Coaching",
+    headline: "Build Your CA Rank",
+    highlight: "With Confidence",
+    description: "Learn from CA Mohit Kukreja's 6 years of Big 4 audit experience — making Audit simple, relatable, and scoring.",
     desktopImage: "/hero-slide-1.jpg",
-    mobileImage:  "/hero-slide-1-sm.jpg",
-    link:         "/courses",
+    mobileImage: "/hero-slide-1-sm.jpg",
+    link: "/courses",
   },
 ];
 
 export default function HeroSection() {
-  const [slides,        setSlides]        = useState(fallbackSlides);
-  const [current,       setCurrent]       = useState(0);
-  const [autoPlay,      setAutoPlay]      = useState(true);
-  const [loading,       setLoading]       = useState(true);
-  const [isMobile,      setIsMobile]      = useState(false);
-  const [imgLoaded,     setImgLoaded]     = useState(false);
+  const [slides, setSlides] = useState(fallbackSlides);
+  const [current, setCurrent] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   /* ── Detect mobile ── */
   useEffect(() => {
@@ -48,13 +48,13 @@ export default function HeroSection() {
         if (res?.success && Array.isArray(res.data?.banners) && res.data.banners.length > 0) {
           setSlides(
             res.data.banners.map((b) => ({
-              label:        b.label       || "CA Maker",
-              headline:     b.title       || "",
-              highlight:    b.subtitle    || "",
-              description:  b.description || "",
+              label: b.label || "CA Maker",
+              headline: b.title || "",
+              highlight: b.subtitle || "",
+              description: b.description || "",
               desktopImage: b.desktopImage,
-              mobileImage:  b.mobileImage || b.desktopImage,
-              link:         b.link        || "/courses",
+              mobileImage: b.mobileImage || b.desktopImage,
+              link: b.link || "/courses",
             }))
           );
         }
@@ -91,8 +91,8 @@ export default function HeroSection() {
         <div className="absolute inset-0 flex items-center justify-start">
           <div className="px-8 md:px-16 space-y-4 w-full max-w-2xl">
             <div className="h-4 bg-gray-700 rounded-full w-40" />
-            <div className="h-14 bg-gray-700 rounded-xl w-3/4" />
-            <div className="h-14 bg-gray-700 rounded-xl w-1/2" />
+            <div className="h-14 bg-gray-700 rounded w-3/4" />
+            <div className="h-14 bg-gray-700 rounded w-1/2" />
             <div className="h-5 bg-gray-700 rounded w-full" />
             <div className="h-5 bg-gray-700 rounded w-4/5" />
             <div className="flex gap-4 pt-4">
@@ -105,7 +105,7 @@ export default function HeroSection() {
     );
   }
 
-  const slide    = slides[current];
+  const slide = slides[current];
   const imageSrc = isMobile ? slide.mobileImage : slide.desktopImage;
 
   return (
@@ -213,11 +213,10 @@ export default function HeroSection() {
             <button
               key={idx}
               onClick={() => { stopAuto(); setCurrent(idx); }}
-              className={`rounded-full transition-all duration-300 ${
-                idx === current
-                  ? "w-8 h-2.5 bg-orange-500"
-                  : "w-2.5 h-2.5 bg-white/40 hover:bg-white/60"
-              }`}
+              className={`rounded-full transition-all duration-300 ${idx === current
+                ? "w-8 h-2.5 bg-orange-500"
+                : "w-2.5 h-2.5 bg-white/40 hover:bg-white/60"
+                }`}
             />
           ))}
         </div>

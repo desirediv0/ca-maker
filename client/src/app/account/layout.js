@@ -8,16 +8,16 @@ import { ClientOnly } from "@/components/client-only";
 import { User, Package, MapPin, Heart, RotateCcw, LogOut } from "lucide-react";
 
 const navItems = [
-  { path: "/account",           label: "Profile",   icon: User      },
-  { path: "/account/orders",    label: "Orders",    icon: Package   },
-  { path: "/account/returns",   label: "Returns",   icon: RotateCcw },
-  { path: "/account/addresses", label: "Addresses", icon: MapPin    },
-  { path: "/wishlist",          label: "Wishlist",  icon: Heart     },
+  { path: "/account", label: "Profile", icon: User },
+  { path: "/account/orders", label: "Orders", icon: Package },
+  { path: "/account/returns", label: "Returns", icon: RotateCcw },
+  { path: "/account/addresses", label: "Addresses", icon: MapPin },
+  { path: "/wishlist", label: "Wishlist", icon: Heart },
 ];
 
 export default function AccountLayout({ children }) {
   const { isAuthenticated, loading, user, logout } = useAuth();
-  const router   = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -32,9 +32,9 @@ export default function AccountLayout({ children }) {
     );
   }
 
-  const isActive     = (p) => pathname === p;
+  const isActive = (p) => pathname === p;
   const specialPages = ["/account/orders/", "/account/change-password", "/account/returns/"];
-  const isSpecial    = specialPages.some(
+  const isSpecial = specialPages.some(
     (p) => pathname.startsWith(p) && pathname !== "/account/orders"
   );
 
@@ -51,13 +51,13 @@ export default function AccountLayout({ children }) {
               {/* ── Sidebar ── */}
               <aside className="lg:col-span-1">
                 <div
-                  className="bg-white rounded-2xl border border-gray-100 overflow-hidden sticky top-6"
+                  className="bg-white rounded border border-gray-100 overflow-hidden sticky top-6"
                   style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
                 >
                   {/* User badge */}
                   <div className="bg-gray-900 px-6 py-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-11 h-11 bg-orange-500 rounded flex items-center justify-center flex-shrink-0">
                         <span className="text-white font-bold text-base">
                           {user?.name?.charAt(0)?.toUpperCase() || "U"}
                         </span>
@@ -75,11 +75,10 @@ export default function AccountLayout({ children }) {
                       <Link
                         key={path}
                         href={path}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                          isActive(path)
-                            ? "bg-orange-500 text-white shadow-sm"
-                            : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
-                        }`}
+                        className={`flex items-center gap-3 px-4 py-3 rounded text-sm font-medium transition-all duration-200 ${isActive(path)
+                          ? "bg-orange-500 text-white shadow-sm"
+                          : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
+                          }`}
                       >
                         <Icon className="h-4 w-4 flex-shrink-0" />
                         {label}
@@ -88,7 +87,7 @@ export default function AccountLayout({ children }) {
 
                     <button
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 transition-colors duration-200"
+                      className="w-full flex items-center gap-3 px-4 py-3 rounded text-sm font-medium text-red-500 hover:bg-red-50 transition-colors duration-200"
                     >
                       <LogOut className="h-4 w-4 flex-shrink-0" />
                       Logout

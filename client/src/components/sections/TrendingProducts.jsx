@@ -16,7 +16,7 @@ import {
 
 // Skeleton loader
 const ProductSkeleton = () => (
-  <div className="bg-white rounded-xl overflow-hidden animate-pulse border border-gray-100">
+  <div className="bg-white rounded overflow-hidden animate-pulse border border-gray-100">
     <div className="h-48 w-full bg-gradient-to-br from-gray-100 to-gray-200"></div>
     <div className="p-4">
       <div className="h-3 w-16 bg-gray-200 rounded-full mx-auto mb-2"></div>
@@ -39,12 +39,12 @@ export const TrendingProducts = () => {
         setLoading(true);
         // Try trending type first
         let response = await fetchApi("/public/products/type/trending?limit=12");
-        
+
         if (!response?.data?.products?.length) {
           // Fallback to recent products
           response = await fetchApi("/public/products?sort=createdAt&order=desc&limit=12");
         }
-        
+
         setProducts(response?.data?.products || []);
       } catch (err) {
         console.error("Error fetching trending products:", err);
@@ -129,7 +129,7 @@ export const TrendingProducts = () => {
 
         {/* View All Button */}
         <div className="text-center mt-6">
-          <Link href="/products?productType=trending">
+          <Link href="/courses?productType=trending">
             <Button
               variant="outline"
               size="lg"

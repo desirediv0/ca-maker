@@ -63,9 +63,10 @@ export default function ResendVerificationPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full bg-white rounded-2xl border border-gray-100 shadow-xl p-8 sm:p-10 mx-auto">
-                <h1 className="text-2xl font-bold mb-4 text-center">Resend OTP</h1>
+        <div className="min-h-screen flex items-center justify-center bg-[#FFF7ED] py-12 px-4 sm:px-6 lg:px-8">
+            <div className="max-w-md w-full bg-white rounded border border-gray-100 shadow-lg p-8 sm:p-10 mx-auto">
+                <span className="text-orange-500 font-bold text-lg block text-center mb-4">CA Maker</span>
+                <h1 className="text-2xl font-bold text-gray-900 mb-4 text-center">Resend OTP</h1>
 
                 <ClientOnly fallback={<div className="py-8">Loading...</div>}>
                     {(status === "idle" || status === "error") && (
@@ -94,7 +95,7 @@ export default function ResendVerificationPage() {
                                 </div>
                                 <Button
                                     type="submit"
-                                    className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded-xl transition-all"
+                                    className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded transition-all"
                                     disabled={status === "submitting"}
                                 >
                                     {status === "submitting" ? (
@@ -138,7 +139,7 @@ export default function ResendVerificationPage() {
                             </p>
                             <Link
                                 href={`/verify-otp?email=${encodeURIComponent(email)}`}
-                                className="mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90"
+                                className="mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary/90"
                             >
                                 Enter OTP Now <ArrowRight className="ml-2 h-4 w-4" />
                             </Link>

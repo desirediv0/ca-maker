@@ -40,7 +40,7 @@ export default function CourseCategories() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="animate-pulse bg-gray-100 rounded-2xl p-6 h-48"></div>
+              <div key={i} className="animate-pulse bg-gray-100 rounded p-6 h-48"></div>
             ))}
           </div>
         </div>
@@ -78,14 +78,14 @@ export default function CourseCategories() {
           {categories.map((category, index) => {
             const Icon = iconMap[index % iconMap.length];
             const colors = colorMap[index % colorMap.length];
-            
+
             return (
               <Link
                 key={category.id}
                 href={`/courses?categoryId=${category.id}`}
-                className={`group relative bg-gradient-to-br ${colors.bg} rounded-2xl p-6 border ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
+                className={`group relative bg-gradient-to-br ${colors.bg} rounded p-6 border ${colors.border} hover:shadow-xl transition-all duration-300 hover:-translate-y-1`}
               >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-white rounded flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-heading mb-2">{category.name}</h3>
@@ -105,7 +105,7 @@ export default function CourseCategories() {
           <Link href="/courses">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 h-12 rounded-xl font-semibold gap-2"
+              className="bg-primary hover:bg-primary/90 text-white px-8 h-12 rounded font-semibold gap-2"
             >
               View All Courses <ArrowRight className="h-4 w-4" />
             </Button>

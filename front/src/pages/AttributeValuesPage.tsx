@@ -768,7 +768,7 @@ function AttributeValueForm({
                   <img
                     src={imagePreview || existingImage || ""}
                     alt="Preview"
-                    className="h-24 w-24 object-cover rounded-md border-2 border-gray-300"
+                    className="h-24 w-24 object-cover rounded border-2 border-gray-300"
                   />
                   <Button
                     type="button"

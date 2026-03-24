@@ -592,7 +592,7 @@ export default function OrderDetailsPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Order Status Timeline */}
         <div className="lg:col-span-3">
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <Truck className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -607,7 +607,7 @@ export default function OrderDetailsPage() {
 
         {/* Order Items */}
         <div className="lg:col-span-2">
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <Package className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -618,7 +618,7 @@ export default function OrderDetailsPage() {
               <div className="divide-y divide-[#E5E7EB]">
                 {orderItems.map((item: OrderItem) => (
                   <div key={item.id} className="py-4 flex items-center gap-4">
-                    <div className="h-16 w-16 rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] overflow-hidden flex-shrink-0">
+                    <div className="h-16 w-16 rounded bg-[#F3F4F6] border border-[#E5E7EB] overflow-hidden flex-shrink-0">
                       <img
                         src={getImageUrl(
                           item.imageUrl ||
@@ -710,7 +710,7 @@ export default function OrderDetailsPage() {
         {/* Order Summary */}
         <div className="space-y-6">
           {/* Customer Info */}
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <User className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -743,7 +743,7 @@ export default function OrderDetailsPage() {
 
           {/* Cancellation Information (if order is cancelled) */}
           {orderDetails.status === "CANCELLED" && (
-            <Card className="bg-[#FEF2F2] border-2 border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FEF2F2] border-2 border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="text-lg font-semibold text-[#EF4444] flex items-center">
                   <AlertTriangle className="mr-2 h-5 w-5" />
@@ -778,7 +778,7 @@ export default function OrderDetailsPage() {
           )}
 
           {/* Payment Info */}
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <CreditCard className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -842,7 +842,7 @@ export default function OrderDetailsPage() {
           </Card>
 
           {/* Shipping Address */}
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <MapPin className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -873,7 +873,7 @@ export default function OrderDetailsPage() {
           </Card>
 
           {/* Order Summary */}
-          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+          <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
             <CardHeader className="px-6 pt-6 pb-4">
               <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                 <ShoppingCart className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -929,7 +929,7 @@ export default function OrderDetailsPage() {
                   </div>
                 )}
                 {orderDetails.couponCode && (
-                  <div className="mt-2 p-3 bg-[#ECFDF5] border border-[#D1FAE5] rounded-lg">
+                  <div className="mt-2 p-3 bg-[#ECFDF5] border border-[#D1FAE5] rounded">
                     <div className="flex items-center text-[#22C55E] font-medium mb-1 text-sm">
                       <ShoppingCart className="mr-2 h-4 w-4" />
                       Coupon applied: {orderDetails.couponCode}
@@ -973,7 +973,7 @@ export default function OrderDetailsPage() {
           {/* Tracking Info */}
           {orderDetails.status === "SHIPPED" ||
             orderDetails.status === "DELIVERED" ? (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                   <Truck className="mr-2 h-5 w-5 text-[#4CAF50]" />
@@ -1027,7 +1027,7 @@ export default function OrderDetailsPage() {
                               (update: OrderUpdate, index: number) => (
                                 <div
                                   key={index}
-                                  className="rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] p-3"
+                                  className="rounded border border-[#E5E7EB] bg-[#F3F7F6] p-3"
                                 >
                                   <div className="flex items-center gap-2 mb-2">
                                     <Clock className="h-4 w-4 text-[#9CA3AF]" />
@@ -1082,7 +1082,7 @@ export default function OrderDetailsPage() {
 
           {/* Shiprocket Information */}
           {orderDetails.shiprocket && (
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
               <CardHeader className="px-6 pt-6 pb-4">
                 <CardTitle className="text-lg font-semibold text-[#1F2937] flex items-center">
                   <Truck className="mr-2 h-5 w-5 text-[#4CAF50]" />

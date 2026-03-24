@@ -33,20 +33,20 @@ export default function NewLaunchCourses() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="h-5 w-24 bg-orange-100 rounded-full mb-3 animate-pulse" />
-              <div className="h-9 w-48 bg-gray-100 rounded-xl animate-pulse" />
+              <div className="h-9 w-48 bg-gray-100 rounded animate-pulse" />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
-                className="animate-pulse bg-white rounded-2xl border border-gray-100 overflow-hidden"
+                className="animate-pulse bg-white rounded border border-gray-100 overflow-hidden"
                 style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
               >
                 <div className="h-48 bg-gray-100" />
                 <div className="p-4 space-y-3">
-                  <div className="h-4 bg-gray-100 rounded-lg" />
-                  <div className="h-4 bg-gray-100 rounded-lg w-3/4" />
+                  <div className="h-4 bg-gray-100 rounded" />
+                  <div className="h-4 bg-gray-100 rounded w-3/4" />
                 </div>
               </div>
             ))}

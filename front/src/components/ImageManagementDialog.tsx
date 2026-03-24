@@ -184,11 +184,11 @@ export default function ImageManagementDialog({
               <Label className="text-sm font-medium">Add Images</Label>
               <div
                 {...getRootProps()}
-                className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${isDragActive
-                    ? isDragReject
-                      ? "border-red-400 bg-red-50"
-                      : "border-blue-400 bg-blue-50"
-                    : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+                className={`border-2 border-dashed rounded p-6 text-center cursor-pointer transition-colors ${isDragActive
+                  ? isDragReject
+                    ? "border-red-400 bg-red-50"
+                    : "border-blue-400 bg-blue-50"
+                  : "border-gray-300 hover:border-gray-400 hover:bg-gray-50"
                   } ${isUploading ? "opacity-50 pointer-events-none" : ""}`}
               >
                 <input {...getInputProps()} />
@@ -230,9 +230,9 @@ export default function ImageManagementDialog({
                 {images.map((image, index) => (
                   <div
                     key={image.id || image.tempId || index}
-                    className={`relative group aspect-square rounded-lg overflow-hidden border-2 transition-all ${image.isPrimary
-                        ? "border-green-500 ring-2 ring-green-200 shadow-lg"
-                        : "border-gray-200 hover:border-gray-300"
+                    className={`relative group aspect-square rounded overflow-hidden border-2 transition-all ${image.isPrimary
+                      ? "border-green-500 ring-2 ring-green-200 shadow-lg"
+                      : "border-gray-200 hover:border-gray-300"
                       }`}
                   >
                     <div className="h-full w-full bg-gray-100 flex items-center justify-center">
@@ -312,7 +312,7 @@ export default function ImageManagementDialog({
 
           {/* No Images State */}
           {!hasImages && (
-            <div className="text-center py-8 text-gray-500 border border-gray-200 rounded-lg bg-gray-50">
+            <div className="text-center py-8 text-gray-500 border border-gray-200 rounded bg-gray-50">
               <ImageIcon className="h-12 w-12 mx-auto mb-3 text-gray-400" />
               <p className="font-medium">No images uploaded yet</p>
               <p className="text-sm mt-1">Upload images using the area above</p>

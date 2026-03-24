@@ -2,8 +2,11 @@
     "nav": {
         "dashboard": "仪表板",
         "products": "产品",
+        "courses": "课程",
         "all_products": "所有产品",
+        "all_courses": "所有课程",
         "add_product": "添加产品",
+        "add_course": "添加课程",
         "brands": "品牌",
         "categories": "分类",
         "attributes": "属性",
@@ -1681,8 +1684,8 @@
         }
     },
     "products": {
-        "title": "产品",
-        "add_new": "添加产品",
+        "title": "课程",
+        "add_new": "添加课程",
         "edit_product": "编辑产品",
         "list": {
             "search_placeholder": "搜索产品...",

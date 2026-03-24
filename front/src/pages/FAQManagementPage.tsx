@@ -221,7 +221,7 @@ export default function FAQManagementPage() {
       </div>
 
       {/* Search Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <Input
             placeholder={t("faq_management.search_placeholder")}
@@ -232,7 +232,7 @@ export default function FAQManagementPage() {
         </CardContent>
       </Card>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader>
           <CardTitle className="text-lg font-semibold text-[#1F2937]">
             {t("faq_management.list_title")}
@@ -286,7 +286,7 @@ export default function FAQManagementPage() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4 flex-1 min-w-0">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EFF6FF] flex-shrink-0">
+                        <div className="flex h-10 w-10 items-center justify-center rounded bg-[#EFF6FF] flex-shrink-0">
                           <span className="text-sm font-semibold text-[#3B82F6]">
                             {index + 1}
                           </span>

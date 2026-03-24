@@ -576,7 +576,7 @@ export default function PricingSlabsPage() {
                             </div>
 
                             {(!formData.productId && !formData.variantId) && (
-                                <div className="flex gap-2 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                <div className="flex gap-2 p-3 bg-amber-50 border border-amber-200 rounded">
                                     <AlertCircle className="h-5 w-5 text-amber-600 flex-shrink-0" />
                                     <p className="text-sm text-amber-800">
                                         {t("pricing_slabs.warning.select_product_or_variant")}

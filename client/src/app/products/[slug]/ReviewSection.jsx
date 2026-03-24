@@ -58,7 +58,7 @@ export default function ReviewSection({ product }) {
     e.preventDefault();
 
     if (!isAuthenticated) {
-      router.push(`/auth?redirect=/products/${product.slug}&review=true`);
+      router.push(`/auth?redirect=/courses/${product.slug}&review=true`);
       return;
     }
 
@@ -114,18 +114,18 @@ export default function ReviewSection({ product }) {
 
       <div>
         <label htmlFor="title" className="block text-sm font-medium mb-2">Review Title</label>
-        <input type="text" id="title" name="title" value={reviewForm.title} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${formErrors.title ? "border-red-500" : "border-gray-300"}`} placeholder="Give your review a title (optional)" />
+        <input type="text" id="title" name="title" value={reviewForm.title} onChange={handleInputChange} className={`w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary ${formErrors.title ? "border-red-500" : "border-gray-300"}`} placeholder="Give your review a title (optional)" />
         {formErrors.title && <p className="text-sm text-red-500 mt-1">{formErrors.title}</p>}
       </div>
 
       <div>
         <label htmlFor="comment" className="block text-sm font-medium mb-2">Review <span className="text-red-500">*</span></label>
-        <textarea id="comment" name="comment" value={reviewForm.comment} onChange={handleInputChange} rows={4} className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary ${formErrors.comment ? "border-red-500" : "border-gray-300"}`} placeholder="Write your review here"></textarea>
+        <textarea id="comment" name="comment" value={reviewForm.comment} onChange={handleInputChange} rows={4} className={`w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary ${formErrors.comment ? "border-red-500" : "border-gray-300"}`} placeholder="Write your review here"></textarea>
         {formErrors.comment && <p className="text-sm text-red-500 mt-1">{formErrors.comment}</p>}
       </div>
 
       <div className="flex gap-3 justify-center">
-        <Button type="submit" className="px-8 py-2 bg-primary hover:bg-primary/90 rounded-md" disabled={isSubmitting}>
+        <Button type="submit" className="px-8 py-2 bg-primary hover:bg-primary/90 rounded" disabled={isSubmitting}>
           {isSubmitting ? (
             <div className="flex items-center">
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
@@ -133,7 +133,7 @@ export default function ReviewSection({ product }) {
             </div>
           ) : "Submit Review"}
         </Button>
-        <Button type="button" variant="outline" onClick={() => { setShowForm(false); setFormErrors({}); setReviewForm({ rating: 0, title: "", comment: "" }); }} className="px-6 rounded-md">Cancel</Button>
+        <Button type="button" variant="outline" onClick={() => { setShowForm(false); setFormErrors({}); setReviewForm({ rating: 0, title: "", comment: "" }); }} className="px-6 rounded">Cancel</Button>
       </div>
     </form>
   );
@@ -170,7 +170,7 @@ export default function ReviewSection({ product }) {
                   <p className="mt-2 text-gray-600 leading-relaxed">{review.comment}</p>
 
                   {review.adminReply && (
-                    <div className="mt-4 p-3 bg-blue-50 rounded-md">
+                    <div className="mt-4 p-3 bg-blue-50 rounded">
                       <p className="text-sm font-semibold text-blue-700">Response from Seller:</p>
                       <p className="mt-1 text-sm text-gray-700">{review.adminReply}</p>
                       {review.adminReplyDate && <p className="mt-2 text-xs text-gray-500">Replied on {new Date(review.adminReplyDate).toLocaleDateString()}</p>}
@@ -181,15 +181,15 @@ export default function ReviewSection({ product }) {
             </div>
           </div>
 
-          <div className="bg-gray-50 p-6 rounded-md">
+          <div className="bg-gray-50 p-6 rounded">
             <h3 className="font-semibold text-lg mb-4">Write a Review</h3>
 
             {!showForm ? (
-              <Button onClick={() => { if (!isAuthenticated) { router.push(`/auth?redirect=/products/${product.slug}&review=true`); return; } setShowForm(true); }} className="px-8 py-2 bg-primary hover:bg-primary/90 rounded-md">Write a Review</Button>
+              <Button onClick={() => { if (!isAuthenticated) { router.push(`/auth?redirect=/courses/${product.slug}&review=true`); return; } setShowForm(true); }} className="px-8 py-2 bg-primary hover:bg-primary/90 rounded">Write a Review</Button>
             ) : <ReviewFormComponent />}
 
             {!canReview() && (
-              <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-md text-amber-700 text-sm flex items-center">
+              <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded text-amber-700 text-sm flex items-center">
                 <AlertCircle className="h-4 w-4 mr-2 flex-shrink-0" />
                 You need to purchase this product to write a review
               </div>
@@ -197,12 +197,12 @@ export default function ReviewSection({ product }) {
           </div>
         </div>
       ) : (
-        <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center py-12 bg-gray-50 rounded border border-gray-200">
           <p className="text-gray-500 mb-6">No reviews yet. Be the first to review this product!</p>
-          <Button onClick={() => { if (!isAuthenticated) { router.push(`/auth?redirect=/products/${product.slug}&review=true`); return; } setShowForm(true); }} className="px-8 py-2 bg-primary hover:bg-primary/90 rounded-md">Write a Review</Button>
+          <Button onClick={() => { if (!isAuthenticated) { router.push(`/auth?redirect=/courses/${product.slug}&review=true`); return; } setShowForm(true); }} className="px-8 py-2 bg-primary hover:bg-primary/90 rounded">Write a Review</Button>
 
           {showForm && (
-            <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-sm border">
+            <div className="max-w-lg mx-auto mt-8 p-6 bg-white rounded shadow-sm border">
               <ReviewFormComponent />
             </div>
           )}

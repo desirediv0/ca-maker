@@ -281,7 +281,7 @@ export default function ReturnRequestsPage() {
 
       {/* Settings Card */}
       {settings && (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex items-center gap-6">
@@ -313,7 +313,7 @@ export default function ReturnRequestsPage() {
       )}
 
       {/* Filters Bar */}
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
@@ -327,7 +327,7 @@ export default function ReturnRequestsPage() {
               />
             </div>
             <select
-              className="px-4 py-2 rounded-lg border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
+              className="px-4 py-2 rounded border border-[#E5E7EB] bg-[#F3F7F6] text-sm text-[#4B5563] focus:border-primary focus:outline-none"
               value={statusFilter}
               onChange={(e) => {
                 setStatusFilter(e.target.value);
@@ -400,7 +400,7 @@ export default function ReturnRequestsPage() {
           </div>
         </div>
       ) : returnRequests.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <RotateCcw className="h-8 w-8 text-[#9CA3AF]" />
@@ -420,7 +420,7 @@ export default function ReturnRequestsPage() {
           {returnRequests.map((returnReq) => (
             <Card
               key={returnReq.id}
-              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
             >
               <CardContent className="p-6">
                 <div className="flex flex-col lg:flex-row gap-6">
@@ -429,7 +429,7 @@ export default function ReturnRequestsPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#E8F5E9]">
+                          <div className="flex h-10 w-10 items-center justify-center rounded bg-[#E8F5E9]">
                             <ShoppingBag className="h-5 w-5 text-[#2E7D32]" />
                           </div>
                           <div>
@@ -450,7 +450,7 @@ export default function ReturnRequestsPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Customer Details */}
-                      <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                      <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                         <div className="flex items-center gap-2 mb-2">
                           <User className="h-4 w-4 text-[#4CAF50]" />
                           <p className="text-sm font-medium text-[#4B5563]">{t('return_requests.details.customer')}</p>
@@ -463,7 +463,7 @@ export default function ReturnRequestsPage() {
                       </div>
 
                       {/* Product Details */}
-                      <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                      <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                         <div className="flex items-center gap-2 mb-2">
                           <Package className="h-4 w-4 text-[#4CAF50]" />
                           <p className="text-sm font-medium text-[#4B5563]">{t('return_requests.details.product')}</p>
@@ -481,7 +481,7 @@ export default function ReturnRequestsPage() {
                     </div>
 
                     {/* Return Reason */}
-                    <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                    <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                       <p className="text-sm font-medium text-[#4B5563] mb-2">{t('return_requests.details.reason')}</p>
                       <p className="font-medium text-[#1F2937]">{returnReq.reason}</p>
                       {returnReq.customReason && (
@@ -492,7 +492,7 @@ export default function ReturnRequestsPage() {
                     </div>
 
                     {returnReq.adminNotes && (
-                      <div className="p-4 bg-[#FFFBEB] rounded-lg border border-[#FEF3C7]">
+                      <div className="p-4 bg-[#FFFBEB] rounded border border-[#FEF3C7]">
                         <p className="text-sm font-medium text-[#F59E0B] mb-1">{t('return_requests.details.admin_notes')}</p>
                         <p className="text-sm text-[#4B5563]">{returnReq.adminNotes}</p>
                       </div>
@@ -679,7 +679,7 @@ export default function ReturnRequestsPage() {
                   {t('return_requests.status_label')} <span className="text-[#EF4444]">*</span>
                 </Label>
                 <select
-                  className="w-full border border-[#E5E7EB] rounded-lg px-3 py-2 text-sm text-[#4B5563] focus:border-primary focus:outline-none bg-[#F3F7F6]"
+                  className="w-full border border-[#E5E7EB] rounded px-3 py-2 text-sm text-[#4B5563] focus:border-primary focus:outline-none bg-[#F3F7F6]"
                   value={statusForm.status}
                   onChange={(e) =>
                     setStatusForm({ ...statusForm, status: e.target.value })
@@ -767,7 +767,7 @@ export default function ReturnRequestsPage() {
                 )}
               </div>
 
-              <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+              <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                 <p className="text-sm font-medium text-[#4B5563] mb-2">{t('return_requests.details.customer')}</p>
                 <p className="font-semibold text-[#1F2937]">{selectedReturn.user.name}</p>
                 <p className="text-sm text-[#9CA3AF]">{selectedReturn.user.email}</p>
@@ -776,7 +776,7 @@ export default function ReturnRequestsPage() {
                 )}
               </div>
 
-              <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+              <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                 <p className="text-sm font-medium text-[#4B5563] mb-2">{t('return_requests.details.product')}</p>
                 <p className="font-semibold text-[#1F2937]">
                   {selectedReturn.orderItem.product.name}
@@ -789,7 +789,7 @@ export default function ReturnRequestsPage() {
                 </p>
               </div>
 
-              <div className="p-4 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+              <div className="p-4 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                 <p className="text-sm font-medium text-[#4B5563] mb-2">{t('return_requests.details.reason')}</p>
                 <p className="font-medium text-[#1F2937]">{selectedReturn.reason}</p>
                 {selectedReturn.customReason && (
@@ -800,7 +800,7 @@ export default function ReturnRequestsPage() {
               </div>
 
               {selectedReturn.adminNotes && (
-                <div className="p-4 bg-[#FFFBEB] rounded-lg border border-[#FEF3C7]">
+                <div className="p-4 bg-[#FFFBEB] rounded border border-[#FEF3C7]">
                   <p className="text-sm font-medium text-[#F59E0B] mb-1">{t('return_requests.details.admin_notes')}</p>
                   <p className="text-sm text-[#4B5563]">{selectedReturn.adminNotes}</p>
                 </div>
@@ -815,7 +815,7 @@ export default function ReturnRequestsPage() {
                         key={idx}
                         src={img}
                         alt={`${t('return_requests.details.return_image')} ${idx + 1}`}
-                        className="w-full h-40 object-cover rounded-lg border border-[#E5E7EB]"
+                        className="w-full h-40 object-cover rounded border border-[#E5E7EB]"
                       />
                     ))}
                   </div>

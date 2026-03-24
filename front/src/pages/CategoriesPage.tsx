@@ -266,7 +266,7 @@ function CategoriesList() {
 
       {/* Categories List */}
       {categoriesList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Tags className="h-8 w-8 text-[#9CA3AF]" />
@@ -293,7 +293,7 @@ function CategoriesList() {
           {categoriesList.map((category) => (
             <Card
               key={category.id}
-              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+              className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
             >
               <CardContent className="p-6">
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -302,10 +302,10 @@ function CategoriesList() {
                       <img
                         src={category.image}
                         alt={category.name}
-                        className="h-12 w-12 rounded-lg object-cover border border-[#E5E7EB] flex-shrink-0"
+                        className="h-12 w-12 rounded object-cover border border-[#E5E7EB] flex-shrink-0"
                       />
                     ) : (
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded bg-[#F3F4F6] border border-[#E5E7EB] flex-shrink-0">
                         <ImageIcon className="h-6 w-6 text-[#9CA3AF]" />
                       </div>
                     )}
@@ -367,7 +367,7 @@ function CategoriesList() {
                 <h3 className="font-semibold mb-3 text-base">
                   {t("categories.help.relationship.title")}
                 </h3>
-                <div className="bg-muted p-4 rounded-md space-y-2 text-sm text-foreground">
+                <div className="bg-muted p-4 rounded space-y-2 text-sm text-foreground">
                   <div className="flex items-center gap-2">
                     <div className="font-semibold">{t("categories.help.relationship.category_label")}</div>
                     <div>Women's Clothing</div>
@@ -441,7 +441,7 @@ function CategoriesList() {
                 <h3 className="font-semibold mb-3 text-base">
                   {t("categories.help.limit.title")}
                 </h3>
-                <div className="bg-blue-50 border border-blue-200 p-4 rounded-md text-sm text-blue-900">
+                <div className="bg-blue-50 border border-blue-200 p-4 rounded text-sm text-blue-900">
                   <p className="mb-2">
                     {t("categories.help.limit.info")}
                   </p>
@@ -458,7 +458,7 @@ function CategoriesList() {
                 <h3 className="font-semibold mb-3 text-base">
                   {t("categories.help.examples.title")}
                 </h3>
-                <div className="bg-muted p-4 rounded-md space-y-3 text-sm text-foreground">
+                <div className="bg-muted p-4 rounded space-y-3 text-sm text-foreground">
                   <div>
                     <strong>{t("categories.help.examples.ex1.title")}</strong>
                     <ul className="list-disc list-inside ml-4 mt-1 space-y-1 text-muted-foreground">
@@ -487,7 +487,7 @@ function CategoriesList() {
                 <h3 className="font-semibold mb-3 text-base">
                   {t("categories.help.visibility.title")}
                 </h3>
-                <div className="bg-green-50 border border-green-200 p-4 rounded-md space-y-2 text-sm text-green-900">
+                <div className="bg-green-50 border border-green-200 p-4 rounded space-y-2 text-sm text-green-900">
                   <p className="font-medium">{t("categories.help.visibility.list_title")}</p>
                   <ul className="list-disc list-inside ml-4 space-y-1">
                     <li>{t("categories.help.visibility.list_item1")}</li>
@@ -512,7 +512,7 @@ function CategoriesList() {
                 <h3 className="font-semibold mb-3 text-base">
                   {t("categories.help.appear.title")}
                 </h3>
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-md border-2 border-dashed space-y-3 text-sm border-purple-200">
+                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded border-2 border-dashed space-y-3 text-sm border-purple-200">
                   <div className="bg-white p-3 rounded shadow-sm">
                     <div className="font-semibold mb-2 text-purple-900">{t("categories.help.appear.nav")}</div>
                     <div className="ml-4 space-y-1 text-purple-800">
@@ -887,7 +887,7 @@ function CategoryForm({
         <div className="h-px bg-[#E5E7EB]" />
       </div>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader className="px-6 pt-6 pb-4">
           <CardTitle className="text-lg font-semibold text-[#1F2937]">
             {t("categories.form.info_title")}
@@ -949,12 +949,12 @@ function CategoryForm({
                     {t("categories.form.image_recommendation")}
                   </p>
                 </div>
-                <div className="flex h-24 w-24 items-center justify-center rounded-lg border border-[#E5E7EB] bg-[#F3F4F6] flex-shrink-0">
+                <div className="flex h-24 w-24 items-center justify-center rounded border border-[#E5E7EB] bg-[#F3F4F6] flex-shrink-0">
                   {imagePreview ? (
                     <img
                       src={imagePreview}
                       alt={t("categories.form.preview_alt")}
-                      className="h-full w-full rounded-lg object-cover"
+                      className="h-full w-full rounded object-cover"
                     />
                   ) : (
                     <ImageIcon className="h-8 w-8 text-[#9CA3AF]" />
@@ -994,7 +994,7 @@ function CategoryForm({
 
       {/* Sub-Categories Section - Only show in edit mode */}
       {mode === "edit" && categoryId && (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <CardHeader className="px-6 pt-6 pb-4">
             <div className="flex items-center justify-between">
               <div>
@@ -1056,7 +1056,7 @@ function CategoryForm({
                             <img
                               src={subCategory.image}
                               alt={subCategory.name}
-                              className="w-full h-32 object-cover rounded-lg border border-[#E5E7EB]"
+                              className="w-full h-32 object-cover rounded border border-[#E5E7EB]"
                             />
                           )}
                           <div>
@@ -1188,12 +1188,12 @@ function CategoryForm({
                     {t("categories.subcategories.dialog.image_recommendation")}
                   </p>
                 </div>
-                <div className="flex h-24 w-24 items-center justify-center rounded-lg border border-[#E5E7EB] bg-[#F3F4F6] flex-shrink-0">
+                <div className="flex h-24 w-24 items-center justify-center rounded border border-[#E5E7EB] bg-[#F3F4F6] flex-shrink-0">
                   {subCategoryImagePreview ? (
                     <img
                       src={subCategoryImagePreview}
                       alt={t("categories.subcategories.dialog.preview_alt")}
-                      className="h-full w-full rounded-lg object-cover"
+                      className="h-full w-full rounded object-cover"
                     />
                   ) : (
                     <ImageIcon className="h-8 w-8 text-[#9CA3AF]" />

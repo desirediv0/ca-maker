@@ -26,12 +26,10 @@ function NavLink({ href, name, pathname, onClick }) {
       href={href}
       onClick={onClick}
       className={`
-        relative pb-0.5 text-sm font-semibold tracking-wide transition-colors duration-200
-        after:absolute after:bottom-0 after:left-0 after:h-[2px] after:rounded-full
-        after:bg-gradient-to-r after:from-orange-400 after:to-amber-400 after:transition-all after:duration-300
+        text-sm font-medium transition-colors duration-200
         ${isActive
-          ? "text-orange-500 after:w-full"
-          : "text-gray-700 hover:text-orange-500 after:w-0 hover:after:w-full"
+          ? "text-[#F97316]"
+          : "text-[#374151] hover:text-[#F97316]"
         }
       `}
     >
@@ -42,18 +40,18 @@ function NavLink({ href, name, pathname, onClick }) {
 
 export function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
-  const { getCartItemCount }              = useCart();
+  const { getCartItemCount } = useCart();
 
-  const [isDrawerOpen,  setIsDrawerOpen]  = useState(false);
-  const [isScrolled,    setIsScrolled]    = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isSearchOpen,  setIsSearchOpen]  = useState(false);
-  const [searchQuery,   setSearchQuery]   = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const router      = useRouter();
-  const pathname    = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
   const dropdownRef = useRef(null);
-  const searchRef   = useRef(null);
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24);
@@ -103,17 +101,17 @@ export function Navbar() {
   };
 
   const navLinks = [
-    { name: "Home",       href: "/" },
-    { name: "Courses",    href: "/courses" },
+    { name: "Home", href: "/" },
+    { name: "Courses", href: "/courses" },
     { name: "Categories", href: "/categories" },
-    { name: "About Us",   href: "/about" },
-    { name: "Contact",    href: "/contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const profileLinks = [
-    { href: "/account",        icon: RiUserLine,         label: "My Profile" },
-    { href: "/account/orders", icon: RiShoppingBagLine,  label: "My Orders"  },
-    { href: "/wishlist",       icon: RiHeartLine,        label: "Wishlist"   },
+    { href: "/account", icon: RiUserLine, label: "My Profile" },
+    { href: "/account/orders", icon: RiShoppingBagLine, label: "My Orders" },
+    { href: "/wishlist", icon: RiHeartLine, label: "Wishlist" },
   ];
 
   const cartCount = getCartItemCount();
@@ -122,35 +120,22 @@ export function Navbar() {
     <>
       {/* ─── MAIN HEADER ─── */}
       <header
-        className={`
-          sticky top-0 z-40 w-full transition-all duration-400
-          ${isScrolled
-            ? "bg-white/95 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] border-b border-gray-100/80"
-            : "bg-transparent border-b border-transparent"
-          }
-        `}
+        className="sticky top-0 z-40 w-full bg-white shadow-sm border-b border-[#E5E7EB] transition-all duration-300"
       >
-        {/* Orange accent line */}
-        <div className="h-0.5 bg-gradient-to-r from-orange-400 via-orange-500 to-amber-400" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className={`
-              flex items-center gap-6
-              transition-all duration-300
-              ${isScrolled ? "h-14" : "h-16"}
-            `}
-          >
+          <div className="flex items-center gap-6 h-16">
             {/* ── Logo ── */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="flex items-center gap-1.5 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="CA Maker"
-                width={200}
-                height={80}
-                className={`w-auto transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`}
+                width={140}
+                height={44}
+                className="h-10 w-auto"
                 priority
               />
+              <span className="w-2 h-2 rounded-full bg-[#F97316] hidden sm:block" />
             </Link>
 
             {/* ── Desktop Nav ── */}
@@ -221,7 +206,7 @@ export function Navbar() {
               >
                 <RiShoppingCartLine className="h-5 w-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-orange-500 text-white text-[10px] font-bold
+                  <span className="absolute -top-0.5 -right-0.5 bg-[#F97316] text-white text-[10px] font-bold
                     rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 leading-none">
                     {cartCount > 99 ? "99+" : cartCount}
                   </span>
@@ -246,7 +231,7 @@ export function Navbar() {
 
                   {isProfileOpen && (
                     <div
-                      className="absolute right-0 mt-2 w-52 bg-white rounded-2xl border border-gray-100/80 py-2 z-50"
+                      className="absolute right-0 mt-2 w-52 bg-white rounded border border-gray-100/80 py-2 z-50"
                       style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
                     >
                       <div className="px-4 py-3 border-b border-gray-100">
@@ -276,23 +261,32 @@ export function Navbar() {
                   )}
                 </div>
               ) : (
-                <Link
-                  href="/auth"
-                  className="hidden lg:flex items-center gap-2 px-5 py-2.5
-                    bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700
-                    text-white rounded-full text-sm font-semibold
-                    transition-all shadow-md hover:shadow-orange-500/40 hover:shadow-lg"
-                >
-                  <RiUserLine className="h-3.5 w-3.5" />
-                  Login
-                </Link>
+                <>
+                  <Link
+                    href="/auth"
+                    className="hidden lg:flex items-center gap-2 px-4 py-2.5
+                      border border-[#E5E7EB] rounded text-sm font-medium text-[#374151]
+                      hover:border-[#F97316] hover:text-[#F97316] transition-all"
+                  >
+                    <RiUserLine className="h-4 w-4" />
+                    Login
+                  </Link>
+                  <Link
+                    href="/courses"
+                    className="hidden lg:flex items-center gap-2 px-5 py-2.5
+                      bg-[#F97316] hover:bg-[#EA580C] text-white rounded text-sm font-semibold
+                      transition-all duration-200"
+                  >
+                    Start Learning
+                  </Link>
+                </>
               )}
 
               {/* Hamburger */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
                 aria-label="Open menu"
-                className="lg:hidden p-2.5 rounded-xl text-gray-700 hover:bg-gray-100 transition-colors"
+                className="lg:hidden p-2.5 rounded text-gray-700 hover:bg-gray-100 transition-colors"
               >
                 <RiMenuLine className="h-5 w-5" />
               </button>
@@ -328,7 +322,7 @@ export function Navbar() {
           <button
             onClick={() => setIsDrawerOpen(false)}
             aria-label="Close menu"
-            className="p-2 rounded-xl text-gray-600 hover:bg-gray-100 transition-colors"
+            className="p-2 rounded text-gray-600 hover:bg-gray-100 transition-colors"
           >
             <RiCloseLine className="h-5 w-5" />
           </button>
@@ -344,7 +338,7 @@ export function Navbar() {
                 placeholder="Search courses…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm
+                className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded text-sm
                   placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400"
               />
             </div>
@@ -361,7 +355,7 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setIsDrawerOpen(false)}
                 className={`
-                  flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-colors
+                  flex items-center px-4 py-3 rounded text-sm font-semibold transition-colors
                   ${isActive
                     ? "bg-orange-50 text-orange-600 border-l-[3px] border-orange-500 pl-[13px]"
                     : "text-gray-700 hover:bg-gray-50 hover:text-orange-600"
@@ -379,7 +373,7 @@ export function Navbar() {
           {isAuthenticated ? (
             <>
               <div className="flex items-center gap-3 px-2 py-2 mb-3">
-                <span className="w-9 h-9 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl
+                <span className="w-9 h-9 bg-gradient-to-br from-orange-400 to-orange-600 rounded
                   flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                   {user?.name?.charAt(0)?.toUpperCase() || "U"}
                 </span>
@@ -393,7 +387,7 @@ export function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setIsDrawerOpen(false)}
-                  className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                  className="flex items-center gap-3 px-4 py-2.5 rounded text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
                 >
                   <Icon className="h-4 w-4 text-gray-400" />
                   {label}
@@ -401,7 +395,7 @@ export function Navbar() {
               ))}
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-red-600 hover:bg-red-50 transition-colors mt-1"
+                className="w-full flex items-center gap-3 px-4 py-2.5 rounded text-sm text-red-600 hover:bg-red-50 transition-colors mt-1"
               >
                 <RiLogoutBoxLine className="h-4 w-4" />
                 Logout
@@ -412,7 +406,7 @@ export function Navbar() {
               href="/auth"
               onClick={() => setIsDrawerOpen(false)}
               className="flex items-center justify-center gap-2 py-3
-                bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-xl text-sm font-semibold transition-colors"
+                bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded text-sm font-semibold transition-colors"
             >
               <RiUserLine className="h-4 w-4" />
               Login / Register

@@ -24,10 +24,10 @@ export default function PartnerPage() {
                 <div className="h-px bg-[#E5E7EB]" />
             </div>
 
-            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+            <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
                 <div className="p-6">
                     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                        <TabsList className="grid w-full grid-cols-2 bg-[#F3F7F6] p-1 rounded-lg">
+                        <TabsList className="grid w-full grid-cols-2 bg-[#F3F7F6] p-1 rounded">
                             <TabsTrigger
                                 value="approved"
                                 className={

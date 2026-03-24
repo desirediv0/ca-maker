@@ -234,7 +234,7 @@ export function ProductCard({
   return (
     <Card className="overflow-hidden group h-full flex flex-col">
       <div className="relative overflow-hidden">
-        <Link to={`/products/${slug}`}>
+        <Link to={`/courses/${slug}`}>
           <img
             src={displayImage?.url || "/placeholder-product.jpg"}
             alt={displayImage?.alt || name}
@@ -269,7 +269,7 @@ export function ProductCard({
       </div>
 
       <CardContent className="p-2 flex-grow">
-        <Link to={`/products/${slug}`} className="hover:underline">
+        <Link to={`/courses/${slug}`} className="hover:underline">
           <h3 className="font-semibold text-base mb-0.5 line-clamp-1">{name}</h3>
         </Link>
 

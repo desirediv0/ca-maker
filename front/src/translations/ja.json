@@ -17,8 +17,11 @@
     "nav": {
         "dashboard": "ダッシュボード",
         "products": "商品",
+        "courses": "コース",
         "all_products": "すべての商品",
+        "all_courses": "すべてのコース",
         "add_product": "商品を追加",
+        "add_course": "コースを追加",
         "brands": "ブランド",
         "categories": "カテゴリー",
         "attributes": "属性",
@@ -1690,8 +1693,8 @@
         }
     },
     "products": {
-        "title": "商品",
-        "add_new": "商品を追加",
+        "title": "コース",
+        "add_new": "コースを追加",
         "edit_product": "商品を編集",
         "list": {
             "search_placeholder": "商品を検索...",

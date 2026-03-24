@@ -174,7 +174,7 @@ function FlashSalesList() {
 
   if (error) {
     return (
-      <Card className="bg-[#FEF2F2] border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FEF2F2] border-[#FEE2E2] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardContent className="p-6 flex items-center gap-3">
           <AlertTriangle className="h-5 w-5 text-[#EF4444] flex-shrink-0" />
           <p className="text-[#DC2626]">{error}</p>
@@ -210,7 +210,7 @@ function FlashSalesList() {
       </div>
 
       {flashSalesList.length === 0 ? (
-        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+        <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
           <div className="text-center py-16">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#F3F4F6] mb-4">
               <Zap className="h-8 w-8 text-[#9CA3AF]" />
@@ -247,13 +247,13 @@ function FlashSalesList() {
             return (
               <Card
                 key={sale.id}
-                className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl hover:shadow-md transition-shadow"
+                className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded hover:shadow-md transition-shadow"
               >
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3 mb-2">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FEF3C7]">
+                        <div className="flex h-10 w-10 items-center justify-center rounded bg-[#FEF3C7]">
                           <Zap className="h-5 w-5 text-[#F59E0B]" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -271,25 +271,25 @@ function FlashSalesList() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="p-3 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                    <div className="p-3 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                       <p className="text-xs text-[#9CA3AF] mb-1">{t("flash_sales.card.discount")}</p>
                       <p className="font-bold text-[#EF4444] text-lg">
                         {sale.discountPercentage}% OFF
                       </p>
                     </div>
-                    <div className="p-3 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                    <div className="p-3 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                       <p className="text-xs text-[#9CA3AF] mb-1">{t("flash_sales.card.products")}</p>
                       <p className="font-bold text-[#1F2937] text-lg">
                         {sale.productCount}
                       </p>
                     </div>
-                    <div className="p-3 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                    <div className="p-3 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                       <p className="text-xs text-[#9CA3AF] mb-1">{t("flash_sales.card.sold")}</p>
                       <p className="font-bold text-[#1F2937] text-lg">
                         {sale.soldCount}
                       </p>
                     </div>
-                    <div className="p-3 bg-[#F3F7F6] rounded-lg border border-[#E5E7EB]">
+                    <div className="p-3 bg-[#F3F7F6] rounded border border-[#E5E7EB]">
                       <p className="text-xs text-[#9CA3AF] mb-1">{t("flash_sales.card.max_quantity")}</p>
                       <p className="font-bold text-[#1F2937] text-lg">
                         {sale.maxQuantity || "∞"}
@@ -506,7 +506,7 @@ function FlashSaleForm({
         <div className="h-px bg-[#E5E7EB]" />
       </div>
 
-      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded-xl">
+      <Card className="bg-[#FFFFFF] border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)] rounded">
         <CardHeader className="px-6 pt-6 pb-4">
           <CardTitle className="text-lg font-semibold text-[#1F2937]">
             {t("flash_sales.form.info_title")}

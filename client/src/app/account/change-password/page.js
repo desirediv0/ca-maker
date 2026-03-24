@@ -66,7 +66,7 @@ export default function ChangePasswordPage() {
                     <Link href="/account" className="inline-flex items-center text-sm text-gray-600 hover:text-primary mr-4"><DynamicIcon name="ArrowLeft" className="mr-1 h-4 w-4" />Back to Account</Link>
                     <h1 className="text-3xl font-bold">Change Password</h1>
                 </div>
-                <div className="max-w-md mx-auto bg-white rounded-lg shadow p-6">
+                <div className="max-w-md mx-auto bg-white rounded shadow p-6">
                     {message.text && <div className={`mb-6 p-3 rounded ${message.type === "success" ? "bg-green-50 text-green-800 border border-green-200" : "bg-red-50 text-red-800 border border-red-200"}`}>{message.text}</div>}
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <PasswordInput name="currentPassword" label="Current Password" field="current" />

@@ -112,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══ Instructor + Stats ══ */}
-      <section className="py-12 md:py-16 px-4 sm:px-6">
+      <section className="py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
 
@@ -231,7 +231,7 @@ export default function AboutPage() {
 
       {/* ══ Mission ══ */}
       <section
-        className="py-12 md:py-16 px-4 sm:px-6"
+        className="py-12 md:py-14 px-4 sm:px-6"
         style={{ background: "linear-gradient(180deg, #FAFBFF, #FFFFFF)" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -295,7 +295,7 @@ export default function AboutPage() {
       </section>
 
       {/* ══ Journey ══ */}
-      <section className="py-12 md:py-16 px-4 sm:px-6 bg-white">
+      <section className="py-12 md:py-14 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">

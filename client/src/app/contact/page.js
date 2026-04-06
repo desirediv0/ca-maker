@@ -451,7 +451,7 @@ export default function ContactPage() {
 
       {/* ══ FAQ CTA ══ */}
       <section
-        className="py-12 md:py-16 px-4 sm:px-6"
+        className="py-12 md:py-14 px-4 sm:px-6"
         style={{ background: "linear-gradient(180deg, #FAFBFF, #FFFFFF)" }}
       >
         <div className="max-w-2xl mx-auto text-center">

@@ -133,6 +133,7 @@ export const getAllCourses = asyncHandler(async (req, res) => {
         mode,
         bookOption,
         tag,
+        featured,
         categoryId,
         sort = "createdAt",
         order = "desc",
@@ -179,6 +180,8 @@ export const getAllCourses = asyncHandler(async (req, res) => {
                 has: tag,
             },
         }),
+        // Filter by featured
+        ...(featured === "true" && { isFeatured: true }),
         // Filter by category
         ...(categoryId && {
             categories: {

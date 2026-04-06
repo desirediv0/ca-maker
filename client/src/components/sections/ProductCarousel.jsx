@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, ShoppingCart, Star, Plus, Check } from "lucide-react";
+import { ArrowRight, ShoppingCart, Star, Plus, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
     Carousel,
@@ -11,7 +10,6 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import { formatPrice, getCategoryName } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 import { useState } from "react";

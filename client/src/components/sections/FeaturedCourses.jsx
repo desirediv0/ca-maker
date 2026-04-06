@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/courses/CourseCard";
+import { fetchApi } from "@/lib/utils";
 
 export default function FeaturedCourses() {
   const [courses, setCourses] = useState([]);
@@ -12,13 +13,9 @@ export default function FeaturedCourses() {
 
   useEffect(() => { fetchFeaturedCourses(); }, []);
 
-  /* ── API call unchanged ── */
   const fetchFeaturedCourses = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/courses?limit=3&featured=true`
-      );
-      const data = await response.json();
+      const data = await fetchApi("/courses?limit=3&featured=true");
       if (data.success) setCourses(data.data.courses);
     } catch (error) {
       console.error("Error fetching featured courses:", error);

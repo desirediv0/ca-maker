@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { fetchApi } from "@/lib/utils";
-import { ProductCard } from "@/components/products/ProductCard";
 import {
   Carousel,
   CarouselContent,
@@ -13,6 +12,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import { CourseCard } from "../courses/CourseCard";
 
 // Skeleton loader
 const ProductSkeleton = () => (
@@ -116,7 +116,7 @@ export const NewArrivals = () => {
                   key={product.id || product.slug || index}
                   className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 py-4"
                 >
-                  <ProductCard product={product} />
+                  <CourseCard key={product.id} course={product} badge="trending" />
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -135,7 +135,7 @@ export const NewArrivals = () => {
               size="lg"
               className="font-medium border-primary text-primary hover:bg-primary hover:text-white group rounded-full px-8"
             >
-              View All New Products
+              View All New Arrivals
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </Link>

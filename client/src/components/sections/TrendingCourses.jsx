@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/courses/CourseCard";
+import { fetchApi } from "@/lib/utils";
 
 export default function TrendingCourses() {
     const [courses, setCourses] = useState([]);
@@ -14,10 +15,7 @@ export default function TrendingCourses() {
 
     const fetchTrendingCourses = async () => {
         try {
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/courses/by-tag?tag=trending&limit=3`
-            );
-            const data = await response.json();
+            const data = await fetchApi("/courses/by-tag?tag=trending&limit=3");
             if (data.success) setCourses(data.data.courses);
         } catch (error) {
             console.error("Error fetching trending courses:", error);
@@ -58,7 +56,7 @@ export default function TrendingCourses() {
     if (courses.length === 0) return null;
 
     return (
-        <section className="py-12 md:py-16 bg-[#fef3e6]">
+        <section className="py-12 md:py-16 bg-[#edfcff]">
             <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
 
                 {/* Header */}

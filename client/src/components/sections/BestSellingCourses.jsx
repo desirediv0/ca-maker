@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/courses/CourseCard";
+import { fetchApi } from "@/lib/utils";
 
 export default function BestSellingCourses() {
     const [courses, setCourses] = useState([]);
@@ -14,10 +15,7 @@ export default function BestSellingCourses() {
 
     const fetchBestSellingCourses = async () => {
         try {
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/courses/by-tag?tag=bestseller&limit=3`
-            );
-            const data = await response.json();
+            const data = await fetchApi("/courses/by-tag?tag=bestseller&limit=3");
             if (data.success) setCourses(data.data.courses);
         } catch (error) {
             console.error("Error fetching best selling courses:", error);

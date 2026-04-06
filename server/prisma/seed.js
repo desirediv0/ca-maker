@@ -1,5 +1,24 @@
 import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
+
+// Create a pg Pool instance
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+});
+
+// Create the Prisma adapter
+const adapter = new PrismaPg(pool);
+
+// Initialize Prisma Client with the adapter
+const prisma = new PrismaClient({
+    adapter,
+    log: ['error', 'warn'],
+    transactionOptions: {
+        maxWait: 30000,
+        timeout: 120000,
+    },
+});
 
 async function main() {
     console.log('🌱 Starting CA Maker seed...\n');
@@ -131,6 +150,7 @@ async function main() {
             discountedPrice: 12000,
             stock: 100,
             isFeatured: true,
+            courseTags: ['bestseller', 'featured'],
             attempts: ["May'26", "Nov'26"],
             modes: ['online-live', 'recorded'],
             bookOptions: ['with-book', 'without-book'],
@@ -203,6 +223,7 @@ Always mention "true and fair view" in audit opinion questions!
             discountedPrice: 6500,
             stock: 100,
             isFeatured: true,
+            courseTags: ['trending'],
             attempts: ["May'26"],
             modes: ['online-live'],
             bookOptions: ['without-book'],
@@ -264,6 +285,7 @@ Always mention "true and fair view" in audit opinion questions!
             discountedPrice: 4000,
             stock: 100,
             isFeatured: false,
+            courseTags: ['new'],
             attempts: ["May'26", "Nov'26"],
             modes: ['online-live'],
             bookOptions: ['without-book'],

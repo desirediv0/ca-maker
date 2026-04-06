@@ -192,7 +192,7 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Deletion Request - Bansuri Vidya Mandir</title>
+    <title>Account Deletion Request - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -211,7 +211,7 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 40px;
@@ -238,7 +238,7 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
         .button {
             display: inline-block;
             padding: 15px 35px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-decoration: none;
             border-radius: 50px;
@@ -278,7 +278,7 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
             content: '➤';
             position: absolute;
             left: 0;
-            color: #ff0000;
+            color: #2563eb;
         }
         .footer {
             text-align: center;
@@ -297,7 +297,7 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
         <div class="content">
             <h2>Account Deletion Request</h2>
             <p>Dear Valued Student,</p>
-            <p>We've received a request to delete your Bansuri Vidya Mandir account. Before proceeding, we want to ensure this is your intended action, as it will affect your access to classes, learning materials, and progress records.</p>
+            <p>We've received a request to delete your CA Maker account. Before proceeding, we want to ensure this is your intended action, as it will affect your access to classes, learning materials, and progress records.</p>
             <p>If you're certain about deleting your account, please click the button below:</p>
             <a href="${deletionLink}" class="button">Confirm Account Deletion</a>
             <div class="warning">
@@ -315,11 +315,10 @@ export const getDeleteTemplate = (deletionLink, storeConfig = null) => {
                     Contact our support team for assistance
                 </div>
             </div>
-            <p>If you didn't request this deletion, please contact our support team immediately at bansurividya@gmail.com.</p>
+            <p>If you didn't request this deletion, please contact our support team immediately at camakerIndia@gmail.com.</p>
         </div>
         <div class="footer">
-            © ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute<br>
-            This is an automated message. Please do not reply to this email.
+            © ${new Date().getFullYear()} CA Maker |  Please do not reply to this email.
         </div>
     </div>
 </body>
@@ -436,10 +435,10 @@ export const getFeeReceiptTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fee Payment Receipt - Bansuri Vidya Mandir</title>
+    <title>Fee Payment Receipt</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #f5f5f5;
@@ -455,7 +454,7 @@ export const getFeeReceiptTemplate = (data) => `
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 40px;
@@ -473,28 +472,24 @@ export const getFeeReceiptTemplate = (data) => `
             color: #1a1a1a;
             font-size: 24px;
             margin-top: 0;
+            margin-bottom: 20px;
         }
         p {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             font-size: 16px;
+            line-height: 1.5;
             color: #333333;
         }
-        .button {
-            display: inline-block;
-            padding: 15px 35px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        .payment-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2563eb;
         }
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        .payment-details p {
+            margin: 10px 0;
+            font-size: 15px;
         }
         .footer {
             text-align: center;
@@ -508,23 +503,22 @@ export const getFeeReceiptTemplate = (data) => `
 <body>
     <div class="container">
         <div class="header">
-            <h1>Payment Confirmation</h1>
+            <h1>✓ Payment Successful</h1>
         </div>
         <div class="content">
             <h2>Fee Payment Receipt</h2>
-            <p>Dear ${data.userName},</p>
-            <p>Thank you for your payment. Your transaction for music education fees was successful.</p>
+            <p>Dear <strong>${data.userName}</strong>,</p>
+            <p>Thank you for your payment! Your transaction for course fees has been successfully processed.</p>
             <div class="payment-details">
-                <p><strong>Amount Paid:</strong> ₹${data.amount}</p>
-                <p><strong>Payment ID:</strong> ${data.paymentId}</p>
-                <p><strong>Date:</strong> ${new Date(
-    data.date
-).toLocaleDateString()}</p>
+                <p><strong>💰 Amount Paid:</strong> ₹${data.amount}</p>
+                <p><strong>🔐 Payment ID:</strong> ${data.paymentId}</p>
+                <p><strong>📅 Date:</strong> ${new Date(data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
             </div>
-            <p>Please find your receipt attached to this email. We look forward to continuing your musical journey with us.</p>
+            <p>Your receipt is attached to this email. You can download and keep it for your records.</p>
+            <p>Thank you for choosing us! We're excited to continue your learning journey.</p>
         </div>
         <div class="footer">
-            © ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute<br>
+            © ${new Date().getFullYear()} CA Maker<br>
             This is an automated message. Please do not reply.
         </div>
     </div>
@@ -538,7 +532,7 @@ export const getFeeNotificationTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Fee Assignment - Bansuri Vidya Mandir</title>
+    <title>New Fee Assignment - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -555,11 +549,11 @@ export const getFeeNotificationTemplate = (data) => `
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 30px;
-            border-radius: 10px 10px 0 0;
+            border-radius: 12px 12px 0 0;
         }
         .content {
             padding: 30px;
@@ -578,13 +572,13 @@ export const getFeeNotificationTemplate = (data) => `
             border-bottom: 1px solid #eee;
         }
         .important {
-            color: #cc0000;
+            color: #2563eb;
             font-weight: bold;
         }
         .btn {
             display: inline-block;
             padding: 12px 25px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
@@ -656,8 +650,7 @@ export const getFeeNotificationTemplate = (data) => `
     }/dashboard/fees" class="btn">View Fee Details</a>
         </div>
         <div class="footer">
-            <p>© ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute</p>
-            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>© ${new Date().getFullYear()} CA Maker | Please do not reply to this email.</p>
         </div>
     </div>
 </body>
@@ -670,7 +663,7 @@ export const getPaymentSuccessTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Successful - Bansuri Vidya Mandir</title>
+    <title>Payment Successful - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -774,8 +767,8 @@ export const getPaymentSuccessTemplate = (data) => `
             <p>Thank you for your prompt payment! We look forward to continuing our musical journey together.</p>
         </div>
         <div class="footer">
-            <p>© ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute</p>
-            <p>For any queries, please contact our support team at bansurividya@gmail.com</p>
+            <p>© ${new Date().getFullYear()} CA Maker </p>
+            <p>For any queries, please contact our support team at camakerIndia@gmail.com</p>
         </div>
     </div>
 </body>
@@ -788,7 +781,7 @@ export const getPaymentFailureTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Failed - Bansuri Vidya Mandir</title>
+    <title>Payment Failed - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -807,7 +800,7 @@ export const getPaymentFailureTemplate = (data) => `
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 40px;
@@ -820,15 +813,15 @@ export const getPaymentFailureTemplate = (data) => `
             padding: 40px;
         }
         .error-box {
-            background-color: #fef2f2;
-            border: 1px solid #fee2e2;
+            background-color: #eff6ff;
+            border: 1px solid #dbeafe;
             border-radius: 8px;
             padding: 20px;
             margin: 20px 0;
         }
         .retry-button {
             display: inline-block;
-            background: #ef4444;
+            background: #2563eb;
             color: white;
             padding: 12px 25px;
             text-decoration: none;
@@ -881,8 +874,8 @@ export const getPaymentFailureTemplate = (data) => `
             </a>
         </div>
         <div class="footer">
-            <p>© ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute</p>
-            <p>Need help? Contact our support team at bansurividya@gmail.com</p>
+            <p>© ${new Date().getFullYear()} CA Maker </p>
+            <p>Need help? Contact our support team at camakerIndia@gmail.com</p>
         </div>
     </div>
 </body>
@@ -904,10 +897,10 @@ export const getFeeUpdateTemplate = ({
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: #EF4444; color: white; padding: 20px; text-align: center; }
+        .header { background: #2563eb; color: white; padding: 20px; text-align: center; }
         .content { padding: 20px; background: #f9fafb; }
         .footer { text-align: center; padding: 20px; color: #666; }
-        .amount { font-size: 18px; font-weight: bold; color: #EF4444; }
+        .amount { font-size: 18px; font-weight: bold; color: #2563eb; }
         .details { margin: 20px 0; padding: 15px; background: white; border-radius: 5px; }
     </style>
 </head>
@@ -930,7 +923,7 @@ export const getFeeUpdateTemplate = ({
             <p>If you have any questions about this update, please contact our support team.</p>
         </div>
         <div class="footer">
-            <p>Bansuri Vidya Mandir | Indian Classical Music Institute</p>
+            <p>CA Maker </p>
             <small>This is an automated message, please do not reply.</small>
         </div>
     </div>
@@ -944,7 +937,7 @@ export const getCertificateGeneratedTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Generated - Bansuri Vidya Mandir</title>
+    <title>Certificate Generated - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -963,7 +956,7 @@ export const getCertificateGeneratedTemplate = (data) => `
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 40px;
@@ -1004,7 +997,7 @@ export const getCertificateGeneratedTemplate = (data) => `
         .button {
             display: inline-block;
             padding: 15px 35px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-decoration: none;
             border-radius: 50px;
@@ -1037,7 +1030,7 @@ export const getCertificateGeneratedTemplate = (data) => `
             <h2>Musical Achievement Accomplished</h2>
             <p>Dear ${data.userName},</p>
             <p>We are delighted to inform you that you have successfully completed the course:</p>
-            <h3 style="color: #cc0000;">${data.courseName}</h3>
+            <h3 style="color: #2563eb;">${data.courseName}</h3>
             
             <div class="certificate-info">
                 <p><strong>Your certificate of musical excellence has been generated!</strong></p>
@@ -1054,7 +1047,7 @@ export const getCertificateGeneratedTemplate = (data) => `
             <p>This certificate validates your dedication to Indian classical music and your commitment to learning. Continue on the path of musical excellence!</p>
         </div>
         <div class="footer">
-            © ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute<br>
+            © ${new Date().getFullYear()} CA Maker <br>
             This is an automated message. Please do not reply to this email.
         </div>
     </div>
@@ -1068,7 +1061,7 @@ export const getContactFormTemplate = (data) => `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Contact Form Submission - Bansuri Vidya Mandir</title>
+    <title>New Contact Form Submission - CA Maker</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -1087,7 +1080,7 @@ export const getContactFormTemplate = (data) => `
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #ff0000, #cc0000);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 30px;
@@ -1165,7 +1158,7 @@ export const getContactFormTemplate = (data) => `
             <p>Please respond to this inquiry about our music programs at your earliest convenience.</p>
         </div>
         <div class="footer">
-            © ${new Date().getFullYear()} Bansuri Vidya Mandir | Indian Classical Music Institute<br>
+            © ${new Date().getFullYear()} CA Maker <br>
             This is an automated message from your website contact form.
         </div>
     </div>
@@ -1519,7 +1512,7 @@ export const getPartnerResetTemplate = (resetLink, storeConfig = null) => {
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .header {
-            background: linear-gradient(135deg, #DE7A3E, #ef4444);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-align: center;
             padding: 40px;
@@ -1546,7 +1539,7 @@ export const getPartnerResetTemplate = (resetLink, storeConfig = null) => {
         .button {
             display: inline-block;
             padding: 15px 35px;
-            background: linear-gradient(135deg, #DE7A3E, #ef4444);
+            background: linear-gradient(135deg, #2563eb, #1e40af);
             color: #ffffff;
             text-decoration: none;
             border-radius: 50px;

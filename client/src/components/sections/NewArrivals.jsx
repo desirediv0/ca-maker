@@ -37,18 +37,17 @@ export const NewArrivals = () => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        // Try new product type first
-        let response = await fetchApi("/public/products/type/new?limit=12");
+        let response = await fetchApi("/courses/by-tag?tag=new&limit=12");
 
-        if (!response?.data?.products?.length) {
-          // Fallback to recent products
-          response = await fetchApi("/public/products?sort=createdAt&order=desc&limit=12");
+        if (!response?.data?.courses?.length) {
+          response = await fetchApi("/courses?sort=createdAt&order=desc&limit=12");
+          setProducts(response?.data?.courses || []);
+        } else {
+          setProducts(response.data.courses);
         }
-
-        setProducts(response?.data?.products || []);
       } catch (err) {
         console.error("Error fetching new arrivals:", err);
-        setError(err.message);
+        setError(err.message || "Failed to fetch new arrivals");
       } finally {
         setLoading(false);
       }
@@ -56,6 +55,12 @@ export const NewArrivals = () => {
 
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    if (!api || products.length === 0) return;
+    const interval = window.setInterval(() => api.scrollNext(), 2000);
+    return () => window.clearInterval(interval);
+  }, [api, products.length]);
 
   if (error) {
     return null;
@@ -73,7 +78,7 @@ export const NewArrivals = () => {
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">New Arrivals</h2>
             <p className="text-gray-600 max-w-xl mx-auto text-sm">Fresh products just added to our collection</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4  gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[...Array(6)].map((_, index) => (
               <ProductSkeleton key={index} />
             ))}
@@ -114,14 +119,13 @@ export const NewArrivals = () => {
               {products.map((product, index) => (
                 <CarouselItem
                   key={product.id || product.slug || index}
-                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4  py-4"
+                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 py-4"
                 >
-                  <CourseCard key={product.id} course={product} badge="trending" />
+                  <CourseCard course={product} badge="new" />
                 </CarouselItem>
               ))}
             </CarouselContent>
 
-            {/* Navigation Controls */}
             <CarouselPrevious className="absolute -left-2 md:left-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
             <CarouselNext className="absolute -right-2 md:right-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
           </Carousel>
@@ -129,11 +133,12 @@ export const NewArrivals = () => {
 
         {/* View All Button */}
         <div className="text-center mt-6">
-          <Link href="/courses?productType=new">
+          <Link href="/courses?tag=new">
             <Button
               variant="outline"
               size="lg"
-              className="font-medium border-primary text-primary hover:bg-primary hover:text-white group rounded-full px-8"
+              className="border-blue-300 text-blue-600 hover:bg-blue-50 px-8 h-12
+               rounded-2xl font-semibold"
             >
               View All New Arrivals
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />

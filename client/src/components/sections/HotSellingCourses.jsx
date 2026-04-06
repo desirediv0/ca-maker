@@ -4,18 +4,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, Flame } from "lucide-react";
 import { CourseCard } from "@/components/courses/CourseCard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 export default function HotSellingCourses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [api, setApi] = useState(null);
 
   useEffect(() => { fetchHotSellingCourses(); }, []);
+
+  useEffect(() => {
+    if (!api || courses.length === 0) return;
+    const interval = window.setInterval(() => api.scrollNext(), 2000);
+    return () => window.clearInterval(interval);
+  }, [api, courses.length]);
 
   /* ── API call unchanged ── */
   const fetchHotSellingCourses = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/courses/by-tag?tag=hot-selling&limit=4`
+        `${process.env.NEXT_PUBLIC_API_URL}/courses/by-tag?tag=hot-selling&limit=12`
       );
       const data = await response.json();
       if (data.success) setCourses(data.data.courses);
@@ -85,11 +99,19 @@ export default function HotSellingCourses() {
           </Link>
         </div>
 
-        {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-          {courses.map((course) => (
-            <CourseCard key={course.id} course={course} badge="hot" />
-          ))}
+        {/* ── Responsive carousel ── */}
+        <div className="relative">
+          <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {courses.map((course) => (
+                <CarouselItem key={course.id} className="pl-4 basis-1/2 md:basis-1/3 xl:basis-1/4 py-4">
+                  <CourseCard course={course} badge="hot" />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute -left-2 md:left-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
+            <CarouselNext className="absolute -right-2 md:right-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
+          </Carousel>
         </div>
       </div>
     </section>

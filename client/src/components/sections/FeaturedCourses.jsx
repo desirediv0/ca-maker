@@ -6,16 +6,30 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CourseCard } from "@/components/courses/CourseCard";
 import { fetchApi } from "@/lib/utils";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 export default function FeaturedCourses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [api, setApi] = useState(null);
 
   useEffect(() => { fetchFeaturedCourses(); }, []);
 
+  useEffect(() => {
+    if (!api || courses.length === 0) return;
+    const interval = window.setInterval(() => api.scrollNext(), 2000);
+    return () => window.clearInterval(interval);
+  }, [api, courses.length]);
+
   const fetchFeaturedCourses = async () => {
     try {
-      const data = await fetchApi("/courses?limit=3&featured=true");
+      const data = await fetchApi("/courses/by-tag?tag=featured&limit=12");
       console.log("Featured API Response:", data);
       if (data.success) {
         setCourses(data.data.courses);
@@ -77,11 +91,19 @@ export default function FeaturedCourses() {
           </p>
         </div>
 
-        {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
-          {courses.map((course) => (
-            <CourseCard key={course.id} course={course} badge="featured" />
-          ))}
+        {/* ── Responsive carousel ── */}
+        <div className="relative">
+          <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {courses.map((course) => (
+                <CarouselItem key={course.id} className="pl-4 basis-1/2 md:basis-1/3 xl:basis-1/4 py-4">
+                  <CourseCard course={course} badge="featured" />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute -left-2 md:left-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
+            <CarouselNext className="absolute -right-2 md:right-2 top-1/2 -translate-y-1/2 h-10 w-10 bg-white hover:bg-white hover:text-primary border-gray-200 text-gray-700 shadow-lg z-10" />
+          </Carousel>
         </div>
 
         <div className="text-center mt-10">

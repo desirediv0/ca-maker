@@ -124,7 +124,6 @@ export function ProductForm({
     quantity: 0,
     featured: false,
     ourProduct: false,
-    productType: [] as string[],
     isActive: true,
     // SEO fields
     metaTitle: "",

@@ -16,7 +16,13 @@ export default function FeaturedCourses() {
   const fetchFeaturedCourses = async () => {
     try {
       const data = await fetchApi("/courses?limit=3&featured=true");
-      if (data.success) setCourses(data.data.courses);
+      console.log("Featured API Response:", data);
+      if (data.success) {
+        setCourses(data.data.courses);
+        console.log("Featured Courses Set:", data.data.courses);
+      } else {
+        console.warn("Featured API - No success:", data);
+      }
     } catch (error) {
       console.error("Error fetching featured courses:", error);
     } finally {

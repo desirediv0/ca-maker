@@ -136,6 +136,9 @@ export function ProductForm({
     topBrandIds: [] as string[],
     newBrandIds: [] as string[],
     hotBrandIds: [] as string[],
+    // Product badges are stored as courseTags in the backend
+    productType: [] as string[],
+    courseTags: [] as string[],
     // Shipping dimensions for Shiprocket (for products without variants)
     shippingLength: "",
     shippingBreadth: "",
@@ -597,6 +600,29 @@ export function ProductForm({
                     }
                   })()
                   : [],
+              courseTags: Array.isArray(productData.courseTags)
+                ? productData.courseTags
+                : typeof productData.courseTags === "string"
+                  ? (() => {
+                    try {
+                      const parsed = JSON.parse(productData.courseTags);
+                      return Array.isArray(parsed) ? parsed : [];
+                    } catch {
+                      return [];
+                    }
+                  })()
+                  : Array.isArray(productData.productType)
+                    ? productData.productType
+                    : typeof productData.productType === "string"
+                      ? (() => {
+                        try {
+                          const parsed = JSON.parse(productData.productType);
+                          return Array.isArray(parsed) ? parsed : [];
+                        } catch {
+                          return [];
+                        }
+                      })()
+                      : [],
               isActive:
                 productData.isActive !== undefined
                   ? productData.isActive
@@ -980,7 +1006,7 @@ export function ProductForm({
       formData.append("description", finalDescription);
       formData.append("featured", String(product.featured));
       formData.append("ourProduct", String(product.ourProduct));
-      formData.append("productType", JSON.stringify(product.productType));
+      formData.append("courseTags", JSON.stringify(product.courseTags));
       formData.append("isActive", String(product.isActive));
       formData.append("hasVariants", String(hasVariants));
 
@@ -2140,15 +2166,15 @@ export function ProductForm({
                         <Checkbox
                           id={`productType-${type.key}`}
                           checked={
-                            Array.isArray(product.productType) &&
-                            product.productType.includes(type.key)
+                            Array.isArray(product.courseTags) &&
+                            product.courseTags.includes(type.key)
                           }
                           onCheckedChange={(checked) => {
                             setProduct((prev) => ({
                               ...prev,
-                              productType: checked
-                                ? [...prev.productType, type.key]
-                                : prev.productType.filter(
+                              courseTags: checked
+                                ? [...prev.courseTags, type.key]
+                                : prev.courseTags.filter(
                                   (t) => t !== type.key
                                 ),
                             }));

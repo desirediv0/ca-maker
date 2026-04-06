@@ -16,7 +16,13 @@ export default function TrendingCourses() {
     const fetchTrendingCourses = async () => {
         try {
             const data = await fetchApi("/courses/by-tag?tag=trending&limit=3");
-            if (data.success) setCourses(data.data.courses);
+            console.log("Trending API Response:", data);
+            if (data.success) {
+                setCourses(data.data.courses);
+                console.log("Trending Courses Set:", data.data.courses);
+            } else {
+                console.warn("Trending API - No success:", data);
+            }
         } catch (error) {
             console.error("Error fetching trending courses:", error);
         } finally {

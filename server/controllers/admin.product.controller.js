@@ -567,6 +567,12 @@ export const createProduct = asyncHandler(async (req, res, next) => {
               ? JSON.parse(req.body.bookOptions)
               : req.body.bookOptions
             : [],
+          courseTags: req.body.courseTags
+            ? typeof req.body.courseTags === "string"
+              ? JSON.parse(req.body.courseTags)
+              : req.body.courseTags
+            : [],
+          isFeatured: req.body.isFeatured === "true" || req.body.isFeatured === true,
           digitalEnabled: req.body.digitalEnabled === "true" || req.body.digitalEnabled === true,
           sampleNotes: req.body.sampleNotes || "",
           additionalInfo: (() => {
@@ -1351,6 +1357,12 @@ export const updateProduct = asyncHandler(async (req, res, next) => {
           }),
           ...(req.body.bookOptions !== undefined && {
             bookOptions: typeof req.body.bookOptions === "string" ? JSON.parse(req.body.bookOptions) : req.body.bookOptions,
+          }),
+          ...(req.body.courseTags !== undefined && {
+            courseTags: typeof req.body.courseTags === "string" ? JSON.parse(req.body.courseTags) : req.body.courseTags,
+          }),
+          ...(req.body.isFeatured !== undefined && {
+            isFeatured: req.body.isFeatured === "true" || req.body.isFeatured === true,
           }),
         },
       });

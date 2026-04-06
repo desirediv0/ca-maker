@@ -16,7 +16,13 @@ export default function BestSellingCourses() {
     const fetchBestSellingCourses = async () => {
         try {
             const data = await fetchApi("/courses/by-tag?tag=bestseller&limit=3");
-            if (data.success) setCourses(data.data.courses);
+            console.log("BestSelling API Response:", data);
+            if (data.success) {
+                setCourses(data.data.courses);
+                console.log("BestSelling Courses Set:", data.data.courses);
+            } else {
+                console.warn("BestSelling API - No success:", data);
+            }
         } catch (error) {
             console.error("Error fetching best selling courses:", error);
         } finally {

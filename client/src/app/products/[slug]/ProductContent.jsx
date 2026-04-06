@@ -845,21 +845,7 @@ export default function ProductContent({ slug }) {
                     </button>
                   </div>
                 </div>
-                {selectedVariant && (
-                  <div className="flex items-center gap-1.5 text-sm">
-                    {(selectedVariant.stock ?? selectedVariant.quantity ?? 0) > 0 ? (
-                      <>
-                        <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
-                        <span className="text-emerald-700 font-medium">In Stock ({selectedVariant.stock ?? selectedVariant.quantity})</span>
-                      </>
-                    ) : (
-                      <>
-                        <AlertCircle className="h-4 w-4 text-red-500 flex-shrink-0" />
-                        <span className="text-red-600 font-medium">Out of stock</span>
-                      </>
-                    )}
-                  </div>
-                )}
+
               </div>
             )}
 

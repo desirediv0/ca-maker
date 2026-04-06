@@ -248,7 +248,7 @@ model Product {
   slug              String   @unique
   featured          Boolean  @default(false)
   isFeatured        Boolean  @default(false) // For featured courses section
-  productType       Json? // e.g. { "type": "mobile" }
+  productType       String[] @default([]) // e.g. ["bestseller", "new", "trending"]
   isActive          Boolean  @default(true)
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt

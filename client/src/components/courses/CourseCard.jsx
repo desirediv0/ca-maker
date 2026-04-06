@@ -1,22 +1,10 @@
 "use client";
 
-/**
- * CourseCard — single reusable card for all course/product listings.
- *
- * STRICT RULE: Every field is conditional on the API value.
- * Nothing renders unless the API returns a truthy non-zero value.
- *
- * Props
- * ─────
- * course   {object}  — API course/product object
- * badge    {string}  — "hot" | "new" | "featured"  (optional, passed by parent section)
- * viewMode {string}  — "grid" (default) | "list"
- */
 
 import Link from "next/link";
 import Image from "next/image";
 import {
-  Clock, Star, ArrowRight, CalendarDays,
+  Star, ArrowRight,
   Flame, Sparkles, Award,
 } from "lucide-react";
 
@@ -87,84 +75,13 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
     ? course.attempts
     : null;
 
-  /* ── Digital badge — only if explicitly true ── */
-  const isDigital = course.digitalEnabled === true;
+
 
   /* ── Featured badge — only if explicitly true and no section badge ── */
   const showFeaturedBadge = course.isFeatured === true && !badge;
 
-  /* ────────── Sub-components ────────── */
 
-  const BadgesLeft = () => (
-    <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
-      {badgeCfg && (
-        <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full ${badgeCfg.pill}`}>
-          {badgeCfg.label === "Bestseller" && "🔥 "}
-          <badgeCfg.Icon className="h-3 w-3" />
-          {badgeCfg.label}
-        </span>
-      )}
-      {showFeaturedBadge && (
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700">
-          New
-        </span>
-      )}
-      {isDigital && (
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-100 text-blue-700">
-          Digital
-        </span>
-      )}
-    </div>
-  );
 
-  const MetaInfo = ({ skipFaculty } = {}) => {
-    const hasMeta = (!skipFaculty && facultyName) || course.duration || course.batchStartDate;
-    if (!hasMeta) return null;
-    return (
-      <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-gray-500">
-        {!skipFaculty && facultyName && (
-          <span className="flex items-center gap-1">
-            <span className="w-3.5 h-3.5 bg-blue-100 rounded-full inline-flex items-center justify-center
-                             text-blue-600 text-[8px] font-bold flex-shrink-0">✓</span>
-            {facultyName}
-          </span>
-        )}
-        {course.duration && (
-          <span className="flex items-center gap-1">
-            <Clock className="h-3 w-3 text-blue-400" />
-            {course.duration}
-          </span>
-        )}
-        {course.batchStartDate && (
-          <span className="flex items-center gap-1 text-emerald-600">
-            <CalendarDays className="h-3 w-3" />
-            {new Date(course.batchStartDate).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
-          </span>
-        )}
-      </div>
-    );
-  };
-
-  const PriceRow = ({ large = false }) => {
-    if (basePrice === null) return null;
-    return (
-      <div className="flex items-center gap-1.5 flex-wrap">
-        <span className={`font-bold text-blue-600 ${large ? "text-xl" : "text-base"}`}>
-          ₹{basePrice.toLocaleString("en-IN")}
-        </span>
-        {hasRealSale && (
-          <span className="text-xs text-gray-400 line-through">
-            ₹{regularPrice.toLocaleString("en-IN")}
-          </span>
-        )}
-        {discountPct > 0 && (
-          <span className="text-[10px] font-bold bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded">
-            {discountPct}% OFF
-          </span>
-        )}
-      </div>
-    );
-  };
 
   /* ══════════════ LIST VIEW ═════════════════════════════ */
   if (viewMode === "list") {
@@ -244,7 +161,7 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
                  hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer"
     >
       {/* Thumbnail */}
-      <div className="relative h-48 overflow-hidden bg-white flex-shrink-0">
+      <div className="relative h-36 md:h-48 overflow-hidden bg-white flex-shrink-0">
         {thumbUrl ? (
           <Image
             src={thumbUrl}
@@ -261,7 +178,7 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300
                         flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <span className="bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-bold">
+          <span className="bg-blue-500 text-white px-3 md:px-4 py-1 md:py-2 rounded-xl text-[10px] md:text-sm font-bold">
             View Course →
           </span>
         </div>
@@ -290,7 +207,7 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
       </div>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-grow">
+      <div className="p-3 md:p-5 flex flex-col flex-grow">
         {facultyName && (
           <div className="flex items-center gap-2 mb-3">
             <div className="w-7 h-7 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
@@ -305,7 +222,7 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
           </div>
         )}
 
-        <h3 className="text-base font-bold text-gray-900 leading-snug line-clamp-2 mb-2
+        <h3 className="text-sm md:text-base font-bold text-gray-900 leading-snug line-clamp-2 mb-1.5 md:mb-2
                        group-hover:text-blue-600 transition-colors">
           {course.name}
         </h3>
@@ -335,11 +252,11 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
           </div>
         )}
 
-        <div className="mt-auto pt-3 border-t border-gray-100 flex flex-col gap-3">
+        <div className="mt-auto pt-1 md:pt-3 border-t border-gray-100 flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1 flex-wrap">
               {basePrice !== null && (
-                <span className="text-xl font-extrabold text-blue-500">
+                <span className="text-lg md:text-xl font-extrabold text-blue-500">
                   ₹{basePrice.toLocaleString("en-IN")}
                 </span>
               )}
@@ -350,13 +267,13 @@ export function CourseCard({ course, badge, viewMode = "grid" }) {
               )}
             </div>
             {discountPct > 0 && (
-              <span className="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded-lg">
+              <span className="bg-green-50 text-green-700 text-xs font-bold px-2 py-1 rounded-lg text-center">
                 {discountPct}% OFF
               </span>
             )}
           </div>
-          <span className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-blue-500
-                           hover:bg-blue-600 text-white text-sm font-semibold transition-all duration-200">
+          <span className="flex items-center justify-center gap-2 w-full py-2 md:py-2.5 rounded-xl bg-blue-500
+                           hover:bg-blue-600 text-white text-[10px] md:text-sm font-semibold transition-all duration-200">
             View Course <ArrowRight className="h-4 w-4" />
           </span>
         </div>

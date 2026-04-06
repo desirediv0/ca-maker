@@ -123,7 +123,7 @@ export default function CategoryPage() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[...Array(6)].map((_, i) => <ProductCardSkeleton key={i} />)}
           </div>
         </div>
@@ -322,7 +322,7 @@ export default function CategoryPage() {
       {/* ══ Course Grid ══ */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[...Array(6)].map((_, i) => <ProductCardSkeleton key={i} />)}
           </div>
         ) : products.length === 0 ? (
@@ -356,7 +356,7 @@ export default function CategoryPage() {
           <div
             className={
               viewMode === "grid"
-                ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+                ? "grid grid-cols-2 md:grid-cols-4 gap-6"
                 : "flex flex-col gap-4"
             }
           >

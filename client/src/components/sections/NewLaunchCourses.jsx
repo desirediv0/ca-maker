@@ -29,7 +29,7 @@ export default function NewLaunchCourses() {
   if (loading) {
     return (
       <section className="py-8 bg-blue-50/50">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="h-5 w-24 bg-blue-100 rounded-full mb-3 animate-pulse" />
@@ -60,7 +60,7 @@ export default function NewLaunchCourses() {
 
   return (
     <section className="py-20 bg-blue-50/50">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
 
         {/* ── Section header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">

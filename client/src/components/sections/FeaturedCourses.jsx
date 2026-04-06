@@ -30,12 +30,12 @@ export default function FeaturedCourses() {
   if (loading) {
     return (
       <section className="py-20 bg-[#edfcff]">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center mb-14">
             <div className="h-5 w-36 bg-blue-100 rounded-full mx-auto mb-4 animate-pulse" />
             <div className="h-10 w-72 bg-gray-100 rounded mx-auto animate-pulse" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
@@ -60,7 +60,7 @@ export default function FeaturedCourses() {
 
   return (
     <section className="py-12 md:py-16 bg-[#edfcff]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
 
         {/* ── Header ── */}
         <div className="text-center mb-14">
@@ -75,7 +75,7 @@ export default function FeaturedCourses() {
         </div>
 
         {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} badge="featured" />
           ))}

@@ -30,7 +30,7 @@ export default function HotSellingCourses() {
   if (loading) {
     return (
       <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
               <div className="h-5 w-28 bg-blue-100 rounded-full mb-3 animate-pulse" />
@@ -38,7 +38,7 @@ export default function HotSellingCourses() {
               <div className="h-1 w-10 bg-blue-100 rounded mt-3 animate-pulse" />
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
@@ -63,7 +63,7 @@ export default function HotSellingCourses() {
 
   return (
     <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
 
         {/* ── Section header ── */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
@@ -86,7 +86,7 @@ export default function HotSellingCourses() {
         </div>
 
         {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} badge="hot" />
           ))}

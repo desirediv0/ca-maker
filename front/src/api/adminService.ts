@@ -936,8 +936,6 @@ export const productSections = {
     slug: string;
     description?: string;
     icon?: string;
-    color?: string;
-    displayOrder?: number;
     maxProducts?: number;
   }) => {
     return api.post("/api/admin/product-sections", data);
@@ -949,8 +947,6 @@ export const productSections = {
       slug?: string;
       description?: string;
       icon?: string;
-      color?: string;
-      displayOrder?: number;
       maxProducts?: number;
       isActive?: boolean;
     }

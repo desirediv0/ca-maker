@@ -34,7 +34,7 @@ export const getProductsByType = asyncHandler(async (req, res, next) => {
   const filterConditions = {
     isActive: true,
     productType: {
-      array_contains: [productType],
+      has: productType,
     },
   };
 

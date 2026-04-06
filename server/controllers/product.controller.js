@@ -71,7 +71,7 @@ export const getAllProducts = asyncHandler(async (req, res) => {
     // Filter by product type
     ...(productType && {
       productType: {
-        array_contains: [productType],
+        has: productType,
       },
     }),
     // Filter by price range via variants
@@ -910,7 +910,7 @@ export const getProductsByType = asyncHandler(async (req, res) => {
   const filterConditions = {
     isActive: true,
     productType: {
-      array_contains: [productType],
+      has: productType,
     },
   };
 

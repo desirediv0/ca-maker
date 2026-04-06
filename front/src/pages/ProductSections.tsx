@@ -26,13 +26,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -67,9 +60,7 @@ interface ProductSection {
   slug: string;
   description?: string;
   icon?: string;
-  color?: string;
   isActive: boolean;
-  displayOrder: number;
   maxProducts: number;
   items?: Array<{
     id: string;
@@ -99,8 +90,6 @@ export default function ProductSectionsPage() {
     slug: "",
     description: "",
     icon: "",
-    color: "bg-blue-500",
-    displayOrder: 0,
     maxProducts: 15,
   });
 
@@ -281,8 +270,6 @@ export default function ProductSectionsPage() {
       slug: "",
       description: "",
       icon: "",
-      color: "bg-blue-500",
-      displayOrder: 0,
       maxProducts: 15,
     });
     setSelectedSection(null);
@@ -295,8 +282,6 @@ export default function ProductSectionsPage() {
       slug: section.slug,
       description: section.description || "",
       icon: section.icon || "",
-      color: section.color || "bg-blue-500",
-      displayOrder: section.displayOrder,
       maxProducts: section.maxProducts,
     });
     setShowEditDialog(true);
@@ -321,7 +306,7 @@ export default function ProductSectionsPage() {
         <div className="flex flex-col items-center">
           <Loader2 className="h-10 w-10 animate-spin text-[#4CAF50]" />
           <p className="mt-4 text-base text-[#9CA3AF]">
-            Loading product sections...
+            Loading course sections...
           </p>
         </div>
       </div>
@@ -375,10 +360,10 @@ export default function ProductSectionsPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <h1 className="text-3xl font-semibold text-[#1F2937] tracking-tight">
-              {t("product_sections.title")}
+              Course Sections
             </h1>
             <p className="text-[#9CA3AF] text-sm mt-1.5">
-              {t("product_sections.subtitle")}
+              Organize and manage course collections
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -387,7 +372,7 @@ export default function ProductSectionsPage() {
               size="icon"
               className="border-[#E5E7EB] hover:bg-[#F3F7F6]"
               onClick={() => setShowHelpDialog(true)}
-              title="Help - How Product Sections Work"
+              title="Help - How Course Sections Work"
             >
               <HelpCircle className="h-4 w-4 text-[#4B5563]" />
             </Button>
@@ -399,7 +384,7 @@ export default function ProductSectionsPage() {
               }}
             >
               <Plus className="mr-2 h-4 w-4" />
-              {t("product_sections.create_button")}
+              Add New Course Section
             </Button>
           </div>
         </div>
@@ -413,10 +398,10 @@ export default function ProductSectionsPage() {
               <Layers className="h-8 w-8 text-[#9CA3AF]" />
             </div>
             <h3 className="text-lg font-semibold text-[#1F2937] mb-1.5">
-              {t("product_sections.empty.title")}
+              {t("course_sections.empty.title")} No Course Sections Yet
             </h3>
             <p className="text-sm text-[#9CA3AF] mb-6 max-w-sm mx-auto">
-              {t("product_sections.empty.description")}
+              {t("course_sections.empty.description")} Create a new course section to get started
             </p>
             <Button
               className=""
@@ -426,7 +411,7 @@ export default function ProductSectionsPage() {
               }}
             >
               <Plus className="mr-2 h-4 w-4" />
-              {t("product_sections.empty.create_first")}
+              {t("course_sections.empty.create_first")} Create First Section
             </Button>
           </div>
         </Card>
@@ -434,34 +419,32 @@ export default function ProductSectionsPage() {
         <div className="space-y-6">
           {/* Premium Section Tabs */}
           <div className="flex items-center gap-2 flex-wrap">
-            {sections
-              .sort((a, b) => a.displayOrder - b.displayOrder)
-              .map((section) => (
-                <button
-                  key={section.id}
-                  onClick={() => setActiveTab(section.id)}
-                  className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium transition-all relative",
-                    activeTab === section.id
-                      ? "bg-[#E8F5E9] text-[#2E7D32] shadow-sm"
-                      : "bg-[#FFFFFF] text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F3F7F6]"
-                  )}
-                >
-                  <div className="flex items-center gap-2">
-                    <span>{section.name}</span>
-                    <Badge
-                      className={cn(
-                        "text-xs",
-                        section.isActive
-                          ? "bg-[#ECFDF5] text-[#22C55E] border-[#D1FAE5]"
-                          : "bg-[#FFFBEB] text-[#F59E0B] border-[#FEF3C7]"
-                      )}
-                    >
-                      {section.items?.length || 0}/{section.maxProducts}
-                    </Badge>
-                  </div>
-                </button>
-              ))}
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => setActiveTab(section.id)}
+                className={cn(
+                  "px-4 py-2 rounded-full text-sm font-medium transition-all relative",
+                  activeTab === section.id
+                    ? "bg-[#E8F5E9] text-[#2E7D32] shadow-sm"
+                    : "bg-[#FFFFFF] text-[#4B5563] border border-[#E5E7EB] hover:bg-[#F3F7F6]"
+                )}
+              >
+                <div className="flex items-center gap-2">
+                  <span>{section.name}</span>
+                  <Badge
+                    className={cn(
+                      "text-xs",
+                      section.isActive
+                        ? "bg-[#ECFDF5] text-[#22C55E] border-[#D1FAE5]"
+                        : "bg-[#FFFBEB] text-[#F59E0B] border-[#FEF3C7]"
+                    )}
+                  >
+                    {section.items?.length || 0}/{section.maxProducts}
+                  </Badge>
+                </div>
+              </button>
+            ))}
           </div>
 
           {/* Section Content */}
@@ -493,7 +476,7 @@ export default function ProductSectionsPage() {
                     <div className="flex items-center gap-4 mt-3 text-xs text-[#9CA3AF]">
                       <span>{t("product_sections.labels.slug")}: {currentSection.slug}</span>
                       <span>•</span>
-                      <span>{t("product_sections.labels.display_order")}: {currentSection.displayOrder}</span>
+
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -627,13 +610,6 @@ export default function ProductSectionsPage() {
                               </div>
                             </div>
 
-                            {/* Display Order - Hidden on mobile */}
-                            <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
-                              <Badge className="bg-[#F3F4F6] text-[#4B5563] border-[#E5E7EB] text-xs">
-                                Order: {item.displayOrder}
-                              </Badge>
-                            </div>
-
                             {/* Remove Button */}
                             <Button
                               variant="ghost"
@@ -683,10 +659,10 @@ export default function ProductSectionsPage() {
         <DialogContent className="bg-[#FFFFFF] border-[#E5E7EB] max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#1F2937]">
-              {t("product_sections.form.create_title")}
+              Create Course Section
             </DialogTitle>
             <DialogDescription className="text-[#9CA3AF]">
-              {t("product_sections.form.create_desc")}
+              Add a new course section to organize your courses
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-5 py-4">
@@ -742,79 +718,27 @@ export default function ProductSectionsPage() {
                 className="border-[#E5E7EB] focus:border-primary"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="color"
-                  className="text-sm font-medium text-[#4B5563]"
-                >
-                  {t("product_sections.form.color_label")}
-                </Label>
-                <Select
-                  value={formData.color}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, color: value })
-                  }
-                >
-                  <SelectTrigger className="border-[#E5E7EB] focus:border-primary">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-[#FFFFFF] border-[#E5E7EB]">
-                    <SelectItem value="bg-blue-500">Blue</SelectItem>
-                    <SelectItem value="bg-green-500">Green</SelectItem>
-                    <SelectItem value="bg-yellow-500">Yellow</SelectItem>
-                    <SelectItem value="bg-red-500">Red</SelectItem>
-                    <SelectItem value="bg-purple-500">Purple</SelectItem>
-                    <SelectItem value="bg-pink-500">Pink</SelectItem>
-                    <SelectItem value="bg-orange-500">Orange</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="maxProducts"
-                  className="text-sm font-medium text-[#4B5563]"
-                >
-                  {t("product_sections.form.max_products_label")}
-                </Label>
-                <Input
-                  id="maxProducts"
-                  type="number"
-                  value={formData.maxProducts}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      maxProducts: parseInt(e.target.value) || 15,
-                    })
-                  }
-                  min={1}
-                  max={50}
-                  className="border-[#E5E7EB] focus:border-primary"
-                />
-              </div>
-            </div>
             <div className="space-y-2">
               <Label
-                htmlFor="displayOrder"
+                htmlFor="maxProducts"
                 className="text-sm font-medium text-[#4B5563]"
               >
-                {t("product_sections.form.display_order_label")}
+                {t("product_sections.form.max_products_label")}
               </Label>
               <Input
-                id="displayOrder"
+                id="maxProducts"
                 type="number"
-                value={formData.displayOrder}
+                value={formData.maxProducts}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    displayOrder: parseInt(e.target.value) || 0,
+                    maxProducts: parseInt(e.target.value) || 15,
                   })
                 }
+                min={1}
+                max={50}
                 className="border-[#E5E7EB] focus:border-primary"
               />
-              <p className="text-xs text-[#9CA3AF]">
-                {t("product_sections.form.display_order_hint")}
-              </p>
             </div>
           </div>
           <DialogFooter className="gap-3">
@@ -843,10 +767,10 @@ export default function ProductSectionsPage() {
         <DialogContent className="bg-[#FFFFFF] border-[#E5E7EB] max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#1F2937]">
-              {t("product_sections.form.edit_title")}
+              Edit Course Section
             </DialogTitle>
             <DialogDescription className="text-[#9CA3AF]">
-              {t("product_sections.form.edit_desc")}
+              Update your course section details
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-5 py-4">
@@ -902,74 +826,25 @@ export default function ProductSectionsPage() {
                 className="border-[#E5E7EB] focus:border-primary"
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label
-                  htmlFor="edit-color"
-                  className="text-sm font-medium text-[#4B5563]"
-                >
-                  {t("product_sections.form.color_label")}
-                </Label>
-                <Select
-                  value={formData.color}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, color: value })
-                  }
-                >
-                  <SelectTrigger className="border-[#E5E7EB] focus:border-primary">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-[#FFFFFF] border-[#E5E7EB]">
-                    <SelectItem value="bg-blue-500">Blue</SelectItem>
-                    <SelectItem value="bg-green-500">Green</SelectItem>
-                    <SelectItem value="bg-yellow-500">Yellow</SelectItem>
-                    <SelectItem value="bg-red-500">Red</SelectItem>
-                    <SelectItem value="bg-purple-500">Purple</SelectItem>
-                    <SelectItem value="bg-pink-500">Pink</SelectItem>
-                    <SelectItem value="bg-orange-500">Orange</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label
-                  htmlFor="edit-maxProducts"
-                  className="text-sm font-medium text-[#4B5563]"
-                >
-                  {t("product_sections.form.max_products_label")}
-                </Label>
-                <Input
-                  id="edit-maxProducts"
-                  type="number"
-                  value={formData.maxProducts}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      maxProducts: parseInt(e.target.value) || 15,
-                    })
-                  }
-                  min={1}
-                  max={50}
-                  className="border-[#E5E7EB] focus:border-primary"
-                />
-              </div>
-            </div>
             <div className="space-y-2">
               <Label
-                htmlFor="edit-displayOrder"
+                htmlFor="edit-maxProducts"
                 className="text-sm font-medium text-[#4B5563]"
               >
-                {t("product_sections.form.display_order_label")}
+                {t("product_sections.form.max_products_label")}
               </Label>
               <Input
-                id="edit-displayOrder"
+                id="edit-maxProducts"
                 type="number"
-                value={formData.displayOrder}
+                value={formData.maxProducts}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    displayOrder: parseInt(e.target.value) || 0,
+                    maxProducts: parseInt(e.target.value) || 15,
                   })
                 }
+                min={1}
+                max={50}
                 className="border-[#E5E7EB] focus:border-primary"
               />
             </div>
@@ -1003,17 +878,17 @@ export default function ProductSectionsPage() {
         <DialogContent className="bg-[#FFFFFF] border-[#E5E7EB] max-w-3xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-[#1F2937]">
-              Add Product to Section
+              Add Course to Section
             </DialogTitle>
             <DialogDescription className="text-[#9CA3AF]">
-              Select products to add to "{selectedSection?.name}"
+              Select courses to add to "{selectedSection?.name}"
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9CA3AF]" />
               <Input
-                placeholder="Search products..."
+                placeholder="Search courses..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9 border-[#E5E7EB] focus:border-primary"

@@ -667,18 +667,16 @@ model ProductSubCategory {
 }
 
 model ProductSection {
-  id           String               @id @default(uuid())
-  name         String               @unique
-  slug         String               @unique
-  description  String?
-  icon         String? // Icon name (e.g., "Star", "Flame")
-  color        String? // Color class (e.g., "bg-yellow-500")
-  isActive     Boolean              @default(true)
-  displayOrder Int                  @default(0)
-  maxProducts  Int                  @default(15) // Limit of products per section
-  createdAt    DateTime             @default(now())
-  updatedAt    DateTime             @updatedAt
-  items        ProductSectionItem[]
+  id          String               @id @default(uuid())
+  name        String               @unique
+  slug        String               @unique
+  description String?
+  icon        String? // Icon name (e.g., "Star", "Flame")
+  isActive    Boolean              @default(true)
+  maxProducts Int                  @default(15) // Limit of products per section
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+  items       ProductSectionItem[]
 
   @@index([slug])
 }

@@ -428,7 +428,7 @@ export const getActiveProductSections = asyncHandler(async (req, res) => {
     where: {
       isActive: true,
     },
-    orderBy: { displayOrder: "asc" },
+    orderBy: { createdAt: "desc" },
     include: {
       items: {
         where: {

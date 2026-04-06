@@ -6,7 +6,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 // Get all product sections
 export const getAllProductSections = asyncHandler(async (req, res, next) => {
   const sections = await prisma.productSection.findMany({
-    orderBy: { displayOrder: "asc" },
+    orderBy: { createdAt: "desc" },
     include: {
       items: {
         include: {
@@ -64,7 +64,7 @@ export const getProductSectionById = asyncHandler(async (req, res, next) => {
 
 // Create product section
 export const createProductSection = asyncHandler(async (req, res, next) => {
-  const { name, slug, description, icon, color, displayOrder, maxProducts } =
+  const { name, slug, description, icon, maxProducts } =
     req.body;
 
   if (!name || !slug) {
@@ -86,8 +86,6 @@ export const createProductSection = asyncHandler(async (req, res, next) => {
       slug,
       description,
       icon,
-      color,
-      displayOrder: displayOrder || 0,
       maxProducts: maxProducts || 15,
     },
   });
@@ -102,7 +100,7 @@ export const createProductSection = asyncHandler(async (req, res, next) => {
 // Update product section
 export const updateProductSection = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
-  const { name, slug, description, icon, color, displayOrder, maxProducts, isActive } =
+  const { name, slug, description, icon, maxProducts, isActive } =
     req.body;
 
   const existingSection = await prisma.productSection.findUnique({
@@ -130,8 +128,6 @@ export const updateProductSection = asyncHandler(async (req, res, next) => {
       ...(slug && { slug }),
       ...(description !== undefined && { description }),
       ...(icon !== undefined && { icon }),
-      ...(color !== undefined && { color }),
-      ...(displayOrder !== undefined && { displayOrder }),
       ...(maxProducts !== undefined && { maxProducts }),
       ...(isActive !== undefined && { isActive }),
     },

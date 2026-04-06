@@ -73,7 +73,7 @@ export const NewArrivals = () => {
             <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-2">New Arrivals</h2>
             <p className="text-gray-600 max-w-xl mx-auto text-sm">Fresh products just added to our collection</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4  gap-4">
             {[...Array(6)].map((_, index) => (
               <ProductSkeleton key={index} />
             ))}
@@ -114,7 +114,7 @@ export const NewArrivals = () => {
               {products.map((product, index) => (
                 <CarouselItem
                   key={product.id || product.slug || index}
-                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5 py-4"
+                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4  py-4"
                 >
                   <CourseCard key={product.id} course={product} badge="trending" />
                 </CarouselItem>

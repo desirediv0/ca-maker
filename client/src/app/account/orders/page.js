@@ -18,7 +18,7 @@ import {
 
 const STATUS_STYLE = {
   PENDING: { bg: "bg-yellow-100", text: "text-yellow-800", dot: "bg-yellow-500" },
-  PROCESSING: { bg: "bg-orange-100", text: "text-orange-800", dot: "bg-orange-500" },
+  PROCESSING: { bg: "bg-blue-100", text: "text-blue-800", dot: "bg-blue-500" },
   SHIPPED: { bg: "bg-sky-100", text: "text-sky-800", dot: "bg-sky-500" },
   DELIVERED: { bg: "bg-green-100", text: "text-green-800", dot: "bg-green-500" },
   CANCELLED: { bg: "bg-red-100", text: "text-red-800", dot: "bg-red-500" },
@@ -74,7 +74,7 @@ export default function OrdersPage() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-1">My Orders</h1>
-        <div className="w-10 h-1 bg-orange-500 rounded-full" />
+        <div className="w-10 h-1 bg-blue-500 rounded-full" />
       </div>
 
       {error && (
@@ -99,13 +99,13 @@ export default function OrdersPage() {
       ) : orders.length === 0 ? (
         <div className="bg-white rounded border border-gray-100 p-16 text-center"
           style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}>
-          <div className="w-16 h-16 bg-orange-100 rounded flex items-center justify-center mx-auto mb-5">
-            <ShoppingBag className="h-8 w-8 text-orange-400" />
+          <div className="w-16 h-16 bg-blue-100 rounded flex items-center justify-center mx-auto mb-5">
+            <ShoppingBag className="h-8 w-8 text-blue-400" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 mb-2">No Orders Yet</h2>
           <p className="text-gray-500 mb-6 text-sm">You haven&apos;t placed any orders yet.</p>
           <Link href="/courses"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded font-semibold text-sm transition-colors">
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded font-semibold text-sm transition-colors">
             Browse Courses <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -117,14 +117,14 @@ export default function OrdersPage() {
             return (
               <div
                 key={order.id}
-                className="bg-white rounded border border-gray-100 overflow-hidden hover:border-orange-200 hover:shadow-md transition-all duration-200"
+                className="bg-white rounded border border-gray-100 overflow-hidden hover:border-blue-200 hover:shadow-md transition-all duration-200"
                 style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}
               >
                 {/* Top bar */}
                 <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-gray-50">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-orange-100 rounded flex items-center justify-center flex-shrink-0">
-                      <Package className="h-4 w-4 text-orange-500" />
+                    <div className="w-9 h-9 bg-blue-100 rounded flex items-center justify-center flex-shrink-0">
+                      <Package className="h-4 w-4 text-blue-500" />
                     </div>
                     <div>
                       <p className="font-bold text-gray-900 text-sm">#{order.orderNumber}</p>
@@ -159,7 +159,7 @@ export default function OrdersPage() {
                     <span className="font-bold text-gray-900 text-base">{formatCurrency(order.total)}</span>
                     <Link
                       href={`/account/orders/${order.id}`}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded text-xs font-semibold transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-xs font-semibold transition-colors"
                     >
                       View <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -173,7 +173,7 @@ export default function OrdersPage() {
           {pagination.pages > 1 && (
             <div className="flex items-center justify-center gap-2 mt-8">
               <button onClick={() => changePage(pagination.page - 1)} disabled={pagination.page === 1}
-                className="p-2.5 bg-white border border-gray-200 rounded text-gray-500 hover:border-orange-300 disabled:opacity-40 transition-colors">
+                className="p-2.5 bg-white border border-gray-200 rounded text-gray-500 hover:border-blue-300 disabled:opacity-40 transition-colors">
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <span className="text-sm text-gray-600 px-2">
@@ -181,7 +181,7 @@ export default function OrdersPage() {
                 <span className="font-semibold text-gray-900">{pagination.pages}</span>
               </span>
               <button onClick={() => changePage(pagination.page + 1)} disabled={pagination.page === pagination.pages}
-                className="p-2.5 bg-white border border-gray-200 rounded text-gray-500 hover:border-orange-300 disabled:opacity-40 transition-colors">
+                className="p-2.5 bg-white border border-gray-200 rounded text-gray-500 hover:border-blue-300 disabled:opacity-40 transition-colors">
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>

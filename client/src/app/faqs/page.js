@@ -139,7 +139,7 @@ export default function FAQsPage() {
                             placeholder="Search FAQs..."
                             value={searchQuery}
                             onChange={handleSearchChange}
-                            className="w-full pl-10 pr-4 py-2 rounded border-gray-200 focus:border-orange-500 focus:ring-orange-500"
+                            className="w-full pl-10 pr-4 py-2 rounded border-gray-200 focus:border-blue-500 focus:ring-blue-500"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                     </div>
@@ -152,8 +152,8 @@ export default function FAQsPage() {
                                     key={category}
                                     onClick={() => handleCategoryChange(category)}
                                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${activeCategory === category
-                                        ? "bg-orange-500 text-white"
-                                        : "bg-orange-100 text-gray-700 hover:bg-orange-200"
+                                        ? "bg-blue-500 text-white"
+                                        : "bg-blue-100 text-gray-700 hover:bg-blue-200"
                                         }`}
                                 >
                                     {category === "all" ? "All Questions" : category}
@@ -169,9 +169,9 @@ export default function FAQsPage() {
                                 <AccordionItem
                                     key={faq.id}
                                     value={faq.id.toString()}
-                                    className="border border-gray-200 rounded px-4 data-[state=open]:border-l-4 data-[state=open]:border-l-orange-500"
+                                    className="border border-gray-200 rounded px-4 data-[state=open]:border-l-4 data-[state=open]:border-l-blue-500"
                                 >
-                                    <AccordionTrigger className="text-lg font-medium py-4 px-2 hover:no-underline hover:text-orange-600 text-left">
+                                    <AccordionTrigger className="text-lg font-medium py-4 px-2 hover:no-underline hover:text-blue-600 text-left">
                                         {faq.question}
                                     </AccordionTrigger>
                                     <AccordionContent className="px-2 pb-4 pt-1 text-gray-600">
@@ -192,7 +192,7 @@ export default function FAQsPage() {
                                         setSearchQuery("");
                                         setActiveCategory("all");
                                     }}
-                                    className="text-orange-600 hover:underline font-medium"
+                                    className="text-blue-600 hover:underline font-medium"
                                 >
                                     view all FAQs
                                 </button>
@@ -210,13 +210,13 @@ export default function FAQsPage() {
                         <div className="flex justify-center gap-4">
                             <a
                                 href="/contact"
-                                className="inline-flex items-center justify-center px-6 py-3 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors font-semibold"
+                                className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors font-semibold"
                             >
                                 Contact Us
                             </a>
                             <a
                                 href="mailto:support@CA-Maker.com"
-                                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 rounded hover:border-orange-300 hover:bg-orange-50 transition-colors font-medium"
+                                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 rounded hover:border-blue-300 hover:bg-blue-50 transition-colors font-medium"
                             >
                                 Email Support
                             </a>

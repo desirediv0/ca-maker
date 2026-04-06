@@ -48,8 +48,8 @@ export default function ReturnPolicyPage() {
                         <div className="grid md:grid-cols-4 gap-6">
                             {returnSteps.map((item) => (
                                 <div key={item.step} className="text-center">
-                                    <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <span className="font-display font-bold text-2xl text-orange-600">{item.step}</span>
+                                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <span className="font-display font-bold text-2xl text-blue-600">{item.step}</span>
                                     </div>
                                     <h3 className="font-semibold mb-2">{item.title}</h3>
                                     <p className="text-sm text-muted-foreground">{item.description}</p>
@@ -61,7 +61,7 @@ export default function ReturnPolicyPage() {
                     {/* Detailed Policy */}
                     <div className="prose prose-orange lg:prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-600 space-y-8">
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Return Eligibility</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Return Eligibility</h2>
                             <p className="mb-4">You can return products within 7 days of delivery if:</p>
                             <ul className="space-y-2 mb-8">
                                 <li>Product is unused and in original packaging</li>
@@ -74,7 +74,7 @@ export default function ReturnPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Non-Returnable Items</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Non-Returnable Items</h2>
                             <p className="mb-4">The following items cannot be returned:</p>
                             <ul className="space-y-2 mb-8">
                                 <li>Products damaged due to misuse or mishandling</li>
@@ -87,7 +87,7 @@ export default function ReturnPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Refund Process</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Refund Process</h2>
                             <p className="mb-4">
                                 Once we receive your returned product, our quality team will inspect it within 2-3 business days.
                             </p>
@@ -102,7 +102,7 @@ export default function ReturnPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Exchange Policy</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Exchange Policy</h2>
                             <p className="mb-4">
                                 If you want to exchange a product for a different model or variant:
                             </p>
@@ -117,7 +117,7 @@ export default function ReturnPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Damaged/Defective Products</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Damaged/Defective Products</h2>
                             <p className="mb-4">
                                 If you receive a damaged or defective product:
                             </p>
@@ -132,7 +132,7 @@ export default function ReturnPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Contact Support</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Contact Support</h2>
                             <p className="mb-4">
                                 For return requests or queries, contact us at:
                             </p>

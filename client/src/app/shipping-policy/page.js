@@ -58,7 +58,7 @@ export default function ShippingPolicyPage() {
                     {/* Detailed Policy */}
                     <div className="prose prose-orange lg:prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-600 space-y-8">
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Shipping Charges</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Shipping Charges</h2>
                             <ul className="space-y-2 mb-8">
                                 <li>Orders above ₹25,000: <strong>Free Shipping</strong></li>
                                 <li>Orders below ₹25,000: <strong>₹500 flat shipping charge</strong></li>
@@ -69,7 +69,7 @@ export default function ShippingPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Delivery Timeline</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Delivery Timeline</h2>
                             <p className="mb-4">Estimated delivery times from the date of order placement:</p>
                             <ul className="space-y-2 mb-8">
                                 <li><strong>Metro Cities:</strong> 5-7 business days</li>
@@ -81,7 +81,7 @@ export default function ShippingPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Order Tracking</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Order Tracking</h2>
                             <p className="mb-8">
                                 Once your order is shipped, you will receive a tracking number via email and SMS.
                                 You can track your order status using this tracking number on our courier partner&apos;s website.
@@ -91,7 +91,7 @@ export default function ShippingPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Packaging</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Packaging</h2>
                             <p className="mb-8">
                                 All products are carefully packed with protective materials to ensure safe delivery.
                                 Heavy items are double-boxed with extra cushioning to prevent damage during transit.
@@ -101,7 +101,7 @@ export default function ShippingPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Damaged/Lost Shipments</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Damaged/Lost Shipments</h2>
                             <p className="mb-4">
                                 In the rare event that your order arrives damaged or goes missing during transit:
                             </p>
@@ -115,7 +115,7 @@ export default function ShippingPolicyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">International Shipping</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">International Shipping</h2>
                             <p className="mb-8">
                                 We ship to select international locations. Shipping charges and delivery times vary by country.
                                 Please contact our support team at <strong>camakerIndia@gmail.com</strong>

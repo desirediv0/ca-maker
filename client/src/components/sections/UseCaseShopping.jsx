@@ -7,7 +7,7 @@ const useCases = [
     title: "Events & Weddings",
     description: "Powerful sound for memorable celebrations",
     link: "/products?usecase=events",
-    color: "from-orange-500/10 to-orange-500/5"
+    color: "from-blue-500/10 to-blue-500/5"
   },
   {
     icon: Music2,

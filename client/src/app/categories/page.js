@@ -9,10 +9,17 @@ import {
   RiArrowRightLine as ArrowRight,
   RiBookOpenLine as BookOpen,
   RiHeadphoneLine as Headphones,
-  RiGroupLine as Users,
   RiFlashlightLine as Zap,
   RiGraduationCapLine as GraduationCap,
   RiLayoutGridLine as LayoutGrid,
+  RiArrowRightSLine,
+  RiHome4Line,
+  RiStackLine,
+  RiFileList3Line,
+  RiScales3Line,
+  RiCalculatorLine,
+  RiMedalLine,
+  RiSearchLine,
 } from "react-icons/ri";
 
 const getImageUrl = (image) => {
@@ -21,47 +28,68 @@ const getImageUrl = (image) => {
   return `https://desirediv-storage.blr1.digitaloceanspaces.com/${image}`;
 };
 
-/* Icon/emoji per category name */
+/* Icon per category name — no emojis */
 const getCategoryIcon = (name) => {
   const n = (name || "").toLowerCase();
-  if (n.includes("foundation")) return "📚";
-  if (n.includes("inter")) return "🎯";
-  if (n.includes("final")) return "🏆";
-  if (n.includes("audit")) return "📋";
-  if (n.includes("tax")) return "💰";
-  if (n.includes("law")) return "⚖️";
-  if (n.includes("account")) return "🧮";
-  return null;
+  if (n.includes("foundation")) return BookOpen;
+  if (n.includes("inter")) return RiStackLine;
+  if (n.includes("final")) return RiMedalLine;
+  if (n.includes("audit")) return RiFileList3Line;
+  if (n.includes("tax")) return RiCalculatorLine;
+  if (n.includes("law")) return RiScales3Line;
+  if (n.includes("account")) return RiCalculatorLine;
+  return GraduationCap;
 };
 
-const getCategoryBarClass = (index) => {
-  const shades = ["bg-orange-400", "bg-orange-500", "bg-orange-600"];
-  return shades[index % 3];
+const getCategoryAccent = (index) => {
+  const accents = [
+    { bar: "#2563EB", bg: "rgba(37, 99, 235, 0.07)", border: "rgba(37, 99, 235, 0.12)" },
+    { bar: "#3B82F6", bg: "rgba(59, 130, 246, 0.07)", border: "rgba(59, 130, 246, 0.12)" },
+    { bar: "#1E40AF", bg: "rgba(30, 64, 175, 0.07)", border: "rgba(30, 64, 175, 0.12)" },
+  ];
+  return accents[index % 3];
 };
 
 /* ─── Category Card ──────────────────────────────────────── */
 const CategoryCard = ({ category, index }) => {
   const imgUrl = getImageUrl(category.image);
   const count = category._count?.products || 0;
-  const emoji = getCategoryIcon(category.name);
-  const barClass = getCategoryBarClass(index);
+  const FallbackIcon = getCategoryIcon(category.name);
+  const accent = getCategoryAccent(index);
 
   return (
     <Link href={`/category/${category.slug}`} className="group block h-full">
       <div
-        className="relative bg-white rounded-2xl border border-gray-100 shadow-sm
-                   hover:shadow-xl hover:border-orange-200 hover:-translate-y-1
+        className="relative bg-white rounded-2xl border border-gray-100
+                   hover:border-blue-200 hover:-translate-y-1
                    transition-all duration-300 flex flex-col overflow-hidden h-full"
+        style={{
+          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow =
+            "0 12px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = "0 1px 3px rgba(0, 0, 0, 0.04)";
+        }}
       >
         {/* Top colored bar */}
-        <div className={`h-2 rounded-t-2xl ${barClass}`} />
+        <div className="h-1.5 rounded-t-2xl" style={{ background: accent.bar }} />
 
         {/* Card body */}
         <div className="p-6 flex flex-col flex-grow">
-          {/* Icon circle */}
-          <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mb-4">
+          {/* Icon */}
+          <div
+            className="w-14 h-14 rounded-xl flex items-center justify-center mb-5
+                       transition-transform duration-300 group-hover:scale-105"
+            style={{
+              background: accent.bg,
+              border: `1px solid ${accent.border}`,
+            }}
+          >
             {imgUrl ? (
-              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <div className="relative w-full h-full rounded-xl overflow-hidden">
                 <Image
                   src={imgUrl}
                   alt={category.name}
@@ -70,34 +98,35 @@ const CategoryCard = ({ category, index }) => {
                   sizes="56px"
                 />
               </div>
-            ) : emoji ? (
-              <span className="text-2xl">{emoji}</span>
             ) : (
-              <GraduationCap className="w-7 h-7 text-orange-500" />
+              <FallbackIcon className="w-7 h-7 text-blue-500" />
             )}
           </div>
 
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-orange-500 transition-colors duration-200">
+          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
             {category.name}
           </h3>
 
-          <span className="inline-flex w-fit bg-orange-50 text-orange-600 rounded-full px-3 py-1 text-xs font-medium mb-3">
+          <span
+            className="inline-flex w-fit items-center gap-1.5 rounded-lg px-3 py-1 text-xs font-semibold mb-3"
+            style={{
+              background: accent.bg,
+              color: accent.bar,
+              border: `1px solid ${accent.border}`,
+            }}
+          >
+            <BookOpen className="w-3 h-3" />
             {count} {count === 1 ? "Course" : "Courses"}
           </span>
 
-          {category.description && (
-            <p className="text-sm text-gray-500 mt-2 line-clamp-2 flex-grow">
-              {category.description}
-            </p>
-          )}
-          {!category.description && (
-            <p className="text-sm text-gray-500 mt-2 line-clamp-2 flex-grow">
-              Explore CA courses and study material in this category.
-            </p>
-          )}
+          <p className="text-sm text-gray-400 leading-relaxed line-clamp-2 flex-grow">
+            {category.description ||
+              "Explore CA courses and study material in this category."}
+          </p>
 
-          <span className="inline-flex items-center gap-1.5 text-orange-500 font-medium text-sm mt-4 group-hover:gap-3 transition-all duration-200">
-            Explore <ArrowRight className="w-4 h-4" />
+          <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold text-sm mt-5 group-hover:gap-3 transition-all duration-200">
+            Explore
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </div>
       </div>
@@ -107,22 +136,25 @@ const CategoryCard = ({ category, index }) => {
 
 /* ─── Skeleton ───────────────────────────────────────────── */
 const CategoryCardSkeleton = () => (
-  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden animate-pulse">
-    <div className="h-2 bg-orange-200 rounded-t-2xl" />
-    <div className="p-6">
-      <div className="w-14 h-14 bg-orange-100 rounded-2xl mb-4" />
-      <div className="h-5 bg-gray-200 rounded w-3/4 mb-2" />
-      <div className="h-6 bg-orange-100 rounded-full w-20 mb-3" />
-      <div className="h-3 bg-gray-100 rounded w-full mb-1" />
-      <div className="h-3 bg-gray-100 rounded w-5/6 mb-4" />
-      <div className="h-4 bg-orange-100 rounded w-24" />
+  <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+    <div className="h-1.5 bg-blue-100 rounded-t-2xl" />
+    <div className="p-6 animate-pulse">
+      <div className="w-14 h-14 bg-blue-50 rounded-xl mb-5" />
+      <div className="h-5 bg-gray-100 rounded-lg w-3/4 mb-3" />
+      <div className="h-6 bg-blue-50 rounded-lg w-24 mb-3" />
+      <div className="h-3 bg-gray-50 rounded w-full mb-1.5" />
+      <div className="h-3 bg-gray-50 rounded w-5/6 mb-5" />
+      <div className="h-4 bg-blue-50 rounded w-20" />
     </div>
   </div>
 );
 
 /* ─── Stats Banner ───────────────────────────────────────── */
 const StatsBanner = ({ categories }) => {
-  const totalProducts = categories.reduce((s, c) => s + (c._count?.products || 0), 0);
+  const totalProducts = categories.reduce(
+    (s, c) => s + (c._count?.products || 0),
+    0
+  );
   const items = [
     { icon: LayoutGrid, value: categories.length, label: "Categories" },
     { icon: GraduationCap, value: totalProducts, label: "Total Courses" },
@@ -131,21 +163,45 @@ const StatsBanner = ({ categories }) => {
   ];
 
   return (
-    <div className="mt-10 border-t border-gray-100">
+    <div
+      className="mt-14 rounded-2xl overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #EFF6FF, #FFFFFF, #EFF6FF)",
+        border: "1px solid rgba(59, 130, 246, 0.08)",
+      }}
+    >
       <div className="grid grid-cols-2 md:grid-cols-4">
         {items.map(({ icon: Icon, value, label }, i) => (
           <div
             key={i}
-            className={`flex flex-col items-center py-7 px-6 text-center
-                        ${i < items.length - 1 ? "md:border-r border-gray-100" : ""}
-                        ${i % 2 === 0 ? "border-r border-gray-100 md:border-r-0" : ""}
-                        ${i < 2 ? "border-b border-gray-100 md:border-b-0" : ""}`}
+            className="flex flex-col items-center py-8 px-6 text-center relative"
           >
-            <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center mb-4 mx-auto">
-              <Icon className="w-5 h-5 text-orange-500" />
+            {/* Dividers */}
+            {i < items.length - 1 && (
+              <div className="hidden md:block absolute right-0 top-6 bottom-6 w-px bg-blue-100/60" />
+            )}
+            {i % 2 === 0 && i < 2 && (
+              <div className="md:hidden absolute right-0 top-6 bottom-6 w-px bg-blue-100/60" />
+            )}
+            {i < 2 && (
+              <div className="md:hidden absolute bottom-0 left-6 right-6 h-px bg-blue-100/60" />
+            )}
+
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center mb-3"
+              style={{
+                background: "rgba(37, 99, 235, 0.07)",
+                border: "1px solid rgba(37, 99, 235, 0.1)",
+              }}
+            >
+              <Icon className="w-5 h-5 text-blue-500" />
             </div>
-            <p className="text-3xl md:text-4xl font-black text-gray-900 mb-1 leading-none">{value}</p>
-            <p className="text-sm text-gray-400 font-medium">{label}</p>
+            <p className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-0.5 leading-none tracking-tight">
+              {value}
+            </p>
+            <p className="text-xs text-gray-400 font-medium tracking-wide uppercase">
+              {label}
+            </p>
           </div>
         ))}
       </div>
@@ -177,107 +233,176 @@ export default function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* ── Hero Banner ── */}
-      <section className="relative bg-gradient-to-r from-orange-500 to-orange-600 py-14 md:py-20 overflow-hidden">
-        {/* Diagonal lines pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 20px,
-              rgba(255,255,255,0.3) 20px,
-              rgba(255,255,255,0.3) 40px
-            )`,
-          }}
-        />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-white mb-3">
-            Explore All Categories
-          </h1>
-          <p className="text-lg text-white/90 max-w-2xl mb-8">
-            Find the right CA course for your preparation level
-          </p>
+      <section className="relative overflow-hidden" style={{
+        background: "linear-gradient(135deg, #1E3A8A 0%, #1E40AF 30%, #2563EB 70%, #3B82F6 100%)",
+      }}>
+        {/* Background decorations */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Subtle grid */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          {/* Corner glow */}
+          <div
+            className="absolute -top-20 -right-20 w-[400px] h-[400px] opacity-20"
+            style={{
+              background: "radial-gradient(circle, rgba(96,165,250,0.6), transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute -bottom-16 -left-16 w-[300px] h-[300px] opacity-10"
+            style={{
+              background: "radial-gradient(circle, rgba(147,197,253,0.5), transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-22">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-white/70">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
+          <nav className="flex items-center gap-2 text-sm text-white/50 mb-8">
+            <Link href="/" className="hover:text-white transition-colors flex items-center gap-1.5">
+              <RiHome4Line className="w-3.5 h-3.5" />
+              Home
+            </Link>
+            <RiArrowRightSLine className="w-3.5 h-3.5" />
             <span className="text-white font-medium">Categories</span>
           </nav>
+
+          {/* Ornamental divider */}
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px w-10 bg-gradient-to-r from-transparent to-white/30" />
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-blue-200/60">
+              Browse & Learn
+            </span>
+            <div className="h-px w-10 bg-gradient-to-l from-transparent to-white/30" />
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Explore All Categories
+          </h1>
+          <p className="text-base md:text-lg text-blue-100/70 max-w-xl leading-relaxed">
+            Find the right CA course for your preparation level — structured,
+            practical, and exam-focused.
+          </p>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/5 to-transparent" />
       </section>
 
       {/* ── Error ── */}
       {error && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="bg-red-50 border border-red-200 p-5 rounded-xl flex items-start gap-3">
+          <div
+            className="p-5 rounded-xl flex items-start gap-3"
+            style={{
+              background: "rgba(239, 68, 68, 0.04)",
+              border: "1px solid rgba(239, 68, 68, 0.12)",
+            }}
+          >
             <AlertCircle className="text-red-500 flex-shrink-0 w-5 h-5 mt-0.5" />
             <div>
-              <p className="font-semibold text-red-800 text-sm">Error loading categories</p>
-              <p className="text-red-600 text-sm mt-0.5">{error}</p>
+              <p className="font-semibold text-red-700 text-sm">
+                Error loading categories
+              </p>
+              <p className="text-red-500 text-sm mt-0.5">{error}</p>
             </div>
           </div>
         </div>
       )}
 
       {/* ── Main Grid ── */}
-      <section className="py-16 px-4 sm:px-6 max-w-7xl mx-auto">
+      <section className="py-14 md:py-16 px-4 sm:px-6 max-w-7xl mx-auto">
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => <CategoryCardSkeleton key={i} />)}
+            {[...Array(6)].map((_, i) => (
+              <CategoryCardSkeleton key={i} />
+            ))}
           </div>
         ) : categories.length === 0 ? (
           <div className="text-center py-24">
-            <div className="text-6xl mb-4 opacity-40">📂</div>
-            <h2 className="text-xl text-gray-400 font-semibold">No categories found</h2>
-            <p className="text-sm text-gray-400 mt-2">Check back soon</p>
-            <Link href="/courses" className="inline-block mt-6">
-              <button className="px-7 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold transition-colors text-sm">
+            <div
+              className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-5"
+              style={{
+                background: "rgba(37, 99, 235, 0.06)",
+                border: "1px solid rgba(37, 99, 235, 0.1)",
+              }}
+            >
+              <RiSearchLine className="w-9 h-9 text-blue-300" />
+            </div>
+            <h2 className="text-xl text-gray-800 font-bold mb-2">
+              No categories found
+            </h2>
+            <p className="text-sm text-gray-400 mb-6">
+              Check back soon — new categories are added regularly.
+            </p>
+            <Link href="/courses">
+              <button
+                className="group px-7 py-3 text-white rounded-xl font-semibold text-sm
+                           transition-all duration-300 hover:scale-[1.03] inline-flex items-center gap-2"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #1E40AF, #2563EB, #3B82F6)",
+                  boxShadow:
+                    "0 4px 16px rgba(37, 99, 235, 0.25), inset 0 1px 0 rgba(255,255,255,0.15)",
+                }}
+              >
                 Browse All Courses
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
           </div>
         ) : (
           <>
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">All Categories</h2>
-              <div className="w-12 h-1 bg-orange-500 mt-2 mb-8 rounded" />
+            {/* Section header */}
+            <div className="mb-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="h-px w-8 bg-gradient-to-r from-transparent to-blue-400/40" />
+                  <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-blue-500/50">
+                    All Categories
+                  </span>
+                  <div className="h-px w-8 bg-gradient-to-l from-transparent to-blue-400/40" />
+                </div>
+                <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+                  Choose Your{" "}
+                  <span
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #1E40AF, #3B82F6, #60A5FA)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Path
+                  </span>
+                </h2>
+              </div>
+
+              <p className="text-sm text-gray-400 max-w-xs leading-relaxed">
+                {categories.length} categories available — pick your level and start learning.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category, index) => (
-                <CategoryCard key={category.id} category={category} index={index} />
+                <CategoryCard
+                  key={category.id}
+                  category={category}
+                  index={index}
+                />
               ))}
             </div>
 
             <StatsBanner categories={categories} />
           </>
         )}
-      </section>
-
-      {/* ── Bottom CTA ── */}
-      <section className="py-10 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold text-orange-400 uppercase tracking-widest mb-3">
-            Start Learning Today
-          </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Can&apos;t find your category?
-          </h2>
-          <p className="text-gray-400 max-w-lg mx-auto mb-8 text-sm">
-            Browse all courses across every CA subject — structured, practical
-            and exam-focused.
-          </p>
-          <Link
-            href="/courses"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-orange-500
-                       hover:bg-orange-600 text-white rounded-xl font-semibold transition-colors"
-          >
-            View All Courses <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
       </section>
     </div>
   );

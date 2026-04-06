@@ -18,8 +18,8 @@ const fallbackSlides = [
     headline: "Build Your CA Rank",
     highlight: "With Confidence",
     description: "Learn from CA Mohit Kukreja's 6 years of Big 4 audit experience — making Audit simple, relatable, and scoring.",
-    desktopImage: "/hero-slide-1.jpg",
-    mobileImage: "/hero-slide-1-sm.jpg",
+    desktopImage: "/hero-slide-1.png",
+    mobileImage: "/hero-slide-1-sm.png",
     link: "/courses",
   },
 ];
@@ -139,39 +139,39 @@ export default function HeroSection() {
           <div className="max-w-2xl">
 
             {/* Label pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/20 border border-orange-500/40 mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-              <span className="text-sm font-semibold text-orange-300 tracking-wide">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-500/40 mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+              <span className="text-[10px] md:text-sm font-semibold text-blue-300 tracking-wide">
                 {slide.label}
               </span>
             </div>
 
             {/* Headline */}
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] text-white mb-2 drop-shadow-lg">
+            <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] text-white mb-2 drop-shadow-lg">
               {slide.headline}
             </h1>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-7"
-              style={{ color: "#F97316", textShadow: "0 2px 20px rgba(249,115,22,0.4)" }}>
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-black leading-[1.05] mb-7"
+              style={{ color: "#119ED9", textShadow: "0 2px 20px rgba(17, 158, 217, 0.5)" }}>
               {slide.highlight}
             </h2>
 
-            <p className="text-lg text-white/75 leading-relaxed max-w-lg mb-10">
+            <p className="text-sm md:text-lg text-white/75 leading-relaxed max-w-lg mb-10">
               {slide.description}
             </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <Link href={slide.link}>
-                <button className="group h-14 px-8 rounded-full font-bold text-base text-white
-                                   bg-orange-500 hover:bg-orange-600 transition-all duration-200
-                                   flex items-center gap-2 shadow-lg shadow-orange-500/30">
+                <button className="group h-12 md:h-14 px-6 md:px-8 rounded-2xl font-bold text-sm md:text-base text-white
+                                   bg-blue-500 hover:bg-blue-600 transition-all duration-200
+                                   flex items-center gap-2 shadow-lg shadow-blue-500/30">
                   Explore Courses
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
               <Link href="/courses">
-                <button className="group h-14 px-8 rounded-full font-semibold text-base text-white
-                                   border-2 border-white/30 hover:border-orange-400 hover:text-orange-300
+                <button className="group h-12 md:h-14 px-6 md:px-8 rounded-2xl font-semibold text-sm md:text-base text-white
+                                   border-2 border-white/30 hover:border-blue-400 hover:text-blue-300
                                    transition-all duration-200 flex items-center gap-2 backdrop-blur-sm">
                   <Play className="h-4 w-4" />
                   View Batches
@@ -214,7 +214,7 @@ export default function HeroSection() {
               key={idx}
               onClick={() => { stopAuto(); setCurrent(idx); }}
               className={`rounded-full transition-all duration-300 ${idx === current
-                ? "w-8 h-2.5 bg-orange-500"
+                ? "w-8 h-2.5 bg-blue-500"
                 : "w-2.5 h-2.5 bg-white/40 hover:bg-white/60"
                 }`}
             />

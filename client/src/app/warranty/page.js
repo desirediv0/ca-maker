@@ -58,7 +58,7 @@ export default function WarrantyPage() {
                     {/* Detailed Warranty Policy */}
                     <div className="prose prose-orange lg:prose-lg max-w-none text-gray-600 prose-headings:text-gray-900 prose-p:leading-relaxed prose-li:text-gray-600 space-y-8">
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Warranty Coverage</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Warranty Coverage</h2>
                             <p className="mb-4">
                                 Our 1-year manufacturer warranty covers:
                             </p>
@@ -74,7 +74,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">What&apos;s Not Covered</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">What&apos;s Not Covered</h2>
                             <p className="mb-4">
                                 The warranty does not cover:
                             </p>
@@ -91,7 +91,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">How to Claim Warranty</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">How to Claim Warranty</h2>
                             <p className="mb-4">
                                 To claim warranty service:
                             </p>
@@ -108,7 +108,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Warranty Terms</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Warranty Terms</h2>
                             <ul className="space-y-2 mb-8">
                                 <li>Warranty is valid only with original purchase invoice</li>
                                 <li>Warranty is non-transferable to second owners</li>
@@ -121,7 +121,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Service Centers</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Service Centers</h2>
                             <p className="mb-4">
                                 We have authorized service centers in major cities:
                             </p>
@@ -134,7 +134,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Extended Warranty</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Extended Warranty</h2>
                             <p className="mb-8">
                                 Looking for additional coverage? Contact us about extended warranty plans available for purchase.
                                 Extended warranties can provide coverage up to 3 years from purchase date.
@@ -144,7 +144,7 @@ export default function WarrantyPage() {
 
                         <hr className="my-8 border-gray-100" />
                         <div>
-                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-orange-500">Contact Warranty Support</h2>
+                            <h2 className="font-display text-2xl font-bold mb-4 pl-4 border-l-4 border-blue-500">Contact Warranty Support</h2>
                             <p className="mb-4">
                                 For warranty claims and support:
                             </p>

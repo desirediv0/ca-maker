@@ -105,7 +105,7 @@ export default function CourseCategories() {
           <Link href="/courses">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 h-12 rounded font-semibold gap-2"
+              className="bg-primary hover:bg-primary/90 text-white px-8 h-12 rounded-2xl font-semibold gap-2"
             >
               View All Courses <ArrowRight className="h-4 w-4" />
             </Button>

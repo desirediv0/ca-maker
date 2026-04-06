@@ -27,7 +27,7 @@ export default function AccountLayout({ children }) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-10 h-10 border-[3px] border-orange-200 border-t-orange-500 rounded-full animate-spin" />
+        <div className="w-10 h-10 border-[3px] border-blue-200 border-t-blue-500 rounded-full animate-spin" />
       </div>
     );
   }
@@ -57,7 +57,7 @@ export default function AccountLayout({ children }) {
                   {/* User badge */}
                   <div className="bg-gray-900 px-6 py-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 bg-orange-500 rounded flex items-center justify-center flex-shrink-0">
+                      <div className="w-11 h-11 bg-blue-500 rounded flex items-center justify-center flex-shrink-0">
                         <span className="text-white font-bold text-base">
                           {user?.name?.charAt(0)?.toUpperCase() || "U"}
                         </span>
@@ -76,8 +76,8 @@ export default function AccountLayout({ children }) {
                         key={path}
                         href={path}
                         className={`flex items-center gap-3 px-4 py-3 rounded text-sm font-medium transition-all duration-200 ${isActive(path)
-                          ? "bg-orange-500 text-white shadow-sm"
-                          : "text-gray-600 hover:bg-orange-50 hover:text-orange-600"
+                          ? "bg-blue-500 text-white shadow-sm"
+                          : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
                           }`}
                       >
                         <Icon className="h-4 w-4 flex-shrink-0" />

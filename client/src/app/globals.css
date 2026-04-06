@@ -8,10 +8,10 @@
   :root {
     /* ── CA Maker Brand Colors ── */
     --color-bg: #ffffff;
-    --color-surface: #fff7ed;
-    --color-primary: #f97316;
-    --color-primary-dark: #ea580c;
-    --color-primary-light: #ffedd5;
+    --color-surface: #f0f9ff;
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-primary-light: #dbeafe;
     --color-heading: #111827;
     --color-body: #374151;
     --color-muted: #6b7280;
@@ -26,19 +26,19 @@
     --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
-    --primary: 25 95% 53%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 33 100% 96%;
-    --secondary-foreground: 25 95% 53%;
+    --secondary: 206 100% 97%;
+    --secondary-foreground: 217 91% 60%;
     --muted: 220 9% 96%;
     --muted-foreground: 220 9% 46%;
-    --accent: 27 96% 73%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 7%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 25 95% 53%;
+    --ring: 217 91% 60%;
     --radius: 0.5rem;
   }
 }

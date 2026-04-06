@@ -55,12 +55,12 @@ export const WhyBuySection = () => {
             >
               {/* Icon */}
               <div
-                className="w-16 h-16 rounded bg-orange-50 border border-orange-100
+                className="w-16 h-16 rounded bg-blue-50 border border-blue-100
                            flex items-center justify-center mx-auto mb-6
-                           group-hover:bg-orange-500 transition-colors duration-300"
+                           group-hover:bg-blue-500 transition-colors duration-300"
               >
                 <feature.icon
-                  className="h-7 w-7 text-orange-500 group-hover:text-white transition-colors duration-300"
+                  className="h-7 w-7 text-blue-500 group-hover:text-white transition-colors duration-300"
                 />
               </div>
 

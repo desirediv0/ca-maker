@@ -33,12 +33,12 @@ export default function HotSellingCourses() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <div className="h-5 w-28 bg-orange-100 rounded-full mb-3 animate-pulse" />
+              <div className="h-5 w-28 bg-blue-100 rounded-full mb-3 animate-pulse" />
               <div className="h-9 w-56 bg-gray-100 rounded animate-pulse" />
-              <div className="h-1 w-10 bg-orange-100 rounded mt-3 animate-pulse" />
+              <div className="h-1 w-10 bg-blue-100 rounded mt-3 animate-pulse" />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
@@ -49,7 +49,7 @@ export default function HotSellingCourses() {
                 <div className="p-4 space-y-3">
                   <div className="h-4 bg-gray-100 rounded" />
                   <div className="h-4 bg-gray-100 rounded w-3/4" />
-                  <div className="h-8 bg-orange-50 rounded w-1/2 mt-4" />
+                  <div className="h-8 bg-blue-50 rounded w-1/2 mt-4" />
                 </div>
               </div>
             ))}
@@ -78,15 +78,15 @@ export default function HotSellingCourses() {
           </div>
           <Link
             href="/courses?tag=hot-selling"
-            className="flex items-center gap-1.5 text-sm font-semibold text-orange-600
-                       hover:text-orange-700 transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 text-sm font-semibold text-blue-600
+                       hover:text-blue-700 transition-colors whitespace-nowrap"
           >
             View All <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         {/* ── Responsive grid: 1 col mobile, 3 col md ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} badge="hot" />
           ))}

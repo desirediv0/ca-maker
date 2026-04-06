@@ -269,7 +269,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
     <div className="min-w-0 flex-1">
       {showPrice && displayPrice > 0 ? (
         <>
-          <div className={`font-bold leading-none ${size === "lg" ? "text-xl" : "text-base"} text-orange-600`}>
+          <div className={`font-bold leading-none ${size === "lg" ? "text-xl" : "text-base"} text-blue-600`}>
             {formatCurrency(displayPrice)}
           </div>
           {(hasSale || showFlashSaleBadge) && originalPrice && (
@@ -279,7 +279,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
           )}
         </>
       ) : !showPrice ? (
-        <Link href="/auth?redirect=/courses" className="text-xs text-orange-600 hover:underline font-semibold">
+        <Link href="/auth?redirect=/courses" className="text-xs text-blue-600 hover:underline font-semibold">
           Login to view price
         </Link>
       ) : null}
@@ -291,7 +291,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       size="sm"
       onClick={handleAddToCart}
       disabled={!showPrice || isAddingToCart}
-      className={`h-8 text-xs rounded font-semibold bg-orange-500 hover:bg-orange-600
+      className={`h-8 text-xs rounded font-semibold bg-blue-500 hover:bg-blue-600
                   text-white border-0 flex-shrink-0 ${full ? "w-full justify-center" : "px-3"}`}
     >
       {isAddingToCart ? (
@@ -322,7 +322,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
         {/* Image */}
         <Link
           href={`/courses/${product?.slug || product?.product?.slug || "#"}`}
-          className="relative w-40 sm:w-52 md:w-60 flex-shrink-0 overflow-hidden bg-orange-50"
+          className="relative w-40 sm:w-52 md:w-60 flex-shrink-0 overflow-hidden bg-blue-50"
         >
           <Image
             src={getAllProductImages[currentImageIndex] || "/placeholder.jpg"}
@@ -332,7 +332,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
             sizes="240px"
           />
           {(showFlashSaleBadge || hasSale) && discountPercent > 0 && (
-            <div className="absolute top-3 left-3 z-20 px-2.5 py-1 text-white text-xs font-bold rounded-full bg-orange-500">
+            <div className="absolute top-3 left-3 z-20 px-2.5 py-1 text-white text-xs font-bold rounded-full bg-blue-500">
               {discountPercent}% OFF
             </div>
           )}
@@ -343,7 +343,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
           <div className="flex items-start justify-between gap-2 mb-2">
             <Link href={`/courses/${product?.slug || product?.product?.slug || "#"}`}>
               <h3 className="font-semibold text-gray-900 text-sm md:text-base leading-snug
-                             line-clamp-2 hover:text-orange-600 transition-colors">
+                             line-clamp-2 hover:text-blue-600 transition-colors">
                 {product.name}
               </h3>
             </Link>
@@ -391,14 +391,14 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       {/* ── Product image ── */}
       <Link
         href={`/courses/${product?.slug || product?.product?.slug || "#"}`}
-        className="block relative aspect-square overflow-hidden bg-orange-50/60 flex-shrink-0"
+        className="block relative aspect-square overflow-hidden bg-blue-50/60 flex-shrink-0"
       >
         <div className="absolute top-3 right-3 z-20">
           <WishlistBtn />
         </div>
 
         {(showFlashSaleBadge || hasSale) && discountPercent > 0 && (
-          <div className="absolute top-3 left-3 z-20 px-2.5 py-1 text-white text-xs font-bold rounded-full bg-orange-500">
+          <div className="absolute top-3 left-3 z-20 px-2.5 py-1 text-white text-xs font-bold rounded-full bg-blue-500">
             {discountPercent}% OFF
           </div>
         )}
@@ -428,7 +428,7 @@ export const ProductCard = ({ product, viewMode = "grid" }) => {
       <div className="p-4 flex flex-col flex-grow">
         <Link href={`/courses/${product?.slug || product?.product?.slug || "#"}`}>
           <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2
-                         hover:text-orange-600 transition-colors duration-200 mb-2">
+                         hover:text-blue-600 transition-colors duration-200 mb-2">
             {product.name}
           </h3>
         </Link>

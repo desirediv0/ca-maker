@@ -28,11 +28,11 @@ export default function NewLaunchCourses() {
 
   if (loading) {
     return (
-      <section className="py-8 bg-orange-50/50">
+      <section className="py-8 bg-blue-50/50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <div className="h-5 w-24 bg-orange-100 rounded-full mb-3 animate-pulse" />
+              <div className="h-5 w-24 bg-blue-100 rounded-full mb-3 animate-pulse" />
               <div className="h-9 w-48 bg-gray-100 rounded animate-pulse" />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function NewLaunchCourses() {
   if (courses.length === 0) return null;
 
   return (
-    <section className="py-20 bg-orange-50/50">
+    <section className="py-20 bg-blue-50/50">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* ── Section header ── */}
@@ -75,8 +75,8 @@ export default function NewLaunchCourses() {
           </div>
           <Link
             href="/courses?tag=new-launch"
-            className="flex items-center gap-1.5 text-sm font-semibold text-orange-600
-                       hover:text-orange-700 transition-colors whitespace-nowrap"
+            className="flex items-center gap-1.5 text-sm font-semibold text-blue-600
+                       hover:text-blue-700 transition-colors whitespace-nowrap"
           >
             View All <ArrowRight className="h-4 w-4" />
           </Link>

@@ -97,7 +97,7 @@ export default function WhyUsPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {reasons.map((reason, index) => (
                             <div key={index} className="bg-gray-50/50 border border-gray-100 rounded p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-14 h-14 bg-orange-100 rounded flex items-center justify-center mb-6">
+                                <div className="w-14 h-14 bg-blue-100 rounded flex items-center justify-center mb-6">
                                     <reason.icon className="h-7 w-7 text-primary" />
                                 </div>
                                 <h3 className="font-display font-bold text-xl text-foreground mb-3">

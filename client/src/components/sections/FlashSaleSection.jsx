@@ -74,7 +74,7 @@ const FlashSaleProductCard = ({ product, discountPercentage }) => {
             <div className="relative bg-white rounded overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100">
                 {/* Discount Ribbon */}
                 <div className="absolute top-0 right-0 z-10">
-                    <div className="bg-gradient-to-br from-red-500 to-orange-500 text-white px-4 py-2 rounded-bl-2xl shadow-lg">
+                    <div className="bg-gradient-to-br from-red-500 to-blue-500 text-white px-4 py-2 rounded-bl-2xl shadow-lg">
                         <div className="flex items-center gap-1">
                             <Flame className="w-4 h-4 animate-pulse" />
                             <span className="text-lg font-black">{discountPercentage}%</span>
@@ -158,7 +158,7 @@ export function FlashSaleSection() {
     // Don't render if no active flash sales
     if (loading) {
         return (
-            <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+            <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-blue-50 to-red-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-center items-center py-12">
                         <Loader2 className="w-10 h-10 text-primary animate-spin" />
@@ -175,9 +175,9 @@ export function FlashSaleSection() {
     const currentSale = flashSales[0];
 
     return (
-        <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 relative overflow-hidden">
+        <section className="py-12 md:py-16 bg-gradient-to-br from-amber-50 via-blue-50 to-red-50 relative overflow-hidden">
             {/* Decorative Elements */}
-            <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-orange-200/40 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-200/40 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-red-200/40 to-transparent rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
             <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gradient-to-br from-yellow-100/30 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
 
@@ -185,7 +185,7 @@ export function FlashSaleSection() {
                 {/* Header Section */}
                 <div className="text-center mb-10">
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-5 py-2 rounded-full shadow-lg mb-4">
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-red-500 text-white px-5 py-2 rounded-full shadow-lg mb-4">
                         <Zap className="w-5 h-5 animate-pulse" />
                         <span className="font-bold text-sm tracking-wide">LIMITED TIME OFFER</span>
                         <Zap className="w-5 h-5 animate-pulse" />
@@ -193,7 +193,7 @@ export function FlashSaleSection() {
 
                     {/* Title */}
                     <h2 className="text-3xl md:text-5xl font-black text-gray-900 mb-2">
-                        <span className="bg-gradient-to-r from-orange-600 via-red-500 to-pink-500 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-blue-600 via-red-500 to-pink-500 bg-clip-text text-transparent">
                             Flash Sale
                         </span>
                         <span className="ml-2">🔥</span>
@@ -201,7 +201,7 @@ export function FlashSaleSection() {
                     <p className="text-gray-600 mb-6 text-lg">{currentSale.name}</p>
 
                     {/* Timer Section */}
-                    <div className="inline-flex flex-col items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-4 rounded shadow-lg border border-orange-100">
+                    <div className="inline-flex flex-col items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-4 rounded shadow-lg border border-blue-100">
                         <div className="flex items-center gap-2 text-gray-700">
                             <Timer className="w-5 h-5 text-primary" />
                             <span className="font-semibold">Hurry! Offer ends in:</span>
@@ -226,7 +226,7 @@ export function FlashSaleSection() {
                     <div className="text-center mt-10">
                         <Link
                             href="/courses?flashSale=true"
-                            className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-red-500 hover:from-blue-600 hover:to-red-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                         >
                             <Flame className="w-5 h-5" />
                             View All Flash Deals

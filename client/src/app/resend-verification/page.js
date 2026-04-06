@@ -65,7 +65,7 @@ export default function ResendVerificationPage() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#FFF7ED] py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full bg-white rounded border border-gray-100 shadow-lg p-8 sm:p-10 mx-auto">
-                <span className="text-orange-500 font-bold text-lg block text-center mb-4">CA Maker</span>
+                <span className="text-blue-500 font-bold text-lg block text-center mb-4">CA Maker</span>
                 <h1 className="text-2xl font-bold text-gray-900 mb-4 text-center">Resend OTP</h1>
 
                 <ClientOnly fallback={<div className="py-8">Loading...</div>}>
@@ -95,7 +95,7 @@ export default function ResendVerificationPage() {
                                 </div>
                                 <Button
                                     type="submit"
-                                    className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded transition-all"
+                                    className="w-full h-12 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded transition-all"
                                     disabled={status === "submitting"}
                                 >
                                     {status === "submitting" ? (

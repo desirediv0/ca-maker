@@ -1,29 +1,46 @@
+"use client";
 import {
   RiRecordCircleLine as Target,
   RiArrowRightLine as ArrowRight,
   RiLightbulbLine as Zap,
   RiMessage2Line as MessageSquare,
   RiVideoLine as Video,
+  RiArrowRightSLine,
+  RiHome4Line,
+
+  RiBarChartBoxLine,
+  RiTrophyLine,
+  RiShieldCheckLine,
+  RiGroupLine,
+  RiStarLine,
 } from "react-icons/ri";
 import Link from "next/link";
 
-export const metadata = {
-  title: "About Us | CA Maker – CA Mohit Kukreja",
-  description:
-    "Learn about CA Maker and CA Mohit Kukreja – bringing 6 years of Big 4 audit expertise to make CA Inter Audit simple, relatable, and scoring.",
-};
+
 
 const journeyMilestones = [
-  { year: "2018", title: "Cleared CA Finals", desc: "Qualified as Chartered Accountant" },
-  { year: "2019", title: "Joined Big 4", desc: "Audit Department — Deloitte/KPMG" },
-  { year: "2023", title: "Started CA Maker", desc: "Founded CA Maker with a vision" },
-  { year: "2024", title: "10,000+ Students", desc: "Students enrolled across India" },
+  { year: "2018", title: "Cleared CA Finals", desc: "Qualified as a Chartered Accountant with distinction." },
+  { year: "2019", title: "Joined Big 4", desc: "Started audit career at a leading Big 4 firm." },
+  { year: "2023", title: "Founded CA Maker", desc: "Launched CA Maker to simplify CA education." },
+  { year: "2024", title: "10,000+ Students", desc: "Crossed 10K enrolled students across India." },
 ];
 
 const missionCards = [
-  { emoji: "🎯", title: "Make Audit Simple", desc: "Break complex standards into easy-to-understand concepts with relatable examples." },
-  { emoji: "📈", title: "Practical Learning", desc: "Real-world Big 4 audit scenarios woven into every lesson for practical understanding." },
-  { emoji: "🏆", title: "Exam Focused", desc: "Structured notes, regular tests, and answer-writing practice for exam success." },
+  {
+    icon: Target,
+    title: "Make Audit Simple",
+    desc: "Break complex standards into easy-to-understand concepts with relatable, real-world examples.",
+  },
+  {
+    icon: RiBarChartBoxLine,
+    title: "Practical Learning",
+    desc: "Real Big 4 audit scenarios woven into every lesson so you learn how auditing actually works.",
+  },
+  {
+    icon: RiTrophyLine,
+    title: "Exam Focused",
+    desc: "Structured notes, regular tests, and answer-writing practice designed around examiner expectations.",
+  },
 ];
 
 const whyChoose = [
@@ -33,65 +50,178 @@ const whyChoose = [
   { icon: MessageSquare, title: "Doubt Support", desc: "Personal mentoring and dedicated doubt resolution for every student." },
 ];
 
+const instructorTags = [
+  "Big 4 Audit Experience",
+  "CA Inter Specialist",
+  "6+ Years Teaching",
+  "Practical Approach",
+];
+
 /* ─── Page ────────────────────────────────────────────────── */
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* ══ Hero Section ══ */}
-      <section className="py-20 px-4 sm:px-6 bg-gray-900">
+      {/* ══ Hero ══ */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          background: "linear-gradient(135deg, #1E3A8A 0%, #1E40AF 30%, #2563EB 70%, #3B82F6 100%)",
+        }}
+      >
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+              backgroundSize: "60px 60px",
+            }}
+          />
+          <div
+            className="absolute -top-20 -right-20 w-[400px] h-[400px] opacity-20"
+            style={{ background: "radial-gradient(circle, rgba(96,165,250,0.6), transparent 70%)" }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+          <nav className="flex items-center gap-2 text-sm text-white/50 mb-8">
+            <Link href="/" className="hover:text-white transition-colors flex items-center gap-1.5">
+              <RiHome4Line className="w-3.5 h-3.5" /> Home
+            </Link>
+            <RiArrowRightSLine className="w-3.5 h-3.5" />
+            <span className="text-white font-medium">About</span>
+          </nav>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-px w-10 bg-gradient-to-r from-transparent to-white/30" />
+            <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-blue-200/60">
+              Who We Are
+            </span>
+            <div className="h-px w-10 bg-gradient-to-l from-transparent to-white/30" />
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight max-w-2xl">
+            Making CA Audit Simple, Relatable &amp; Scoring
+          </h1>
+          <p className="text-base md:text-lg text-blue-100/70 max-w-xl leading-relaxed">
+            Founded by CA Mohit Kukreja — 6+ years of Big 4 audit expertise, now
+            dedicated to helping every CA student succeed.
+          </p>
+        </div>
+      </section>
+
+      {/* ══ Instructor + Stats ══ */}
+      <section className="py-12 md:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <div>
-              <span className="inline-flex items-center gap-2 px-4 py-1 bg-orange-500/10 text-orange-400 border border-orange-500/20 rounded-full text-sm font-medium mb-4">
-                About CA Maker
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-                Making CA Audit Simple, Relatable &amp; Scoring
-              </h1>
-              <p className="text-gray-400 text-lg mt-4 leading-relaxed">
-                Founded by CA Mohit Kukreja with 6 years of Big 4 experience —
-                incorporating practical examples to make Audit simple, relatable,
-                and scoring for every CA student.
-              </p>
-              {/* Inline stats */}
-              <div className="flex flex-wrap items-center gap-4 mt-6">
-                <div>
-                  <p className="text-orange-500 font-bold text-xl">10,000+</p>
-                  <p className="text-gray-400 text-sm">Students</p>
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+
+            {/* Instructor — takes 2 cols */}
+            <div className="lg:col-span-2">
+              <div
+                className="rounded-2xl p-7 h-full"
+                style={{
+                  background: "linear-gradient(170deg, #F8FAFF, #EFF6FF)",
+                  border: "1px solid rgba(59, 130, 246, 0.08)",
+                }}
+              >
+                <div
+                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-5"
+                  style={{
+                    background: "linear-gradient(135deg, #1E40AF, #2563EB)",
+                    boxShadow: "0 4px 16px rgba(37, 99, 235, 0.25)",
+                  }}
+                >
+                  <span className="text-white text-2xl font-extrabold tracking-tight">CMK</span>
                 </div>
-                <span className="text-gray-600">|</span>
-                <div>
-                  <p className="text-orange-500 font-bold text-xl">6 Yrs</p>
-                  <p className="text-gray-400 text-sm">Big 4</p>
-                </div>
-                <span className="text-gray-600">|</span>
-                <div>
-                  <p className="text-orange-500 font-bold text-xl">4.9★</p>
-                  <p className="text-gray-400 text-sm">Rating</p>
+
+                <h2 className="text-xl font-extrabold text-gray-900 mb-1">CA Mohit Kukreja</h2>
+                <p className="text-blue-600 text-sm font-semibold mb-3">
+                  Founder, CA Maker
+                </p>
+                <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                  Bringing 6+ years of Big 4 audit experience to help CA students
+                  understand Audit through practical, real-world examples. Every concept
+                  is taught the way it's applied in actual audit engagements.
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {instructorTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] font-semibold px-3 py-1.5 rounded-lg"
+                      style={{
+                        background: "rgba(37, 99, 235, 0.06)",
+                        color: "#2563EB",
+                        border: "1px solid rgba(37, 99, 235, 0.1)",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Right - Instructor card */}
-            <div className="bg-gray-800 rounded-3xl p-8 border border-gray-700">
-              <div className="w-24 h-24 rounded-2xl bg-orange-500 text-white text-3xl font-bold flex items-center justify-center mb-4">
-                CMK
+            {/* Stats + quick info — takes 3 cols */}
+            <div className="lg:col-span-3 flex flex-col gap-6">
+              {/* Stats row */}
+              <div className="grid grid-cols-3 gap-4">
+                {[
+                  { value: "10,000+", label: "Students", icon: RiGroupLine },
+                  { value: "6 Years", label: "Big 4 Exp.", icon: RiShieldCheckLine },
+                  { value: "4.9 / 5", label: "Rating", icon: RiStarLine },
+                ].map((s, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl p-5 text-center"
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #F0F0F0",
+                      boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
+                    }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-3"
+                      style={{
+                        background: "rgba(37, 99, 235, 0.06)",
+                        border: "1px solid rgba(37, 99, 235, 0.1)",
+                      }}
+                    >
+                      <s.icon className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <p className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">{s.value}</p>
+                    <p className="text-xs text-gray-400 font-medium mt-0.5">{s.label}</p>
+                  </div>
+                ))}
               </div>
-              <h2 className="text-2xl font-bold text-white">CA Mohit Kukreja</h2>
-              <p className="text-orange-400 text-sm font-medium mt-1">
-                Founder, CA Maker | CA Inter Audit Specialist
-              </p>
-              <p className="text-gray-400 text-sm leading-relaxed mt-3">
-                Bringing 6+ years of Big 4 audit experience to help CA students
-                understand Audit through practical, real-world examples.
-              </p>
-              <div className="flex flex-wrap gap-2 mt-5">
-                {["Big 4 Experience", "CA Inter Expert", "6+ Years"].map((tag) => (
-                  <span key={tag} className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-xs">
-                    {tag}
-                  </span>
+
+              {/* Why choose — compact cards */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {whyChoose.map(({ icon: Icon, title, desc }, i) => (
+                  <div
+                    key={i}
+                    className="flex items-start gap-4 rounded-xl p-5"
+                    style={{
+                      background: "#FFFFFF",
+                      border: "1px solid #F0F0F0",
+                      boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
+                    }}
+                  >
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                      style={{
+                        background: "rgba(37, 99, 235, 0.06)",
+                        border: "1px solid rgba(37, 99, 235, 0.1)",
+                      }}
+                    >
+                      <Icon className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-gray-900">{title}</h4>
+                      <p className="text-xs text-gray-400 leading-relaxed mt-1">{desc}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -99,113 +229,129 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══ Mission Section ══ */}
-      <section className="py-16 px-4 sm:px-6 bg-white">
+      {/* ══ Mission ══ */}
+      <section
+        className="py-12 md:py-16 px-4 sm:px-6"
+        style={{ background: "linear-gradient(180deg, #FAFBFF, #FFFFFF)" }}
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Our Mission</h2>
-            <div className="w-12 h-1 bg-orange-500 rounded-full mx-auto mt-2" />
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-10 bg-gradient-to-r from-transparent to-blue-400/30" />
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-blue-500/50">
+                Our Mission
+              </span>
+              <div className="h-px w-10 bg-gradient-to-l from-transparent to-blue-400/30" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+              What Drives{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #1E40AF, #3B82F6, #60A5FA)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                CA Maker
+              </span>
+            </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {missionCards.map(({ emoji, title, desc }, i) => (
-              <div key={i} className="bg-orange-50 rounded-2xl p-8 text-center">
-                <div className="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                  {emoji}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900">{title}</h3>
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ══ Journey / Timeline Section ══ */}
-      <section className="py-16 px-4 sm:px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">CA Mohit&apos;s Journey</h2>
-            <div className="w-12 h-1 bg-orange-500 rounded-full mx-auto mt-2" />
-          </div>
-          <div className="relative max-w-2xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-orange-500 -translate-x-1/2 hidden md:block" />
-            {journeyMilestones.map(({ year, title, desc }, i) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {missionCards.map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={i}
-                className={`relative flex items-center gap-6 mb-12 last:mb-0
-                  ${i % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"}`}
+                className="rounded-2xl p-7 text-center group transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid #EEEEEE",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.03)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(59,130,246,0.15)";
+                  e.currentTarget.style.boxShadow = "0 8px 28px rgba(37,99,235,0.06)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "#EEEEEE";
+                  e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.03)";
+                }}
               >
-                <div className={`flex-1 ${i % 2 === 1 ? "md:text-right" : "md:text-left"}`}>
-                  <span className="inline-block bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold mb-2">
-                    {year}
-                  </span>
-                  <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 max-w-xs md:max-w-full md:inline-block">
-                    <h3 className="font-bold text-gray-900">{title}</h3>
-                    <p className="text-sm text-gray-500 mt-1">{desc}</p>
-                  </div>
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5
+                             transition-transform duration-300 group-hover:scale-105"
+                  style={{
+                    background: "rgba(37, 99, 235, 0.06)",
+                    border: "1px solid rgba(37, 99, 235, 0.1)",
+                  }}
+                >
+                  <Icon className="w-7 h-7 text-blue-500" />
                 </div>
-                <div className="hidden md:block w-4 h-4 rounded-full bg-orange-500 flex-shrink-0 z-10" />
-                <div className="flex-1 hidden md:block" />
+                <h3 className="text-base font-bold text-gray-900 mb-2">{title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ Why CA Maker Section ══ */}
-      <section className="py-16 px-4 sm:px-6 bg-white">
+      {/* ══ Journey ══ */}
+      <section className="py-12 md:py-16 px-4 sm:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Why Students Choose CA Maker</h2>
-            <div className="w-12 h-1 bg-orange-500 rounded-full mx-auto mt-2" />
+          <div className="text-center mb-14">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-10 bg-gradient-to-r from-transparent to-blue-400/30" />
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-blue-500/50">
+                The Journey
+              </span>
+              <div className="h-px w-10 bg-gradient-to-l from-transparent to-blue-400/30" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+              From Big 4 to{" "}
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #1E40AF, #3B82F6, #60A5FA)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                CA Maker
+              </span>
+            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {whyChoose.map(({ icon: Icon, title, desc }, i) => (
-              <div key={i} className="text-center">
-                <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-orange-500" />
+
+          {/* Horizontal timeline */}
+          <div className="relative max-w-3xl mx-auto">
+            {/* Line */}
+            <div
+              className="hidden md:block absolute top-8 left-0 right-0 h-px"
+              style={{ background: "linear-gradient(90deg, transparent, #DBEAFE 15%, #93C5FD 50%, #DBEAFE 85%, transparent)" }}
+            />
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+              {journeyMilestones.map(({ year, title, desc }, i) => (
+                <div key={i} className="text-center relative">
+                  {/* Dot */}
+                  <div className="flex justify-center mb-4">
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center relative z-10"
+                      style={{
+                        background: "linear-gradient(135deg, #2563EB, #3B82F6)",
+                        boxShadow: "0 4px 12px rgba(37, 99, 235, 0.2)",
+                      }}
+                    >
+                      <span className="text-white text-sm font-extrabold">{year}</span>
+                    </div>
+                  </div>
+                  <h3 className="text-sm font-bold text-gray-900 mb-1">{title}</h3>
+                  <p className="text-xs text-gray-400 leading-relaxed">{desc}</p>
                 </div>
-                <h3 className="font-bold text-gray-900">{title}</h3>
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed">{desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ══ CTA ══ */}
-      <section className="py-10 bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs font-bold text-orange-400 uppercase tracking-widest mb-3">
-            Start Today
-          </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Ready to Master CA Inter Audit?
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto mb-9 text-sm">
-            Join CA Maker and learn from Big&nbsp;4 expertise with practical,
-            exam-focused preparation.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/courses"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-orange-500
-                         hover:bg-orange-600 text-white rounded-xl font-semibold transition-colors"
-            >
-              View Courses <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 border
-                         border-white/20 hover:border-orange-400 text-white hover:text-orange-400
-                         rounded-xl font-semibold transition-colors"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

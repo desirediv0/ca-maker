@@ -55,7 +55,7 @@ export default function AddressesPage() {
   if (loading && addresses.length === 0) {
     return (
       <div className="flex justify-center items-center h-48">
-        <div className="w-8 h-8 border-[3px] border-orange-200 border-t-orange-500 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-[3px] border-blue-200 border-t-blue-500 rounded-full animate-spin" />
       </div>
     );
   }
@@ -66,12 +66,12 @@ export default function AddressesPage() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 mb-1">My Addresses</h1>
-          <div className="w-10 h-1 bg-orange-500 rounded-full" />
+          <div className="w-10 h-1 bg-blue-500 rounded-full" />
         </div>
         {!showAddForm && !editingAddress && (
           <button
             onClick={() => setShowAddForm(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded text-sm font-semibold transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm font-semibold transition-colors"
           >
             <Plus className="h-4 w-4" /> Add Address
           </button>
@@ -97,13 +97,13 @@ export default function AddressesPage() {
       {addresses.length === 0 && !showAddForm && !editingAddress ? (
         <div className="bg-white rounded border border-gray-100 p-14 text-center"
           style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
-          <div className="w-14 h-14 bg-orange-100 rounded flex items-center justify-center mx-auto mb-4">
-            <MapPin className="h-7 w-7 text-orange-400" />
+          <div className="w-14 h-14 bg-blue-100 rounded flex items-center justify-center mx-auto mb-4">
+            <MapPin className="h-7 w-7 text-blue-400" />
           </div>
           <h2 className="text-lg font-bold text-gray-900 mb-2">No Addresses Yet</h2>
           <p className="text-gray-500 text-sm mb-6">Add a delivery address to speed up checkout.</p>
           <button onClick={() => setShowAddForm(true)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded text-sm font-semibold transition-colors">
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm font-semibold transition-colors">
             <Plus className="h-4 w-4" /> Add Address
           </button>
         </div>
@@ -111,17 +111,17 @@ export default function AddressesPage() {
         <div className="grid sm:grid-cols-2 gap-5">
           {addresses.map((addr) => (
             <div key={addr.id}
-              className="bg-white rounded border border-gray-100 p-5 relative hover:border-orange-200 hover:shadow-md transition-all duration-200"
+              className="bg-white rounded border border-gray-100 p-5 relative hover:border-blue-200 hover:shadow-md transition-all duration-200"
               style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
               {addr.isDefault && (
-                <span className="absolute top-4 right-4 inline-flex items-center gap-1 bg-orange-100 text-orange-600 text-xs font-semibold px-2.5 py-1 rounded-full">
+                <span className="absolute top-4 right-4 inline-flex items-center gap-1 bg-blue-100 text-blue-600 text-xs font-semibold px-2.5 py-1 rounded-full">
                   <Check className="h-3 w-3" /> Default
                 </span>
               )}
 
               <div className="flex items-start gap-3 mb-4">
-                <div className="w-9 h-9 bg-orange-100 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Home className="h-4 w-4 text-orange-500" />
+                <div className="w-9 h-9 bg-blue-100 rounded flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Home className="h-4 w-4 text-blue-500" />
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-gray-900 text-sm">{addr.name}</p>
@@ -135,12 +135,12 @@ export default function AddressesPage() {
               <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
                 {!addr.isDefault && (
                   <button onClick={() => handleSetDefault(addr.id)}
-                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-200 hover:border-orange-300 hover:text-orange-600 rounded text-xs font-semibold text-gray-600 transition-colors">
+                    className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-200 hover:border-blue-300 hover:text-blue-600 rounded text-xs font-semibold text-gray-600 transition-colors">
                     <Home className="h-3.5 w-3.5" /> Set Default
                   </button>
                 )}
                 <button onClick={() => setEditingAddress(addr)}
-                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-200 hover:border-orange-300 hover:text-orange-600 rounded text-xs font-semibold text-gray-600 transition-colors">
+                  className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 border border-gray-200 hover:border-blue-300 hover:text-blue-600 rounded text-xs font-semibold text-gray-600 transition-colors">
                   <Edit className="h-3.5 w-3.5" /> Edit
                 </button>
                 <button onClick={() => handleDelete(addr.id)} disabled={deletingId === addr.id}
@@ -154,7 +154,7 @@ export default function AddressesPage() {
 
           {/* Add tile */}
           <button onClick={() => setShowAddForm(true)}
-            className="border-2 border-dashed border-gray-200 hover:border-orange-400 hover:bg-orange-50 rounded p-8 flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-orange-500 transition-all min-h-[160px]">
+            className="border-2 border-dashed border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded p-8 flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-blue-500 transition-all min-h-[160px]">
             <Plus className="h-8 w-8" />
             <span className="text-sm font-semibold">Add New Address</span>
           </button>

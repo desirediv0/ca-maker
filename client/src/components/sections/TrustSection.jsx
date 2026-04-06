@@ -50,10 +50,10 @@ export const TrustSection = () => {
                 key={index}
                 className="flex items-center gap-3 px-5 py-4 rounded
                            bg-white/5 border border-white/10
-                           hover:bg-white/10 hover:border-orange-500/40 transition-all duration-300"
+                           hover:bg-white/10 hover:border-blue-500/40 transition-all duration-300"
               >
-                <div className="w-9 h-9 bg-orange-500/15 rounded flex items-center justify-center flex-shrink-0">
-                  <badge.icon className="h-4.5 w-4.5 text-orange-400" style={{ width: 18, height: 18 }} />
+                <div className="w-9 h-9 bg-blue-500/15 rounded flex items-center justify-center flex-shrink-0">
+                  <badge.icon className="h-4.5 w-4.5 text-blue-400" style={{ width: 18, height: 18 }} />
                 </div>
                 <p className="text-white/90 text-sm font-medium">{badge.text}</p>
               </div>

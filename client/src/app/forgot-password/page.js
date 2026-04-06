@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
         <div className="min-h-screen flex items-center justify-center bg-[#FFF7ED] py-12 px-4 sm:px-6">
             <div className="max-w-md w-full bg-white rounded border border-gray-100 shadow-lg p-8 sm:p-10">
                 <div className="text-center mb-6">
-                    <span className="text-orange-500 font-bold text-lg">CA Maker</span>
+                    <span className="text-blue-500 font-bold text-lg">CA Maker</span>
                 </div>
                 <h1 className="text-2xl font-bold text-gray-900 mb-6">Forgot Password</h1>
                 <p className="text-sm text-muted-foreground mb-6">
@@ -59,13 +59,13 @@ export default function ForgotPasswordPage() {
                     <Button
                         type="submit"
                         disabled={submitting || loading}
-                        className="w-full h-12 bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-white font-bold rounded transition-all"
+                        className="w-full h-12 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-bold rounded transition-all"
                     >
                         {submitting || loading ? "Sending..." : "Send reset link"}
                     </Button>
                 </form>
                 <div className="mt-4 text-sm">
-                    <Link href="/auth" className="text-orange-600 hover:underline font-medium">
+                    <Link href="/auth" className="text-blue-600 hover:underline font-medium">
                         Back to login
                     </Link>
                 </div>

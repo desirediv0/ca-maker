@@ -12,6 +12,8 @@ import {
   RiLinkedinBoxLine,
   RiArrowRightSLine,
   RiShieldCheckLine,
+  RiShieldStarLine,
+  RiStarFill,
 } from "react-icons/ri";
 
 const quickLinks = [
@@ -32,52 +34,101 @@ const popularCourses = [
 ];
 
 const socialLinks = [
-  { name: "Facebook", href: "https://www.facebook.com/share/1DCsKYB5Uy/?mibextid=wwXIfr", icon: RiFacebookCircleLine, hoverClass: "hover:bg-blue-600 hover:border-blue-600" },
-  { name: "Instagram", href: "https://www.instagram.com/official_camaker/", icon: RiInstagramLine, hoverClass: "hover:bg-pink-600 hover:border-pink-600" },
-  { name: "YouTube", href: "https://youtube.com/@camakerindia", icon: RiYoutubeLine, hoverClass: "hover:bg-red-600 hover:border-red-600" },
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/camaker", icon: RiLinkedinBoxLine, hoverClass: "hover:bg-blue-700 hover:border-blue-700" },
+  { name: "Facebook", href: "https://www.facebook.com/share/1DCsKYB5Uy/?mibextid=wwXIfr", icon: RiFacebookCircleLine },
+  { name: "Instagram", href: "https://www.instagram.com/official_camaker/", icon: RiInstagramLine },
+  { name: "YouTube", href: "https://youtube.com/@camakerindia", icon: RiYoutubeLine },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/camaker", icon: RiLinkedinBoxLine },
 ];
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#0F172A] text-white">
+    <footer
+      className="text-white relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(175deg, #020818 0%, #071334 35%, #0C1D5E 60%, #081545 85%, #020818 100%)",
+      }}
+    >
+      {/* Top decorative border */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #3B82F6 30%, #60A5FA 50%, #3B82F6 70%, transparent)",
+        }}
+      />
+
+      {/* Subtle background elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full opacity-[0.06]"
+          style={{
+            background: "radial-gradient(ellipse, #3B82F6, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.015]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(96,165,250,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,0.4) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
+      </div>
+
       {/* CTA Banner */}
-      <div className="py-8 text-center border-b border-white/10">
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-          Ready to Clear CA with{" "}
-          <span className="text-[#F97316]">Confidence?</span>
+      <div className="relative py-12 text-center border-b border-white/[0.06]">
+        {/* Ornamental divider */}
+
+
+        <h3 className="text-2xl md:text-3xl font-extrabold mb-3 tracking-tight">
+          <span className="text-white">Ready to Clear CA with </span>
+          <span
+            style={{
+              background: "linear-gradient(135deg, #60A5FA, #3B82F6, #93C5FD)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            Confidence?
+          </span>
         </h3>
-        <p className="text-gray-400 mb-4 text-sm max-w-sm mx-auto">
-          Join 10,000+ CA aspirants — Big 4 expertise, practical teaching.
+        <p className="text-white/80 mb-6 text-sm max-w-md mx-auto leading-relaxed">
+          Join 10,000+ CA aspirants — Big 4 expertise, practical teaching, proven results.
         </p>
         <Link
           href="/courses"
-          className="inline-flex items-center gap-1.5 px-6 py-3 rounded font-semibold text-sm
-                     bg-[#F97316] hover:bg-[#EA580C] text-white
-                     transition-all duration-200"
+          className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-bold text-sm
+                     text-white transition-all duration-300 hover:scale-[1.03]"
+          style={{
+            background: "linear-gradient(135deg, #2563EB, #3B82F6, #2563EB)",
+            boxShadow:
+              "0 4px 20px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255,255,255,0.1)",
+          }}
         >
           Explore Courses
-          <RiArrowRightSLine className="h-4 w-4" />
+          <RiArrowRightSLine className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>
       </div>
 
-      {/* Main 4-column grid */}
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
+      {/* Main grid */}
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <Image
-                src="/logo.png"
-                alt="CA Maker"
-                width={160}
-                height={64}
-                className="h-10 w-auto brightness-0 invert"
-              />
+            <Link href="/" className="inline-block mb-5">
+              <h1 className="text-2xl font-extrabold tracking-tight" style={{
+                background: "linear-gradient(135deg, #60A5FA, #3B82F6, #93C5FD)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}>
+                CA Maker
+              </h1>
             </Link>
 
-            <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-xs">
+            <p className="text-white/80 text-sm leading-relaxed mb-6 max-w-xs">
               Expert CA coaching by CA Mohit Kukreja. Making complex audit concepts
               simple with 6+ years of Big 4 experience.
             </p>
@@ -90,9 +141,25 @@ export const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={s.name}
-                  className="w-10 h-10 rounded-full bg-[#F97316]/20 border border-[#F97316]/30
-                    flex items-center justify-center text-[#F97316]
-                    hover:bg-[#F97316] hover:text-white transition-all duration-300"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center
+                             transition-all duration-300 hover:-translate-y-0.5"
+                  style={{
+                    background: "rgba(37, 99, 235, 0.1)",
+                    border: "1px solid rgba(59, 130, 246, 0.15)",
+                    color: "#60A5FA",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#2563EB";
+                    e.currentTarget.style.borderColor = "#2563EB";
+                    e.currentTarget.style.color = "#FFFFFF";
+                    e.currentTarget.style.boxShadow = "0 4px 15px rgba(37, 99, 235, 0.4)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(37, 99, 235, 0.1)";
+                    e.currentTarget.style.borderColor = "rgba(59, 130, 246, 0.15)";
+                    e.currentTarget.style.color = "#60A5FA";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 >
                   <s.icon className="h-5 w-5" />
                 </a>
@@ -102,16 +169,23 @@ export const Footer = () => {
 
           {/* Courses */}
           <div>
-            <h3 className="font-bold text-xs uppercase tracking-wider text-gray-500 mb-5">
+            <h3
+              className="font-bold text-[11px] uppercase tracking-[0.2em] mb-6"
+              style={{ color: "#60A5FA" }}
+            >
               Courses
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {popularCourses.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-[#F97316] transition-colors text-sm"
+                    className="group flex items-center gap-2 text-white/80 hover:text-blue-300 transition-colors text-sm"
                   >
+                    <span
+                      className="w-1 h-1 rounded-full bg-blue-500/30 group-hover:bg-blue-400
+                                 transition-colors flex-shrink-0"
+                    />
                     {link.name}
                   </Link>
                 </li>
@@ -121,38 +195,58 @@ export const Footer = () => {
 
           {/* Quick links */}
           <div>
-            <h3 className="font-bold text-xs uppercase tracking-wider text-gray-500 mb-5">
+            <h3
+              className="font-bold text-[11px] uppercase tracking-[0.2em] mb-6"
+              style={{ color: "#60A5FA" }}
+            >
               Company
             </h3>
-            <ul className="space-y-2.5">
-              {quickLinks.filter(l => !['Courses', 'Categories'].includes(l.name)).map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-400 hover:text-[#F97316] transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <ul className="space-y-3">
+              {quickLinks
+                .filter((l) => !["Courses", "Categories"].includes(l.name))
+                .map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 text-white/80 hover:text-blue-300 transition-colors text-sm"
+                    >
+                      <span
+                        className="w-1 h-1 rounded-full bg-blue-500/30 group-hover:bg-blue-400
+                                   transition-colors flex-shrink-0"
+                      />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-xs uppercase tracking-wider text-gray-500 mb-5">
+            <h3
+              className="font-bold text-[11px] uppercase tracking-[0.2em] mb-6"
+              style={{ color: "#60A5FA" }}
+            >
               Connect
             </h3>
-            <ul className="space-y-3.5">
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded bg-[#F97316]/20 flex items-center justify-center flex-shrink-0">
-                  <RiPhoneLine className="h-4 w-4 text-[#F97316]" />
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "rgba(37, 99, 235, 0.1)",
+                    border: "1px solid rgba(59, 130, 246, 0.12)",
+                  }}
+                >
+                  <RiPhoneLine className="h-4 w-4 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-0.5">Phone</p>
+                  <p className="text-[10px] text-white/80 uppercase tracking-wider font-semibold mb-0.5">
+                    Phone
+                  </p>
                   <a
                     href="tel:+919876543210"
-                    className="text-sm text-gray-400 hover:text-[#F97316] transition-colors"
+                    className="text-sm text-white/60 hover:text-blue-300 transition-colors"
                   >
                     +91 98765 43210
                   </a>
@@ -160,14 +254,22 @@ export const Footer = () => {
               </li>
 
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded bg-[#F97316]/20 flex items-center justify-center flex-shrink-0">
-                  <RiMailLine className="h-4 w-4 text-[#F97316]" />
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "rgba(37, 99, 235, 0.1)",
+                    border: "1px solid rgba(59, 130, 246, 0.12)",
+                  }}
+                >
+                  <RiMailLine className="h-4 w-4 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-0.5">Email</p>
+                  <p className="text-[10px] text-white/80 uppercase tracking-wider font-semibold mb-0.5">
+                    Email
+                  </p>
                   <a
                     href="mailto:camakerIndia@gmail.com"
-                    className="text-sm text-gray-400 hover:text-[#F97316] transition-colors"
+                    className="text-sm text-white/60 hover:text-blue-300 transition-colors"
                   >
                     camakerIndia@gmail.com
                   </a>
@@ -175,12 +277,20 @@ export const Footer = () => {
               </li>
 
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded bg-[#F97316]/20 flex items-center justify-center flex-shrink-0">
-                  <RiTimeLine className="h-4 w-4 text-[#F97316]" />
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{
+                    background: "rgba(37, 99, 235, 0.1)",
+                    border: "1px solid rgba(59, 130, 246, 0.12)",
+                  }}
+                >
+                  <RiTimeLine className="h-4 w-4 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-0.5">Hours</p>
-                  <p className="text-sm text-gray-400">Mon–Sat, 9 AM – 7 PM</p>
+                  <p className="text-[10px] text-white/80 uppercase tracking-wider font-semibold mb-0.5">
+                    Hours
+                  </p>
+                  <p className="text-sm text-white/60">Mon–Sat, 9 AM – 7 PM</p>
                 </div>
               </li>
             </ul>
@@ -188,19 +298,37 @@ export const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-gray-500 text-center md:text-left">
+        <div
+          className="py-7"
+          style={{ borderTop: "1px solid rgba(59, 130, 246, 0.08)" }}
+        >
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-white/25 text-center md:text-left">
               © {new Date().getFullYear()} CA Maker. All rights reserved.
             </p>
-            <p className="text-xs text-[#F97316]">Made with ❤️ for CA Students</p>
-            <div className="flex items-center gap-1.5 text-gray-500 text-xs">
-              <RiShieldCheckLine className="h-3.5 w-3.5 text-[#16A34A]" />
-              <span>Secure Payments</span>
+
+
+            <div className="flex items-center gap-4">
+              <p className="text-xs text-white/50">
+                Made with ❤️ for CA Students
+              </p>
+              <div className="flex items-center gap-1.5 text-xs text-white/25">
+                <RiShieldCheckLine className="h-3.5 w-3.5 text-emerald-500/60" />
+                <span>Secure Payments</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom decorative border */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #3B82F6 30%, #60A5FA 50%, #3B82F6 70%, transparent)",
+        }}
+      />
     </footer>
   );
 };
